@@ -97,7 +97,3 @@ Looking for more guidance? Full documentation for Gatsby lives [on the website](
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/gatsbyjs/gatsby-starter-default)
 
 <!-- AUTO-GENERATED-CONTENT:END -->
-
-## Styling
-
-- Research has shown that the ideal line length is about 65 characters. Anywhere between 45 and 85 is generally seen as acceptable, in the context of a roman alphabet. Reading is a complex process, and we should strive to make it as easy as possible. From [joshwcomeau's blog](https://www.joshwcomeau.com/css/full-bleed/)

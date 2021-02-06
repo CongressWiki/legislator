@@ -1,26 +1,24 @@
 const path = require(`path`)
+// const { createFilePath } = require(`gatsby-source-filesystem`)
 
-exports.onCreateWebpackConfig = ({ actions }) => {
-  actions.setWebpackConfig({
-    resolve: {
-      alias: {
-        "@components": path.resolve(__dirname, "src/components"),
-        "@pages": path.resolve(__dirname, "src/pages"),
-        "@lib": path.resolve(__dirname, "src/lib"),
-        "@types": path.resolve(__dirname, "src/types"),
-        "@templates": path.resolve(__dirname, "src/templates"),
-        "@top-layer-layout": path.resolve(__dirname, "top-layer-layout/"),
-      },
-    },
-  })
-}
+// exports.onCreateNode = ({ node, getNode, actions }) => {
+//   const { createNodeField } = actions
+//   if (node.internal.type === `bills`) {
+//     const slug = createFilePath({ node, getNode, basePath: `pages` })
+//     createNodeField({
+//       node,
+//       name: `slug`,
+//       value: slug,
+//     })
+//   }
+// }
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
   const result = await graphql(`
     query BillQuery {
       hasura {
-        bills(limit: 100, order_by: { updated_at: desc }) {
+        bills(limit: 3) {
           id
           number
           title
@@ -44,7 +42,7 @@ exports.createPages = async ({ graphql, actions }) => {
   result.data.hasura.bills.forEach(node => {
     createPage({
       path: node.id,
-      component: path.resolve(`./src/templates/bill.tsx`),
+      component: path.resolve(`./src/templates/bill.jsx`),
       context: {
         // Data passed to context is available
         // in page queries as GraphQL variables.
