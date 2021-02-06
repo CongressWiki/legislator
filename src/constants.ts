@@ -28,7 +28,7 @@ export const COLORS = {
     light: "hsl(0deg, 0%, 30%)",
     dark: "hsl(0deg, 0%, 70%)",
   },
-}
+};
 
-export const COLOR_MODE_KEY = "color-mode"
-export const INITIAL_COLOR_MODE_CSS_PROP = "--initial-color-mode"
+export const COLOR_MODE_KEY = "color-mode";
+export const INITIAL_COLOR_MODE_CSS_PROP = "--initial-color-mode";

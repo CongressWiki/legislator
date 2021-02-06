@@ -5,20 +5,19 @@
  * See: https://www.gatsbyjs.com/docs/use-static-query/
  */
 
-import React from "react"
-// import PropTypes from "prop-types"
-import { Helmet } from "react-helmet"
-import { useStaticQuery, graphql } from "gatsby"
+import React from "react";
+import { Helmet } from "react-helmet";
+import { useStaticQuery, graphql } from "gatsby";
 
 export type SEOProps = {
-  description?: string
-  lang?: string
+  description?: string;
+  lang?: string;
   meta?: ConcatArray<
     | { name: string; content: any; property?: undefined }
     | { property: string; content: any; name?: undefined }
-  >
-  title?: string
-}
+  >;
+  title?: string;
+};
 
 function SEO({ description, lang, meta, title }: SEOProps) {
   const { site } = useStaticQuery(
@@ -33,10 +32,10 @@ function SEO({ description, lang, meta, title }: SEOProps) {
         }
       }
     `
-  )
+  );
 
-  const metaDescription = description || site.siteMetadata.description
-  const defaultTitle = site.siteMetadata?.title
+  const metaDescription = description || site.siteMetadata.description;
+  const defaultTitle = site.siteMetadata?.title;
 
   return (
     <Helmet
@@ -80,20 +79,13 @@ function SEO({ description, lang, meta, title }: SEOProps) {
         },
       ].concat(meta)}
     />
-  )
+  );
 }
 
 SEO.defaultProps = {
   lang: `en`,
   meta: [],
   description: ``,
-}
+};
 
-// SEO.propTypes = {
-//   description: PropTypes.string,
-//   lang: PropTypes.string,
-//   meta: PropTypes.arrayOf(PropTypes.object),
-//   title: PropTypes.string.isRequired,
-// }
-
-export default SEO
+export default SEO;

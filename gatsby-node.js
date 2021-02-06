@@ -1,4 +1,4 @@
-const path = require(`path`)
+const path = require(`path`);
 
 exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
@@ -12,11 +12,11 @@ exports.onCreateWebpackConfig = ({ actions }) => {
         "@top-layer-layout": path.resolve(__dirname, "top-layer-layout/"),
       },
     },
-  })
-}
+  });
+};
 
 exports.createPages = async ({ graphql, actions }) => {
-  const { createPage } = actions
+  const { createPage } = actions;
   const result = await graphql(`
     query BillQuery {
       hasura {
@@ -39,9 +39,9 @@ exports.createPages = async ({ graphql, actions }) => {
         }
       }
     }
-  `)
+  `);
 
-  result.data.hasura.bills.forEach(node => {
+  result.data.hasura.bills.forEach((node) => {
     createPage({
       path: node.id,
       component: path.resolve(`./src/templates/Bill.tsx`),
@@ -51,6 +51,6 @@ exports.createPages = async ({ graphql, actions }) => {
         slug: node.id,
         ...node,
       },
-    })
-  })
-}
+    });
+  });
+};

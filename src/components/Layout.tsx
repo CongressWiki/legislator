@@ -1,9 +1,8 @@
-import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import React from "react";
+import { useStaticQuery, graphql } from "gatsby";
 
-import Header from "./Header"
-// import "./layout.css"
-import styled from "styled-components"
+import Header from "@components/Header";
+import styled from "styled-components";
 
 const Wrapper = styled.div`
   display: grid;
@@ -13,11 +12,11 @@ const Wrapper = styled.div`
   > * {
     grid-column: 2;
   }
-`
+`;
 
 export type LayoutProps = {
-  children: React.ReactNode
-}
+  children: React.ReactNode;
+};
 
 const Layout = ({ children }: LayoutProps) => {
   const data = useStaticQuery(graphql`
@@ -28,7 +27,7 @@ const Layout = ({ children }: LayoutProps) => {
         }
       }
     }
-  `)
+  `);
 
   return (
     <>
@@ -37,7 +36,7 @@ const Layout = ({ children }: LayoutProps) => {
         {children}
       </Wrapper>
     </>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;
