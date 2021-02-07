@@ -7,14 +7,12 @@
 // You can delete this file if you're not using it
 
 import React from "react";
-
+import App from "@components/App";
 import {
   COLOR_MODE_KEY,
   COLORS,
   INITIAL_COLOR_MODE_CSS_PROP,
 } from "./src/constants";
-
-import App from "@components/App";
 
 function setColorsByTheme() {
   const colors = "🌈";

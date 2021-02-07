@@ -21,8 +21,8 @@
         "top-layer-layout/*"
       ],
     },
-    "target": "esnext",
-    "module": "esnext",
+    "target": "ES2019",
+    "module": "commonjs",
     "moduleResolution": "node",
     "lib": [
       "dom",
@@ -30,7 +30,7 @@
     ],
     "allowJs": true,
     // "checkJs": true,
-    "jsx": "react-jsx",
+    "jsx": "react",
     "strict": true,
     "esModuleInterop": true,
     "experimentalDecorators": true,
@@ -38,5 +38,6 @@
     // "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     // "skipLibCheck": true
+    "sourceMap": true
   }
 }

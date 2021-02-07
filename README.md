@@ -8,6 +8,9 @@
   Gatsby's default starter
 </h1>
 
+[![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/xojs/xo)
+
+
 Kick off your project with this default boilerplate. This starter ships with the main Gatsby configuration files you might need to get up and running blazing fast with the blazing fast app generator for React.
 
 _Have another more specific idea? You may want to check out our vibrant collection of [official and community-created starters](https://www.gatsbyjs.com/docs/gatsby-starters/)._
@@ -101,3 +104,9 @@ Looking for more guidance? Full documentation for Gatsby lives [on the website](
 ## Styling
 
 - Research has shown that the ideal line length is about 65 characters. Anywhere between 45 and 85 is generally seen as acceptable, in the context of a roman alphabet. Reading is a complex process, and we should strive to make it as easy as possible. From [joshwcomeau's blog](https://www.joshwcomeau.com/css/full-bleed/)
+
+## Sitemap & SEO
+
+- [Look into this new plugin](https://www.gatsbyjs.com/plugins/gatsby-plugin-advanced-sitemap/?=sitemap)
+- [Submit sitemap to google](https://support.google.com/webmasters/answer/7451001)
+- [Nice blog post by Josh](https://www.joshwcomeau.com/gatsby/seo-friendly-sitemap/)

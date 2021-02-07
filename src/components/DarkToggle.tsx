@@ -1,6 +1,5 @@
-import React from "react";
-
-import { ThemeContext } from "@components/ThemeContext";
+import React from 'react';
+import { ThemeContext } from '@components/ThemeContext';
 
 const DarkToggle = () => {
   const { colorMode, setColorMode } = React.useContext(ThemeContext);
@@ -13,11 +12,11 @@ const DarkToggle = () => {
     <label>
       <input
         type="checkbox"
-        checked={colorMode === "dark"}
+        checked={colorMode === 'dark'}
         onChange={(ev) => {
-          setColorMode(ev.target.checked ? "dark" : "light");
+          setColorMode(ev.target.checked ? 'dark' : 'light');
         }}
-      />{" "}
+      />{' '}
       Dark
     </label>
   );
