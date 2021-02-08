@@ -1,14 +1,9 @@
 import React from 'react';
-import {Link, graphql, useStaticQuery} from 'gatsby';
+import { Link, graphql, useStaticQuery } from 'gatsby';
 import Layout from '@components/Layout';
-import type {Bill as BillData} from '../types/hasura';
+import type { Bill as BillData } from '../types/hasura';
 import styled from 'styled-components';
 import BrightTitle from '@components/BrightTitle';
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
 
 export type BillsQuery = {
   hasura: {
@@ -25,7 +20,7 @@ export default function Home() {
   const data: BillsQuery = useStaticQuery(graphql`
     query BillAggregateQuery {
       hasura {
-        bills_aggregate(limit: 100, order_by: {updated_at: desc}) {
+        bills_aggregate(limit: 100, order_by: { updated_at: desc }) {
           nodes {
             id
             number
@@ -72,3 +67,8 @@ export default function Home() {
     </Layout>
   );
 }
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+`;

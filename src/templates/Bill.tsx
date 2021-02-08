@@ -1,7 +1,8 @@
 import React from 'react';
 import Layout from '@components/Layout';
 import type { Bill as BillData } from '../types/hasura';
-import Styled from 'styled-components';
+import styled from 'styled-components';
+import USStates from '@components/UsStates';
 
 export type BillProps = {
   pageContext: BillData;
@@ -19,28 +20,28 @@ export default function Bill({ pageContext: bill }: BillProps) {
         </BillHeader>
         {renderTitle(bill.title)}
         {renderSummary(bill.summary)}
+        <USStates />
       </BillWrapper>
     </Layout>
   );
 }
 
-const BillWrapper = Styled.div`
-`;
+const BillWrapper = styled.div``;
 
-const BillHeader = Styled.div`
+const BillHeader = styled.div`
   padding-top: 19px;
   margin: 0;
   display: flex;
   justify-content: space-between;
 `;
 
-const BillId = Styled.h2`
+const BillId = styled.h2`
   padding-top: 19px;
   margin: 0;
   font-weight: normal;
 `;
 
-const BillSubject = Styled.h2`
+const BillSubject = styled.h2`
   padding-top: 19px;
   margin: 0;
   font-weight: normal;
@@ -62,7 +63,7 @@ const renderTitle = (title: string) => {
   return <BillTitle>{title}</BillTitle>;
 };
 
-const BillTitle = Styled.h3`
+const BillTitle = styled.h3`
   font-size: 48px;
   line-height: 60px;
   letter-spacing: -0.011em;
@@ -126,20 +127,20 @@ const renderSummary = (summary: string) => {
   });
 };
 
-const NoSummaryPlaceholder = Styled.h2`
+const NoSummaryPlaceholder = styled.h2`
   color: var(--color-gray300);
   padding-top: 42px;
   margin: 0;
 `;
 
-const BillOfActStatement = Styled.p`
+const BillOfActStatement = styled.p`
   font-style: italic;
   font-size: 16px;
   margin: 0;
   padding-top: 16px;
 `;
 
-const SummaryParagraph = Styled.p`
+const SummaryParagraph = styled.p`
   font-size: 21px;
   line-height: 32px;
   letter-spacing: -0.063px;
@@ -192,7 +193,7 @@ const renderAsList = (paragraph: string, index: number) => {
   }
 };
 
-const UnorderedList = Styled.ul`
+const UnorderedList = styled.ul`
   margin: 0;
   padding-top: 8;
 `;
@@ -215,7 +216,7 @@ const renderListItem = (statement: string, index: number) => {
   return <ListItem key={index}>{statement}</ListItem>;
 };
 
-const ListItem = Styled.li`
+const ListItem = styled.li`
   line-height: 32p;
   letter-spacing: -0.063px;
   font-size: 21px;

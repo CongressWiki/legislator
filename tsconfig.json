@@ -11,6 +11,9 @@
       "@templates/*": [
         "src/templates/*"
       ],
+      "@images/*": [
+        "src/images/*"
+      ],
       "@lib/*": [
         "src/lib/*"
       ],
