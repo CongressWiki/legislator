@@ -48,6 +48,7 @@ const BillSubject = styled.h2`
 `;
 
 const renderTitle = (title: string) => {
+  // If title is long, reduce size
   if (title.length > 100) {
     return (
       <BillTitle
@@ -83,9 +84,9 @@ const renderSummary = (summary: string) => {
   summary = summary.replace(/\(\d*\)([^\S\r\n])?/g, '');
   // Remove horizontal spaces (\h) (horizontal space chars come from Perl and is not supported by Node regex)
   summary = summary.replace(/[^\S\r\n]/g, ' ');
-  // Add Ellipsis to paragraphs that end with "to" | "include" | "for"
+  // Add ellipsis to paragraphs that end with "to" | "include" | "for"
   summary = summary.replace(/(to|include|for)\n/g, '$1...');
-
+  // Add ellipsis if paragraph contains "For more detailed information"
   summary = summary.replace(/(For more detailed information)(,)?/g, '$1...\n');
 
   // If the first sentence is a statement that includes "of Act" then separate it from the regular text
@@ -116,13 +117,15 @@ const renderSummary = (summary: string) => {
       );
     }
 
+    // Render in special formatting if first sentence is a Bill/Act statement
     if (
       paragraph.split('.').length <= 1 &&
       /(Act|Bill of Rights)/g.test(paragraph)
     ) {
-      return <BillOfActStatement key={index}>{paragraph}</BillOfActStatement>;
+      return <BillOrActStatement key={index}>{paragraph}</BillOrActStatement>;
     }
 
+    // Otherwise render as normal paragraph
     return <SummaryParagraph key={index}>{paragraph}</SummaryParagraph>;
   });
 };
@@ -133,7 +136,7 @@ const NoSummaryPlaceholder = styled.h2`
   margin: 0;
 `;
 
-const BillOfActStatement = styled.p`
+const BillOrActStatement = styled.p`
   font-style: italic;
   font-size: 16px;
   margin: 0;
