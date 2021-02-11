@@ -19,7 +19,9 @@ export default function Bill({ pageContext: bill }: BillProps) {
           <BillSubject>{bill.subject}</BillSubject>
         </BillHeader>
         {renderTitle(bill.title)}
-        {renderSummary(bill.summary)}
+        {bill.summary === 'No summary available.' && bill.bill_text
+          ? renderBillText(bill.bill_text, bill.title)
+          : renderSummary(bill.summary)}
         <USStates />
       </BillWrapper>
     </Layout>
@@ -72,6 +74,37 @@ const BillTitle = styled.h3`
   padding-top: 26px;
   margin: 0;
 `;
+
+const renderBillText = (billText: string, billTitle: string) => {
+  console.log(billText);
+  billText = billText.replace(/(``|'')/g, '"');
+  billText = billText.replace(/\s\s+/g, ' ');
+  billText = billText.replace(/<[\S]*>/g, '');
+
+  billTitle = billTitle.replace(/^A \w+/gi, '');
+
+  const deliminator = new RegExp(billTitle, 'gi');
+  const [_meta, _sponsorships, content] = billText.split(deliminator);
+
+  billText = content;
+
+  billText = billText.replace(
+    /(SEC\.|SECTION) (\d\.)([ A-Z:]+\.)/g,
+    '\nSECTION $2$3\n'
+  );
+
+  let [intro, ...sections] = billText.split('\n');
+  sections = sections.filter((section) => /\S/g.test(section));
+
+  return (
+    <>
+      <SummaryParagraph>{intro}</SummaryParagraph>
+      {sections.map((section) => {
+        return <SummaryParagraph>{section}</SummaryParagraph>;
+      })}
+    </>
+  );
+};
 
 const renderSummary = (summary: string) => {
   console.log(summary);

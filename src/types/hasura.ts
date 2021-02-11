@@ -14,4 +14,5 @@ export type Bill = {
   introduced_at: string;
   created_at: string;
   by_request: boolean;
+  bill_text: string;
 };

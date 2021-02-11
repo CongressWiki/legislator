@@ -36,7 +36,6 @@ const Wrapper = styled.header`
   min-height: 115px;
   border-bottom: 1px solid var(--color-gray300);
   background-color: var(--color-background);
-  transition: background-color 1s;
 `;
 
 const ToolBar = styled.div`

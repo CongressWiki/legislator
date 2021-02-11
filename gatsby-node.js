@@ -4,12 +4,12 @@ exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
     resolve: {
       alias: {
-        "@components": path.resolve(__dirname, "src/components"),
-        "@pages": path.resolve(__dirname, "src/pages"),
-        "@lib": path.resolve(__dirname, "src/lib"),
-        "@types": path.resolve(__dirname, "src/types"),
-        "@templates": path.resolve(__dirname, "src/templates"),
-        "@top-layer-layout": path.resolve(__dirname, "top-layer-layout/"),
+        '@components': path.resolve(__dirname, 'src/components'),
+        '@pages': path.resolve(__dirname, 'src/pages'),
+        '@lib': path.resolve(__dirname, 'src/lib'),
+        '@types': path.resolve(__dirname, 'src/types'),
+        '@templates': path.resolve(__dirname, 'src/templates'),
+        '@top-layer-layout': path.resolve(__dirname, 'top-layer-layout/'),
       },
     },
   });
@@ -36,6 +36,7 @@ exports.createPages = async ({ graphql, actions }) => {
           updated_at
           created_at
           by_request
+          bill_text
         }
       }
     }

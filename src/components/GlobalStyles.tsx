@@ -8,6 +8,8 @@ const GlobalStyles = createGlobalStyle`
   }
   body {
     background: var(--color-background);
+    transition: color 1s;
+
     color: var(--color-text);
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;

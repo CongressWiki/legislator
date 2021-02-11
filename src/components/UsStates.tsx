@@ -9,9 +9,7 @@ const USStatesSVG = styled(USStates)`
   path {
     fill: red;
   }
-  #us-states:nth-child(2) {
-    fill: blue;
-  }
+
   path:hover {
     fill: blue;
   }
