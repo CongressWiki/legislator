@@ -1,12 +1,12 @@
 import React from 'react';
-import {ThemeProvider} from '@components/ThemeContext';
-import GlobalStyles from '@components/GlobalStyles';
+import { ThemeProvider } from '@components/ThemeContext/ThemeContext';
+import GlobalStyles from '@components/GlobalStyles/GlobalStyles';
 
 export type AppProps = {
   children: React.ReactNode;
 };
 
-const App = ({children}: AppProps) => {
+const App = ({ children }: AppProps) => {
   return (
     <ThemeProvider>
       <GlobalStyles />

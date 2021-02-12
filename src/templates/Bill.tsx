@@ -1,8 +1,9 @@
 import React from 'react';
-import Layout from '@components/Layout';
+import Layout from '@components/Layout/Layout';
 import type { Bill as BillData } from '../types/hasura';
 import styled from 'styled-components';
-import USStates from '@components/UsStates';
+import USStates from '@components/UsStates/UsStates';
+import Stepper from '@components/Stepper/Stepper';
 
 export type BillProps = {
   pageContext: BillData;
@@ -24,6 +25,7 @@ export default function Bill({ pageContext: bill }: BillProps) {
           : renderSummary(bill.summary)}
         <USStates />
       </BillWrapper>
+      <Stepper steps={bill.actions.map((action) => action.text)} />
     </Layout>
   );
 }
@@ -51,6 +53,19 @@ const BillSubject = styled.h2`
 
 const renderTitle = (title: string) => {
   // If title is long, reduce size
+  if (title.length > 200) {
+    return (
+      <BillTitle
+        style={{
+          fontSize: 'calc(48px/5 * 3)',
+          lineHeight: 'calc(60px/5 * 3)',
+        }}
+      >
+        {title}
+      </BillTitle>
+    );
+  }
+
   if (title.length > 100) {
     return (
       <BillTitle
@@ -73,34 +88,47 @@ const BillTitle = styled.h3`
   font-weight: 400;
   padding-top: 26px;
   margin: 0;
+  /* text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 8;
+  -webkit-box-orient: vertical;
+  overflow: hidden; */
 `;
 
 const renderBillText = (billText: string, billTitle: string) => {
   console.log(billText);
+  // Replace double back-ticks/single-quotes with  double quotes
   billText = billText.replace(/(``|'')/g, '"');
+  // Replace double spaces with single space
   billText = billText.replace(/\s\s+/g, ' ');
+  // Remove HTML tags
   billText = billText.replace(/<[\S]*>/g, '');
 
+  // Remove intro words from title (I.e. "A BILL...", "A RESOLUTION...")
   billTitle = billTitle.replace(/^A \w+/gi, '');
 
   const deliminator = new RegExp(billTitle, 'gi');
   const [_meta, _sponsorships, content] = billText.split(deliminator);
 
+  // The real bill text is after the last print of the Bill title.
   billText = content;
 
+  // Inject newlines before and after "SECTION" titles
   billText = billText.replace(
     /(SEC\.|SECTION) (\d\.)([ A-Z:]+\.)/g,
     '\nSECTION $2$3\n'
   );
 
-  let [intro, ...sections] = billText.split('\n');
-  sections = sections.filter((section) => /\S/g.test(section));
+  let [intro, ...paragraphs] = billText.split('\n');
+
+  // Filter empty paragraphs
+  paragraphs = paragraphs.filter((paragraph) => /\S/g.test(paragraph));
 
   return (
     <>
       <SummaryParagraph>{intro}</SummaryParagraph>
-      {sections.map((section) => {
-        return <SummaryParagraph>{section}</SummaryParagraph>;
+      {paragraphs.map((paragraph) => {
+        return <SummaryParagraph>{paragraph}</SummaryParagraph>;
       })}
     </>
   );
@@ -121,6 +149,7 @@ const renderSummary = (summary: string) => {
   summary = summary.replace(/(to|include|for)\n/g, '$1...');
   // Add ellipsis if paragraph contains "For more detailed information"
   summary = summary.replace(/(For more detailed information)(,)?/g, '$1...\n');
+  summary = summary.replace(/(Among other things, the bill)/g, '$1...\n');
 
   // If the first sentence is a statement that includes "of Act" then separate it from the regular text
   if (/^[\S\s]*Act( of [\d]+)? [A-Z]/g.test(summary)) {
@@ -128,13 +157,17 @@ const renderSummary = (summary: string) => {
     summary = summary.replace(/(^[\S\s]*Act( of [\d]+)?) (\w)/g, '$1\n $3');
   }
 
-  const summaryParagraphs = summary.split('\n');
+  const summaryParagraphs = summary
+    .split('\n')
+    .filter((paragraph) => paragraph !== '');
 
   return summaryParagraphs.map((paragraph, index) => {
     if (paragraph === '') return;
 
     // If previous paragraph ended with "{includes|to|for}..." render paragraph as list
     if (index > 0 && summaryParagraphs[index - 1].endsWith('...')) {
+      console.log(summaryParagraphs[index]);
+
       return renderAsList(paragraph, index);
     }
 

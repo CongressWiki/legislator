@@ -1,9 +1,9 @@
 import React from 'react';
 import { navigate, graphql, useStaticQuery } from 'gatsby';
-import Layout from '@components/Layout';
+import Layout from '@components/Layout/Layout';
 import type { Bill as BillData } from '../types/hasura';
 import styled from 'styled-components';
-import BrightTitle from '@components/BrightTitle';
+import BrightTitle from '@components/BrightTitle/BrightTitle';
 
 export type BillsQuery = {
   hasura: {
@@ -20,7 +20,11 @@ export default function Home() {
   const data: BillsQuery = useStaticQuery(graphql`
     query BillAggregateQuery {
       hasura {
-        bills_aggregate(limit: 100, order_by: { updated_at: desc }) {
+        bills_aggregate(
+          limit: 100
+          where: { summary: { _neq: "No summary available." } }
+          order_by: { updated_at: desc }
+        ) {
           nodes {
             id
             number
@@ -78,17 +82,15 @@ const Wrapper = styled.div`
   /* grid-template-columns: 1fr min(70ch, calc(100% - 64px)) 1fr; */
 `;
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
+interface BillPreviewSectionProps {
+  readonly center?: boolean;
+}
 
-const BillPreviewSection = styled.div`
+export const BillPreviewSection = styled.div<BillPreviewSectionProps>`
   display: flex;
   width: 100%;
   justify-content: ${(props) => (props.center ? 'center' : 'space-between')};
   align-items: center;
-
   p {
     margin: 0;
     font-size: 1.2em;

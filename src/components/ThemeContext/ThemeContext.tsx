@@ -3,8 +3,8 @@ import React from 'react';
 import {
   COLORS,
   COLOR_MODE_KEY,
-  INITIAL_COLOR_MODE_CSS_PROP
-} from '../constants';
+  INITIAL_COLOR_MODE_CSS_PROP,
+} from '../../constants';
 
 export type ThemeContextType = React.Context<{
   colorMode?: 'light' | 'dark';
@@ -17,7 +17,7 @@ export type ThemeProviderProps = {
   children: React.ReactNode;
 };
 
-export const ThemeProvider = ({children}: ThemeProviderProps) => {
+export const ThemeProvider = ({ children }: ThemeProviderProps) => {
   const [colorMode, rawSetColorMode] = React.useState(undefined);
 
   React.useEffect(() => {
@@ -50,7 +50,7 @@ export const ThemeProvider = ({children}: ThemeProviderProps) => {
 
     return {
       colorMode,
-      setColorMode
+      setColorMode,
     };
   }, [colorMode, rawSetColorMode]);
 

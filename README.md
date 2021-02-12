@@ -39,3 +39,7 @@ Static website for bills and amendments.
 - [Look into this new plugin](https://www.gatsbyjs.com/plugins/gatsby-plugin-advanced-sitemap/?=sitemap)
 - [Submit sitemap to google](https://support.google.com/webmasters/answer/7451001)
 - [Nice blog post by Josh](https://www.joshwcomeau.com/gatsby/seo-friendly-sitemap/)
+
+## Resources
+
+- [Bill Text types and other useful bill info](https://www.govinfo.gov/help/bills)

@@ -7,7 +7,7 @@
 // You can delete this file if you're not using it
 
 import React from "react";
-import App from "@components/App";
+import App from "@components/App/App";
 import {
   COLOR_MODE_KEY,
   COLORS,

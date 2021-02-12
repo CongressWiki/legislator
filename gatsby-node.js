@@ -20,7 +20,11 @@ exports.createPages = async ({ graphql, actions }) => {
   const result = await graphql(`
     query BillQuery {
       hasura {
-        bills(limit: 100, order_by: { updated_at: desc }) {
+        bills(
+          limit: 100
+          order_by: { updated_at: desc }
+          where: { summary: { _neq: "No summary available." } }
+        ) {
           id
           number
           title

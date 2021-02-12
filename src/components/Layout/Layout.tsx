@@ -1,6 +1,6 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
-import Header from '@components/Header';
+import Header from '@components/Header/Header';
 import styled from 'styled-components';
 
 export type LayoutProps = {
@@ -35,6 +35,16 @@ const Wrapper = styled.div`
 
   > * {
     grid-column: 2;
+  }
+
+  .right-side {
+    grid-column: 3 / 4;
+    background: var(--color-background);
+    color: var(--color-text);
+  }
+
+  .full-bleed {
+    grid-column: 1 / -1;
   }
 `;
 
