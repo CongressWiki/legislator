@@ -1,10 +1,10 @@
 import React from 'react';
-import Layout from '@components/Layout/Layout';
+import Layout from '@components/Layout';
 import type { Bill as BillData } from '../types/hasura';
 import styled from 'styled-components';
-import USStates from '@components/UsStates/UsStates';
-import Stepper from '@components/Stepper/Stepper';
-import SEO from '@components/Seo/Seo';
+import USStates from '@components/UsStates';
+import Stepper from '@components/Stepper';
+import SEO from '@components/Seo';
 
 export type BillProps = {
   pageContext: BillData;

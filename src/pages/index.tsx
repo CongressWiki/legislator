@@ -1,10 +1,10 @@
 import React from 'react';
 import { navigate, graphql, useStaticQuery } from 'gatsby';
-import Layout from '@components/Layout/Layout';
+import Layout from '@components/Layout';
 import type { Bill as BillDataType } from '../types/hasura';
 import styled from 'styled-components';
 import Img from 'gatsby-image';
-import SEO from '@components/Seo/Seo';
+import SEO from '@components/Seo';
 
 export type HomeQuery = {
   hasura: {

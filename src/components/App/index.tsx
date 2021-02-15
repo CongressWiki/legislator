@@ -1,6 +1,6 @@
 import React from 'react';
-import { ThemeProvider } from '@components/ThemeContext/ThemeContext';
-import GlobalStyles from '@components/GlobalStyles/GlobalStyles';
+import { ThemeProvider } from '@components/ThemeContext';
+import GlobalStyles from '@components/GlobalStyles';
 
 export type AppProps = {
   children: React.ReactNode;

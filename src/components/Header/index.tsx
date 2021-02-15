@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
-import DarkToggle from '@components/DarkToggle/DarkToggle';
+import DarkToggle from '@components/DarkToggle';
 
 export type HeaderProps = {
   siteTitle: string;

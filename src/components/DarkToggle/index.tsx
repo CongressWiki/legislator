@@ -1,5 +1,5 @@
 import React from 'react';
-import { ThemeContext } from '@components/ThemeContext/ThemeContext';
+import { ThemeContext } from '@components/ThemeContext';
 import Brightness4OutlinedIcon from '@material-ui/icons/Brightness4Outlined';
 import IconButton from '@material-ui/core/IconButton';
 

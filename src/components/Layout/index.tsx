@@ -1,6 +1,6 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
-import Header from '@components/Header/Header';
+import Header from '@components/Header';
 import styled from 'styled-components';
 
 export type LayoutProps = {
