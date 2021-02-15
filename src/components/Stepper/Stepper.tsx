@@ -36,7 +36,7 @@ export default function VerticalLinearStepper({
         orientation="vertical"
       >
         {steps.map((label, index) => (
-          <Step key={label}>
+          <Step key={index}>
             <StepLabel
               style={stepLabelStyles}
               onClick={() => setActiveStep(index)}

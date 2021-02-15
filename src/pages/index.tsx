@@ -1,30 +1,29 @@
 import React from 'react';
 import { navigate, graphql, useStaticQuery } from 'gatsby';
 import Layout from '@components/Layout/Layout';
-import type { Bill as BillData } from '../types/hasura';
+import type { Bill as BillDataType } from '../types/hasura';
 import styled from 'styled-components';
-import BrightTitle from '@components/BrightTitle/BrightTitle';
+import Img from 'gatsby-image';
+import SEO from '@components/Seo/Seo';
 
-export type BillsQuery = {
+export type HomeQuery = {
   hasura: {
     bills_aggregate: {
-      nodes: BillData[];
+      nodes: BillDataType[];
       aggregate: {
         count: number;
       };
     };
   };
+
+  allFile: Record<string, any>;
 };
 
 export default function Home() {
-  const data: BillsQuery = useStaticQuery(graphql`
-    query BillAggregateQuery {
+  const data: HomeQuery = useStaticQuery(graphql`
+    query billAndImageQuery {
       hasura {
-        bills_aggregate(
-          limit: 100
-          where: { summary: { _neq: "No summary available." } }
-          order_by: { updated_at: desc }
-        ) {
+        bills_aggregate(limit: 25, order_by: { updated_at: desc }) {
           nodes {
             id
             number
@@ -47,21 +46,53 @@ export default function Home() {
           }
         }
       }
+
+      allFile(filter: { sourceInstanceName: { eq: "congressImages" } }) {
+        edges {
+          node {
+            extension
+            dir
+            modifiedTime
+            name
+            childImageSharp {
+              fluid(maxWidth: 250) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+        }
+      }
     }
   `);
 
+  const { hasura, allFile } = data;
+
+  const renderImage = (id: string) => {
+    const image = allFile.edges.find(
+      (edge: Record<string, any>) => edge.node.name === id
+    );
+
+    if (!image) return null;
+    return (
+      <SponsorAvatar>
+        <Img fluid={image?.node.childImageSharp.fluid} />
+      </SponsorAvatar>
+    );
+  };
+
   return (
     <Layout>
-      <BrightTitle>Bills & Amendments</BrightTitle>
+      <SEO title="Bills" />
       <Wrapper>
-        <h4>{data.hasura.bills_aggregate.aggregate.count} Bills</h4>
-        {data.hasura.bills_aggregate.nodes.map((bill) => (
+        <h4>{hasura.bills_aggregate.aggregate.count} recently updated bills</h4>
+        {hasura.bills_aggregate.nodes.map((bill) => (
           <BillPreview key={bill.id} onClick={() => navigate(bill.id)}>
             <BillPreviewSection>
               <p>
                 {bill.type.toUpperCase()} {bill.number}
               </p>
               <p>{bill.subject}</p>
+              {renderImage(bill.sponsor)}
             </BillPreviewSection>
             <BillPreviewSection center>
               <p>{bill.title}</p>
@@ -75,6 +106,22 @@ export default function Home() {
     </Layout>
   );
 }
+
+const SponsorAvatar = styled.div`
+  border: thin solid red;
+  border-radius: 100%;
+  width: 50px;
+  overflow: hidden;
+  transform: all 1;
+
+  :hover {
+    transform: all 1s;
+    -webkit-transform: scale(1.4);
+    -moz-transform: scale(1.4);
+    -o-transform: scale(1.4);
+    -ms-transform: scale(1.4);
+  }
+`;
 
 const Wrapper = styled.div`
   display: grid;
@@ -99,7 +146,7 @@ export const BillPreviewSection = styled.div<BillPreviewSectionProps>`
 
 const BillPreview = styled.div`
   padding: 15px;
-  height: 25vh;
+  height: 30vh;
   width: 100%;
   overflow: hidden;
   border: 1px solid var(--color-secondary);

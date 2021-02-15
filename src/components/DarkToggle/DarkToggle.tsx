@@ -11,13 +11,14 @@ const DarkToggle = () => {
   }
 
   return (
-    <IconButton aria-label="Toggle dark mode" color="inherit">
-      <Brightness4OutlinedIcon
-        fontSize="inherit"
-        onClick={() => {
-          setColorMode(colorMode === 'light' ? 'dark' : 'light');
-        }}
-      />
+    <IconButton
+      aria-label="Toggle dark mode"
+      color="inherit"
+      onClick={() => {
+        setColorMode(colorMode === 'light' ? 'dark' : 'light');
+      }}
+    >
+      <Brightness4OutlinedIcon fontSize="inherit" />
     </IconButton>
   );
 };

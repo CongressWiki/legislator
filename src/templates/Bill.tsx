@@ -4,6 +4,7 @@ import type { Bill as BillData } from '../types/hasura';
 import styled from 'styled-components';
 import USStates from '@components/UsStates/UsStates';
 import Stepper from '@components/Stepper/Stepper';
+import SEO from '@components/Seo/Seo';
 
 export type BillProps = {
   pageContext: BillData;
@@ -12,6 +13,7 @@ export type BillProps = {
 export default function Bill({ pageContext: bill }: BillProps) {
   return (
     <Layout>
+      <SEO title={bill.id} />
       <BillWrapper>
         <BillHeader>
           <BillId>
@@ -111,7 +113,7 @@ const renderBillText = (billText: string, billTitle: string) => {
   const [_meta, _sponsorships, content] = billText.split(deliminator);
 
   // The real bill text is after the last print of the Bill title.
-  billText = content;
+  if (content) billText = content;
 
   // Inject newlines before and after "SECTION" titles
   billText = billText.replace(
@@ -127,8 +129,8 @@ const renderBillText = (billText: string, billTitle: string) => {
   return (
     <>
       <SummaryParagraph>{intro}</SummaryParagraph>
-      {paragraphs.map((paragraph) => {
-        return <SummaryParagraph>{paragraph}</SummaryParagraph>;
+      {paragraphs.map((paragraph, index) => {
+        return <SummaryParagraph key={index}>{paragraph}</SummaryParagraph>;
       })}
     </>
   );

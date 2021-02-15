@@ -22,7 +22,10 @@
     "lint": "xo src",
     "fix": "xo src --fix",
     "clean:svg": "svgo src/images/*.svg src/images/**/*.svg --pretty --recursive",
-    "clean": "gatsby clean"
+    "clean": "gatsby clean",
+    "deployToProduction": "gatsby-plugin-s3 deploy --yes && aws cloudfront create-invalidation --distribution-id E126LGFP9KWM65 --paths \"/*\"",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "xo": {
     "prettier": true,
@@ -48,11 +51,13 @@
     "babel-plugin-styled-components": "^1.12.0",
     "gatsby": "^2.32.3",
     "gatsby-image": "^2.11.0",
-    "gatsby-plugin-google-analytics": "^2.11.0",
+    "gatsby-plugin-canonical-urls": "^2.10.0",
+    "gatsby-plugin-google-gtag": "^2.8.0",
     "gatsby-plugin-manifest": "^2.12.0",
     "gatsby-plugin-offline": "^3.10.0",
     "gatsby-plugin-react-helmet": "^3.10.0",
     "gatsby-plugin-react-svg": "^3.0.0",
+    "gatsby-plugin-s3": "^0.3.8",
     "gatsby-plugin-sharp": "^2.14.1",
     "gatsby-plugin-sitemap": "^2.12.0",
     "gatsby-plugin-styled-components": "^3.10.0",
@@ -65,10 +70,16 @@
     "styled-components": "^5.2.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.12.16",
+    "@storybook/addon-actions": "^6.1.18",
+    "@storybook/addon-essentials": "^6.1.18",
+    "@storybook/addon-links": "^6.1.18",
+    "@storybook/react": "^6.1.18",
     "@types/react-helmet": "^6.1.0",
     "@types/styled-components": "^5.1.7",
     "@typescript-eslint/eslint-plugin": "^4.14.2",
     "@typescript-eslint/parser": "^4.14.2",
+    "babel-loader": "^8.2.2",
     "eslint": "^7.19.0",
     "eslint-config-xo": "^0.34.0",
     "eslint-config-xo-react": "^0.23.0",

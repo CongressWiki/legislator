@@ -6,21 +6,21 @@
  */
 
 import React from 'react';
-import {Helmet} from 'react-helmet';
-import {useStaticQuery, graphql} from 'gatsby';
+import { Helmet } from 'react-helmet';
+import { useStaticQuery, graphql } from 'gatsby';
 
 export type SEOProps = {
   description?: string;
   lang?: string;
   meta?: ConcatArray<
-    | {name: string; content: any; property?: undefined}
-    | {property: string; content: any; name?: undefined}
+    | { name: string; content: any; property?: undefined }
+    | { property: string; content: any; name?: undefined }
   >;
   title?: string;
 };
 
-const SEO = ({description, lang, meta, title}: SEOProps) => {
-  const {site} = useStaticQuery(
+const SEO = ({ description, lang, meta, title }: SEOProps) => {
+  const { site } = useStaticQuery(
     graphql`
       query {
         site {
@@ -40,43 +40,43 @@ const SEO = ({description, lang, meta, title}: SEOProps) => {
   return (
     <Helmet
       htmlAttributes={{
-        lang
+        lang,
       }}
       title={title}
-      titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : null}
+      titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : 'USACounts'}
       meta={[
         {
           name: `description`,
-          content: metaDescription
+          content: metaDescription,
         },
         {
           property: `og:title`,
-          content: title
+          content: title,
         },
         {
           property: `og:description`,
-          content: metaDescription
+          content: metaDescription,
         },
         {
           property: `og:type`,
-          content: `website`
+          content: `website`,
         },
         {
           name: `twitter:card`,
-          content: `summary`
+          content: `summary`,
         },
         {
           name: `twitter:creator`,
-          content: site.siteMetadata?.author || ``
+          content: site.siteMetadata?.author || ``,
         },
         {
           name: `twitter:title`,
-          content: title
+          content: title,
         },
         {
           name: `twitter:description`,
-          content: metaDescription
-        }
+          content: metaDescription,
+        },
       ].concat(meta)}
     />
   );
@@ -85,7 +85,7 @@ const SEO = ({description, lang, meta, title}: SEOProps) => {
 SEO.defaultProps = {
   lang: `en`,
   meta: [],
-  description: ``
+  description: ``,
 };
 
 export default SEO;
