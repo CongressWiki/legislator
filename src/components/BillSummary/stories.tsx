@@ -39,7 +39,7 @@ const Template: Story<BillSummaryProps> = (args) => (
       </Paper>
     </BoxWrapper>
     <BoxWrapper>
-      <h2>Modified</h2>
+      <h2>This component</h2>
       <Paper>
         <BillSummary {...args} />
       </Paper>

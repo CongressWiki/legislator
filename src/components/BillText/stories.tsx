@@ -28,7 +28,6 @@ const Paper = styled.div`
   border: thin solid black;
   padding: 30px;
   margin: 5px;
-  word-wrap: true;
   word-break: break-all;
   text-align: left;
 `;
@@ -38,12 +37,11 @@ const Template: Story<BillTextProps> = (args) => (
     <BoxWrapper>
       <h2>Original bill text</h2>
       <Paper>
-        <BillParagraph>{args.billTitle}</BillParagraph>
         <BillParagraph>{args.billText}</BillParagraph>
       </Paper>
     </BoxWrapper>
     <BoxWrapper>
-      <h2>Modified</h2>
+      <h2>This component</h2>
       <Paper>
         <BillText {...args} />
       </Paper>
