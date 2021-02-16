@@ -26,10 +26,7 @@ export default function Home() {
         bills_aggregate(
           limit: 25
           order_by: { updated_at: desc }
-          where: {
-            bill_text: { _is_null: true }
-            summary: { _neq: "No summary available." }
-          }
+          where: { summary: { _neq: "No summary available." } }
         ) {
           nodes {
             id
@@ -54,25 +51,25 @@ export default function Home() {
         }
       }
 
-      allFile(filter: { sourceInstanceName: { eq: "congressImages" } }) {
-        edges {
-          node {
-            extension
-            dir
-            modifiedTime
-            name
-            childImageSharp {
-              fluid(maxWidth: 250) {
-                ...GatsbyImageSharpFluid
-              }
-            }
-          }
-        }
-      }
+      # allFile(filter: { sourceInstanceName: { eq: "congressImages" } }) {
+      #   edges {
+      #     node {
+      #       extension
+      #       dir
+      #       modifiedTime
+      #       name
+      #       childImageSharp {
+      #         fluid(maxWidth: 250) {
+      #           ...GatsbyImageSharpFluid
+      #         }
+      #       }
+      #     }
+      #   }
+      # }
     }
   `);
 
-  const { hasura, allFile } = data;
+  const { hasura } = data;
 
   return (
     <Layout>

@@ -5,8 +5,8 @@ const IMAGES_S3_BUCKET = 'democracy-images';
 
 module.exports = {
   siteMetadata: {
-    title: `USACounts`,
-    description: `Keeping US-Accountable.`,
+    title: `Keeping US-Accountable`,
+    description: `The latest US bills and amendments.`,
     author: `@ryparker`,
     siteUrl: siteAddress.href.slice(0, -1),
   },

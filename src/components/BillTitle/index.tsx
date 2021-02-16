@@ -42,9 +42,4 @@ const Wrapper = styled.h3`
   font-weight: 400;
   padding-top: 26px;
   margin: 0;
-  /* text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 8;
-  -webkit-box-orient: vertical;
-  overflow: hidden; */
 `;

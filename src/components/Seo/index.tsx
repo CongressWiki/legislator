@@ -43,7 +43,7 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
         lang,
       }}
       title={title}
-      titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : 'USACounts'}
+      titleTemplate={defaultTitle ? `%s - ${defaultTitle}` : 'USACounts'}
       meta={[
         {
           name: `description`,
