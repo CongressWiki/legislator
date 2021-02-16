@@ -37,9 +37,19 @@ const Wrapper = styled.div`
     grid-column: 2;
   }
 
+  .left-side {
+    grid-column: 1 / 2;
+    /* background: var(--color-background); */
+    color: var(--color-text);
+
+    @media (max-width: 900px) {
+      display: none;
+    }
+  }
+
   .right-side {
     grid-column: 3 / 4;
-    background: var(--color-background);
+    /* background: var(--color-background); */
     color: var(--color-text);
 
     @media (max-width: 900px) {

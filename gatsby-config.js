@@ -93,7 +93,7 @@ module.exports = {
         },
       },
     },
-    'gatsby-plugin-react-svg',
+    'gatsby-plugin-svgr',
     // To learn more, visit: https://gatsby.dev/offline // this (optional) plugin enables Progressive Web App + Offline functionality
     `gatsby-plugin-offline`,
     {

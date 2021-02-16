@@ -24,8 +24,8 @@
     "clean:svg": "svgo src/images/*.svg src/images/**/*.svg --pretty --recursive",
     "clean": "gatsby clean",
     "deployToProduction": "gatsby-plugin-s3 deploy --yes && aws cloudfront create-invalidation --distribution-id E126LGFP9KWM65 --paths \"/*\"",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "storybook": "NODE_ENV=production start-storybook -p 6006",
+    "build-storybook": "NODE_ENV=production build-storybook"
   },
   "xo": {
     "prettier": true,
@@ -48,7 +48,7 @@
   "dependencies": {
     "@material-ui/core": "^4.11.3",
     "@material-ui/icons": "^4.11.2",
-    "babel-plugin-styled-components": "^1.12.0",
+    "@svgr/webpack": "^5.5.0",
     "gatsby": "^2.32.3",
     "gatsby-image": "^2.11.0",
     "gatsby-plugin-canonical-urls": "^2.10.0",
@@ -61,6 +61,7 @@
     "gatsby-plugin-sharp": "^2.14.1",
     "gatsby-plugin-sitemap": "^2.12.0",
     "gatsby-plugin-styled-components": "^3.10.0",
+    "gatsby-plugin-svgr": "^2.1.0",
     "gatsby-source-filesystem": "^2.11.0",
     "gatsby-source-graphql": "^2.14.0",
     "gatsby-transformer-sharp": "^2.12.0",
@@ -71,6 +72,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
+    "@babel/plugin-proposal-class-properties": "^7.12.13",
+    "@babel/preset-react": "^7.12.13",
     "@storybook/addon-actions": "^6.1.18",
     "@storybook/addon-essentials": "^6.1.18",
     "@storybook/addon-links": "^6.1.18",
@@ -80,6 +83,9 @@
     "@typescript-eslint/eslint-plugin": "^4.14.2",
     "@typescript-eslint/parser": "^4.14.2",
     "babel-loader": "^8.2.2",
+    "babel-plugin-remove-graphql-queries": "2.9.14",
+    "babel-plugin-styled-components": "^1.12.0",
+    "babel-preset-react-app": "^10.0.0",
     "eslint": "^7.19.0",
     "eslint-config-xo": "^0.34.0",
     "eslint-config-xo-react": "^0.23.0",

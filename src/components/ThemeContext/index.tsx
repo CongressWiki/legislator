@@ -7,18 +7,25 @@ import {
 } from '../../constants';
 
 export type ThemeContextType = React.Context<{
-  colorMode?: 'light' | 'dark';
-  setColorMode?: (color: string) => void;
+  colorMode: string;
+  setColorMode: (color: 'light' | 'dark') => void;
 }>;
 
-export const ThemeContext: ThemeContextType = React.createContext({});
+const defaultState = {
+  colorMode: 'light',
+  setColorMode: (color: 'light' | 'dark') => {
+    console.warn('Attempted `setColorMode()` before context was set.');
+  },
+};
+
+export const ThemeContext: ThemeContextType = React.createContext(defaultState);
 
 export type ThemeProviderProps = {
   children: React.ReactNode;
 };
 
 export const ThemeProvider = ({ children }: ThemeProviderProps) => {
-  const [colorMode, rawSetColorMode] = React.useState(undefined);
+  const [colorMode, rawSetColorMode] = React.useState(defaultState.colorMode);
 
   React.useEffect(() => {
     const root = window.document.documentElement;
@@ -30,11 +37,16 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
       INITIAL_COLOR_MODE_CSS_PROP
     );
 
-    rawSetColorMode(initialColorValue);
+    if (
+      (initialColorValue && initialColorValue === 'light') ||
+      initialColorValue === 'dark'
+    ) {
+      rawSetColorMode(initialColorValue);
+    }
   }, []);
 
   const contextValue = React.useMemo(() => {
-    function setColorMode(newValue) {
+    function setColorMode(newValue: 'light' | 'dark') {
       const root = window.document.documentElement;
 
       localStorage.setItem(COLOR_MODE_KEY, newValue);

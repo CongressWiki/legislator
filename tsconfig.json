@@ -8,9 +8,6 @@
       "@pages/*": [
         "src/pages/*"
       ],
-      "@templates/*": [
-        "src/templates/*"
-      ],
       "@images/*": [
         "src/images/*"
       ],
@@ -19,9 +16,6 @@
       ],
       "@types/*": [
         "src/types/*"
-      ],
-      "@top-layer-layout/*": [
-        "top-layer-layout/*"
       ],
     },
     "target": "ES2019",

@@ -6,10 +6,6 @@ import IconButton from '@material-ui/core/IconButton';
 const DarkToggle = () => {
   const { colorMode, setColorMode } = React.useContext(ThemeContext);
 
-  if (!colorMode || !setColorMode) {
-    return null;
-  }
-
   return (
     <IconButton
       aria-label="Toggle dark mode"
