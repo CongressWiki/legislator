@@ -10,7 +10,6 @@ export type BillProps = {
 };
 
 const Bill = ({ pageContext: bill }: BillProps) => {
-  console.log(JSON.stringify(bill));
   return (
     <Layout>
       <SEO title={bill.id} />

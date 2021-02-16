@@ -21,7 +21,7 @@ const BillList = ({ paragraph, index }: BillListProps) => {
 
   if (!lastStatementHasMultiSentences) {
     const listItems = listStatements.map((statement, index) => (
-      <BillListItem statement={statement} index={index} />
+      <BillListItem key={index} statement={statement} />
     ));
     return <UnorderedList key={index}>{listItems}</UnorderedList>;
   }
@@ -37,7 +37,7 @@ const BillList = ({ paragraph, index }: BillListProps) => {
     const afterListText = lastStatementSentences.join('');
 
     const listItems = listStatements.map((statement, index) => (
-      <BillListItem statement={statement} index={index} />
+      <BillListItem key={index} statement={statement} />
     ));
 
     return (

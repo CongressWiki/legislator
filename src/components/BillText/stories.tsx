@@ -25,7 +25,7 @@ const BoxWrapper = styled.div`
 const Paper = styled.div`
   display: flex;
   flex-direction: column;
-  border: thin solid black;
+  border: thin solid var(--color-text);
   padding: 30px;
   margin: 5px;
   word-break: break-all;

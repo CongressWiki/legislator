@@ -7,12 +7,9 @@ export default {
   component: BillListItem,
 } as Meta;
 
-const Template: Story = (args) => (
-  <BillListItem statement={args.statement} index={args.index} />
-);
+const Template: Story = (args) => <BillListItem statement={args.statement} />;
 
 export const Default = Template.bind({});
 Default.args = {
   statement: 'An Act of 2021',
-  index: 12,
 };

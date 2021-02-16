@@ -3,10 +3,9 @@ import styled from 'styled-components';
 
 export type BillListItemProps = {
   statement: string;
-  index: number;
 };
 
-const BillListItem = ({ statement, index }: BillListItemProps) => {
+const BillListItem = ({ statement }: BillListItemProps) => {
   if (statement.startsWith(' ')) {
     statement = statement.replace(/^\s*/, '');
   }
@@ -21,7 +20,7 @@ const BillListItem = ({ statement, index }: BillListItemProps) => {
 
   statement = statement[0].toUpperCase() + statement.slice(1);
 
-  return <ListItem key={index}>{statement}</ListItem>;
+  return <ListItem>{statement}</ListItem>;
 };
 
 export default BillListItem;
