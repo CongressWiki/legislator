@@ -2,7 +2,7 @@ import React from 'react';
 import { graphql, useStaticQuery, navigate } from 'gatsby';
 import Layout from '@components/Layouts/Home';
 import type { Bill as BillDataType } from '../types/hasura';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 import SEO from '@components/Seo';
 import BillCard from '@components/BillCard';
 
@@ -73,7 +73,7 @@ export default function Home() {
 
   return (
     <Layout>
-      <SEO title="Bills" />
+      <SEO title="USACounts" />
       {hasura.bills_aggregate.nodes.map((bill) => (
         <BillCard
           key={bill.id}

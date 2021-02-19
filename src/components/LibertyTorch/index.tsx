@@ -3,8 +3,7 @@ import styled from 'styled-components';
 
 const LibertyTorch = styled(LibertyTorchSvg)`
   margin: 0;
-  width: 4vw;
-  padding: 10px;
+  width: 2em;
 
   path {
     fill: var(--color-text);

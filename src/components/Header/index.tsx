@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
-import DarkToggle from '@components/DarkToggle';
-import UsaCountsLogo from '@components/UsaCountsLogo';
+import ThemeToggle from '@components/ThemeToggle';
 
 export type HeaderProps = {
   siteTitle: string;
@@ -18,10 +17,9 @@ const Header = ({ siteTitle }: HeaderProps) => {
             textDecoration: `none`,
           }}
         >
-          {/* <UsaCountsLogo /> */}
-          <SiteTitle>USACounts</SiteTitle>
+          <SiteTitle>{siteTitle}</SiteTitle>
         </Link>
-        <DarkToggle />
+        <ThemeToggle />
       </ToolBar>
     </Wrapper>
   );

@@ -50,7 +50,6 @@ const Wrapper = styled.div`
     'center center center'
     '...... timestamp timestamp';
 
-  padding: 22px;
   overflow: hidden;
 
   border: thin solid var(--color-primary);
@@ -64,7 +63,8 @@ const Wrapper = styled.div`
 
   .item-number {
     grid-area: id;
-    font-weight: 600;
+    font-style: bold;
+    /* font-weight: 500; */
   }
   .item-subject {
     grid-area: subject;
@@ -76,7 +76,7 @@ const Wrapper = styled.div`
     justify-self: center;
     align-self: flex-start;
     text-align: left;
-    font-size: 22px;
+    font-size: 16px;
   }
   .item-timestamp {
     grid-area: timestamp;

@@ -4,11 +4,7 @@ import { action } from '@storybook/addon-actions';
 // import App from '@components/App';
 import { ThemeProvider } from '@components/ThemeContext';
 import GlobalStyles from '@components/GlobalStyles';
-import {
-  COLORS,
-  COLOR_MODE_KEY,
-  INITIAL_COLOR_MODE_CSS_PROP,
-} from '../src/constants';
+import { COLORS, COLOR_MODE_KEY } from '../src/constants';
 
 // Gatsby's Link overrides:
 // Gatsby Link calls the `enqueue` & `hovering` methods on the global variable ___loader.

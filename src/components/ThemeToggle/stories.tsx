@@ -1,13 +1,13 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 
-import DarkToggle from './index';
+import ThemeToggle from './index';
 
 export default {
-  title: 'Components/DarkToggle',
-  component: DarkToggle,
+  title: 'Components/ThemeToggle',
+  component: ThemeToggle,
 } as Meta;
 
-const Template: Story = () => <DarkToggle />;
+const Template: Story = () => <ThemeToggle />;
 
 export const Default = Template.bind({});
