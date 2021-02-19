@@ -29,7 +29,6 @@ const ListItem = styled.li`
   line-height: 32p;
   letter-spacing: -0.063px;
   font-size: 21px;
-  font-family: charter;
   font-weight: 400;
   padding-top: 22px;
   margin: 0;

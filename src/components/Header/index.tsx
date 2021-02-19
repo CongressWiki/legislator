@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
 import DarkToggle from '@components/DarkToggle';
+import UsaCountsLogo from '@components/UsaCountsLogo';
 
 export type HeaderProps = {
   siteTitle: string;
@@ -17,7 +18,8 @@ const Header = ({ siteTitle }: HeaderProps) => {
             textDecoration: `none`,
           }}
         >
-          <SiteTitle>{siteTitle}</SiteTitle>
+          {/* <UsaCountsLogo /> */}
+          <SiteTitle>USACounts</SiteTitle>
         </Link>
         <DarkToggle />
       </ToolBar>
@@ -44,21 +46,28 @@ const ToolBar = styled.div`
   padding-right: 32px;
   display: flex;
   align-items: center;
+
   justify-content: space-between;
   width: 80%;
 `;
 
-const SiteTitle = styled.p`
+const SiteTitle = styled.h3`
   margin: 0;
-  padding: 0px 0px 6px 0px;
   font-size: 51px;
   line-height: 44px;
   letter-spacing: -2px;
-  font-family: Georgia, serif;
-  font-variant: small-caps;
-  text-transform: none;
-  font-weight: 100;
+  display: inline-block;
+  font-family: advocate_c45_mid;
+
   color: var(--color-secondary);
+`;
+
+export const HeaderSpacer = styled.div`
+  top: 0;
+  margin: 0;
+  padding: 0;
+  height: 0;
+  min-height: 115px;
 `;
 
 export default Header;

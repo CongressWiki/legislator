@@ -45,7 +45,7 @@ export default function VerticalLinearStepper({
                 active: 'stepper',
               }}
             >
-              <span className="stepLabel">{label}</span>
+              <h3 className="stepLabel">{label}</h3>
             </StepLabel>
             <StepContent>{label}</StepContent>
           </Step>

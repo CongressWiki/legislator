@@ -7,6 +7,7 @@ export type BillCardProps = Pick<
   'id' | 'type' | 'number' | 'title' | 'subject' | 'sponsor' | 'updated_at'
 > & {
   onClick: () => void;
+  className: string;
 };
 
 const BillCard = ({
@@ -17,53 +18,77 @@ const BillCard = ({
   subject,
   sponsor,
   updated_at,
+  className,
 }: BillCardProps) => {
   return (
-    <BillPreview onClick={onClick}>
-      <BillPreviewSection>
-        <p>
-          {type.toUpperCase()} {number}
-        </p>
-        <p>{subject}</p>
-      </BillPreviewSection>
-      <BillPreviewSection center>
-        <p>{title}</p>
-      </BillPreviewSection>
-      <BillPreviewSection>
-        <p>{new Date(updated_at).toDateString()}</p>
-      </BillPreviewSection>
-    </BillPreview>
+    <Wrapper onClick={onClick} className={className}>
+      <p className="item-number">
+        {type.toUpperCase()} {number}
+      </p>
+
+      {/* <p className="item-subject">{subject}</p> */}
+
+      <p className="item-title">{title}</p>
+
+      <p className="item-timestamp">{new Date(updated_at).toDateString()}</p>
+    </Wrapper>
   );
 };
 
 export default BillCard;
 
-interface BillPreviewSectionProps {
-  readonly center?: boolean;
-}
+const Wrapper = styled.div`
+  max-width: min(70ch, calc(100% - 64px));
+  margin: auto;
 
-export const BillPreviewSection = styled.div<BillPreviewSectionProps>`
-  display: flex;
-  width: 100%;
-  justify-content: ${(props) => (props.center ? 'center' : 'space-between')};
+  display: grid;
+  grid-gap: 8px;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 50px 1fr 50px;
+  grid-template-areas:
+    '...... id .'
+    'center center center'
+    '...... timestamp timestamp';
+
+  padding: 22px;
+  overflow: hidden;
+
+  border: thin solid var(--color-primary);
+  border-radius: 5px;
+
+  text-align: center;
   align-items: center;
+  /* justify-content: center; */
+
+  font-size: 1em;
+
+  .item-number {
+    grid-area: id;
+    font-weight: 600;
+  }
+  .item-subject {
+    grid-area: subject;
+    text-align: right;
+  }
+  .item-title {
+    grid-area: center;
+    max-width: min(70ch, calc(100% - 64px));
+    justify-self: center;
+    align-self: flex-start;
+    text-align: left;
+    font-size: 22px;
+  }
+  .item-timestamp {
+    grid-area: timestamp;
+    text-align: right;
+    align-self: flex-end;
+    font-size: 0.8em;
+  }
+
   p {
     margin: 0;
-    font-size: 1.2em;
+    font-family: concourse_t2;
   }
-`;
-
-const BillPreview = styled.div`
-  padding: 15px;
-  height: 30vh;
-  width: 100%;
-  overflow: hidden;
-  border: 1px solid var(--color-secondary);
-  border-radius: 5px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-end;
 
   :hover {
     cursor: pointer;

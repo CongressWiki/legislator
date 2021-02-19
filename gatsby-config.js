@@ -1,14 +1,16 @@
 const path = require('path');
-const siteAddress = new URL('https://usacounts.com');
+const config = require('./data/config');
+const siteAddress = new URL(config.url);
 const SITE_S3_BUCKET = 'usacounts.com';
 const IMAGES_S3_BUCKET = 'democracy-images';
 
 module.exports = {
   siteMetadata: {
-    title: `Keeping US-Accountable`,
-    description: `The latest US bills and amendments.`,
-    author: `@ryparker`,
+    title: config.defaultTitle,
+    description: config.defaultDescription,
+    author: config.author,
     siteUrl: siteAddress.href.slice(0, -1),
+    twitter: config.social.twitter,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -38,13 +40,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `USACounts`,
+        name: config.defaultTitle,
         short_name: `USACounts`,
         start_url: `/`,
-        background_color: `hsl(250deg, 70%, 7%)`,
-        theme_color: `hsl(50deg, 100%, 50%)`,
+        background_color: config.backgroundColor,
+        theme_color: config.themeColor,
         display: `minimal-ui`,
-        icon: `src/images/us-states.svg`, // This path is relative to the root of the site.
+        icon: `src/images/USA_Map_Spotted.svg`, // This path is relative to the root of the site.
       },
     },
     {
@@ -74,7 +76,7 @@ module.exports = {
       resolve: `gatsby-plugin-google-gtag`,
       options: {
         // You can add multiple tracking ids and a pageview event will be fired for all of them.
-        trackingIds: ['G-P7RGJJQ8KX'],
+        trackingIds: [config.googleAnalyticsID],
         // This object gets passed directly to the gtag config command
         // This config will be shared across all trackingIds
         gtagConfig: {

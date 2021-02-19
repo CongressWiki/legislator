@@ -8,6 +8,8 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
+// TODO: import image and use in commented out meta tags
+// import { ReactComponent as Thumbnail } from '../../src/images/us-states.svg';
 
 export type SEOProps = {
   description?: string;
@@ -28,6 +30,7 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
             title
             description
             author
+            twitter
           }
         }
       }
@@ -49,6 +52,10 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
           name: `description`,
           content: metaDescription,
         },
+        // {
+        //   name: `image`,
+        //   content: Thumbnail,
+        // },
         {
           property: `og:title`,
           content: title,
@@ -57,6 +64,10 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
           property: `og:description`,
           content: metaDescription,
         },
+        // {
+        //   property: `og:image`,
+        //   content: Thumbnail,
+        // },
         {
           property: `og:type`,
           content: `website`,
@@ -67,7 +78,7 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
         },
         {
           name: `twitter:creator`,
-          content: site.siteMetadata?.author || ``,
+          content: site.siteMetadata?.twitter || ``,
         },
         {
           name: `twitter:title`,
@@ -77,8 +88,88 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
           name: `twitter:description`,
           content: metaDescription,
         },
+        // {
+        //   name: `twitter:image:src`,
+        //   content: Thumbnail,
+        // },
       ].concat(meta)}
-    />
+    >
+      {/* Font: Advocate C45 mid */}
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Advocate/advocate_c45_mid_regular.woff2"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Advocate/advocate_c45_mid_bold.woff2"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+
+      {/* Font: Century Supra t3 */}
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Century_Supra/century_supra_t3_regular.woff2"
+        type="font/ttf"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Century_Supra/century_supra_t3_bold.woff2"
+        type="font/ttf"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Century_Supra/century_supra_t3_italic.woff2"
+        type="font/ttf"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Century_Supra/century_supra_t3_bold_italic.woff2"
+        type="font/ttf"
+        crossOrigin="anonymous"
+      />
+
+      {/* Font: Concourse t2 */}
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Concourse_T2/century_supra_t3_regular.woff2"
+        type="font/ttf"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Concourse_T2/century_supra_t3_bold.woff2"
+        type="font/ttf"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Concourse_T2/century_supra_t3_italic.woff2"
+        type="font/ttf"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Concourse_T2/century_supra_t3_bold_italic.woff2"
+        type="font/ttf"
+        crossOrigin="anonymous"
+      />
+    </Helmet>
   );
 };
 

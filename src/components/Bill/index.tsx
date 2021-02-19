@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Bill as BillData } from '../../types/hasura';
 import styled from 'styled-components';
-import USStates from '@components/UsStates';
+import USStates from '@components/Country';
 import BillText from '@components/BillText';
 import BillSummary from '@components/BillSummary';
 import BillTitle from '@components/BillTitle';

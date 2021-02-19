@@ -12,7 +12,7 @@ export type ThemeContextType = React.Context<{
 }>;
 
 const defaultState = {
-  colorMode: 'light',
+  colorMode: 'dark',
   setColorMode: (color: 'light' | 'dark') => {
     console.warn('Attempted `setColorMode()` before context was set.');
   },

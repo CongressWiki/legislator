@@ -1,5 +1,5 @@
 import React from 'react';
-import Layout from '@components/Layout';
+import Layout from '@components/Layouts/Common';
 import type { Bill as BillData } from '../../types/hasura';
 import Stepper from '@components/Stepper';
 import SEO from '@components/Seo';
