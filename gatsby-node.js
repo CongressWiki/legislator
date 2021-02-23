@@ -19,7 +19,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     query BillQuery {
       hasura {
         bills(
-          limit: 25
+          limit: 50
           order_by: { updated_at: desc }
           where: { summary: { _neq: "No summary available." } }
         ) {

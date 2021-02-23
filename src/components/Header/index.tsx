@@ -50,11 +50,10 @@ const ToolBar = styled.div`
 
 const SiteTitle = styled.h3`
   margin: 0;
-  font-size: 51px;
-  line-height: 44px;
-  letter-spacing: -2px;
+  font-size: 64px;
   display: inline-block;
-  font-family: advocate_c45_mid;
+  font-family: advocate_c43_mid;
+  /* font-family: century_supra_c3; */
 
   color: var(--color-secondary);
 `;

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const BillLane = styled.div`
   width: 100%;
-  height: 200vh;
+  height: 500vh;
   padding: 0;
 
   display: grid;

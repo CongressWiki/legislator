@@ -94,19 +94,527 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
         // },
       ].concat(meta)}
     >
-      {/* Font: Advocate C45 mid */}
+      {/* Font: Advocate C41 */}
       <link
         rel="preload"
         as="font"
-        href="/../../fonts/Advocate/advocate_c45_mid_regular.woff2"
+        href="/../../fonts/Advocate/Base/C41/advocate_c41_regular.woff2"
         type="font/woff2"
         crossOrigin="anonymous"
       />
       <link
         rel="preload"
         as="font"
-        href="/../../fonts/Advocate/advocate_c45_mid_bold.woff2"
+        href="/../../fonts/Advocate/Base/C41/advocate_c41_bold.woff2"
         type="font/woff2"
+        crossOrigin="anonymous"
+      />
+
+      {/* Font: Advocate C43 */}
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Advocate/Base/C43/advocate_c43_regular.woff2"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Advocate/Base/C43/advocate_c43_bold.woff2"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+
+      {/* Font: Advocate C45 */}
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Advocate/Base/C45/advocate_c45_regular.woff2"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Advocate/Base/C45/advocate_c45_bold.woff2"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+
+      {/* Font: Advocate C51 */}
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Advocate/Base/C51/advocate_c51_regular.woff2"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Advocate/Base/C51/advocate_c51_bold.woff2"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+
+      {/* Font: Advocate C53 */}
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Advocate/Base/C51/advocate_c53_regular.woff2"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Advocate/Base/C51/advocate_c53_bold.woff2"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+
+      {/* Font: Advocate C55 */}
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Advocate/Base/C55/advocate_c55_regular.woff2"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Advocate/Base/C55/advocate_c55_bold.woff2"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+
+      {/* Font: Advocate C61 */}
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Advocate/Base/C61/advocate_c61_regular.woff2"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+
+      {/* Font: Advocate C63 */}
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Advocate/Base/C63/advocate_c63_regular.woff2"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+
+      {/* Font: Advocate C65 */}
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Advocate/Base/C65/advocate_c65_regular.woff2"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+
+      {/* Font: Advocate mid C41 */}
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Advocate/Mid/C41/advocate_c41_mid_regular.woff2"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Advocate/Mid/C41/advocate_c41_mid_bold.woff2"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+
+      {/* Font: Advocate mid C43 */}
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Advocate/Mid/C43/advocate_c43_mid_regular.woff2"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Advocate/Mid/C43/advocate_c43_mid_bold.woff2"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+
+      {/* Font: Advocate mid C45 */}
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Advocate/Mid/C45/advocate_c45_mid_regular.woff2"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Advocate/Mid/C45/advocate_c45_mid_bold.woff2"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+
+      {/* Font: Advocate mid C51 */}
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Advocate/Mid/C51/advocate_c51_mid_regular.woff2"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Advocate/Mid/C51/advocate_c51_mid_bold.woff2"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+
+      {/* Font: Advocate mid C53 */}
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Advocate/Mid/C53/advocate_c53_mid_regular.woff2"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Advocate/Mid/C53/advocate_c53_mid_bold.woff2"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+
+      {/* Font: Advocate mid C55 */}
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Advocate/Mid/C55/advocate_c55_mid_regular.woff2"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Advocate/Mid/C55/advocate_c55_mid_bold.woff2"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+
+      {/* Font: Advocate mid C61 */}
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Advocate/Mid/C61/advocate_c61_mid_regular.woff2"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+
+      {/* Font: Advocate mid C63 */}
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Advocate/Mid/C63/advocate_c63_mid_regular.woff2"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+
+      {/* Font: Advocate mid C65 */}
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Advocate/Mid/C65/advocate_c65_mid_regular.woff2"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+
+      {/* Font: Advocate slab C41 */}
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Advocate/Slab/C41/advocate_slab_c41_regular.woff2"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Advocate/Slab/C41/advocate_slab_c41_bold.woff2"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+
+      {/* Font: Advocate slab C43 */}
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Advocate/Slab/C43/advocate_slab_c43_regular.woff2"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Advocate/Slab/C43/advocate_slab_c43_bold.woff2"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+
+      {/* Font: Advocate slab C45 */}
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Advocate/Slab/C45/advocate_slab_c45_regular.woff2"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Advocate/Slab/C45/advocate_slab_c45_bold.woff2"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+
+      {/* Font: Advocate slab C51 */}
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Advocate/Slab/C51/advocate_slab_c51_regular.woff2"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Advocate/Slab/C51/advocate_slab_c51_bold.woff2"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+
+      {/* Font: Advocate slab C53 */}
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Advocate/Slab/C53/advocate_slab_c53_regular.woff2"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Advocate/Slab/C53/advocate_slab_c53_bold.woff2"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+
+      {/* Font: Advocate slab C55 */}
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Advocate/Slab/C55/advocate_slab_c55_regular.woff2"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Advocate/Slab/C55/advocate_slab_c55_bold.woff2"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+
+      {/* Font: Advocate slab C61 */}
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Advocate/Slab/C61/advocate_slab_c61_regular.woff2"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+
+      {/* Font: Advocate slab C63 */}
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Advocate/Slab/C63/advocate_slab_c63_regular.woff2"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+
+      {/* Font: Advocate slab C65 */}
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Advocate/Slab/C65/advocate_slab_c65_regular.woff2"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+
+      {/* Font: Advocate slab mid C41 */}
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Advocate/Slab_Mid/C41/advocate_slab_c41_mid_regular.woff2"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Advocate/Slab_Mid/C41/advocate_slab_c41_mid_bold.woff2"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+
+      {/* Font: Advocate slab mid C43 */}
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Advocate/Slab_Mid/C43/advocate_slab_c43_mid_regular.woff2"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Advocate/Slab_Mid/C43/advocate_slab_c43_mid_bold.woff2"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+
+      {/* Font: Advocate slab mid C45 */}
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Advocate/Slab_Mid/C45/advocate_slab_c45_mid_regular.woff2"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Advocate/Slab_Mid/C45/advocate_slab_c45_mid_bold.woff2"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+
+      {/* Font: Advocate slab mid C51 */}
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Advocate/Slab_Mid/C51/advocate_slab_c51_mid_regular.woff2"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Advocate/Slab_Mid/C51/advocate_slab_c51_mid_bold.woff2"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+
+      {/* Font: Advocate slab mid C53 */}
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Advocate/Slab_Mid/C53/advocate_slab_c53_mid_regular.woff2"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Advocate/Slab_Mid/C53/advocate_slab_c53_mid_bold.woff2"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+
+      {/* Font: Advocate slab mid C55 */}
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Advocate/Slab_Mid/C55/advocate_slab_c55_mid_regular.woff2"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Advocate/Slab_Mid/C55/advocate_slab_c55_mid_bold.woff2"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+
+      {/* Font: Advocate slab mid C61 */}
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Advocate/Slab_Mid/C61/advocate_slab_c61_mid_regular.woff2"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+
+      {/* Font: Advocate slab mid C63 */}
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Advocate/Slab_Mid/C63/advocate_slab_c63_mid_regular.woff2"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+
+      {/* Font: Advocate slab mid C65 */}
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Advocate/Slab_Mid/C65/advocate_slab_c65_mid_regular.woff2"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+
+      {/* Font: Century Supra C3 */}
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Century_Supra/C3/century_supra_c3_bold.woff2"
+        type="font/ttf"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Century_Supra/C3/century_supra_c3_regular.woff2"
+        type="font/ttf"
+        crossOrigin="anonymous"
+      />
+
+      {/* Font: Century Supra C4 */}
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Century_Supra/C4/century_supra_c4_bold.woff2"
+        type="font/ttf"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Century_Supra/C4/century_supra_c4_regular.woff2"
+        type="font/ttf"
         crossOrigin="anonymous"
       />
 
@@ -114,28 +622,133 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
       <link
         rel="preload"
         as="font"
-        href="/../../fonts/Century_Supra/century_supra_t3_regular.woff2"
+        href="/../../fonts/Century_Supra/T3/century_supra_t3_regular.woff2"
         type="font/ttf"
         crossOrigin="anonymous"
       />
       <link
         rel="preload"
         as="font"
-        href="/../../fonts/Century_Supra/century_supra_t3_bold.woff2"
+        href="/../../fonts/Century_Supra/T3/century_supra_t3_bold.woff2"
         type="font/ttf"
         crossOrigin="anonymous"
       />
       <link
         rel="preload"
         as="font"
-        href="/../../fonts/Century_Supra/century_supra_t3_italic.woff2"
+        href="/../../fonts/Century_Supra/T3/century_supra_t3_italic.woff2"
         type="font/ttf"
         crossOrigin="anonymous"
       />
       <link
         rel="preload"
         as="font"
-        href="/../../fonts/Century_Supra/century_supra_t3_bold_italic.woff2"
+        href="/../../fonts/Century_Supra/T3/century_supra_t3_bold_italic.woff2"
+        type="font/ttf"
+        crossOrigin="anonymous"
+      />
+
+      {/* Font: Century Supra t4 */}
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Century_Supra/T4/century_supra_t4_regular.woff2"
+        type="font/ttf"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Century_Supra/T4/century_supra_t4_bold.woff2"
+        type="font/ttf"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Century_Supra/T4/century_supra_t4_italic.woff2"
+        type="font/ttf"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Century_Supra/T4/century_supra_t4_bold_italic.woff2"
+        type="font/ttf"
+        crossOrigin="anonymous"
+      />
+
+      {/* Font: Concourse C2 */}
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Concourse/C2/concourse_c2_regular.woff2"
+        type="font/ttf"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Concourse/C2/concourse_c2_bold.woff2"
+        type="font/ttf"
+        crossOrigin="anonymous"
+      />
+
+      {/* Font: Concourse C3 */}
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Concourse/C3/concourse_c3_regular.woff2"
+        type="font/ttf"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Concourse/C3/concourse_c3_bold.woff2"
+        type="font/ttf"
+        crossOrigin="anonymous"
+      />
+
+      {/* Font: Concourse C4 */}
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Concourse/C4/concourse_c4_regular.woff2"
+        type="font/ttf"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Concourse/C4/concourse_c4_bold.woff2"
+        type="font/ttf"
+        crossOrigin="anonymous"
+      />
+
+      {/* Font: Concourse C6 */}
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Concourse/C6/concourse_c6_regular.woff2"
+        type="font/ttf"
+        crossOrigin="anonymous"
+      />
+
+      {/* Font: Concourse C7 */}
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Concourse/C7/concourse_c7_regular.woff2"
+        type="font/ttf"
+        crossOrigin="anonymous"
+      />
+
+      {/* Font: Concourse C8 */}
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Concourse/C8/concourse_c8_regular.woff2"
         type="font/ttf"
         crossOrigin="anonymous"
       />
@@ -144,28 +757,136 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
       <link
         rel="preload"
         as="font"
-        href="/../../fonts/Concourse_T2/century_supra_t3_regular.woff2"
+        href="/../../fonts/Concourse/T2/concourse_t2_regular.woff2"
         type="font/ttf"
         crossOrigin="anonymous"
       />
       <link
         rel="preload"
         as="font"
-        href="/../../fonts/Concourse_T2/century_supra_t3_bold.woff2"
+        href="/../../fonts/Concourse/T2/concourse_t2_bold.woff2"
         type="font/ttf"
         crossOrigin="anonymous"
       />
       <link
         rel="preload"
         as="font"
-        href="/../../fonts/Concourse_T2/century_supra_t3_italic.woff2"
+        href="/../../fonts/Concourse/T2/concourse_t2_italic.woff2"
         type="font/ttf"
         crossOrigin="anonymous"
       />
       <link
         rel="preload"
         as="font"
-        href="/../../fonts/Concourse_T2/century_supra_t3_bold_italic.woff2"
+        href="/../../fonts/Concourse/T2/concourse_t2_bold_italic.woff2"
+        type="font/ttf"
+        crossOrigin="anonymous"
+      />
+
+      {/* Font: Concourse t3 */}
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Concourse/T3/concourse_t3_regular.woff2"
+        type="font/ttf"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Concourse/T3/concourse_t3_bold.woff2"
+        type="font/ttf"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Concourse/T3/concourse_t3_italic.woff2"
+        type="font/ttf"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Concourse/T3/concourse_t3_bold_italic.woff2"
+        type="font/ttf"
+        crossOrigin="anonymous"
+      />
+
+      {/* Font: Concourse t4 */}
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Concourse/T4/concourse_t4_regular.woff2"
+        type="font/ttf"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Concourse/T4/concourse_t4_bold.woff2"
+        type="font/ttf"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Concourse/T4/concourse_t4_italic.woff2"
+        type="font/ttf"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Concourse/T4/concourse_t4_bold_italic.woff2"
+        type="font/ttf"
+        crossOrigin="anonymous"
+      />
+
+      {/* Font: Concourse t6 */}
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Concourse/T6/concourse_t6_regular.woff2"
+        type="font/ttf"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Concourse/T6/concourse_t6_italic.woff2"
+        type="font/ttf"
+        crossOrigin="anonymous"
+      />
+
+      {/* Font: Concourse t7 */}
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Concourse/T7/concourse_t7_regular.woff2"
+        type="font/ttf"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Concourse/T7/concourse_t7_italic.woff2"
+        type="font/ttf"
+        crossOrigin="anonymous"
+      />
+
+      {/* Font: Concourse t8 */}
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Concourse/T8/concourse_t8_regular.woff2"
+        type="font/ttf"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="preload"
+        as="font"
+        href="/../../fonts/Concourse/T8/concourse_t8_italic.woff2"
         type="font/ttf"
         crossOrigin="anonymous"
       />

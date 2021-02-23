@@ -2,7 +2,6 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import styled from 'styled-components';
 import BillCard, { BillCardProps } from '@components/BillCard';
-import BrightTitle from '@components/BrightTitle';
 import Capital from '@components/Capital';
 
 import HomeLayout, { HomeLayoutProps } from './index';
@@ -87,7 +86,7 @@ const LaneTitleWrapper = styled.div`
   width: 100%;
 `;
 
-const LaneTitle = styled(BrightTitle)`
+const LaneTitle = styled.h3`
   font-family: advocate_c45_mid;
   color: var(--color-secondary);
 `;

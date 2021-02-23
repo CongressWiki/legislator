@@ -27,7 +27,7 @@ export default function Home() {
     query billAndImageQuery {
       hasura {
         bills_aggregate(
-          limit: 10
+          limit: 30
           order_by: { updated_at: desc }
           where: { summary: { _neq: "No summary available." } }
         ) {
@@ -76,7 +76,7 @@ export default function Home() {
 
   return (
     <>
-      <SEO title="USACounts" />
+      <SEO title="Keeping US-Accountable" />
       <Layout>
         <BillLane>
           <BillLaneHeader />

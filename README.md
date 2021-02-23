@@ -1,15 +1,10 @@
-<p align="center">
-  <a href="https://www.gatsbyjs.com">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
 <h1 align="center">
   Legislator
 </h1>
 
 [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/xojs/xo)
 
-Static website for bills and amendments.
+Static website for bills and amendments on USACounts.com
 
 ## 🚀 Quick start
 
@@ -33,6 +28,17 @@ Static website for bills and amendments.
 ## Styling
 
 - Research has shown that the ideal line length is about 65 characters. Anywhere between 45 and 85 is generally seen as acceptable, in the context of a roman alphabet. Reading is a complex process, and we should strive to make it as easy as possible. From [joshwcomeau's blog](https://www.joshwcomeau.com/css/full-bleed/)
+
+## Fonts
+
+There are four font families being used for this site. All fonts were created by Matthew Butterick and licenses were purchased from [typographyforlawyers.com](https://typographyforlawyers.com/). Please read the [font license](./docs/fonts/MB-Type-Font-License.pdf).
+
+| Font Family   | Type         | Styles                                                                        | References                                                                                                                                                             |
+| ------------- | ------------ | ----------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Advocate      | Display font | [Base, Mid, Slab, Slab & Mid] x [C41, C43, C45, C51, C53, C55, C61, C63, C65] | [Website](https://typographyforlawyers.com/advocate.html) - [Demo](https://mbtype.com/fonts/advocate/) - [PDF](./docs/fonts/advocate-type-specimen.pdf)                |
+| Century Supra | Non-Sans     | C3, C4, T3, T4                                                                | [Website](https://typographyforlawyers.com/century-supra.html) - [Demo](https://mbtype.com/fonts/century-supra/) - [PDF](./docs/fonts/century-supra-type-specimen.pdf) |
+| Concourse     | Sans         | C2, C3, C4, C6, C7, C8, T2, T3, T4, T6, T7, T8                                | [Website](https://typographyforlawyers.com/concourse.html) - [Demo](https://mbtype.com/fonts/concourse/) - [PDF](./docs/fonts/concourse-type-specimen.pdf.pdf)         |
+| Triplicate    | Non-Sans     | Not currently in project                                                      | [Website](https://typographyforlawyers.com/triplicate.html) - [Demo](https://mbtype.com/fonts/triplicate/) - [PDF](./docs/fonts/triplicate-type-specimen.pdf)          |
 
 ## Sitemap & SEO
 

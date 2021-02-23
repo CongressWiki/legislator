@@ -43,8 +43,8 @@ const Wrapper = styled.div`
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: 50px 1fr 50px;
   grid-template-areas:
-    '...... ...... id        ......    ......'
-    'center center center    center    center'
+    '...... ...... id     ......    ......'
+    'center center center center    center'
     '...... ...... ...... timestamp timestamp';
 
   overflow: hidden;
@@ -57,8 +57,7 @@ const Wrapper = styled.div`
   align-items: center;
 
   p {
-    font-family: concourse_t2;
-    font-weight: 500;
+    font-family: century_supra_c4;
     max-width: 70ch;
     margin: 0;
   }
@@ -78,7 +77,6 @@ const Wrapper = styled.div`
     justify-self: center;
     align-self: flex-start;
     text-align: left;
-    font-size: 1em;
   }
   .bill-timestamp {
     grid-area: timestamp;
