@@ -13,7 +13,7 @@ exports.onCreateWebpackConfig = ({ actions }) => {
   });
 };
 
-exports.createPages = async ({ graphql, actions }) => {
+exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
   const result = await graphql(`
     query BillQuery {
@@ -43,6 +43,11 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     }
   `);
+
+  if (result.errors) {
+    reporter.panicOnBuild(`Error while running GraphQL query.`);
+    return;
+  }
 
   result.data.hasura.bills.forEach((node) => {
     createPage({

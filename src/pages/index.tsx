@@ -1,9 +1,12 @@
 import React from 'react';
 import { graphql, useStaticQuery, navigate } from 'gatsby';
-import Layout from '@components/Layouts/Home';
+import Layout from '@components/Layouts/Common';
 import type { Bill as BillDataType } from '../types/hasura';
 // import styled from 'styled-components';
 import SEO from '@components/Seo';
+import BillLane from '@components/BillLane';
+import BillLaneHeader from '@components/BillLaneHeader';
+
 import BillCard from '@components/BillCard';
 
 export type HomeQuery = {
@@ -24,7 +27,7 @@ export default function Home() {
     query billAndImageQuery {
       hasura {
         bills_aggregate(
-          limit: 30
+          limit: 10
           order_by: { updated_at: desc }
           where: { summary: { _neq: "No summary available." } }
         ) {
@@ -72,16 +75,21 @@ export default function Home() {
   const { hasura } = data;
 
   return (
-    <Layout>
+    <>
       <SEO title="USACounts" />
-      {hasura.bills_aggregate.nodes.map((bill) => (
-        <BillCard
-          key={bill.id}
-          onClick={() => navigate(bill.id)}
-          className={'card'}
-          {...bill}
-        />
-      ))}
-    </Layout>
+      <Layout>
+        <BillLane>
+          <BillLaneHeader />
+          {hasura.bills_aggregate.nodes.map((bill) => (
+            <BillCard
+              key={bill.id}
+              onClick={() => navigate(bill.id)}
+              className={'card'}
+              {...bill}
+            />
+          ))}
+        </BillLane>
+      </Layout>
+    </>
   );
 }

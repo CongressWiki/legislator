@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 const UsaCountsLogo = styled(USAFlagMapLogoSvg)`
   margin: 0;
-  width: 12vw;
 
   fill: var(--color-text);
 

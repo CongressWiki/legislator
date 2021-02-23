@@ -25,8 +25,8 @@
     "clean": "gatsby clean",
     "deployToProduction": "gatsby-plugin-s3 deploy --yes && aws cloudfront create-invalidation --distribution-id E126LGFP9KWM65 --paths \"/*\"",
     "storybook:setup": "cp -r ./public/page-data/sq/d ./public/static",
-    "storybook": "storybook:setup && NODE_ENV=production start-storybook -p 6006",
-    "build-storybook": "NODE_ENV=production build-storybook --no-dll  -s public"
+    "storybook": "NODE_ENV=production start-storybook -p 6006",
+    "storybook:build": "NODE_ENV=production build-storybook --no-dll  -s public"
   },
   "xo": {
     "prettier": true,

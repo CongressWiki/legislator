@@ -1,12 +1,12 @@
-import { ReactComponent as CapitalSvg } from '../../images/Capital.svg';
+import { ReactComponent as CapitalSvg } from '../../images/Capital_Detailed.svg';
 import styled from 'styled-components';
 
 const Capital = styled(CapitalSvg)`
   margin: 0;
-  width: 10vw;
+  width: 100%;
 
   path {
-    fill: var(--color-secondary);
+    fill: var(--color-text);
   }
 `;
 

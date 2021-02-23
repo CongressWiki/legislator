@@ -9,9 +9,9 @@ export default {
 } as Meta;
 
 const Template: Story<HeaderProps> = (args) => (
-  <div>
+  <>
     <Header {...args} />
-  </div>
+  </>
 );
 
 export const Default = Template.bind({});

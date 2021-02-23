@@ -6,8 +6,8 @@ export type BillCardProps = Pick<
   BillDataType,
   'id' | 'type' | 'number' | 'title' | 'subject' | 'sponsor' | 'updated_at'
 > & {
-  onClick: () => void;
-  className: string;
+  onClick?: () => void;
+  className?: string;
 };
 
 const BillCard = ({
@@ -22,15 +22,11 @@ const BillCard = ({
 }: BillCardProps) => {
   return (
     <Wrapper onClick={onClick} className={className}>
-      <p className="item-number">
-        {type.toUpperCase()} {number}
-      </p>
+      <p className="bill-number">{`${type.toUpperCase()} ${number}`}</p>
 
-      {/* <p className="item-subject">{subject}</p> */}
+      <p className="bill-title">{title}</p>
 
-      <p className="item-title">{title}</p>
-
-      <p className="item-timestamp">{new Date(updated_at).toDateString()}</p>
+      <p className="bill-timestamp">{new Date(updated_at).toDateString()}</p>
     </Wrapper>
   );
 };
@@ -38,59 +34,57 @@ const BillCard = ({
 export default BillCard;
 
 const Wrapper = styled.div`
-  max-width: min(70ch, calc(100% - 64px));
-  margin: auto;
+  max-width: none;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 
   display: grid;
-  grid-gap: 8px;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(5, 1fr);
   grid-template-rows: 50px 1fr 50px;
   grid-template-areas:
-    '...... id .'
-    'center center center'
-    '...... timestamp timestamp';
+    '...... ...... id        ......    ......'
+    'center center center    center    center'
+    '...... ...... ...... timestamp timestamp';
 
   overflow: hidden;
 
-  border: thin solid var(--color-primary);
-  border-radius: 5px;
+  border: 0;
+  border-radius: 0;
+  border-bottom: solid thin var(--color-gray300);
 
   text-align: center;
   align-items: center;
-  /* justify-content: center; */
 
-  font-size: 1em;
+  p {
+    font-family: concourse_t2;
+    font-weight: 500;
+    max-width: 70ch;
+    margin: 0;
+  }
 
-  .item-number {
+  :hover {
+    cursor: pointer;
+    background-color: var(--color-backgroundLite);
+  }
+
+  .bill-number {
     grid-area: id;
     font-style: bold;
-    /* font-weight: 500; */
   }
-  .item-subject {
-    grid-area: subject;
-    text-align: right;
-  }
-  .item-title {
+  .bill-title {
     grid-area: center;
     max-width: min(70ch, calc(100% - 64px));
     justify-self: center;
     align-self: flex-start;
     text-align: left;
-    font-size: 16px;
+    font-size: 1em;
   }
-  .item-timestamp {
+  .bill-timestamp {
     grid-area: timestamp;
     text-align: right;
     align-self: flex-end;
     font-size: 0.8em;
-  }
-
-  p {
-    margin: 0;
-    font-family: concourse_t2;
-  }
-
-  :hover {
-    cursor: pointer;
+    color: hsl(0deg, 0%, 70%);
   }
 `;

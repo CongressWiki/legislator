@@ -11,12 +11,7 @@ const Header = ({ siteTitle }: HeaderProps) => {
   return (
     <Wrapper>
       <ToolBar>
-        <Link
-          to="/"
-          style={{
-            textDecoration: `none`,
-          }}
-        >
+        <Link to="/">
           <SiteTitle>{siteTitle}</SiteTitle>
         </Link>
         <ThemeToggle />
@@ -33,7 +28,7 @@ const Wrapper = styled.header`
   justify-content: center;
   margin: 0;
   width: 100%;
-  min-height: 115px;
+  height: 115px;
   border-bottom: 1px solid var(--color-gray300);
   background-color: var(--color-background);
 `;
@@ -47,6 +42,10 @@ const ToolBar = styled.div`
 
   justify-content: space-between;
   width: 80%;
+
+  a {
+    text-decoration: none;
+  }
 `;
 
 const SiteTitle = styled.h3`
@@ -65,7 +64,7 @@ export const HeaderSpacer = styled.div`
   margin: 0;
   padding: 0;
   height: 0;
-  min-height: 115px;
+  height: 107px;
 `;
 
 export default Header;

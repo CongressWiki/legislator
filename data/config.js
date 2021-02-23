@@ -1,5 +1,5 @@
 module.exports = {
-  defaultTitle: 'Keeping US-Accountable',
+  defaultTitle: 'USACounts',
   logo: 'https://usacounts.com/favicon/favicon-512',
   url: 'https://usacounts.com',
   author: 'Ryan Parker',

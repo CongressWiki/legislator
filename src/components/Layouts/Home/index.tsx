@@ -19,48 +19,91 @@ const HomeLayout = ({ children }: HomeLayoutProps) => {
   `);
 
   return (
-    <Wrapper>
+    <>
       <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
       <HeaderSpacer />
-      {children}
-      <HeaderSpacer />
-    </Wrapper>
+      <Wrapper>
+        {children}
+        <HeaderSpacer />
+      </Wrapper>
+    </>
   );
 };
 
 const Wrapper = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(9, 1fr);
+  grid-template-areas:
+    '. . capital capital capital capital capital . .'
+    'hheader ..... ..... resolved resolved resolved ...... ...... sheader'
+    'hheader house house resolved resolved resolved senate senate sheader';
   grid-column-gap: 32px;
-  grid-row-gap: 32px;
+  color: var(--color-text);
 
   > * {
-    grid-column: 2;
+    grid-column: 3 / 6;
+  }
+
+  .house-header {
+    grid-area: hheader;
+    /* display: fixed; */
+    writing-mode: vertical-rl;
+  }
+
+  .senate-header {
+    grid-area: sheader;
+    /* display: fixed; */
+
+    writing-mode: vertical-rl;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .house {
+    grid-area: house;
+  }
+
+  .senate {
+    grid-area: senate;
+  }
+
+  .resolved {
+    grid-area: resolved;
+  }
+
+  .capital {
+    grid-area: capital;
   }
 
   .left-side {
-    grid-column: 1 / 2;
-    /* background: var(--color-background); */
-    color: var(--color-text);
-
-    @media (max-width: 900px) {
-      display: none;
-    }
+    grid-column: 2;
   }
 
   .right-side {
-    grid-column: 3 / 4;
-    /* background: var(--color-background); */
-    color: var(--color-text);
+    grid-column: 6;
+  }
 
-    @media (max-width: 900px) {
-      display: none;
-    }
+  .main-bleed {
+    grid-column: 2 / 7;
   }
 
   .full-bleed {
     grid-column: 1 / -1;
   }
+  /*
+  @media (max-width: 900px) {
+    grid-template-columns: repeat(3, 1fr);
+
+    > * {
+      grid-column: 2;
+    }
+    .left-side {
+      grid-column: 1;
+    }
+    .right-side {
+      grid-column: 3;
+    }
+  } */
 `;
 
 export default HomeLayout;
