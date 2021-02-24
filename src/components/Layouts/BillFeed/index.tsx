@@ -1,6 +1,6 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
-import Header, { HeaderSpacerWithFeedGap } from '@components/Header';
+import Header, { HeaderSpacer } from '@components/Header';
 import styled from 'styled-components';
 
 export type CommonLayoutProps = {
@@ -21,7 +21,7 @@ const CommonLayout = ({ children }: CommonLayoutProps) => {
   return (
     <>
       <Header siteTitle={data.site.siteMetadata?.title} />
-      <HeaderSpacerWithFeedGap />
+      <HeaderSpacer />
       <Wrapper>{children}</Wrapper>
     </>
   );

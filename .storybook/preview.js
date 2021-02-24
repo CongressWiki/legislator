@@ -3,7 +3,7 @@ import { action } from '@storybook/addon-actions';
 // import { ThemeContext } from '@components/ThemeContext';
 // import App from '@components/App';
 import { ThemeProvider } from '@components/ThemeContext';
-import GlobalStyles from '@components/GlobalStyles';
+import App from '@components/App';
 import { COLORS, COLOR_MODE_KEY } from '../src/constants';
 
 // Gatsby's Link overrides:
@@ -49,10 +49,9 @@ const withThemeProvider = (Story, context) => {
   }
   setColorMode(context.globals.theme);
   return (
-    <ThemeProvider>
-      <GlobalStyles />
+    <App>
       <Story {...context} />
-    </ThemeProvider>
+    </App>
   );
 };
 

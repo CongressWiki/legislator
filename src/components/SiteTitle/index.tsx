@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const SiteTitle = () => {
+const SiteTitle = ({ title = 'USACounts' }) => {
   return (
     <Wrapper>
-      <Header>USACounts</Header>
+      <Header>{title}</Header>
     </Wrapper>
   );
 };

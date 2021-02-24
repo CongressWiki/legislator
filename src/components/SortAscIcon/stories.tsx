@@ -2,11 +2,11 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import styled from 'styled-components';
 
-import LibertyTorch from './index';
+import SortAscIcon from './index';
 
 export default {
-  title: 'Components/LibertyTorch',
-  component: LibertyTorch,
+  title: 'Components/SortAscIcon',
+  component: SortAscIcon,
 } as Meta;
 
 const ExampleContainer = styled.div`
@@ -17,7 +17,7 @@ const ExampleContainer = styled.div`
 
 const Template: Story = (args) => (
   <ExampleContainer>
-    <LibertyTorch {...args} />
+    <SortAscIcon {...args} />
   </ExampleContainer>
 );
 

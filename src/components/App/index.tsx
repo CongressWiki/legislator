@@ -8,10 +8,10 @@ export type AppProps = {
 
 const App = ({ children }: AppProps) => {
   return (
-    <ThemeProvider>
+    <>
       <GlobalStyles />
-      {children}
-    </ThemeProvider>
+      <ThemeProvider>{children}</ThemeProvider>
+    </>
   );
 };
 

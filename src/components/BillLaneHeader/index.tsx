@@ -1,14 +1,31 @@
 import React from 'react';
 import styled from 'styled-components';
 import ChamberDropdown from '@components/ChamberDropdown';
-import BillFeedOrderDropdown from '@components/BillFeedOrderDropdown';
+// import BillFeedOrderDropdown from '@components/BillFeedOrderDropdown';
 import SortToggle from '@components/SortToggle';
+import SearchInput from '@components/SearchInput';
 
-const BillLaneHeader = () => {
+export type BillLaneHeaderProps = {
+  handleChamberSelection: (selection: string) => void;
+  handleSearchInput: (value: string) => void;
+  handleOrderAscToggle: (isAscending: boolean) => void;
+  className?: string;
+};
+
+const BillLaneHeader = ({
+  handleChamberSelection,
+  handleSearchInput,
+  handleOrderAscToggle,
+  className,
+}: BillLaneHeaderProps) => {
   return (
-    <Wrapper>
-      <ChamberDropdown className="chamber" />
-      <SortToggle className="sortBy" onToggle={() => {}} />
+    <Wrapper className={className}>
+      <ChamberDropdown
+        className="chamber"
+        handleSelection={handleChamberSelection}
+      />
+      <SearchInput className="SearchInput" handleInput={handleSearchInput} />
+      <SortToggle className="sortBy" handleToggle={handleOrderAscToggle} />
     </Wrapper>
   );
 };
@@ -27,19 +44,18 @@ const Wrapper = styled.div`
 
   border-bottom: solid thin var(--color-gray300);
 
-  /* display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  grid-template-areas: 'chamber . . . . sortBy'; */
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   .chamber {
-    grid-area: chamber;
   }
 
   .sortBy {
-    grid-area: sortBy;
+  }
+
+  .searchInput {
+    justify-self: center;
   }
 `;
 

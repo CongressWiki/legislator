@@ -5,7 +5,7 @@ import ThemeToggle from '@components/ThemeToggle';
 import SiteTitle from '@components/SiteTitle';
 
 export type HeaderProps = {
-  siteTitle: string;
+  siteTitle?: string;
 };
 
 const Header = ({ siteTitle }: HeaderProps) => {
@@ -13,7 +13,7 @@ const Header = ({ siteTitle }: HeaderProps) => {
     <Wrapper>
       <ToolBar>
         <Link to="/">
-          <SiteTitle>{siteTitle}</SiteTitle>
+          <SiteTitle title={siteTitle} />
         </Link>
         <ThemeToggle />
       </ToolBar>

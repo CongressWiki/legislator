@@ -1,5 +1,5 @@
-import React from 'react';
-import { graphql, useStaticQuery, navigate, useQuery } from 'gatsby';
+import React, { useState } from 'react';
+import { graphql, useStaticQuery, navigate } from 'gatsby';
 import Layout from '@components/Layouts/Common';
 import type { Bill as BillDataType } from '../types/hasura';
 // import styled from 'styled-components';
@@ -53,34 +53,36 @@ export default function Home() {
           }
         }
       }
-
-      # allFile(filter: { sourceInstanceName: { eq: "congressImages" } }) {
-      #   edges {
-      #     node {
-      #       extension
-      #       dir
-      #       modifiedTime
-      #       name
-      #       childImageSharp {
-      #         fluid(maxWidth: 250) {
-      #           ...GatsbyImageSharpFluid
-      #         }
-      #       }
-      #     }
-      #   }
-      # }
     }
   `);
 
-  const { hasura } = data;
+  const bills = data.hasura.bills_aggregate.nodes;
+
+  const handleSearchInput = (value: string) => {
+    console.log(value);
+  };
+
+  const handleChamberSelection = (option: string) => {
+    console.log(option);
+  };
+
+  const handleOrderAscToggle = (isAscending: boolean) => {
+    console.log(isAscending);
+  };
+
+  const filteredBills = bills;
 
   return (
     <>
       <SEO title="Keeping US-Accountable" />
       <Layout>
         <BillLane>
-          <BillLaneHeader />
-          {hasura.bills_aggregate.nodes.map((bill) => (
+          <BillLaneHeader
+            handleChamberSelection={handleChamberSelection}
+            handleSearchInput={handleSearchInput}
+            handleOrderAscToggle={handleOrderAscToggle}
+          />
+          {filteredBills.map((bill) => (
             <BillCard
               key={bill.id}
               onClick={() => navigate(bill.id)}

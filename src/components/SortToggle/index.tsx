@@ -1,31 +1,29 @@
 import styled from 'styled-components';
 import React, { useState } from 'react';
 
-import SortDescSymbol from '@components/SortDescSymbol';
-import SortAscSymbol from '@components/SortAscSymbol';
+import SortDescIcon from '@components/SortDescIcon';
+import SortAscIcon from '@components/SortAscIcon';
+import ButtonCanvas from '@components/ButtonCanvas';
 
 export type SortToggleProps = {
-  onToggle: (isAscending: boolean) => void;
-
+  handleToggle: (isAscending: boolean) => void;
   className?: string;
 };
 
-const SortToggle = ({ onToggle, className }: SortToggleProps) => {
+const SortToggle = ({ handleToggle, className }: SortToggleProps) => {
   const [isAscending, setIsAscending] = useState(false);
 
   const handleClick = () => {
     setIsAscending(!isAscending);
-    onToggle(isAscending);
+    handleToggle(isAscending);
   };
 
-  const Symbol = isAscending ? SortAscSymbol : SortDescSymbol;
-  return <Symbol className={className} onClick={handleClick} />;
+  const Symbol = !!isAscending ? SortAscIcon : SortDescIcon;
+  return (
+    <ButtonCanvas>
+      <Symbol className={className} onClick={handleClick} />
+    </ButtonCanvas>
+  );
 };
 
-const SortToggleStyled = styled(SortToggle)`
-  :hover {
-    cursor: pointer;
-  }
-`;
-
-export default SortToggleStyled;
+export default SortToggle;

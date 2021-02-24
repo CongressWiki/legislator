@@ -814,6 +814,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body {
+    min-width: 450px;
     background: var(--color-background);
     color: var(--color-text);
     text-rendering: optimizeLegibility;

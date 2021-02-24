@@ -2,11 +2,11 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import styled from 'styled-components';
 
-import SortAscSymbol from './index';
+import SortDescIcon from './index';
 
 export default {
-  title: 'Components/SortAscSymbol',
-  component: SortAscSymbol,
+  title: 'Components/SortDescIcon',
+  component: SortDescIcon,
 } as Meta;
 
 const ExampleContainer = styled.div`
@@ -17,7 +17,7 @@ const ExampleContainer = styled.div`
 
 const Template: Story = (args) => (
   <ExampleContainer>
-    <SortAscSymbol {...args} />
+    <SortDescIcon {...args} />
   </ExampleContainer>
 );
 

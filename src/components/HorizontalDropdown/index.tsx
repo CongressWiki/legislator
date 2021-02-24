@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-const fontFamily = 'concourse_c2';
+const fontFamily = 'concourse_c6';
 const fontSize = '1.4rem';
 
 const DropDownContainer = styled.div`
@@ -34,22 +34,20 @@ type DropDownListContainerProps = {
 };
 
 const DropDownListContainer = styled.div<DropDownListContainerProps>`
-  width: ${(props) => (!!props.isOpen ? `100%` : '0px')};
+  width: ${(props) => (!!props.isOpen ? '400px' : '0px')};
   margin: 0;
-  padding: 0;
-  /* display: ${(props) => (!!props.isOpen ? 'relative' : 'none')}; */
-
   position: absolute;
   font-size: ${fontSize};
-  left: ${(props) => props.selectedOptionLength + 1}ch;
+  left: ${(props) => props.selectedOptionLength + 2}ch;
+  padding: 0;
   overflow: hidden;
   transition: all 500ms;
+  background-color: var(--color-background);
 `;
 
 const DropDownList = styled.ul`
   margin: 0;
   padding: 0;
-  /* background-color: var(--color-background); */
 
   list-style: none;
 
