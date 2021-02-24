@@ -18,7 +18,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/images`,
+        path: `${__dirname}/static/images`,
       },
     },
     {
@@ -46,7 +46,7 @@ module.exports = {
         background_color: config.backgroundColor,
         theme_color: config.themeColor,
         display: `minimal-ui`,
-        icon: `src/images/USA_Map_Spotted.svg`, // This path is relative to the root of the site.
+        icon: `static/images/USA_Map_Spotted.svg`, // This path is relative to the root of the site.
       },
     },
     {

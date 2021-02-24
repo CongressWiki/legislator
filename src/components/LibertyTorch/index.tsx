@@ -1,4 +1,4 @@
-import { ReactComponent as LibertyTorchSvg } from '../../images/Liberty_Torch.svg';
+import { ReactComponent as LibertyTorchSvg } from '@static/images/Liberty_Torch.svg';
 import styled from 'styled-components';
 
 const LibertyTorch = styled(LibertyTorchSvg)`
@@ -6,10 +6,11 @@ const LibertyTorch = styled(LibertyTorchSvg)`
   width: 2em;
 
   path {
-    fill: var(--color-text);
+    fill: var(--color-gray500);
   }
 
   path:hover {
+    cursor: pointer;
     fill: var(--color-secondary);
   }
 `;

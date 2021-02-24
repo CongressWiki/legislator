@@ -9,7 +9,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 // TODO: import image and use in commented out meta tags
-// import { ReactComponent as Thumbnail } from '../../src/images/us-states.svg';
+// import { ReactComponent as Thumbnail } from '@static/images/us-states.svg';
 
 export type SEOProps = {
   description?: string;
@@ -94,8 +94,8 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
         // },
       ].concat(meta)}
     >
-      {/* Font: Advocate C41 */}
-      <link
+      {/* Font: Advocate */}
+      {/* <link
         rel="preload"
         as="font"
         href="/../../fonts/Advocate/Base/C41/advocate_c41_regular.woff2"
@@ -109,8 +109,6 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
         type="font/woff2"
         crossOrigin="anonymous"
       />
-
-      {/* Font: Advocate C43 */}
       <link
         rel="preload"
         as="font"
@@ -125,8 +123,6 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
         type="font/woff2"
         crossOrigin="anonymous"
       />
-
-      {/* Font: Advocate C45 */}
       <link
         rel="preload"
         as="font"
@@ -141,8 +137,6 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
         type="font/woff2"
         crossOrigin="anonymous"
       />
-
-      {/* Font: Advocate C51 */}
       <link
         rel="preload"
         as="font"
@@ -157,8 +151,6 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
         type="font/woff2"
         crossOrigin="anonymous"
       />
-
-      {/* Font: Advocate C53 */}
       <link
         rel="preload"
         as="font"
@@ -173,8 +165,6 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
         type="font/woff2"
         crossOrigin="anonymous"
       />
-
-      {/* Font: Advocate C55 */}
       <link
         rel="preload"
         as="font"
@@ -189,8 +179,6 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
         type="font/woff2"
         crossOrigin="anonymous"
       />
-
-      {/* Font: Advocate C61 */}
       <link
         rel="preload"
         as="font"
@@ -198,8 +186,6 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
         type="font/woff2"
         crossOrigin="anonymous"
       />
-
-      {/* Font: Advocate C63 */}
       <link
         rel="preload"
         as="font"
@@ -207,17 +193,15 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
         type="font/woff2"
         crossOrigin="anonymous"
       />
-
-      {/* Font: Advocate C65 */}
       <link
         rel="preload"
         as="font"
         href="/../../fonts/Advocate/Base/C65/advocate_c65_regular.woff2"
         type="font/woff2"
         crossOrigin="anonymous"
-      />
+      /> */}
 
-      {/* Font: Advocate mid C41 */}
+      {/* Font: Advocate mid */}
       <link
         rel="preload"
         as="font"
@@ -232,8 +216,6 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
         type="font/woff2"
         crossOrigin="anonymous"
       />
-
-      {/* Font: Advocate mid C43 */}
       <link
         rel="preload"
         as="font"
@@ -248,8 +230,6 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
         type="font/woff2"
         crossOrigin="anonymous"
       />
-
-      {/* Font: Advocate mid C45 */}
       <link
         rel="preload"
         as="font"
@@ -264,9 +244,7 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
         type="font/woff2"
         crossOrigin="anonymous"
       />
-
-      {/* Font: Advocate mid C51 */}
-      <link
+      {/* <link
         rel="preload"
         as="font"
         href="/../../fonts/Advocate/Mid/C51/advocate_c51_mid_regular.woff2"
@@ -280,8 +258,6 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
         type="font/woff2"
         crossOrigin="anonymous"
       />
-
-      {/* Font: Advocate mid C53 */}
       <link
         rel="preload"
         as="font"
@@ -296,8 +272,6 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
         type="font/woff2"
         crossOrigin="anonymous"
       />
-
-      {/* Font: Advocate mid C55 */}
       <link
         rel="preload"
         as="font"
@@ -312,8 +286,6 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
         type="font/woff2"
         crossOrigin="anonymous"
       />
-
-      {/* Font: Advocate mid C61 */}
       <link
         rel="preload"
         as="font"
@@ -321,8 +293,6 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
         type="font/woff2"
         crossOrigin="anonymous"
       />
-
-      {/* Font: Advocate mid C63 */}
       <link
         rel="preload"
         as="font"
@@ -330,18 +300,16 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
         type="font/woff2"
         crossOrigin="anonymous"
       />
-
-      {/* Font: Advocate mid C65 */}
       <link
         rel="preload"
         as="font"
         href="/../../fonts/Advocate/Mid/C65/advocate_c65_mid_regular.woff2"
         type="font/woff2"
         crossOrigin="anonymous"
-      />
+      /> */}
 
-      {/* Font: Advocate slab C41 */}
-      <link
+      {/* Font: Advocate slab */}
+      {/* <link
         rel="preload"
         as="font"
         href="/../../fonts/Advocate/Slab/C41/advocate_slab_c41_regular.woff2"
@@ -355,8 +323,6 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
         type="font/woff2"
         crossOrigin="anonymous"
       />
-
-      {/* Font: Advocate slab C43 */}
       <link
         rel="preload"
         as="font"
@@ -371,8 +337,6 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
         type="font/woff2"
         crossOrigin="anonymous"
       />
-
-      {/* Font: Advocate slab C45 */}
       <link
         rel="preload"
         as="font"
@@ -387,8 +351,6 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
         type="font/woff2"
         crossOrigin="anonymous"
       />
-
-      {/* Font: Advocate slab C51 */}
       <link
         rel="preload"
         as="font"
@@ -403,8 +365,6 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
         type="font/woff2"
         crossOrigin="anonymous"
       />
-
-      {/* Font: Advocate slab C53 */}
       <link
         rel="preload"
         as="font"
@@ -419,8 +379,6 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
         type="font/woff2"
         crossOrigin="anonymous"
       />
-
-      {/* Font: Advocate slab C55 */}
       <link
         rel="preload"
         as="font"
@@ -435,8 +393,6 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
         type="font/woff2"
         crossOrigin="anonymous"
       />
-
-      {/* Font: Advocate slab C61 */}
       <link
         rel="preload"
         as="font"
@@ -444,8 +400,6 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
         type="font/woff2"
         crossOrigin="anonymous"
       />
-
-      {/* Font: Advocate slab C63 */}
       <link
         rel="preload"
         as="font"
@@ -453,18 +407,16 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
         type="font/woff2"
         crossOrigin="anonymous"
       />
-
-      {/* Font: Advocate slab C65 */}
       <link
         rel="preload"
         as="font"
         href="/../../fonts/Advocate/Slab/C65/advocate_slab_c65_regular.woff2"
         type="font/woff2"
         crossOrigin="anonymous"
-      />
+      /> */}
 
-      {/* Font: Advocate slab mid C41 */}
-      <link
+      {/* Font: Advocate slab mid */}
+      {/* <link
         rel="preload"
         as="font"
         href="/../../fonts/Advocate/Slab_Mid/C41/advocate_slab_c41_mid_regular.woff2"
@@ -478,8 +430,6 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
         type="font/woff2"
         crossOrigin="anonymous"
       />
-
-      {/* Font: Advocate slab mid C43 */}
       <link
         rel="preload"
         as="font"
@@ -494,8 +444,6 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
         type="font/woff2"
         crossOrigin="anonymous"
       />
-
-      {/* Font: Advocate slab mid C45 */}
       <link
         rel="preload"
         as="font"
@@ -510,8 +458,6 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
         type="font/woff2"
         crossOrigin="anonymous"
       />
-
-      {/* Font: Advocate slab mid C51 */}
       <link
         rel="preload"
         as="font"
@@ -526,8 +472,6 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
         type="font/woff2"
         crossOrigin="anonymous"
       />
-
-      {/* Font: Advocate slab mid C53 */}
       <link
         rel="preload"
         as="font"
@@ -542,8 +486,6 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
         type="font/woff2"
         crossOrigin="anonymous"
       />
-
-      {/* Font: Advocate slab mid C55 */}
       <link
         rel="preload"
         as="font"
@@ -558,8 +500,6 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
         type="font/woff2"
         crossOrigin="anonymous"
       />
-
-      {/* Font: Advocate slab mid C61 */}
       <link
         rel="preload"
         as="font"
@@ -567,8 +507,6 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
         type="font/woff2"
         crossOrigin="anonymous"
       />
-
-      {/* Font: Advocate slab mid C63 */}
       <link
         rel="preload"
         as="font"
@@ -576,17 +514,15 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
         type="font/woff2"
         crossOrigin="anonymous"
       />
-
-      {/* Font: Advocate slab mid C65 */}
       <link
         rel="preload"
         as="font"
         href="/../../fonts/Advocate/Slab_Mid/C65/advocate_slab_c65_mid_regular.woff2"
         type="font/woff2"
         crossOrigin="anonymous"
-      />
+      /> */}
 
-      {/* Font: Century Supra C3 */}
+      {/* Font: Century Supra */}
       <link
         rel="preload"
         as="font"
@@ -601,8 +537,6 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
         type="font/ttf"
         crossOrigin="anonymous"
       />
-
-      {/* Font: Century Supra C4 */}
       <link
         rel="preload"
         as="font"
@@ -617,8 +551,6 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
         type="font/ttf"
         crossOrigin="anonymous"
       />
-
-      {/* Font: Century Supra t3 */}
       <link
         rel="preload"
         as="font"
@@ -647,8 +579,6 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
         type="font/ttf"
         crossOrigin="anonymous"
       />
-
-      {/* Font: Century Supra t4 */}
       <link
         rel="preload"
         as="font"
@@ -678,7 +608,7 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
         crossOrigin="anonymous"
       />
 
-      {/* Font: Concourse C2 */}
+      {/* Font: Concourse */}
       <link
         rel="preload"
         as="font"
@@ -693,8 +623,6 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
         type="font/ttf"
         crossOrigin="anonymous"
       />
-
-      {/* Font: Concourse C3 */}
       <link
         rel="preload"
         as="font"
@@ -709,8 +637,6 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
         type="font/ttf"
         crossOrigin="anonymous"
       />
-
-      {/* Font: Concourse C4 */}
       <link
         rel="preload"
         as="font"
@@ -725,8 +651,6 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
         type="font/ttf"
         crossOrigin="anonymous"
       />
-
-      {/* Font: Concourse C6 */}
       <link
         rel="preload"
         as="font"
@@ -734,8 +658,6 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
         type="font/ttf"
         crossOrigin="anonymous"
       />
-
-      {/* Font: Concourse C7 */}
       <link
         rel="preload"
         as="font"
@@ -743,8 +665,6 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
         type="font/ttf"
         crossOrigin="anonymous"
       />
-
-      {/* Font: Concourse C8 */}
       <link
         rel="preload"
         as="font"
@@ -752,8 +672,6 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
         type="font/ttf"
         crossOrigin="anonymous"
       />
-
-      {/* Font: Concourse t2 */}
       <link
         rel="preload"
         as="font"
@@ -782,8 +700,6 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
         type="font/ttf"
         crossOrigin="anonymous"
       />
-
-      {/* Font: Concourse t3 */}
       <link
         rel="preload"
         as="font"
@@ -812,8 +728,6 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
         type="font/ttf"
         crossOrigin="anonymous"
       />
-
-      {/* Font: Concourse t4 */}
       <link
         rel="preload"
         as="font"
@@ -842,8 +756,6 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
         type="font/ttf"
         crossOrigin="anonymous"
       />
-
-      {/* Font: Concourse t6 */}
       <link
         rel="preload"
         as="font"
@@ -858,8 +770,6 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
         type="font/ttf"
         crossOrigin="anonymous"
       />
-
-      {/* Font: Concourse t7 */}
       <link
         rel="preload"
         as="font"
@@ -874,8 +784,6 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
         type="font/ttf"
         crossOrigin="anonymous"
       />
-
-      {/* Font: Concourse t8 */}
       <link
         rel="preload"
         as="font"

@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
 import ThemeToggle from '@components/ThemeToggle';
+import SiteTitle from '@components/SiteTitle';
 
 export type HeaderProps = {
   siteTitle: string;
@@ -46,16 +47,6 @@ const ToolBar = styled.div`
   a {
     text-decoration: none;
   }
-`;
-
-const SiteTitle = styled.h3`
-  margin: 0;
-  font-size: 64px;
-  display: inline-block;
-  font-family: advocate_c43_mid;
-  /* font-family: century_supra_c3; */
-
-  color: var(--color-secondary);
 `;
 
 export const HeaderSpacer = styled.div`

@@ -215,7 +215,7 @@ const GlobalStyles = createGlobalStyle`
     src: url('../../fonts/Concourse/T8/concourse_t8_italic.woff2') format('woff2');
   }
 
-  // Font: Advocate base C41 //
+  /* // Font: Advocate base C41 //
   @font-face {
     font-family: advocate_c41;
     font-style: normal;
@@ -336,7 +336,7 @@ const GlobalStyles = createGlobalStyle`
     font-weight: normal;
     font-stretch: normal;
     src: url('../../fonts/Advocate/Base/C65/advocate_c65_regular.woff2') format('woff2');
-  }
+  } */
 
   // Font: Advocate mid C41 //
   @font-face {
@@ -462,7 +462,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
 
-  // Font: Advocate slab C41 //
+  /* // Font: Advocate slab C41 //
   @font-face {
     font-family: advocate_slab_c41;
     font-style: normal;
@@ -706,9 +706,7 @@ const GlobalStyles = createGlobalStyle`
     font-weight: normal;
     font-stretch: normal;
     src: url('../../fonts/Advocate/Slab_Mid/C65/advocate_slab_c65_mid_regular.woff2') format('woff2');
-  }
-
-
+  } */
 
   // Font: Century Supra C3 //
   @font-face {
@@ -806,7 +804,7 @@ const GlobalStyles = createGlobalStyle`
 
   *, *:before, *:after, *::before, *::after {
     box-sizing: border-box;
-    font-family: concourse_t4, Georgia, Cambria, 'Times New Roman', Times, serif;
+    font-family: century_supra_t3, Georgia, Cambria, 'Times New Roman', Times, serif;
     font-weight: normal;
   }
 

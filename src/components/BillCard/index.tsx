@@ -58,6 +58,7 @@ const Wrapper = styled.div`
 
   p {
     font-family: century_supra_c4;
+    line-height: 1.6em;
     max-width: 70ch;
     margin: 0;
   }
@@ -69,7 +70,6 @@ const Wrapper = styled.div`
 
   .bill-number {
     grid-area: id;
-    font-style: bold;
   }
   .bill-title {
     grid-area: center;
@@ -84,5 +84,6 @@ const Wrapper = styled.div`
     align-self: flex-end;
     font-size: 0.8em;
     color: hsl(0deg, 0%, 70%);
+    font-weight: 400;
   }
 `;
