@@ -23,7 +23,7 @@ function setColorsByTheme() {
   const prefersDarkFromMQ = mql.matches;
   const persistedPreference = localStorage.getItem(colorModeKey);
 
-  let colorMode = "dark";
+  let colorMode = "light";
 
   const hasUsedToggle = typeof persistedPreference === "string";
 
