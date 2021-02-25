@@ -12,7 +12,7 @@ export type BillProps = {
 const Bill = ({ pageContext: bill }: BillProps) => {
   return (
     <Layout>
-      <SEO title={`${bill.type.toUpperCase()}-${bill.number}`} />
+      <SEO title={`${bill.type.toUpperCase()}${bill.number}`} />
       <BillComponent {...bill} />
       <Stepper steps={bill.actions.map((action) => action.text)} />
     </Layout>

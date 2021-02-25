@@ -48,8 +48,10 @@ const LoadMoreButton = styled.button<BillLaneFooterProps>`
   font-size: 1.4em;
 
   :hover {
+    cursor: pointer;
     background-color: var(--color-backgroundLite);
     border-color: var(--color-secondary);
+    color: var(--color-secondary);
   }
 `;
 

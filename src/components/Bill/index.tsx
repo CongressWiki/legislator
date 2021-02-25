@@ -26,7 +26,7 @@ export default function Bill({
       </BillHeader>
       <BillTitle title={title} />
       {summary === 'No summary available.' && bill_text ? (
-        <BillText billText={bill_text} billTitle={title} />
+        <BillText billText={bill_text} />
       ) : (
         <BillSummary summary={summary} />
       )}
@@ -35,7 +35,10 @@ export default function Bill({
   );
 }
 
-const BillWrapper = styled.div``;
+const BillWrapper = styled.div`
+  margin-top: 1.4rem;
+  margin-bottom: 50vh;
+`;
 
 const BillHeader = styled.div`
   margin: 0;
@@ -44,13 +47,11 @@ const BillHeader = styled.div`
 `;
 
 const BillId = styled.h2`
-  padding-top: 19px;
   margin: 0;
   font-weight: normal;
 `;
 
 const BillSubject = styled.h2`
-  padding-top: 19px;
   margin: 0;
   font-weight: normal;
 `;

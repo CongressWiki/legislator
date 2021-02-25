@@ -27,7 +27,10 @@ export default function Home() {
   const data: HomeQuery = useStaticQuery(graphql`
     query billAndImageQuery {
       hasura {
-        bills_aggregate(order_by: { updated_at: desc }) {
+        bills_aggregate(
+          order_by: { updated_at: desc }
+          where: { summary: { _neq: "No summary available." } }
+        ) {
           nodes {
             id
             number
@@ -103,7 +106,6 @@ export default function Home() {
       <Layout>
         <BillLane>
           <BillLaneHeader
-            numberOfBills={filteredBills.length}
             handleChamberSelection={handleChamberSelection}
             handleSearchInput={handleSearchInput}
             handleOrderAscToggle={handleOrderAscToggle}
@@ -111,7 +113,9 @@ export default function Home() {
           {filteredBills.slice(offset, limit).map((bill) => (
             <BillCard
               key={bill.id}
-              onClick={() => navigate(bill.id)}
+              onClick={() =>
+                navigate(`${bill.congress}/${bill.type}${bill.number}`)
+              }
               {...bill}
             />
           ))}
@@ -133,4 +137,8 @@ const NumberOfBills = styled.div`
   font-size: 1.4em;
   font-family: concourse_c2;
   color: var(--color-gray500);
+
+  @media (max-width: 920px) {
+    width: 50px;
+  }
 `;

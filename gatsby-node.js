@@ -19,7 +19,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const result = await graphql(`
     query BillQuery {
       hasura {
-        bills(order_by: { updated_at: desc }, limit: 2314000) {
+        bills(
+          order_by: { updated_at: desc }
+          where: { summary: { _neq: "No summary available." } }
+        ) {
           id
           number
           title
@@ -46,15 +49,15 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     return;
   }
 
-  result.data.hasura.bills.forEach((node) => {
+  result.data.hasura.bills.forEach((bill) => {
     createPage({
-      path: node.id,
+      path: `${bill.congress}/${bill.type}${bill.number}`,
       component: path.resolve(`./src/components/BillTemplate/index.tsx`),
       context: {
         // Data passed to context is available
         // in page queries as GraphQL variables.
-        slug: node.id,
-        ...node,
+        slug: `${bill.congress}/${bill.type}${bill.number}`,
+        ...bill,
       },
     });
   });

@@ -18,10 +18,6 @@ export type BillLaneHeaderProps = {
    * When a user specifies the sort order. Default is isAscending === false
    */
   handleOrderAscToggle: (isAscending: boolean) => void;
-  /**
-   * Number of bills in view
-   */
-  numberOfBills: number;
   className?: string;
 };
 
@@ -29,7 +25,6 @@ const BillLaneHeader = ({
   handleChamberSelection,
   handleSearchInput,
   handleOrderAscToggle,
-  numberOfBills,
   className,
 }: BillLaneHeaderProps) => {
   return (
