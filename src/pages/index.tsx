@@ -98,7 +98,7 @@ export default function Home() {
     filteredBills.reverse();
   }
 
-  const loadMore = () => setLimit(limit * 2);
+  const loadMore = () => setLimit(limit + 10);
 
   return (
     <>
