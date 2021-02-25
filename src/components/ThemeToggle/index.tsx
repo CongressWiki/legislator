@@ -23,8 +23,8 @@ const ThemeToggle = ({ className }: ThemeToggleProps) => {
 };
 
 const StyledButtonCanvas = styled(ButtonCanvas)`
-  height: 4em;
-  width: 4em;
+  height: 4rem;
+  width: 4rem;
 `;
 
 export default ThemeToggle;

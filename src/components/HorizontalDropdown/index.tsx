@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-const fontFamily = 'concourse_c6';
-const fontSize = '1.4rem';
+const fontFamily = 'concourse_c4';
+const fontSize = '1.4em';
 
 const DropDownContainer = styled.div`
   margin: 0;
   padding: 0;
   display: flex;
   align-items: center;
+
+  color: var(--color-gray500);
 `;
 
 const DropDownHeader = styled.div`
@@ -17,8 +19,8 @@ const DropDownHeader = styled.div`
   padding: 0;
   display: inline-block;
 
-  font-family: ${fontFamily};
   font-size: ${fontSize};
+  font-family: ${fontFamily};
   color: var(--color-gray500);
   white-space: nowrap;
 
@@ -34,15 +36,14 @@ type DropDownListContainerProps = {
 };
 
 const DropDownListContainer = styled.div<DropDownListContainerProps>`
-  width: ${(props) => (!!props.isOpen ? '400px' : '0px')};
-  margin: 0;
+  width: ${(props) => (!!props.isOpen ? '180px' : '0px')};
   position: absolute;
-  font-size: ${fontSize};
-  left: ${(props) => props.selectedOptionLength + 2}ch;
+  left: ${(props) => props.selectedOptionLength + 4}ch;
+  margin: 0;
   padding: 0;
+
   overflow: hidden;
-  transition: all 500ms;
-  background-color: var(--color-background);
+  transition: all 300ms ease-in;
 `;
 
 const DropDownList = styled.ul`
@@ -50,9 +51,6 @@ const DropDownList = styled.ul`
   padding: 0;
 
   list-style: none;
-
-  color: var(--color-secondary);
-  font-size: ${fontSize};
 `;
 
 const ListItem = styled.li`
@@ -61,8 +59,10 @@ const ListItem = styled.li`
   display: inline;
 
   font-family: ${fontFamily};
+  font-size: ${fontSize};
   white-space: nowrap;
   color: var(--color-gray500);
+  background-color: var(--color-background);
 
   &:before {
     content: '|';

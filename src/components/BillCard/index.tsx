@@ -37,7 +37,7 @@ const Wrapper = styled.div`
   max-width: none;
   width: 100%;
   margin: 0;
-  padding: 0;
+  padding: 1em;
 
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -58,8 +58,6 @@ const Wrapper = styled.div`
 
   p {
     font-family: century_supra_c4;
-    line-height: 1.6em;
-    max-width: 70ch;
     margin: 0;
   }
 
@@ -77,6 +75,8 @@ const Wrapper = styled.div`
     justify-self: center;
     align-self: flex-start;
     text-align: left;
+    font-size: 1.2em;
+    letter-spacing: -0.063px;
   }
   .bill-timestamp {
     grid-area: timestamp;

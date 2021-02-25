@@ -12,24 +12,35 @@ const SearchInput = ({ className, handleInput }: SearchInputProps) => {
   };
 
   return (
-    <StyledInput
-      className={className}
-      type="text"
-      aria-label="Search"
-      placeholder="Search"
-      onChange={handleInputChange}
-    />
+    <Wrapper className={className}>
+      <StyledInput
+        type="text"
+        aria-label="Search"
+        placeholder="Search"
+        onChange={handleInputChange}
+      />
+    </Wrapper>
   );
 };
 
-const StyledInput = styled.input`
+const Wrapper = styled.div`
   height: 100%;
-  width: 50%;
+  min-width: 0;
+  display: flex;
+`;
+
+const StyledInput = styled.input`
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  min-width: 0;
+
   border: 0;
+  display: flex;
   background-color: var(--color-background);
   text-align: center;
   font-family: concourse_c4;
-  font-size: 1.4rem;
+  font-size: 1.4em;
   color: var(--color-text);
 
   ::placeholder {
@@ -38,6 +49,10 @@ const StyledInput = styled.input`
 
   :focus {
     outline: none;
+
+    ::placeholder {
+      opacity: 0;
+    }
   }
 `;
 

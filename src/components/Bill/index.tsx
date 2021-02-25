@@ -38,7 +38,6 @@ export default function Bill({
 const BillWrapper = styled.div``;
 
 const BillHeader = styled.div`
-  padding-top: 19px;
   margin: 0;
   display: flex;
   justify-content: space-between;

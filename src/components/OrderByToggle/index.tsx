@@ -5,25 +5,28 @@ import SortDescIcon from '@components/SortDescIcon';
 import SortAscIcon from '@components/SortAscIcon';
 import ButtonCanvas from '@components/ButtonCanvas';
 
-export type SortToggleProps = {
+export type OrderByToggleProps = {
+  /**
+   * When a user specifies the sort order. Default is isAscending === false
+   */
   handleToggle: (isAscending: boolean) => void;
   className?: string;
 };
 
-const SortToggle = ({ handleToggle, className }: SortToggleProps) => {
+const OrderByToggle = ({ handleToggle, className }: OrderByToggleProps) => {
   const [isAscending, setIsAscending] = useState(false);
 
   const handleClick = () => {
+    handleToggle(!isAscending);
     setIsAscending(!isAscending);
-    handleToggle(isAscending);
   };
 
-  const Symbol = !!isAscending ? SortAscIcon : SortDescIcon;
+  const Icon = isAscending ? SortAscIcon : SortDescIcon;
   return (
-    <ButtonCanvas>
-      <Symbol className={className} onClick={handleClick} />
+    <ButtonCanvas className={className}>
+      <Icon onClick={handleClick} />
     </ButtonCanvas>
   );
 };
 
-export default SortToggle;
+export default OrderByToggle;

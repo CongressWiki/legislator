@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import HorizontalDropdown from '@components/HorizontalDropdown';
 
-const options = ['All', 'House', 'Senate', 'President'];
+const options = ['All', 'House', 'Senate'];
 
 export type ChamberDropdownProps = {
   handleSelection: (selection: string) => void;
@@ -14,7 +14,6 @@ const ChamberDropdown = ({
   handleSelection,
 }: ChamberDropdownProps) => {
   const handleOptionSelect = (option: string) => {
-    console.log(option);
     handleSelection(option);
   };
 

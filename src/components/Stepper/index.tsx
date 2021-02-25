@@ -45,9 +45,11 @@ export default function VerticalLinearStepper({
                 active: 'stepper',
               }}
             >
-              <h3 className="stepLabel">{label}</h3>
+              <span className="stepLabel">{label}</span>
             </StepLabel>
-            <StepContent>{label}</StepContent>
+            <StepContent>
+              <span className="stepContent">{label}</span>
+            </StepContent>
           </Step>
         ))}
       </BillStepper>
@@ -72,6 +74,13 @@ const BillStepper = styled(Stepper)`
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    font-family: concourse_t4;
+  }
+
+  .stepContent {
+    background: var(--color-background);
+    color: var(--color-text);
+    font-family: concourse_t2;
   }
 
   .MuiStepIcon-root.MuiStepIcon-active {

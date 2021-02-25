@@ -16,7 +16,7 @@ const Header = styled.h1`
   display: inline-block;
 
   font-family: advocate_c43_mid;
-  font-size: 64px;
+  font-size: 4em;
 
   color: var(--color-secondary);
 `;

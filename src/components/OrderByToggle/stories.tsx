@@ -2,11 +2,11 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import styled from 'styled-components';
 
-import SortDescIcon from './index';
+import OrderByToggle, { OrderByToggleProps } from './index';
 
 export default {
-  title: 'Components/SortDescIcon',
-  component: SortDescIcon,
+  title: 'Components/OrderByToggle',
+  component: OrderByToggle,
 } as Meta;
 
 const ExampleContainer = styled.div`
@@ -15,11 +15,13 @@ const ExampleContainer = styled.div`
   align-items: center;
 `;
 
-const Template: Story = (args) => (
+const Template: Story<OrderByToggleProps> = (args) => (
   <ExampleContainer>
-    <SortDescIcon {...args} />
+    <OrderByToggle {...args} />
   </ExampleContainer>
 );
 
 export const Default = Template.bind({});
-Default.args = {};
+Default.args = {
+  handleToggle: (isAscending) => console.log({ isAscending }),
+};

@@ -36,8 +36,8 @@ const Wrapper = styled.header`
 
 const ToolBar = styled.div`
   margin: 0;
-  padding-left: 32px;
-  padding-right: 32px;
+  /* padding-left: 32px;
+  padding-right: 32px; */
   display: flex;
   align-items: center;
 

@@ -14,8 +14,8 @@ const Template: Story<BillLaneHeaderProps> = (args) => (
 
 export const Default = Template.bind({});
 Default.args = {
-  handleInput: (value: string) => console.log(value),
-  handleSelection: (selection: string) => console.log(selection),
-  handleToggle: (isAscending: boolean) => console.log(isAscending),
+  handleChamberSelection: (selection: string) => console.log({ selection }),
+  handleSearchInput: (value: string) => console.log({ value }),
+  handleOrderAscToggle: (isAscending: boolean) => console.log({ isAscending }),
   className: '',
 };
