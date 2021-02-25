@@ -7,20 +7,20 @@ import StepContent from '@material-ui/core/StepContent';
 import styled from 'styled-components';
 
 export type VerticalLinearStepperProps = {
-  steps: Array<string>;
+  steps: string[];
 };
 
 export default function VerticalLinearStepper({
-  steps,
+  steps
 }: VerticalLinearStepperProps) {
   const [activeStep, setActiveStep] = React.useState(steps.length - 1);
 
   const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    setActiveStep((previousActiveStep) => previousActiveStep + 1);
   };
 
   const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
+    setActiveStep((previousActiveStep) => previousActiveStep - 1);
   };
 
   const handleReset = () => {
@@ -28,7 +28,7 @@ export default function VerticalLinearStepper({
   };
 
   return (
-    <div className={`right-side`}>
+    <div className="right-side">
       <BillStepper
         // @ts-expect-error
         style={style}
@@ -39,10 +39,12 @@ export default function VerticalLinearStepper({
           <Step key={index}>
             <StepLabel
               style={stepLabelStyles}
-              onClick={() => setActiveStep(index)}
-              StepIconProps={{ completed: false }}
+              StepIconProps={{completed: false}}
               classes={{
-                active: 'stepper',
+                active: 'stepper'
+              }}
+              onClick={() => {
+                setActiveStep(index);
               }}
             >
               <span className="stepLabel">{label}</span>
@@ -100,11 +102,11 @@ const BillStepper = styled(Stepper)`
 
 const stepLabelStyles = {
   background: 'var(--color-background)',
-  color: 'var(--color-text)',
+  color: 'var(--color-text)'
 };
 
 const style = {
   background: 'var(--color-background)',
   color: 'var(--color-text)',
-  flexDirection: 'column-reverse',
+  flexDirection: 'column-reverse'
 };

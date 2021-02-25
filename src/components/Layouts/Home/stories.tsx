@@ -1,14 +1,14 @@
 import React from 'react';
-import { Story, Meta } from '@storybook/react';
+import {Story, Meta} from '@storybook/react';
 import styled from 'styled-components';
-import BillCard, { BillCardProps } from '@components/BillCard';
+import BillCard, {BillCardProps} from '@components/BillCard';
 import Capital from '@components/Capital';
 
-import HomeLayout, { HomeLayoutProps } from './index';
+import HomeLayout, {HomeLayoutProps} from './index';
 
 export default {
   title: 'Components/Layouts/Home',
-  component: HomeLayout,
+  component: HomeLayout
 } as Meta;
 
 const ExampleBillWrapper = styled.div`
@@ -38,7 +38,7 @@ const ExampleBillProps: BillCardProps = {
   subject: 'Racial Justice',
   type: 'hr',
   sponsor: 'A12345678',
-  updated_at: '2020-09-30T05:52:20+00:00',
+  updated_at: '2020-09-30T05:52:20+00:00'
 };
 
 const BillLane = styled.div`

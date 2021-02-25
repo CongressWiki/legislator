@@ -6,7 +6,7 @@ export type SponsorAvatarProps = {
   id: string;
 };
 
-const SponsorAvatar = ({ id }: SponsorAvatarProps) => {
+const SponsorAvatar = ({id}: SponsorAvatarProps) => {
   return <Wrapper>{/* <Img /> */}</Wrapper>;
 };
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import type { Bill as BillDataType } from '../../types/hasura';
+import type {Bill as BillDataType} from '../../types/hasura';
 import styled from 'styled-components';
 
 export type BillCardProps = Pick<
@@ -18,10 +18,10 @@ const BillCard = ({
   subject,
   sponsor,
   updated_at,
-  className,
+  className
 }: BillCardProps) => {
   return (
-    <Wrapper onClick={onClick} className={className}>
+    <Wrapper className={className} onClick={onClick}>
       <p className="bill-number">{`${type.toUpperCase()} ${number}`}</p>
 
       <p className="bill-title">{title}</p>

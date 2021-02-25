@@ -1,4 +1,4 @@
-import { ReactComponent as CountrySVG } from '@static/images/Country.svg';
+import {ReactComponent as CountrySVG} from '@static/images/Country.svg';
 import styled from 'styled-components';
 
 const Country = styled(CountrySVG)`

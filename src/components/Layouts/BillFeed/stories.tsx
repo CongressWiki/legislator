@@ -1,14 +1,14 @@
 import React from 'react';
-import { Story, Meta } from '@storybook/react';
+import {Story, Meta} from '@storybook/react';
 import styled from 'styled-components';
-import BillCard, { BillCardProps } from '@components/BillCard';
+import BillCard, {BillCardProps} from '@components/BillCard';
 import BillLane from '@components/BillLane';
 
-import BillFeedLayout, { BillFeedLayoutProps } from './index';
+import BillFeedLayout, {BillFeedLayoutProps} from './index';
 
 export default {
   title: 'Components/Layouts/BillFeed',
-  component: BillFeedLayout,
+  component: BillFeedLayout
 } as Meta;
 
 const BillProps: BillCardProps = {
@@ -19,7 +19,7 @@ const BillProps: BillCardProps = {
   subject: 'Racial Justice',
   type: 'hr',
   sponsor: 'A12345678',
-  updated_at: '2020-09-30T05:52:20+00:00',
+  updated_at: '2020-09-30T05:52:20+00:00'
 };
 
 const FeaturedBillLane = styled(BillLane)`

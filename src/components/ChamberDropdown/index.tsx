@@ -11,7 +11,7 @@ export type ChamberDropdownProps = {
 
 const ChamberDropdown = ({
   className,
-  handleSelection,
+  handleSelection
 }: ChamberDropdownProps) => {
   const handleOptionSelect = (option: string) => {
     handleSelection(option);

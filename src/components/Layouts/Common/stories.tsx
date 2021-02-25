@@ -1,15 +1,15 @@
 import React from 'react';
-import { Story, Meta } from '@storybook/react';
+import {Story, Meta} from '@storybook/react';
 import styled from 'styled-components';
 
-import CommonLayout, { CommonLayoutProps } from './index';
+import CommonLayout, {CommonLayoutProps} from './index';
 
 export default {
   title: 'Components/Layouts/Common',
-  component: CommonLayout,
+  component: CommonLayout
 } as Meta;
 
-const ExampleBox = styled.div<{ backgroundColor: string }>`
+const ExampleBox = styled.div<{backgroundColor: string}>`
   background-color: ${(props) => props.backgroundColor};
   width: 100%;
   height: 100px;

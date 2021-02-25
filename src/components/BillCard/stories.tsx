@@ -1,10 +1,10 @@
 import React from 'react';
-import { Story, Meta } from '@storybook/react';
-import BillCard, { BillCardProps } from './index';
+import {Story, Meta} from '@storybook/react';
+import BillCard, {BillCardProps} from './index';
 
 export default {
   title: 'Components/BillCard',
-  component: BillCard,
+  component: BillCard
 } as Meta;
 
 const Template: Story<BillCardProps> = (args) => <BillCard {...args} />;
@@ -18,5 +18,5 @@ Default.args = {
   subject: 'Public lands and natural resources',
   sponsor: 'A000369',
   type: 'hr',
-  updated_at: '2021-02-01T22:36:36+00:00',
+  updated_at: '2021-02-01T22:36:36+00:00'
 };

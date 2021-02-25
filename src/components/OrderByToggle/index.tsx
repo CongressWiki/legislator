@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 
 import SortDescIcon from '@components/SortDescIcon';
 import SortAscIcon from '@components/SortAscIcon';
@@ -13,7 +13,7 @@ export type OrderByToggleProps = {
   className?: string;
 };
 
-const OrderByToggle = ({ handleToggle, className }: OrderByToggleProps) => {
+const OrderByToggle = ({handleToggle, className}: OrderByToggleProps) => {
   const [isAscending, setIsAscending] = useState(false);
 
   const handleClick = () => {

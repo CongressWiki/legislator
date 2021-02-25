@@ -6,7 +6,7 @@ export type BillTextProps = {
   billText: string;
 };
 
-export default function BillText({ billText: rawText }: BillTextProps) {
+export default function BillText({billText: rawText}: BillTextProps) {
   console.log(rawText);
 
   const billTextSplitByLines = rawText.split(/[-_]{10,}/gm);
@@ -16,7 +16,7 @@ export default function BillText({ billText: rawText }: BillTextProps) {
   // Replace double spaces with single space
   billText = billText.replace(/\s{2,}/g, ' ');
   // Remove HTML tags
-  billText = billText.replace(/<[\S]+>/g, '');
+  billText = billText.replace(/<\S+>/g, '');
 
   // Inject newlines before and after "SECTION" titles
   // billText = billText.replace(

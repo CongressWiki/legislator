@@ -3,7 +3,7 @@ import React from 'react';
 import {
   COLORS,
   COLOR_MODE_KEY,
-  INITIAL_COLOR_MODE_CSS_PROP,
+  INITIAL_COLOR_MODE_CSS_PROP
 } from '../../constants';
 
 export type ThemeContextType = React.Context<{
@@ -15,7 +15,7 @@ const defaultState = {
   colorMode: 'dark',
   setColorMode: (color: 'light' | 'dark') => {
     console.warn('Attempted `setColorMode()` before context was set.');
-  },
+  }
 };
 
 export const ThemeContext: ThemeContextType = React.createContext(defaultState);
@@ -24,7 +24,7 @@ export type ThemeProviderProps = {
   children: React.ReactNode;
 };
 
-export const ThemeProvider = ({ children }: ThemeProviderProps) => {
+export const ThemeProvider = ({children}: ThemeProviderProps) => {
   const [colorMode, rawSetColorMode] = React.useState(defaultState.colorMode);
 
   React.useEffect(() => {
@@ -62,7 +62,7 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
 
     return {
       colorMode,
-      setColorMode,
+      setColorMode
     };
   }, [colorMode, rawSetColorMode]);
 

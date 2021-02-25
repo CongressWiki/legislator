@@ -5,7 +5,7 @@ export type BillListItemProps = {
   statement: string;
 };
 
-const BillListItem = ({ statement }: BillListItemProps) => {
+const BillListItem = ({statement}: BillListItemProps) => {
   if (statement.startsWith(' ')) {
     statement = statement.replace(/^\s*/, '');
   }

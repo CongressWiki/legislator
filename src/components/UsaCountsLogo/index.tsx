@@ -1,4 +1,4 @@
-import { ReactComponent as USAFlagMapLogoSvg } from '@static/images/USA_Map_Spotted.svg';
+import {ReactComponent as USAFlagMapLogoSvg} from '@static/images/USA_Map_Spotted.svg';
 import styled from 'styled-components';
 
 const UsaCountsLogo = styled(USAFlagMapLogoSvg)`

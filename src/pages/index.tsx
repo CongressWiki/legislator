@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { graphql, useStaticQuery, navigate } from 'gatsby';
+import React, {useState} from 'react';
+import {graphql, useStaticQuery, navigate} from 'gatsby';
 import Layout from '@components/Layouts/Common';
-import type { Bill as BillDataType } from '../types/hasura';
+import type {Bill as BillDataType} from '../types/hasura';
 import styled from 'styled-components';
 import SEO from '@components/Seo';
 import BillLane from '@components/BillLane';
@@ -28,8 +28,8 @@ export default function Home() {
     query billAndImageQuery {
       hasura {
         bills_aggregate(
-          order_by: { updated_at: desc }
-          where: { summary: { _neq: "No summary available." } }
+          order_by: {updated_at: desc}
+          where: {summary: {_neq: "No summary available."}}
         ) {
           nodes {
             id
@@ -67,21 +67,25 @@ export default function Home() {
   const CHAMBER_BILL_TYPES = {
     House: ['hr', 'hres', 'hconres', 'hjres'],
     Senate: ['s', 'sres', 'sconres', 'sjres'],
-    All: [],
+    All: []
   };
 
   const handleChamberSelection = (option: string) => {
     if (!(option in CHAMBER_BILL_TYPES)) {
       console.error(`No match for chamber selection: ${option}`);
     }
-    // @ts-ignore
+
+    // @ts-expect-error
     setBillTypes(CHAMBER_BILL_TYPES[option]);
   };
 
-  const handleSearchInput = (value: string) => setSearchBy(value.toLowerCase());
+  const handleSearchInput = (value: string) => {
+    setSearchBy(value.toLowerCase());
+  };
 
-  const handleOrderAscToggle = (isAscending: boolean) =>
+  const handleOrderAscToggle = (isAscending: boolean) => {
     setOrderByAsc(isAscending);
+  };
 
   const filteredBills = bills.filter((bill) => {
     const isBillType = billTypes.length === 0 || billTypes.includes(bill.type);
@@ -98,7 +102,9 @@ export default function Home() {
     filteredBills.reverse();
   }
 
-  const loadMore = () => setLimit(limit + 10);
+  const loadMore = () => {
+    setLimit(limit + 10);
+  };
 
   return (
     <>
@@ -113,7 +119,7 @@ export default function Home() {
           {filteredBills.slice(offset, limit).map((bill) => (
             <BillCard
               key={bill.id}
-              onClick={() =>
+              onClick={async () =>
                 navigate(`${bill.congress}/${bill.type}${bill.number}`)
               }
               {...bill}
@@ -121,8 +127,8 @@ export default function Home() {
           ))}
         </BillLane>
         <BillLaneFooter
-          onClick={loadMore}
           disabled={limit > filteredBills.length}
+          onClick={loadMore}
         />
         <NumberOfBills>{`${filteredBills.length} bills`}</NumberOfBills>
       </Layout>

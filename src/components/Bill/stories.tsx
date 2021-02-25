@@ -1,11 +1,11 @@
 import React from 'react';
-import { Story, Meta } from '@storybook/react';
+import {Story, Meta} from '@storybook/react';
 
-import Bill, { BillProps } from './index';
+import Bill, {BillProps} from './index';
 
 export default {
   title: 'Components/Bill',
-  component: Bill,
+  component: Bill
 } as Meta;
 
 const Template: Story<BillProps> = (args) => <Bill {...args} />;
@@ -27,7 +27,7 @@ withBillSummary.args = {
       type: 'action',
       acted_at: '2013-03-14',
       references: [],
-      action_code: 'Intro-H',
+      action_code: 'Intro-H'
     },
     {
       text: 'Referred to the House Committee on Natural Resources.',
@@ -36,7 +36,7 @@ withBillSummary.args = {
       acted_at: '2013-03-14',
       committees: ['HSII'],
       references: [],
-      action_code: 'H11100',
+      action_code: 'H11100'
     },
     {
       text:
@@ -45,7 +45,7 @@ withBillSummary.args = {
       acted_at: '2013-03-26',
       committees: ['HSII'],
       references: [],
-      action_code: '',
+      action_code: ''
     },
     {
       text: 'Subcommittee Hearings Held.',
@@ -53,7 +53,7 @@ withBillSummary.args = {
       acted_at: '2013-07-19',
       committees: ['HSII'],
       references: [],
-      action_code: '',
+      action_code: ''
     },
     {
       text:
@@ -62,7 +62,7 @@ withBillSummary.args = {
       acted_at: '2013-07-31',
       committees: ['HSII'],
       references: [],
-      action_code: '',
+      action_code: ''
     },
     {
       text: 'Committee Consideration and Mark-up Session Held.',
@@ -70,7 +70,7 @@ withBillSummary.args = {
       acted_at: '2013-07-31',
       committees: ['HSII'],
       references: [],
-      action_code: '',
+      action_code: ''
     },
     {
       text: 'Ordered to be Reported (Amended) by Voice Vote.',
@@ -79,7 +79,7 @@ withBillSummary.args = {
       acted_at: '2013-07-31',
       committees: ['HSII'],
       references: [],
-      action_code: '',
+      action_code: ''
     },
     {
       text:
@@ -88,7 +88,7 @@ withBillSummary.args = {
       acted_at: '2013-12-16',
       committees: ['HSII'],
       references: [],
-      action_code: 'H12200',
+      action_code: 'H12200'
     },
     {
       text: 'Placed on the Union Calendar, Calendar No. 215.',
@@ -98,8 +98,8 @@ withBillSummary.args = {
       acted_at: '2013-12-16',
       calendar: 'Union',
       references: [],
-      action_code: 'H12410',
-    },
+      action_code: 'H12410'
+    }
   ],
   status: 'REPORTED',
   status_at: '2013-07-31T00:00:00+00:00',
@@ -107,7 +107,7 @@ withBillSummary.args = {
   introduced_at: '2013-03-14T00:00:00+00:00',
   updated_at: '2021-02-01T22:36:36+00:00',
   created_at: '2021-02-12T01:36:31.410127+00:00',
-  by_request: false,
+  by_request: false
 };
 
 export const withBillText = Template.bind({});
@@ -126,7 +126,7 @@ withBillText.args = {
       type: 'action',
       acted_at: '2021-01-21',
       references: [],
-      action_code: 'Intro-H',
+      action_code: 'Intro-H'
     },
     {
       text:
@@ -136,7 +136,7 @@ withBillText.args = {
       acted_at: '2021-01-21',
       committees: ['HSGO'],
       references: [],
-      action_code: 'H11100',
+      action_code: 'H11100'
     },
     {
       text:
@@ -145,8 +145,8 @@ withBillText.args = {
       acted_at: '2021-01-21',
       committees: ['HSJU'],
       references: [],
-      action_code: 'H11100',
-    },
+      action_code: 'H11100'
+    }
   ],
   status: 'REFERRED',
   status_at: '2021-01-21T00:00:00+00:00',
@@ -156,7 +156,7 @@ withBillText.args = {
   created_at: '2021-02-10T13:38:01.93045+00:00',
   by_request: false,
   bill_text:
-    "\n[Congressional Bills 103th Congress]\n[From the U.S. Government Printing Office]\n[S. 1168 Introduced in Senate (IS)]\n\n103d CONGRESS\n  1st Session\n                                S. 1168\n\n  To amend the Internal Revenue Code of 1986 to provide that certain \n   deductions of school bus drivers shall be allowable in computing \n                         adjusted gross income.\n\n\n_______________________________________________________________________\n\n\n                   IN THE SENATE OF THE UNITED STATES\n\n                June 29 (legislative day, June 22), 1993\n\n Mr. Johnston introduced the following bill; which was read twice and \n                  referred to the Committee on Finance\n\n_______________________________________________________________________\n\n                                 A BILL\n\n\n \n  To amend the Internal Revenue Code of 1986 to provide that certain \n   deductions of school bus drivers shall be allowable in computing \n                         adjusted gross income.\n\n    Be it enacted by the Senate and House of Representatives of the \nUnited States of America in Congress assembled,\n\nSECTION 1. DEDUCTIONS OF SCHOOL BUS DRIVERS ALLOWABLE IN COMPUTING \n              ADJUSTED GROSS INCOME.\n\n    (a) In General.--Paragraph (2) of section 62(a) of the Internal \nRevenue Code of 1986 (relating to certain trade and business deductions \nof employees) is amended by adding at the end thereof the following new \nsubparagraph:\n                    ``(C) Certain expenses of school bus drivers.--The \n                deductions allowed by part VI (section 161 and \n                following) which consist of expenses paid or incurred \n                by the taxpayer in connection with the performance by \n                the taxpayer of services as an employee while driving a \n                school bus (as defined in section 4221(d)(7)(C)).''\n    (b) Effective Date.--The amendments made by this section shall \napply to taxable years beginning after December 31, 1992.\n\n                                 <all>\n",
+    "\n[Congressional Bills 103th Congress]\n[From the U.S. Government Printing Office]\n[S. 1168 Introduced in Senate (IS)]\n\n103d CONGRESS\n  1st Session\n                                S. 1168\n\n  To amend the Internal Revenue Code of 1986 to provide that certain \n   deductions of school bus drivers shall be allowable in computing \n                         adjusted gross income.\n\n\n_______________________________________________________________________\n\n\n                   IN THE SENATE OF THE UNITED STATES\n\n                June 29 (legislative day, June 22), 1993\n\n Mr. Johnston introduced the following bill; which was read twice and \n                  referred to the Committee on Finance\n\n_______________________________________________________________________\n\n                                 A BILL\n\n\n \n  To amend the Internal Revenue Code of 1986 to provide that certain \n   deductions of school bus drivers shall be allowable in computing \n                         adjusted gross income.\n\n    Be it enacted by the Senate and House of Representatives of the \nUnited States of America in Congress assembled,\n\nSECTION 1. DEDUCTIONS OF SCHOOL BUS DRIVERS ALLOWABLE IN COMPUTING \n              ADJUSTED GROSS INCOME.\n\n    (a) In General.--Paragraph (2) of section 62(a) of the Internal \nRevenue Code of 1986 (relating to certain trade and business deductions \nof employees) is amended by adding at the end thereof the following new \nsubparagraph:\n                    ``(C) Certain expenses of school bus drivers.--The \n                deductions allowed by part VI (section 161 and \n                following) which consist of expenses paid or incurred \n                by the taxpayer in connection with the performance by \n                the taxpayer of services as an employee while driving a \n                school bus (as defined in section 4221(d)(7)(C)).''\n    (b) Effective Date.--The amendments made by this section shall \napply to taxable years beginning after December 31, 1992.\n\n                                 <all>\n"
 };
 
 export const WithLongBillSummary = Template.bind({});
@@ -177,7 +177,7 @@ WithLongBillSummary.args = {
       type: 'action',
       acted_at: '2017-05-11',
       references: [],
-      action_code: '10000',
+      action_code: '10000'
     },
     {
       text: 'Read twice and referred to the Committee on Indian Affairs.',
@@ -186,7 +186,7 @@ WithLongBillSummary.args = {
       acted_at: '2017-05-11',
       committees: ['SLIA'],
       references: [],
-      action_code: '',
+      action_code: ''
     },
     {
       text:
@@ -196,7 +196,7 @@ WithLongBillSummary.args = {
       acted_at: '2017-05-17',
       committees: ['SLIA'],
       references: [],
-      action_code: '',
+      action_code: ''
     },
     {
       text:
@@ -206,7 +206,7 @@ WithLongBillSummary.args = {
       committee: 'Indian Affairs',
       committees: ['SLIA'],
       references: [],
-      action_code: '',
+      action_code: ''
     },
     {
       text:
@@ -217,21 +217,21 @@ WithLongBillSummary.args = {
       acted_at: '2017-10-17',
       calendar: 'Senate Legislative',
       references: [],
-      action_code: '',
+      action_code: ''
     },
     {
       text: 'Measure laid before Senate by unanimous consent.',
       type: 'action',
       acted_at: '2018-03-22',
-      references: [{ type: 'consideration', reference: 'CR S1969-1972' }],
-      action_code: '',
+      references: [{type: 'consideration', reference: 'CR S1969-1972'}],
+      action_code: ''
     },
     {
       text: 'The committee amendments withdrawn by Unanimous Consent.',
       type: 'action',
       acted_at: '2018-03-22',
       references: [],
-      action_code: '',
+      action_code: ''
     },
     {
       how: 'by Voice Vote',
@@ -245,24 +245,24 @@ WithLongBillSummary.args = {
       references: [
         {
           type: 'text of amendment in the nature of a substitute',
-          reference: 'CR S1966-1968',
-        },
+          reference: 'CR S1966-1968'
+        }
       ],
-      action_code: '',
+      action_code: ''
     },
     {
       text: 'Message on Senate action sent to the House.',
       type: 'action',
       acted_at: '2018-03-23',
       references: [],
-      action_code: '',
+      action_code: ''
     },
     {
       text: 'Received in the House.',
       type: 'action',
       acted_at: '2018-03-26T16:01:49-04:00',
       references: [],
-      action_code: 'H14000',
+      action_code: 'H14000'
     },
     {
       text:
@@ -271,7 +271,7 @@ WithLongBillSummary.args = {
       acted_at: '2018-03-26',
       committees: ['HSII'],
       references: [],
-      action_code: 'H11100',
+      action_code: 'H11100'
     },
     {
       text:
@@ -280,7 +280,7 @@ WithLongBillSummary.args = {
       acted_at: '2018-03-26',
       committees: ['HSED'],
       references: [],
-      action_code: 'H11100',
+      action_code: 'H11100'
     },
     {
       text:
@@ -289,7 +289,7 @@ WithLongBillSummary.args = {
       acted_at: '2018-03-27',
       committees: ['HSII'],
       references: [],
-      action_code: '',
+      action_code: ''
     },
     {
       text: 'Subcommittee Hearings Held.',
@@ -297,8 +297,8 @@ WithLongBillSummary.args = {
       acted_at: '2018-07-24',
       committees: ['HSII'],
       references: [],
-      action_code: '',
-    },
+      action_code: ''
+    }
   ],
   status: 'PASS_OVER:SENATE',
   status_at: '2018-03-22T00:00:00+00:00',
@@ -307,5 +307,5 @@ WithLongBillSummary.args = {
   updated_at: '2020-12-15T17:18:47+00:00',
   created_at: '2021-02-12T01:34:15.144201+00:00',
   by_request: false,
-  bill_text: null,
+  bill_text: null
 };

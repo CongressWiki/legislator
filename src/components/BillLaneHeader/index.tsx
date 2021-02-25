@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import ChamberDropdown from '@components/ChamberDropdown';
-// import BillFeedOrderDropdown from '@components/BillFeedOrderDropdown';
+// Import BillFeedOrderDropdown from '@components/BillFeedOrderDropdown';
 import OrderByToggle from '@components/OrderByToggle';
 import SearchInput from '@components/SearchInput';
 
 export type BillLaneHeaderProps = {
   /**
-   *  when a user specifies a Chamber
+   *  When a user specifies a Chamber
    */
   handleChamberSelection: (selection: string) => void;
   /**
@@ -25,7 +25,7 @@ const BillLaneHeader = ({
   handleChamberSelection,
   handleSearchInput,
   handleOrderAscToggle,
-  className,
+  className
 }: BillLaneHeaderProps) => {
   return (
     <Wrapper className={className}>

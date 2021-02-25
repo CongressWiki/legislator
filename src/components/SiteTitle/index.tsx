@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const SiteTitle = ({ title = 'USACounts' }) => {
+const SiteTitle = ({title = 'USACounts'}) => {
   return (
     <Wrapper>
       <Header>{title}</Header>

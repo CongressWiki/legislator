@@ -6,7 +6,7 @@ export type SearchInputProps = {
   className?: string;
 };
 
-const SearchInput = ({ className, handleInput }: SearchInputProps) => {
+const SearchInput = ({className, handleInput}: SearchInputProps) => {
   const handleInputChange = (event: any) => {
     handleInput(event.target.value);
   };

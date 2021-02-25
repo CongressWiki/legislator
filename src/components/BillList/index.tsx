@@ -8,13 +8,13 @@ export type BillListProps = {
   index: number;
 };
 
-const BillList = ({ paragraph, index }: BillListProps) => {
+const BillList = ({paragraph, index}: BillListProps) => {
   // Test with: http://localhost:8000/hres6-116/
 
   const deliminator = /;/g.test(paragraph) ? /;/g : /,(?!\s\d)/g;
 
-  let listStatements = paragraph.split(deliminator);
-  let lastStatement = listStatements[listStatements.length - 1] || '';
+  const listStatements = paragraph.split(deliminator);
+  const lastStatement = listStatements[listStatements.length - 1] || '';
 
   const lastStatementHasMultiSentences =
     lastStatement.split(/\.(?!e)/g).length > 1;

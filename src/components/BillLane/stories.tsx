@@ -1,11 +1,11 @@
 import React from 'react';
-import { Story, Meta } from '@storybook/react';
+import {Story, Meta} from '@storybook/react';
 
 import BillLane from './index';
 
 export default {
   title: 'Components/BillLane',
-  component: BillLane,
+  component: BillLane
 } as Meta;
 
 const Template: Story = () => (

@@ -9,7 +9,7 @@ export type BillSummaryProps = {
   summary: string;
 };
 
-export default function BillSummary({ summary }: BillSummaryProps) {
+export default function BillSummary({summary}: BillSummaryProps) {
   if (summary === 'No summary available.') {
     return <NoSummaryPlaceholder />;
   }
@@ -25,9 +25,9 @@ export default function BillSummary({ summary }: BillSummaryProps) {
   summary = summary.replace(/(Among other things, the bill)/g, '$1...\n');
 
   // If the first sentence is a statement that includes "of Act" then separate it from the regular text
-  if (/^[\S\s]*Act( of [\d]+)? [A-Z]/g.test(summary)) {
+  if (/^[\S\s]*Act( of \d+)? [A-Z]/g.test(summary)) {
     // TODO: Render in italics/bold
-    summary = summary.replace(/(^[\S\s]*Act( of [\d]+)?) (\w)/g, '$1\n $3');
+    summary = summary.replace(/(^[\S\s]*Act( of \d+)?) (\w)/g, '$1\n $3');
   }
 
   const BillParagraphs = summary

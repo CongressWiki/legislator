@@ -5,14 +5,14 @@ export type BillTitleProps = {
   title: string;
 };
 
-export default function BillTitle({ title }: BillTitleProps) {
+export default function BillTitle({title}: BillTitleProps) {
   // If title is long, reduce size
   if (title.length > 200) {
     return (
       <Wrapper
         style={{
           fontSize: 'calc(48px/5 * 3)',
-          lineHeight: 'calc(60px/5 * 3)',
+          lineHeight: 'calc(60px/5 * 3)'
         }}
       >
         {title}
@@ -25,13 +25,14 @@ export default function BillTitle({ title }: BillTitleProps) {
       <Wrapper
         style={{
           fontSize: 'calc(48px/4 * 3)',
-          lineHeight: 'calc(60px/4 * 3)',
+          lineHeight: 'calc(60px/4 * 3)'
         }}
       >
         {title}
       </Wrapper>
     );
   }
+
   return <Wrapper>{title}</Wrapper>;
 }
 

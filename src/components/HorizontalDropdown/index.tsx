@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 
 const fontFamily = 'concourse_c4';
@@ -36,7 +36,7 @@ type DropDownListContainerProps = {
 };
 
 const DropDownListContainer = styled.div<DropDownListContainerProps>`
-  width: ${(props) => (!!props.isOpen ? '180px' : '0px')};
+  width: ${(props) => (props.isOpen ? '180px' : '0px')};
   position: absolute;
   left: ${(props) => props.selectedOptionLength + 4}ch;
   margin: 0;
@@ -84,12 +84,14 @@ export type HorizontalDropdownProps = {
 const HorizontalDropdown = ({
   options,
   onOptionSelect,
-  className,
+  className
 }: HorizontalDropdownProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(options[0]);
 
-  const toggling = () => setIsOpen(!isOpen);
+  const toggling = () => {
+    setIsOpen(!isOpen);
+  };
 
   const onOptionClicked = (value: string) => () => {
     setIsOpen(false);
@@ -107,7 +109,7 @@ const HorizontalDropdown = ({
         <DropDownList>
           {options.map((option) =>
             option === selectedOption ? null : (
-              <ListItem onClick={onOptionClicked(option)} key={option}>
+              <ListItem key={option} onClick={onOptionClicked(option)}>
                 {option}
               </ListItem>
             )

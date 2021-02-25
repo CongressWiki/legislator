@@ -1,11 +1,11 @@
 import React from 'react';
-import { Story, Meta } from '@storybook/react';
+import {Story, Meta} from '@storybook/react';
 
-import Stepper, { VerticalLinearStepperProps } from './index';
+import Stepper, {VerticalLinearStepperProps} from './index';
 
 export default {
   title: 'Components/Stepper',
-  component: Stepper,
+  component: Stepper
 } as Meta;
 
 const Template: Story<VerticalLinearStepperProps> = (args) => (
@@ -31,8 +31,8 @@ Default.args = {
 
     'On agreeing to the resolution Agreed to by voice vote.',
 
-    'Motion to reconsider laid on the table Agreed to without objection.',
-  ],
+    'Motion to reconsider laid on the table Agreed to without objection.'
+  ]
 };
 
 export const EighteenSteps = Template.bind({});
@@ -72,6 +72,6 @@ EighteenSteps.args = {
 
     'Motion to reconsider laid on the table Agreed to without objection.',
 
-    "Received in the Senate and Read twice and referred to the Committee on Veterans' Affairs.",
-  ],
+    "Received in the Senate and Read twice and referred to the Committee on Veterans' Affairs."
+  ]
 };

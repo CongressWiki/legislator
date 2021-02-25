@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'gatsby';
+import {Link} from 'gatsby';
 import ThemeToggle from '@components/ThemeToggle';
 import UsaCountsLogo from '@components/UsaCountsLogo';
 
@@ -12,7 +12,7 @@ export type FeedToolbarProps = {
   className?: string;
 };
 
-const FeedToolbar = ({ className }: FeedToolbarProps) => {
+const FeedToolbar = ({className}: FeedToolbarProps) => {
   return (
     <Wrapper className={className}>
       <Link to="/">

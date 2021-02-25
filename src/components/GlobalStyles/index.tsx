@@ -1,5 +1,5 @@
 import React from 'react';
-import { createGlobalStyle } from 'styled-components';
+import {createGlobalStyle} from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
   // Font: Concourse c2 //
@@ -10,13 +10,13 @@ const GlobalStyles = createGlobalStyle`
     font-stretch: normal;
     src: url('../../fonts/Concourse/C2/concourse_c2_regular.woff2') format('woff2');
   }
-  @font-face {
+  /* @font-face {
     font-family: concourse_c2;
     font-style: italic;
     font-weight: normal;
     font-stretch: normal;
-    src: url('../../fonts/Concourse/C2/concourse_c2_italic.woff2') format('woff2');
-  }
+    src: url('../../fonts/Concourse/C2/concourse_c2_bold.woff2') format('woff2');
+  } */
 
   // Font: Concourse c3 //
   /* @font-face {
@@ -31,7 +31,7 @@ const GlobalStyles = createGlobalStyle`
     font-style: italic;
     font-weight: normal;
     font-stretch: normal;
-    src: url('../../fonts/Concourse/C3/concourse_c3_italic.woff2') format('woff2');
+    src: url('../../fonts/Concourse/C3/concourse_c3_bold.woff2') format('woff2');
   } */
 
   // Font: Concourse c4 //
@@ -42,13 +42,13 @@ const GlobalStyles = createGlobalStyle`
     font-stretch: normal;
     src: url('../../fonts/Concourse/C4/concourse_c4_regular.woff2') format('woff2');
   }
-  @font-face {
+  /* @font-face {
     font-family: concourse_c4;
     font-style: italic;
     font-weight: normal;
     font-stretch: normal;
-    src: url('../../fonts/Concourse/C4/concourse_c4_italic.woff2') format('woff2');
-  }
+    src: url('../../fonts/Concourse/C4/concourse_c4_bold.woff2') format('woff2');
+  } */
 
   // Font: Concourse c6 //
   /* @font-face {
@@ -709,7 +709,7 @@ const GlobalStyles = createGlobalStyle`
   } */
 
   // Font: Century Supra C3 //
-  /* @font-face {
+  @font-face {
     font-family: century_supra_c3;
     font-style: normal;
     font-weight: normal;
@@ -722,7 +722,7 @@ const GlobalStyles = createGlobalStyle`
     font-weight: bold;
     font-stretch: normal;
     src: url('../../fonts/Century_Supra/C3/century_supra_c3_bold.woff2') format('woff2');
-  } */
+  }
 
   // Font: Century Supra C4 //
   @font-face {

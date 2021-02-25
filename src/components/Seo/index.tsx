@@ -6,8 +6,8 @@
  */
 
 import React from 'react';
-import { Helmet } from 'react-helmet';
-import { useStaticQuery, graphql } from 'gatsby';
+import {Helmet} from 'react-helmet';
+import {useStaticQuery, graphql} from 'gatsby';
 // TODO: import image and use in commented out meta tags
 // import { ReactComponent as Thumbnail } from '@static/images/us-states.svg';
 
@@ -15,14 +15,14 @@ export type SEOProps = {
   description?: string;
   lang?: string;
   meta?: ConcatArray<
-    | { name: string; content: any; property?: undefined }
-    | { property: string; content: any; name?: undefined }
+    | {name: string; content: any; property?: undefined}
+    | {property: string; content: any; name?: undefined}
   >;
   title?: string;
 };
 
-const SEO = ({ description, lang, meta, title }: SEOProps) => {
-  const { site } = useStaticQuery(
+const SEO = ({description, lang, meta, title}: SEOProps) => {
+  const {site} = useStaticQuery(
     graphql`
       query {
         site {
@@ -43,14 +43,14 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
   return (
     <Helmet
       htmlAttributes={{
-        lang,
+        lang
       }}
       title={title}
       titleTemplate={defaultTitle ? `%s - ${defaultTitle}` : 'USACounts'}
       meta={[
         {
           name: `description`,
-          content: metaDescription,
+          content: metaDescription
         },
         // {
         //   name: `image`,
@@ -58,11 +58,11 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
         // },
         {
           property: `og:title`,
-          content: title,
+          content: title
         },
         {
           property: `og:description`,
-          content: metaDescription,
+          content: metaDescription
         },
         // {
         //   property: `og:image`,
@@ -70,24 +70,24 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
         // },
         {
           property: `og:type`,
-          content: `website`,
+          content: `website`
         },
         {
           name: `twitter:card`,
-          content: `summary`,
+          content: `summary`
         },
         {
           name: `twitter:creator`,
-          content: site.siteMetadata?.twitter || ``,
+          content: site.siteMetadata?.twitter || ``
         },
         {
           name: `twitter:title`,
-          content: title,
+          content: title
         },
         {
           name: `twitter:description`,
-          content: metaDescription,
-        },
+          content: metaDescription
+        }
         // {
         //   name: `twitter:image:src`,
         //   content: Thumbnail,
@@ -523,7 +523,7 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
       /> */}
 
       {/* Font: Century Supra */}
-      {/* <link
+      <link
         rel="preload"
         as="font"
         href="/../../fonts/Century_Supra/C3/century_supra_c3_bold.woff2"
@@ -536,7 +536,7 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
         href="/../../fonts/Century_Supra/C3/century_supra_c3_regular.woff2"
         type="font/ttf"
         crossOrigin="anonymous"
-      /> */}
+      />
       <link
         rel="preload"
         as="font"
@@ -616,13 +616,13 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
         type="font/ttf"
         crossOrigin="anonymous"
       />
-      <link
+      {/* <link
         rel="preload"
         as="font"
         href="/../../fonts/Concourse/C2/concourse_c2_bold.woff2"
         type="font/ttf"
         crossOrigin="anonymous"
-      />
+      /> */}
       {/* <link
         rel="preload"
         as="font"
@@ -644,13 +644,13 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
         type="font/ttf"
         crossOrigin="anonymous"
       />
-      <link
+      {/* <link
         rel="preload"
         as="font"
         href="/../../fonts/Concourse/C4/concourse_c4_bold.woff2"
         type="font/ttf"
         crossOrigin="anonymous"
-      />
+      /> */}
       {/* <link
         rel="preload"
         as="font"
@@ -805,7 +805,7 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
 SEO.defaultProps = {
   lang: `en`,
   meta: [],
-  description: ``,
+  description: ``
 };
 
 export default SEO;

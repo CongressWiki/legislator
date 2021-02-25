@@ -10,11 +10,11 @@ export type BillLaneFooterProps = {
 const BillLaneFooter = ({
   onClick,
   disabled,
-  className,
+  className
 }: BillLaneFooterProps) => {
   return (
     <Wrapper className={className}>
-      <LoadMoreButton onClick={onClick} disabled={disabled}>
+      <LoadMoreButton disabled={disabled} onClick={onClick}>
         load more bills
       </LoadMoreButton>
     </Wrapper>
@@ -26,7 +26,7 @@ const Wrapper = styled.div`
   overflow: hidden;
 
   margin-top: 10vh;
-  margin-bottom: 50vh;
+  margin-bottom: 25vh;
   padding-left: 15px;
   padding-right: 15px;
 

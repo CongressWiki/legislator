@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'gatsby';
+import {Link} from 'gatsby';
 import ThemeToggle from '@components/ThemeToggle';
 import SiteTitle from '@components/SiteTitle';
 
@@ -8,7 +8,7 @@ export type HeaderProps = {
   siteTitle?: string;
 };
 
-const Header = ({ siteTitle }: HeaderProps) => {
+const Header = ({siteTitle}: HeaderProps) => {
   return (
     <Wrapper>
       <ToolBar>

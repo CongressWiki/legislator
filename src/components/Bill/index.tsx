@@ -1,5 +1,5 @@
 import React from 'react';
-import type { Bill as BillData } from '../../types/hasura';
+import type {Bill as BillData} from '../../types/hasura';
 import styled from 'styled-components';
 import USStates from '@components/Country';
 import BillText from '@components/BillText';
@@ -14,7 +14,7 @@ export default function Bill({
   subject,
   title,
   bill_text,
-  summary,
+  summary
 }: BillData) {
   return (
     <BillWrapper>
@@ -37,7 +37,7 @@ export default function Bill({
 
 const BillWrapper = styled.div`
   margin-top: 1.4rem;
-  margin-bottom: 50vh;
+  margin-bottom: 25vh;
 `;
 
 const BillHeader = styled.div`
