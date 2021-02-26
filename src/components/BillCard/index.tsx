@@ -1,12 +1,17 @@
 import React from 'react';
-import type {Bill as BillDataType} from '../../types/hasura';
+import type { Bill as IBill, Official as IOfficial } from '../../types/hasura';
+
 import styled from 'styled-components';
+import Image from '@components/Image';
+import Avatar from '@components/Avatar';
 
 export type BillCardProps = Pick<
-  BillDataType,
-  'id' | 'type' | 'number' | 'title' | 'subject' | 'sponsor' | 'updated_at'
+  IBill,
+  'id' | 'type' | 'number' | 'title' | 'subject' | 'updated_at'
 > & {
   onClick?: () => void;
+  sponsorImage: any;
+  sponsor: IOfficial;
   className?: string;
 };
 
@@ -17,11 +22,16 @@ const BillCard = ({
   title,
   subject,
   sponsor,
+  sponsorImage,
   updated_at,
-  className
+  className,
 }: BillCardProps) => {
   return (
     <Wrapper className={className} onClick={onClick}>
+      <Avatar className="sponsor" party={sponsor.political_party}>
+        <Image imageData={sponsorImage} alt={sponsor.preferred_name} />
+      </Avatar>
+      <p className="sponsorName">{sponsor.preferred_name}</p>
       <p className="bill-number">{`${type.toUpperCase()} ${number}`}</p>
 
       <p className="bill-title">{title}</p>
@@ -37,15 +47,18 @@ const Wrapper = styled.div`
   max-width: none;
   width: 100%;
   margin: 0;
-  padding: 1em;
+  padding-top: 0.75rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: 50px 1fr 50px;
+  grid-template-columns: 62px repeat(9, 1fr);
+  grid-template-rows: 30px 30px 1fr 50px;
   grid-template-areas:
-    '...... ...... id     ......    ......'
-    'center center center center    center'
-    '...... ...... ...... timestamp timestamp';
+    'sponsor sponsorName sponsorName sponsorName sponsorName sponsorName    sponsorName    sponsorName   sponsorName    sponsorName'
+    'sponsor ........... ........... id          id          id             id             ......   ......    ......'
+    'sponsor title       title       title       title       title          title          title    title     title'
+    'sponsor ......      ......      ......      ......      timestamp      timestamp      timestamp timestamp timestamp';
 
   overflow: hidden;
 
@@ -53,11 +66,11 @@ const Wrapper = styled.div`
   border-radius: 0;
   border-bottom: solid thin var(--color-gray300);
 
-  text-align: center;
-  align-items: center;
+  text-align: left;
+  align-items: start;
 
   p {
-    font-family: century_supra_c4;
+    font-family: century_supra_c3;
     margin: 0;
   }
 
@@ -66,23 +79,40 @@ const Wrapper = styled.div`
     background-color: var(--color-backgroundLite);
   }
 
+  .sponsor {
+    grid-area: sponsor;
+    align-self: start;
+    margin-right: 0.75rem;
+  }
+
+  .sponsorName {
+    grid-area: sponsorName;
+  }
+
   .bill-number {
     grid-area: id;
-  }
-  .bill-title {
-    grid-area: center;
-    max-width: min(70ch, calc(100% - 64px));
+    align-self: start;
     justify-self: center;
-    align-self: flex-start;
-    text-align: left;
-    font-size: 1.2em;
-    letter-spacing: -0.063px;
+    font-weight: 700;
   }
+
+  .bill-title {
+    grid-area: title;
+    max-width: min(70ch);
+    align-self: start;
+    font-size: 1rem;
+    letter-spacing: -0.063px;
+
+    @media (max-width: 450px) {
+      font-size: 1rem;
+    }
+  }
+
   .bill-timestamp {
     grid-area: timestamp;
     text-align: right;
-    align-self: flex-end;
-    font-size: 0.8em;
+    align-self: center;
+    font-size: 0.8rem;
     color: hsl(0deg, 0%, 70%);
     font-weight: 400;
   }

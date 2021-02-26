@@ -34,17 +34,17 @@ module.exports = {
         plugins: [
           require.resolve('@babel/plugin-proposal-class-properties'),
           // use babel-plugin-remove-graphql-queries to remove static queries from components when rendering in storybook
-          require.resolve('babel-plugin-remove-graphql-queries'),
+          // require.resolve('babel-plugin-remove-graphql-queries'),
 
           // The below might be useful for the future. See https://github.com/gatsbyjs/gatsby/issues/26099#issuecomment-785821013
-          // [
-          //   require.resolve('babel-plugin-remove-graphql-queries'),
-          //   {
-          //     stage:
-          //       config.mode === `development` ? 'develop-html' : 'build-html',
-          //     staticQueryDir: 'page-data/sq/d',
-          //   },
-          // ],
+          [
+            require.resolve('babel-plugin-remove-graphql-queries'),
+            {
+              stage:
+                config.mode === `development` ? 'develop-html' : 'build-html',
+              staticQueryDir: 'page-data/sq/d',
+            },
+          ],
         ],
       },
     });

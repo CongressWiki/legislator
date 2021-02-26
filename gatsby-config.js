@@ -3,6 +3,14 @@ const config = require('./data/config');
 const siteAddress = new URL(config.url);
 const SITE_S3_BUCKET = 'usacounts.com';
 const IMAGES_S3_BUCKET = 'democracy-images';
+const CONGRESS_IMAGES_PATH = path.resolve(
+  __dirname,
+  '..',
+  'scrapers',
+  'images',
+  'congress',
+  'original'
+);
 
 module.exports = {
   siteMetadata: {
@@ -25,18 +33,9 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `congressImages`,
-        path: path.resolve(
-          __dirname,
-          '..',
-          'scrapers',
-          'images',
-          'congress',
-          'original'
-        ),
+        path: `${__dirname}/../scrapers/images/congress/original/`,
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -98,21 +97,21 @@ module.exports = {
     'gatsby-plugin-svgr',
     // To learn more, visit: https://gatsby.dev/offline // this (optional) plugin enables Progressive Web App + Offline functionality
     `gatsby-plugin-offline`,
-    {
-      resolve: `gatsby-plugin-sharp`,
-      options: {
-        // Available options and their defaults:
-        base64Width: 20,
-        forceBase64Format: `jpg`, // valid formats: png,jpg,webp
-        useMozJpeg: process.env.GATSBY_JPEG_ENCODER === `MOZJPEG`,
-        stripMetadata: true,
-        defaultQuality: 100,
-        failOnError: true,
-      },
-    },
-    {
-      resolve: `gatsby-transformer-sharp`,
-    },
+    // {
+    //   resolve: `gatsby-plugin-sharp`,
+    //   options: {
+    //     // Available options and their defaults:
+    //     base64Width: 20,
+    //     forceBase64Format: `jpg`, // valid formats: png,jpg,webp
+    //     useMozJpeg: process.env.GATSBY_JPEG_ENCODER === `MOZJPEG`,
+    //     stripMetadata: true,
+    //     defaultQuality: 100,
+    //     failOnError: true,
+    //   },
+    // },
+    `gatsby-plugin-image`,
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
     {
       resolve: `gatsby-plugin-canonical-urls`,
       options: {

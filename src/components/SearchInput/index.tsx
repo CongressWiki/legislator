@@ -6,7 +6,7 @@ export type SearchInputProps = {
   className?: string;
 };
 
-const SearchInput = ({className, handleInput}: SearchInputProps) => {
+const SearchInput = ({ className, handleInput }: SearchInputProps) => {
   const handleInputChange = (event: any) => {
     handleInput(event.target.value);
   };
@@ -40,7 +40,7 @@ const StyledInput = styled.input`
   background-color: var(--color-background);
   text-align: center;
   font-family: concourse_c4;
-  font-size: 1.4em;
+  font-size: 1.4rem;
   color: var(--color-text);
 
   ::placeholder {

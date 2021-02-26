@@ -1,44 +1,29 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import BillCard, { BillCardProps } from './index';
+import styled from 'styled-components';
+
+import Image, { ImageProps } from './index';
 
 export default {
-  title: 'Components/BillCard',
-  component: BillCard,
+  title: 'Components/Image',
+  component: Image,
 } as Meta;
 
-const Template: Story<BillCardProps> = (args) => <BillCard {...args} />;
+const ExampleContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const Template: Story<ImageProps> = (args) => (
+  <ExampleContainer>
+    <Image {...args} />
+  </ExampleContainer>
+);
 
 export const Default = Template.bind({});
 Default.args = {
-  id: 'hr1170-113',
-  number: '1170',
-  title:
-    'To direct the Secretary of the Interior, acting through the Bureau of Land Management and the Bureau of Reclamation, to convey, by quitclaim deed, to the City of Fernley, Nevada, all right, title, and interest of the United States, to any Federal land within that city that is under the jurisdiction of either of those agencies.',
-  subject: 'Public lands and natural resources',
-  sponsor: {
-    id: 'K000367',
-    first_name: 'Amy',
-    last_name: 'Klobuchar',
-    political_party: 'Democrat',
-    is_active: true,
-    position: 'senator',
-    preferred_name: 'Amy Klobuchar',
-    rank: 'senior',
-    senate_terms: 3,
-    state: 'MN',
-    term_end_at: '2025-01-03T00:00:00+00:00',
-    term_start_at: '2019-01-03T00:00:00+00:00',
-    updated_at: '2021-02-25T15:45:44.131693+00:00',
-    born_at: '1960-05-25T00:00:00+00:00',
-    created_at: '2021-02-01T17:20:56.962892+00:00',
-    district: null,
-    gender: 'F',
-    house_terms: 0,
-  },
-  type: 'hr',
-  updated_at: '2021-02-01T22:36:36+00:00',
-  sponsorImage: {
+  imageData: {
     extension: 'jpg',
     name: 'B000444',
     modifiedTime: '2021-02-11T21:45:05.944Z',

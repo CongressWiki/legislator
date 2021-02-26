@@ -1,14 +1,14 @@
 import React from 'react';
-import {Story, Meta} from '@storybook/react';
+import { Story, Meta } from '@storybook/react';
 import styled from 'styled-components';
-import BillCard, {BillCardProps} from '@components/BillCard';
+import BillCard, { BillCardProps } from '@components/BillCard';
 import Capital from '@components/Capital';
 
-import HomeLayout, {HomeLayoutProps} from './index';
+import HomeLayout, { HomeLayoutProps } from './index';
 
 export default {
   title: 'Components/Layouts/Home',
-  component: HomeLayout
+  component: HomeLayout,
 } as Meta;
 
 const ExampleBillWrapper = styled.div`
@@ -19,7 +19,7 @@ const ExampleBill = styled(BillCard)`
   max-width: none;
   width: 100%;
   margin: 0;
-  padding-bottom: 0.8em;
+  padding-bottom: 0.8rem;
 
   border: 0;
   border-radius: 0;
@@ -38,7 +38,7 @@ const ExampleBillProps: BillCardProps = {
   subject: 'Racial Justice',
   type: 'hr',
   sponsor: 'A12345678',
-  updated_at: '2020-09-30T05:52:20+00:00'
+  updated_at: '2020-09-30T05:52:20+00:00',
 };
 
 const BillLane = styled.div`
@@ -55,7 +55,7 @@ const BillLane = styled.div`
   align-content: start;
   padding-top: 8px;
 
-  box-shadow: 0.2em;
+  box-shadow: 0.2rem;
   border-radius: 10px;
   border: solid thin var(--color-gray300);
   background-color: hsl(229deg, 78%, 16%);
@@ -87,7 +87,7 @@ const LaneTitleWrapper = styled.div`
 `;
 
 const LaneTitle = styled.h3`
-  font-family: advocate_c45_mid;
+  font-family: advocate_c43_mid;
   color: var(--color-secondary);
 `;
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const SiteTitle = ({title = 'USACounts'}) => {
+const SiteTitle = ({ title = 'USACounts' }) => {
   return (
     <Wrapper>
       <Header>{title}</Header>
@@ -16,7 +16,7 @@ const Header = styled.h1`
   display: inline-block;
 
   font-family: advocate_c43_mid;
-  font-size: 4em;
+  font-size: 4rem;
 
   color: var(--color-secondary);
 `;

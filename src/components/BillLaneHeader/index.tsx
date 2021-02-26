@@ -25,7 +25,7 @@ const BillLaneHeader = ({
   handleChamberSelection,
   handleSearchInput,
   handleOrderAscToggle,
-  className
+  className,
 }: BillLaneHeaderProps) => {
   return (
     <Wrapper className={className}>
@@ -40,6 +40,7 @@ const BillLaneHeader = ({
 };
 
 const Wrapper = styled.div`
+  z-index: 9999;
   width: 100%;
   height: 40.5px;
   background-color: var(--color-background);

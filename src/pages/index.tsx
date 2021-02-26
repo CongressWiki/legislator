@@ -1,35 +1,61 @@
-import React, {useState} from 'react';
-import {graphql, useStaticQuery, navigate} from 'gatsby';
+import React, { useState } from 'react';
+import { graphql, useStaticQuery, navigate } from 'gatsby';
 import Layout from '@components/Layouts/Common';
-import type {Bill as BillDataType} from '../types/hasura';
+import type { Bill as IBill, Official as IOfficial } from '../types/hasura';
 import styled from 'styled-components';
 import SEO from '@components/Seo';
 import BillLane from '@components/BillLane';
 import BillLaneHeader from '@components/BillLaneHeader';
 import BillLaneFooter from '@components/BillLaneFooter';
+import type { IGatsbyImageData } from 'gatsby-plugin-image';
 
 import BillCard from '@components/BillCard';
 
-export type HomeQuery = {
+export type BillsAndCongressImagesQuery = {
   hasura: {
-    bills_aggregate: {
-      nodes: BillDataType[];
+    bills: {
+      nodes: IBill[];
       aggregate: {
         count: number;
       };
     };
+    officials: IOfficial[];
   };
-
-  allFile: Record<string, any>;
+  congressImages: {
+    nodes: Array<{
+      extension: string;
+      name: string;
+      modifiedTime: string;
+      childImageSharp: {
+        gatsbyImageData: IGatsbyImageData;
+      };
+    }>;
+  };
 };
 
 export default function Home() {
-  const data: HomeQuery = useStaticQuery(graphql`
-    query billAndImageQuery {
+  const data: BillsAndCongressImagesQuery = useStaticQuery(graphql`
+    query BillsAndElectedOfficialsAndCongressImages {
+      congressImages: allFile(
+        filter: { sourceInstanceName: { eq: "congressImages" } }
+      ) {
+        nodes {
+          extension
+          name
+          modifiedTime
+          childImageSharp {
+            gatsbyImageData(
+              width: 300
+              placeholder: BLURRED
+              formats: [AUTO, WEBP, AVIF]
+            )
+          }
+        }
+      }
       hasura {
-        bills_aggregate(
-          order_by: {updated_at: desc}
-          where: {summary: {_neq: "No summary available."}}
+        bills: bills_aggregate(
+          order_by: { updated_at: desc }
+          where: { summary: { _neq: "No summary available." } }
         ) {
           nodes {
             id
@@ -52,11 +78,35 @@ export default function Home() {
             count
           }
         }
+        officials: elected_officials(where: { is_active: { _eq: true } }) {
+          id
+          first_name
+          last_name
+          political_party
+          is_active
+          position
+          preferred_name
+          rank
+          senate_terms
+          state
+          term_end_at
+          term_start_at
+          updated_at
+          born_at
+          created_at
+          district
+          gender
+          house_terms
+        }
       }
     }
   `);
 
-  const bills = data.hasura.bills_aggregate.nodes;
+  const images = data.congressImages.nodes;
+  const bills = data.hasura.bills.nodes;
+  const officials = data.hasura.officials;
+
+  console.log({ officials });
 
   const [billTypes, setBillTypes] = useState<string[]>([]);
   const [searchBy, setSearchBy] = useState('');
@@ -67,7 +117,7 @@ export default function Home() {
   const CHAMBER_BILL_TYPES = {
     House: ['hr', 'hres', 'hconres', 'hjres'],
     Senate: ['s', 'sres', 'sconres', 'sjres'],
-    All: []
+    All: [],
   };
 
   const handleChamberSelection = (option: string) => {
@@ -123,6 +173,10 @@ export default function Home() {
                 navigate(`${bill.congress}/${bill.type}${bill.number}`)
               }
               {...bill}
+              sponsorImage={images.find((image) => image.name === bill.sponsor)}
+              sponsor={officials.find(
+                (official) => official.id === bill.sponsor
+              )}
             />
           ))}
         </BillLane>
@@ -140,7 +194,7 @@ const NumberOfBills = styled.div`
   position: fixed;
   bottom: 1rem;
   right: 1rem;
-  font-size: 1.4em;
+  font-size: 1.4rem;
   font-family: concourse_c2;
   color: var(--color-gray500);
 

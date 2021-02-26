@@ -1,36 +1,30 @@
 import React from 'react';
-import {useStaticQuery, graphql} from 'gatsby';
-import Img from 'gatsby-image';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+import Candidate from '@components/Candidate';
 
 /*
- * This component is built using `gatsby-image` to automatically serve optimized
- * images with lazy loading and reduced file sizes. The image is loaded using a
- * `useStaticQuery`, which allows us to load the image from directly within this
- * component, rather than having to pass the image data down from pages.
+ * This component is built using the new `gatsby-plugin-image` (beta) to automatically serve optimized
+ * images with lazy loading and reduced file sizes. The image is loaded by passing the image data down from pages.
  *
  * For more information, see the docs:
- * - `gatsby-image`: https://gatsby.dev/gatsby-image
- * - `useStaticQuery`: https://www.gatsbyjs.com/docs/use-static-query/
+ * - `gatsby-plugin-image`: https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-plugin-image/
+ * - how to: https://www.gatsbyjs.com/docs/how-to/images-and-media/using-gatsby-plugin-image/
  */
 
-const Image = () => {
-  const data = useStaticQuery(graphql`
-    query {
-      placeholderImage: file(relativePath: {eq: "gatsby-astronaut.png"}) {
-        childImageSharp {
-          fluid(maxWidth: 300) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-    }
-  `);
+export type ImageProps = {
+  imageData: any;
+  alt: string;
+  className?: string;
+};
 
-  if (!data?.placeholderImage?.childImageSharp?.fluid) {
-    return <div>Picture not found</div>;
+const Image = ({ imageData, alt, className }: ImageProps) => {
+  const image = getImage(imageData);
+
+  if (!image) {
+    return <Candidate className={className} />;
   }
 
-  return <Img fluid={data.placeholderImage.childImageSharp.fluid} />;
+  return <GatsbyImage image={image} alt={alt} className={className} />;
 };
 
 export default Image;

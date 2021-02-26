@@ -1,5 +1,5 @@
 import React from 'react';
-import {createGlobalStyle} from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
   // Font: Concourse c2 //
@@ -371,7 +371,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   // Font: Advocate mid C45 //
-  @font-face {
+  /* @font-face {
     font-family: advocate_c45_mid;
     font-style: normal;
     font-weight: normal;
@@ -384,7 +384,7 @@ const GlobalStyles = createGlobalStyle`
     font-weight: bold;
     font-stretch: normal;
     src: url('../../fonts/Advocate/Mid/C45/advocate_c45_mid_bold.woff2') format('woff2');
-  }
+  } */
 
   // Font: Advocate mid C51 //
   /* @font-face {
@@ -725,7 +725,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   // Font: Century Supra C4 //
-  @font-face {
+  /* @font-face {
     font-family: century_supra_c4;
     font-style: normal;
     font-weight: normal;
@@ -738,7 +738,7 @@ const GlobalStyles = createGlobalStyle`
     font-weight: bold;
     font-stretch: normal;
     src: url('../../fonts/Century_Supra/C4/century_supra_c4_bold.woff2') format('woff2');
-  }
+  } */
 
   // Font: Century Supra t3 //
   @font-face {
