@@ -13,6 +13,10 @@ const BillLane = styled.div`
   border-radius: 0;
   border-left: solid thin var(--color-gray300);
   border-right: solid thin var(--color-gray300);
+
+  @media (max-width: 600px) {
+    border: none;
+  }
 `;
 
 export default BillLane;

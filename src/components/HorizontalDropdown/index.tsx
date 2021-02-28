@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const fontFamily = 'concourse_c4';
@@ -43,7 +43,7 @@ const DropDownListContainer = styled.div<DropDownListContainerProps>`
   padding: 0;
 
   overflow: hidden;
-  transition: all 300ms ease-in;
+  transition: all 100ms ease-in;
 `;
 
 const DropDownList = styled.ul`
@@ -84,7 +84,7 @@ export type HorizontalDropdownProps = {
 const HorizontalDropdown = ({
   options,
   onOptionSelect,
-  className
+  className,
 }: HorizontalDropdownProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(options[0]);

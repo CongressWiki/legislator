@@ -5,42 +5,21 @@ export type BillTitleProps = {
   title: string;
 };
 
-export default function BillTitle({ title }: BillTitleProps) {
-  // If title is long, reduce size
-  // if (title.length > 200) {
-  //   return (
-  //     <Wrapper
-  //       style={{
-  //         fontSize: 'calc(48px/5 * 3)',
-  //         lineHeight: 'calc(60px/5 * 3)',
-  //       }}
-  //     >
-  //       {title}
-  //     </Wrapper>
-  //   );
-  // }
+const BillTitle = ({ title }: BillTitleProps) => {
+  return <Wrapper title={title}>{title}</Wrapper>;
+};
 
-  // if (title.length > 100) {
-  //   return (
-  //     <Wrapper
-  //       style={{
-  //         fontSize: 'calc(48px/4 * 3)',
-  //         lineHeight: 'calc(60px/4 * 3)',
-  //       }}
-  //     >
-  //       {title}
-  //     </Wrapper>
-  //   );
-  // }
-
-  return <Wrapper>{title}</Wrapper>;
-}
-
-const Wrapper = styled.h2`
-  /* font-size: 1.8rem; */
-  line-height: 2rem;
-  letter-spacing: -0.011rem;
-  font-weight: 400;
+const Wrapper = styled.h1<BillTitleProps>`
+  font-size: ${(props) => (props.title.length < 100 ? '3rem' : '1.8rem')};
+  /* line-height: 2rem; */
+  /* letter-spacing: -0.011rem; */
+  font-weight: 700;
   padding-top: 26px;
   margin: 0;
+
+  @media (max-width: 450px) {
+    font-size: ${(props) => (props.title.length < 100 ? '2rem' : '1.3rem')};
+  }
 `;
+
+export default BillTitle;

@@ -819,11 +819,17 @@ const GlobalStyles = createGlobalStyle`
     color: var(--color-text);
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
+
+    @media (max-width: 600px) {
+      margin: 0;
+    }
   }
 
   a {
     color: var(--color-secondary);
   }
+
+
 
 
 `;

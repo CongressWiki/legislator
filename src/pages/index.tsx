@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { graphql, useStaticQuery, navigate } from 'gatsby';
-import Layout from '@components/Layouts/Common';
+import Layout from '@components/Layouts/BillFeed';
 import type { Bill as IBill, Official as IOfficial } from '../types/hasura';
 import styled from 'styled-components';
 import SEO from '@components/Seo';
@@ -14,12 +14,11 @@ import BillCard from '@components/BillCard';
 export type BillsAndCongressImagesQuery = {
   hasura: {
     bills: {
-      nodes: IBill[];
+      nodes: Array<IBill & { elected_official_sponsor: IOfficial }>;
       aggregate: {
         count: number;
       };
     };
-    officials: IOfficial[];
   };
   congressImages: {
     nodes: Array<{
@@ -35,7 +34,7 @@ export type BillsAndCongressImagesQuery = {
 
 export default function Home() {
   const data: BillsAndCongressImagesQuery = useStaticQuery(graphql`
-    query BillsAndElectedOfficialsAndCongressImages {
+    query BillsAndCongressImages {
       congressImages: allFile(
         filter: { sourceInstanceName: { eq: "congressImages" } }
       ) {
@@ -53,16 +52,14 @@ export default function Home() {
         }
       }
       hasura {
-        bills: bills_aggregate(
-          order_by: { updated_at: desc }
-          where: { summary: { _neq: "No summary available." } }
-        ) {
+        bills: bills_aggregate(order_by: { updated_at: desc }) {
           nodes {
             id
             number
             title
             subject
             summary
+            bill_text
             sponsor
             congress
             actions
@@ -73,30 +70,30 @@ export default function Home() {
             updated_at
             created_at
             by_request
+            elected_official_sponsor {
+              born_at
+              created_at
+              district
+              first_name
+              gender
+              house_terms
+              id
+              is_active
+              last_name
+              political_party
+              position
+              preferred_name
+              rank
+              senate_terms
+              state
+              term_end_at
+              term_start_at
+              updated_at
+            }
           }
           aggregate {
             count
           }
-        }
-        officials: elected_officials(where: { is_active: { _eq: true } }) {
-          id
-          first_name
-          last_name
-          political_party
-          is_active
-          position
-          preferred_name
-          rank
-          senate_terms
-          state
-          term_end_at
-          term_start_at
-          updated_at
-          born_at
-          created_at
-          district
-          gender
-          house_terms
         }
       }
     }
@@ -104,15 +101,13 @@ export default function Home() {
 
   const images = data.congressImages.nodes;
   const bills = data.hasura.bills.nodes;
-  const officials = data.hasura.officials;
-
-  console.log({ officials });
 
   const [billTypes, setBillTypes] = useState<string[]>([]);
   const [searchBy, setSearchBy] = useState('');
   const [orderByAsc, setOrderByAsc] = useState(false);
-  const [limit, setLimit] = useState(10);
-  const [offset, setOffset] = useState(0);
+  const limitIncrement = 10;
+  const [limit, setLimit] = useState(limitIncrement);
+  const offset = 0;
 
   const CHAMBER_BILL_TYPES = {
     House: ['hr', 'hres', 'hconres', 'hjres'],
@@ -143,18 +138,17 @@ export default function Home() {
     const matchesSearchBy =
       !searchBy ||
       bill.id.toLowerCase().includes(searchBy) ||
+      bill.elected_official_sponsor.preferred_name
+        .toLocaleLowerCase()
+        .includes(searchBy) ||
       bill.title.toLowerCase().includes(searchBy);
 
     if (isBillType && matchesSearchBy) return bill;
   });
 
-  if (orderByAsc) {
-    filteredBills.reverse();
-  }
+  if (orderByAsc) filteredBills.reverse();
 
-  const loadMore = () => {
-    setLimit(limit + 10);
-  };
+  const loadMore = () => setLimit(limit + limitIncrement);
 
   return (
     <>
@@ -174,9 +168,6 @@ export default function Home() {
               }
               {...bill}
               sponsorImage={images.find((image) => image.name === bill.sponsor)}
-              sponsor={officials.find(
-                (official) => official.id === bill.sponsor
-              )}
             />
           ))}
         </BillLane>
@@ -194,11 +185,18 @@ const NumberOfBills = styled.div`
   position: fixed;
   bottom: 1rem;
   right: 1rem;
-  font-size: 1.4rem;
+  font-size: 1rem;
   font-family: concourse_c2;
-  color: var(--color-gray500);
+  color: var(--color-text);
 
-  @media (max-width: 920px) {
-    width: 50px;
-  }
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-shrink: 0;
+  background-color: var(--color-gray300);
 `;

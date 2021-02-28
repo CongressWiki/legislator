@@ -1,5 +1,5 @@
 import React from 'react';
-import type {Bill as BillData} from '../../types/hasura';
+import type { Bill as BillData } from '../../types/hasura';
 import styled from 'styled-components';
 import USStates from '@components/Country';
 import BillText from '@components/BillText';
@@ -14,7 +14,7 @@ export default function Bill({
   subject,
   title,
   bill_text,
-  summary
+  summary,
 }: BillData) {
   return (
     <BillWrapper>
@@ -48,10 +48,12 @@ const BillHeader = styled.div`
 
 const BillId = styled.h2`
   margin: 0;
-  font-weight: normal;
+  font-weight: 600;
+  white-space: nowrap;
 `;
 
-const BillSubject = styled.h2`
+const BillSubject = styled.h3`
   margin: 0;
-  font-weight: normal;
+  font-weight: 400;
+  text-align: right;
 `;

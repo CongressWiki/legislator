@@ -11,8 +11,8 @@ export type BillCardProps = Pick<
 > & {
   onClick?: () => void;
   sponsorImage: any;
-  sponsor: IOfficial;
   className?: string;
+  elected_official_sponsor: IOfficial;
 };
 
 const BillCard = ({
@@ -21,17 +21,23 @@ const BillCard = ({
   number,
   title,
   subject,
-  sponsor,
+  elected_official_sponsor,
   sponsorImage,
   updated_at,
   className,
 }: BillCardProps) => {
   return (
     <Wrapper className={className} onClick={onClick}>
-      <Avatar className="sponsor" party={sponsor.political_party}>
-        <Image imageData={sponsorImage} alt={sponsor.preferred_name} />
+      <Avatar
+        className="sponsor"
+        party={elected_official_sponsor.political_party}
+      >
+        <Image
+          imageData={sponsorImage}
+          alt={elected_official_sponsor.preferred_name}
+        />
       </Avatar>
-      <p className="sponsorName">{sponsor.preferred_name}</p>
+      <p className="sponsorName">{elected_official_sponsor.preferred_name}</p>
       <p className="bill-number">{`${type.toUpperCase()} ${number}`}</p>
 
       <p className="bill-title">{title}</p>
@@ -55,10 +61,10 @@ const Wrapper = styled.div`
   grid-template-columns: 62px repeat(9, 1fr);
   grid-template-rows: 30px 30px 1fr 50px;
   grid-template-areas:
-    'sponsor sponsorName sponsorName sponsorName sponsorName sponsorName    sponsorName    sponsorName   sponsorName    sponsorName'
-    'sponsor ........... ........... id          id          id             id             ......   ......    ......'
-    'sponsor title       title       title       title       title          title          title    title     title'
-    'sponsor ......      ......      ......      ......      timestamp      timestamp      timestamp timestamp timestamp';
+    'sponsor sponsorName sponsorName sponsorName sponsorName sponsorName sponsorName sponsorName   sponsorName    sponsorName'
+    'sponsor ........... ........... id          id          id          id          ......   ......    ......'
+    'sponsor title       title       title       title       title       title       title    title     title'
+    'sponsor ......      ......      ......      ......      timestamp   timestamp   timestamp timestamp timestamp';
 
   overflow: hidden;
 
@@ -70,7 +76,7 @@ const Wrapper = styled.div`
   align-items: start;
 
   p {
-    font-family: century_supra_c3;
+    font-family: century_supra_t3;
     margin: 0;
   }
 
@@ -87,6 +93,8 @@ const Wrapper = styled.div`
 
   .sponsorName {
     grid-area: sponsorName;
+    font-weight: 300;
+    font-size: 0.9rem;
   }
 
   .bill-number {
@@ -100,7 +108,7 @@ const Wrapper = styled.div`
     grid-area: title;
     max-width: min(70ch);
     align-self: start;
-    font-size: 1rem;
+    font-size: 1.1rem;
     letter-spacing: -0.063px;
 
     @media (max-width: 450px) {

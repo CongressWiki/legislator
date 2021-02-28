@@ -8,7 +8,7 @@ export type BillListProps = {
   index: number;
 };
 
-const BillList = ({paragraph, index}: BillListProps) => {
+const BillList = ({ paragraph, index }: BillListProps) => {
   // Test with: http://localhost:8000/hres6-116/
 
   const deliminator = /;/g.test(paragraph) ? /;/g : /,(?!\s\d)/g;
@@ -55,5 +55,5 @@ export default BillList;
 
 const UnorderedList = styled.ul`
   margin: 0;
-  padding-top: 8;
+  padding-top: 0.5rem;
 `;
