@@ -12,7 +12,7 @@ export type BillCardProps = Pick<
   onClick?: () => void;
   sponsorImage: any;
   className?: string;
-  elected_official_sponsor: IOfficial;
+  sponsor: IOfficial;
 };
 
 const BillCard = ({
@@ -21,23 +21,17 @@ const BillCard = ({
   number,
   title,
   subject,
-  elected_official_sponsor,
+  sponsor,
   sponsorImage,
   updated_at,
   className,
 }: BillCardProps) => {
   return (
     <Wrapper className={className} onClick={onClick}>
-      <Avatar
-        className="sponsor"
-        party={elected_official_sponsor.political_party}
-      >
-        <Image
-          imageData={sponsorImage}
-          alt={elected_official_sponsor.preferred_name}
-        />
+      <Avatar className="sponsor" party={sponsor.political_party}>
+        <Image imageData={sponsorImage} alt={sponsor.preferred_name} />
       </Avatar>
-      <p className="sponsorName">{elected_official_sponsor.preferred_name}</p>
+      <p className="sponsorName">{sponsor.preferred_name}</p>
       <p className="bill-number">{`${type.toUpperCase()} ${number}`}</p>
 
       <p className="bill-title">{title}</p>

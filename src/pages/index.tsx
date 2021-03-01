@@ -14,7 +14,7 @@ import BillCard from '@components/BillCard';
 export type BillsAndCongressImagesQuery = {
   hasura: {
     bills: {
-      nodes: Array<IBill & { elected_official_sponsor: IOfficial }>;
+      nodes: Array<IBill & { sponsor: IOfficial }>;
       aggregate: {
         count: number;
       };
@@ -52,7 +52,10 @@ export default function Home() {
         }
       }
       hasura {
-        bills: bills_aggregate(order_by: { updated_at: desc }) {
+        bills: bills_aggregate(
+          order_by: { updated_at: desc }
+          where: { summary: { _neq: "No summary available." } }
+        ) {
           nodes {
             id
             number
@@ -60,9 +63,7 @@ export default function Home() {
             subject
             summary
             bill_text
-            sponsor
             congress
-            actions
             status
             status_at
             type
@@ -70,25 +71,42 @@ export default function Home() {
             updated_at
             created_at
             by_request
-            elected_official_sponsor {
+            sponsor {
+              id
               born_at
               created_at
               district
               first_name
               gender
               house_terms
-              id
               is_active
               last_name
               political_party
               position
               preferred_name
+              president_terms
               rank
               senate_terms
               state
               term_end_at
               term_start_at
               updated_at
+              vice_president_terms
+            }
+            actions {
+              acted_at
+              action_code
+              how
+              id
+              references
+              result
+              roll
+              status
+              suspension
+              text
+              type
+              vote_type
+              where
             }
           }
           aggregate {
@@ -138,9 +156,7 @@ export default function Home() {
     const matchesSearchBy =
       !searchBy ||
       bill.id.toLowerCase().includes(searchBy) ||
-      bill.elected_official_sponsor.preferred_name
-        .toLocaleLowerCase()
-        .includes(searchBy) ||
+      bill.sponsor.preferred_name.toLocaleLowerCase().includes(searchBy) ||
       bill.title.toLowerCase().includes(searchBy);
 
     if (isBillType && matchesSearchBy) return bill;
@@ -167,7 +183,9 @@ export default function Home() {
                 navigate(`${bill.congress}/${bill.type}${bill.number}`)
               }
               {...bill}
-              sponsorImage={images.find((image) => image.name === bill.sponsor)}
+              sponsorImage={images.find(
+                (image) => image.name === bill.sponsor.id
+              )}
             />
           ))}
         </BillLane>

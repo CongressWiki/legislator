@@ -19,42 +19,60 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const result = await graphql(`
     query BillQuery {
       hasura {
-        bills(order_by: { updated_at: desc }) {
+        bills(
+          order_by: { updated_at: desc }
+          where: { summary: { _neq: "No summary available." } }
+        ) {
           id
           number
           title
           subject
           summary
-          sponsor
+          bill_text
           congress
-          actions
           status
           status_at
           type
           introduced_at
-          created_at
           updated_at
-          bill_text
+          created_at
           by_request
-          elected_official_sponsor {
+          sponsor {
+            id
             born_at
             created_at
             district
             first_name
             gender
             house_terms
-            id
             is_active
             last_name
             political_party
             position
             preferred_name
+            president_terms
             rank
             senate_terms
             state
             term_end_at
             term_start_at
             updated_at
+            vice_president_terms
+          }
+          actions {
+            acted_at
+            action_code
+            how
+            id
+            references
+            result
+            roll
+            status
+            suspension
+            text
+            type
+            vote_type
+            where
           }
         }
       }
