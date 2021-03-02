@@ -1,5 +1,7 @@
 import React from 'react';
 import type { Bill as IBill, Official as IOfficial } from '../../types/hasura';
+import { navigate } from 'gatsby';
+import Button from '@components/Button';
 
 import styled from 'styled-components';
 import Image from '@components/Image';
@@ -7,7 +9,14 @@ import Avatar from '@components/Avatar';
 
 export type BillCardProps = Pick<
   IBill,
-  'id' | 'type' | 'number' | 'title' | 'subject' | 'updated_at'
+  | 'id'
+  | 'type'
+  | 'number'
+  | 'title'
+  | 'subject'
+  | 'updated_at'
+  | 'congress'
+  | 'summary'
 > & {
   onClick?: () => void;
   sponsorImage: any;
@@ -20,11 +29,13 @@ const BillCard = ({
   type,
   number,
   title,
+  congress,
   subject,
   sponsor,
   sponsorImage,
   updated_at,
   className,
+  summary,
 }: BillCardProps) => {
   return (
     <Wrapper className={className} onClick={onClick}>
@@ -37,6 +48,15 @@ const BillCard = ({
       <p className="bill-title">{title}</p>
 
       <p className="bill-timestamp">{new Date(updated_at).toDateString()}</p>
+
+      {summary === 'No summary available.' ? null : (
+        <Button
+          className="viewBillButton"
+          onClick={async () => navigate(`${congress}/${type}${number}`)}
+        >
+          Bill Details
+        </Button>
+      )}
     </Wrapper>
   );
 };
@@ -55,10 +75,10 @@ const Wrapper = styled.div`
   grid-template-columns: 62px repeat(9, 1fr);
   grid-template-rows: 30px 30px 1fr 50px;
   grid-template-areas:
-    'sponsor sponsorName sponsorName sponsorName sponsorName sponsorName sponsorName sponsorName   sponsorName    sponsorName'
-    'sponsor ........... ........... id          id          id          id          ......   ......    ......'
-    'sponsor title       title       title       title       title       title       title    title     title'
-    'sponsor ......      ......      ......      ......      timestamp   timestamp   timestamp timestamp timestamp';
+    'sponsor sponsorName sponsorName sponsorName sponsorName sponsorName timestamp timestamp   timestamp   timestamp'
+    'sponsor ........... ........... id          id          id          id          ......        ......        ......'
+    'sponsor title       title       title       title       title       title       title         title         title'
+    'sponsor ......      ......      ......      ......      viewBillButton      viewBillButton      viewBillButton        viewBillButton viewBillButton';
 
   overflow: hidden;
 
@@ -75,7 +95,6 @@ const Wrapper = styled.div`
   }
 
   :hover {
-    cursor: pointer;
     background-color: var(--color-backgroundLite);
   }
 
@@ -113,9 +132,15 @@ const Wrapper = styled.div`
   .bill-timestamp {
     grid-area: timestamp;
     text-align: right;
-    align-self: center;
+    align-self: start;
     font-size: 0.8rem;
     color: hsl(0deg, 0%, 70%);
     font-weight: 400;
+  }
+
+  .viewBillButton {
+    grid-area: viewBillButton;
+    justify-self: end;
+    align-self: center;
   }
 `;

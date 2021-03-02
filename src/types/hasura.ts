@@ -2,12 +2,13 @@ export type Bill = {
   id: string;
   type: string;
   number: string;
+  congress: string;
   title: string;
   subject: string;
   summary: string;
   updated_at: string;
-  sponsor: string;
-  congress: string;
+  sponsor: Official;
+  cosponsorships: Cosponsorship[];
   actions: Array<Record<string, any>>;
   status: string;
   status_at: string;
@@ -36,4 +37,14 @@ export type Official = {
   district: string | null;
   gender: string;
   house_terms: number;
+};
+
+export type Cosponsorship = {
+  id: string;
+  original_cosponsor: boolean;
+  sponsored_at: string;
+  state: string;
+  district: string;
+  withdrawn_at: any;
+  elected_official: Official;
 };

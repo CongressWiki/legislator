@@ -9,7 +9,7 @@ export type BillSummaryProps = {
   summary: string;
 };
 
-export default function BillSummary({summary}: BillSummaryProps) {
+export default function BillSummary({ summary }: BillSummaryProps) {
   if (summary === 'No summary available.') {
     return <NoSummaryPlaceholder />;
   }
@@ -19,10 +19,10 @@ export default function BillSummary({summary}: BillSummaryProps) {
   // Remove horizontal spaces (\h) (horizontal space chars come from Perl and is not supported by Node regex)
   summary = summary.replace(/[^\S\r\n]/g, ' ');
   // Add ellipsis to paragraphs that end with "to" | "include" | "for"
-  summary = summary.replace(/(to|include|for)\n/g, '$1...');
+  summary = summary.replace(/(to|include|for)\n/g, '$1…');
   // Add ellipsis if paragraph contains "For more detailed information"
-  summary = summary.replace(/(For more detailed information)(,)?/g, '$1...\n');
-  summary = summary.replace(/(Among other things, the bill)/g, '$1...\n');
+  summary = summary.replace(/(For more detailed information)(,)?/g, '$1…\n');
+  summary = summary.replace(/(Among other things, the bill)/g, '$1…\n');
 
   // If the first sentence is a statement that includes "of Act" then separate it from the regular text
   if (/^[\S\s]*Act( of \d+)? [A-Z]/g.test(summary)) {
@@ -40,7 +40,7 @@ export default function BillSummary({summary}: BillSummaryProps) {
         if (paragraph === '') return;
 
         // If previous paragraph ended with "{includes|to|for}..." render paragraph as list
-        if (index > 0 && BillParagraphs[index - 1].endsWith('...')) {
+        if (index > 0 && BillParagraphs[index - 1].endsWith('…')) {
           console.log(BillParagraphs[index]);
 
           return <BillList paragraph={paragraph} index={index} />;

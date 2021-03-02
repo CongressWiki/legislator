@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { graphql, useStaticQuery, navigate } from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby';
 import Layout from '@components/Layouts/BillFeed';
 import type { Bill as IBill, Official as IOfficial } from '../types/hasura';
 import styled from 'styled-components';
@@ -52,10 +52,7 @@ export default function Home() {
         }
       }
       hasura {
-        bills: bills_aggregate(
-          order_by: { updated_at: desc }
-          where: { summary: { _neq: "No summary available." } }
-        ) {
+        bills: bills_aggregate(order_by: { updated_at: desc }) {
           nodes {
             id
             number
@@ -71,6 +68,9 @@ export default function Home() {
             updated_at
             created_at
             by_request
+            related_bills
+            short_title
+            subjects
             sponsor {
               id
               born_at
@@ -93,20 +93,45 @@ export default function Home() {
               updated_at
               vice_president_terms
             }
+            cosponsorships {
+              id
+              original_cosponsor
+              sponsored_at
+              state
+              withdrawn_at
+              district
+              elected_official {
+                id
+                created_at
+                district
+                first_name
+                gender
+                house_terms
+                is_active
+                last_name
+                political_party
+                position
+                president_terms
+                preferred_name
+                rank
+                senate_terms
+                state
+              }
+            }
             actions {
+              id
+              type
               acted_at
               action_code
-              how
-              id
-              references
-              result
-              roll
               status
-              suspension
               text
-              type
+              references
               vote_type
+              how
               where
+              roll
+              result
+              suspension
             }
           }
           aggregate {
@@ -168,24 +193,22 @@ export default function Home() {
 
   return (
     <>
-      <SEO title="Keeping US-Accountable" />
+      <SEO title="Latest bills" />
       <Layout>
         <BillLane>
           <BillLaneHeader
             handleChamberSelection={handleChamberSelection}
             handleSearchInput={handleSearchInput}
             handleOrderAscToggle={handleOrderAscToggle}
+            billCount={filteredBills.length || 0}
           />
           {filteredBills.slice(offset, limit).map((bill) => (
             <BillCard
               key={bill.id}
-              onClick={async () =>
-                navigate(`${bill.congress}/${bill.type}${bill.number}`)
-              }
-              {...bill}
               sponsorImage={images.find(
                 (image) => image.name === bill.sponsor.id
               )}
+              {...bill}
             />
           ))}
         </BillLane>
@@ -193,28 +216,27 @@ export default function Home() {
           disabled={limit > filteredBills.length}
           onClick={loadMore}
         />
-        <NumberOfBills>{`${filteredBills.length} bills`}</NumberOfBills>
       </Layout>
     </>
   );
 }
 
-const NumberOfBills = styled.div`
-  position: fixed;
-  bottom: 1rem;
-  right: 1rem;
-  font-size: 1rem;
-  font-family: concourse_c2;
-  color: var(--color-text);
+// const NumberOfBills = styled.div`
+//   position: fixed;
+//   bottom: 1rem;
+//   right: 1rem;
+//   font-size: 1rem;
+//   font-family: concourse_c2;
+//   color: var(--color-text);
 
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  flex-shrink: 0;
-  background-color: var(--color-gray300);
-`;
+//   width: 60px;
+//   height: 60px;
+//   border-radius: 50%;
+//   overflow: hidden;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   text-align: center;
+//   flex-shrink: 0;
+//   background-color: var(--color-gray300);
+// `;

@@ -18,6 +18,7 @@ export type BillLaneHeaderProps = {
    * When a user specifies the sort order. Default is isAscending === false
    */
   handleOrderAscToggle: (isAscending: boolean) => void;
+  billCount: number;
   className?: string;
 };
 
@@ -25,6 +26,7 @@ const BillLaneHeader = ({
   handleChamberSelection,
   handleSearchInput,
   handleOrderAscToggle,
+  billCount,
   className,
 }: BillLaneHeaderProps) => {
   return (
@@ -33,6 +35,7 @@ const BillLaneHeader = ({
         className="chamber"
         handleSelection={handleChamberSelection}
       />
+      <p className="billCount">{billCount} Bills</p>
       <SearchInput className="searchInput" handleInput={handleSearchInput} />
       <OrderByToggle className="orderBy" handleToggle={handleOrderAscToggle} />
     </Wrapper>
@@ -55,8 +58,8 @@ const Wrapper = styled.div`
   border-bottom: solid thin var(--color-gray300);
 
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-areas: 'chamber searchInput orderBy';
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-areas: 'chamber . searchInput searchInput searchInput searchInput . billCount . orderBy';
   align-items: center;
 
   .chamber {
@@ -67,6 +70,17 @@ const Wrapper = styled.div`
     grid-area: searchInput;
   }
 
+  .billCount {
+    grid-area: billCount;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    white-space: nowrap;
+
+    color: var(--color-gray500);
+    font-family: concourse_t4;
+    font-size: 1.4rem;
+  }
   .orderBy {
     grid-area: orderBy;
     justify-self: end;

@@ -37,6 +37,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           updated_at
           created_at
           by_request
+          related_bills
+          short_title
+          subjects
           sponsor {
             id
             born_at
@@ -58,6 +61,31 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             term_start_at
             updated_at
             vice_president_terms
+          }
+          cosponsorships {
+            id
+            original_cosponsor
+            sponsored_at
+            state
+            withdrawn_at
+            district
+            elected_official {
+              id
+              created_at
+              district
+              first_name
+              gender
+              house_terms
+              is_active
+              last_name
+              political_party
+              position
+              president_terms
+              preferred_name
+              rank
+              senate_terms
+              state
+            }
           }
           actions {
             acted_at

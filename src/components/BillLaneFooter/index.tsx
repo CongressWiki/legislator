@@ -15,7 +15,7 @@ const BillLaneFooter = ({
   return (
     <Wrapper className={className}>
       <LoadMoreButton disabled={disabled} onClick={onClick}>
-        load more bills
+        Load More Bills
       </LoadMoreButton>
     </Wrapper>
   );
@@ -26,7 +26,7 @@ const Wrapper = styled.div`
   overflow: hidden;
 
   margin-top: 10vh;
-  margin-bottom: 25vh;
+  margin-bottom: 20vh;
   padding-left: 15px;
   padding-right: 15px;
 
@@ -39,13 +39,12 @@ const LoadMoreButton = styled.button<BillLaneFooterProps>`
   padding: 0.4rem;
   display: ${(props) => (props.disabled ? 'none' : 'inline-block')};
   border: solid thin var(--color-gray500);
-  border-radius: 10px;
+  border-radius: 5px;
   outline: none;
   background-color: var(--color-background);
   color: var(--color-text);
 
-  font-family: concourse_c2;
-  font-size: 1.4rem;
+  font-size: 1rem;
 
   :hover {
     cursor: pointer;

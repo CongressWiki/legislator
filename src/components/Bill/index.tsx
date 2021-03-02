@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Bill as BillData } from '../../types/hasura';
 import styled from 'styled-components';
-import USStates from '@components/Country';
+import UsaMapOfSponsors from '@components/UsaMapOfSponsors';
 import BillText from '@components/BillText';
 import BillSummary from '@components/BillSummary';
 import BillTitle from '@components/BillTitle';
@@ -15,6 +15,8 @@ export default function Bill({
   title,
   bill_text,
   summary,
+  sponsor,
+  cosponsorships,
 }: BillData) {
   return (
     <BillWrapper>
@@ -30,14 +32,14 @@ export default function Bill({
       ) : (
         <BillSummary summary={summary} />
       )}
-      <USStates />
+      <UsaMapOfSponsors sponsor={sponsor} cosponsorships={cosponsorships} />
     </BillWrapper>
   );
 }
 
 const BillWrapper = styled.div`
   margin-top: 1.4rem;
-  margin-bottom: 25vh;
+  margin-bottom: 20vh;
 `;
 
 const BillHeader = styled.div`

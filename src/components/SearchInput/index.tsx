@@ -39,7 +39,7 @@ const StyledInput = styled.input`
   display: flex;
   background-color: var(--color-background);
   text-align: center;
-  font-family: concourse_c4;
+  font-family: concourse_t4;
   font-size: 1.4rem;
   color: var(--color-text);
 

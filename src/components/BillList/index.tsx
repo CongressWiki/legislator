@@ -9,8 +9,6 @@ export type BillListProps = {
 };
 
 const BillList = ({ paragraph, index }: BillListProps) => {
-  // Test with: http://localhost:8000/hres6-116/
-
   const deliminator = /;/g.test(paragraph) ? /;/g : /,(?!\s\d)/g;
 
   const listStatements = paragraph.split(deliminator);
