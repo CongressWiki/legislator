@@ -1,11 +1,11 @@
 import React from 'react';
-import {Story, Meta} from '@storybook/react';
+import { Story, Meta } from '@storybook/react';
 
-import Bill, {BillProps} from './index';
+import Bill, { BillProps } from './index';
 
 export default {
   title: 'Components/Bill',
-  component: Bill
+  component: Bill,
 } as Meta;
 
 const Template: Story<BillProps> = (args) => <Bill {...args} />;
@@ -19,7 +19,105 @@ withBillSummary.args = {
   subject: 'Public lands and natural resources',
   summary:
     'Directs the Secretary of the Interior, if the Secretary receives an offer from the city of Fernley, Nevada, to purchase identified federal land within the city, through the Bureau of Land Management (BLM) and the Bureau of Reclamation, to convey to the city all interest of the United States in such land in exchange for consideration in an amount equal to the fair market value of the land.\n\nPermits the city and the Bureau of Reclamation to retain easements or rights-of-way on the federal land to be conveyed, including easements or rights-of-way that are necessary to carry out the operation and maintenance of the Truckee Canal or the Newlands Project.\n\nRequires the city to pay or reimburse the Secretary, as appropriate, for reasonable transaction and administrative personnel costs associated with such conveyance.\n\nDeclares that any conveyances under this Act shall not be considered a major federal action for purposes of an environmental impact statement required by the National Environmental Policy Act of 1969 (NEPA).\n\nReleases the United States from all liabilities or claims of any kind or nature arising from the presence, release, or threat of release of any hazardous substance, pollutant, contaminant, petroleum product (or derivative of a petroleum product), solid waste, mine materials, or mining related features existing on the federal land.\n\nWithdraws the federal land from: (1) entry, appropriation, or disposal under the public land laws; (2) location, entry, and patent under the mining laws; and (3) disposition under the mineral leasing, mineral materials, and geothermal leasing laws.',
-  sponsor: 'A000369',
+  sponsor: {
+    id: 'S001181',
+    born_at: '1947-01-28T00:00:00+00:00',
+    created_at: '2021-02-01T17:20:57.696704+00:00',
+    district: null,
+    first_name: 'Jeanne',
+    gender: 'F',
+    house_terms: 0,
+    is_active: true,
+    last_name: 'Shaheen',
+    political_party: 'Democrat',
+    position: 'senator',
+    preferred_name: 'Jeanne Shaheen',
+    president_terms: 0,
+    rank: 'senior',
+    senate_terms: 3,
+    state: 'NH',
+    term_end_at: '2027-01-03T00:00:00+00:00',
+    term_start_at: '2021-01-03T00:00:00+00:00',
+    updated_at: '2021-02-25T15:45:46.395403+00:00',
+    vice_president_terms: 0,
+  },
+  cosponsorships: [
+    {
+      id: 's194-117-H001042',
+      original_cosponsor: true,
+      sponsored_at: '2021-02-03T00:00:00+00:00',
+      state: 'HI',
+      withdrawn_at: null,
+      district: null,
+      elected_official: {
+        id: 'H001042',
+        created_at: '2021-02-01T17:21:01.249182+00:00',
+        district: null,
+        first_name: 'Mazie',
+        gender: 'F',
+        house_terms: 3,
+        is_active: true,
+        last_name: 'Hirono',
+        political_party: 'Democrat',
+        position: 'senator',
+        president_terms: 0,
+        preferred_name: 'Mazie K. Hirono',
+        rank: 'junior',
+        senate_terms: 2,
+        state: 'HI',
+      },
+    },
+    {
+      id: 's194-117-T000476',
+      original_cosponsor: true,
+      sponsored_at: '2021-02-03T00:00:00+00:00',
+      state: 'NC',
+      withdrawn_at: null,
+      district: null,
+      elected_official: {
+        id: 'T000476',
+        created_at: '2021-02-01T17:21:11.093831+00:00',
+        district: null,
+        first_name: 'Thom',
+        gender: 'M',
+        house_terms: 0,
+        is_active: true,
+        last_name: 'Tillis',
+        political_party: 'Republican',
+        position: 'senator',
+        president_terms: 0,
+        preferred_name: 'Thom Tillis',
+        rank: 'junior',
+        senate_terms: 2,
+        state: 'NC',
+      },
+    },
+    {
+      id: 's194-117-C001047',
+      original_cosponsor: true,
+      sponsored_at: '2021-02-03T00:00:00+00:00',
+      state: 'WV',
+      withdrawn_at: null,
+      district: null,
+      elected_official: {
+        id: 'C001047',
+        created_at: '2021-02-01T17:20:58.769982+00:00',
+        district: null,
+        first_name: 'Shelley',
+        gender: 'F',
+        house_terms: 7,
+        is_active: true,
+        last_name: 'Capito',
+        political_party: 'Republican',
+        position: 'senator',
+        president_terms: 0,
+        preferred_name: 'Shelley Moore Capito',
+        rank: 'junior',
+        senate_terms: 2,
+        state: 'WV',
+      },
+    },
+  ],
   congress: '113',
   actions: [
     {
@@ -27,7 +125,7 @@ withBillSummary.args = {
       type: 'action',
       acted_at: '2013-03-14',
       references: [],
-      action_code: 'Intro-H'
+      action_code: 'Intro-H',
     },
     {
       text: 'Referred to the House Committee on Natural Resources.',
@@ -36,7 +134,7 @@ withBillSummary.args = {
       acted_at: '2013-03-14',
       committees: ['HSII'],
       references: [],
-      action_code: 'H11100'
+      action_code: 'H11100',
     },
     {
       text:
@@ -45,7 +143,7 @@ withBillSummary.args = {
       acted_at: '2013-03-26',
       committees: ['HSII'],
       references: [],
-      action_code: ''
+      action_code: '',
     },
     {
       text: 'Subcommittee Hearings Held.',
@@ -53,7 +151,7 @@ withBillSummary.args = {
       acted_at: '2013-07-19',
       committees: ['HSII'],
       references: [],
-      action_code: ''
+      action_code: '',
     },
     {
       text:
@@ -62,7 +160,7 @@ withBillSummary.args = {
       acted_at: '2013-07-31',
       committees: ['HSII'],
       references: [],
-      action_code: ''
+      action_code: '',
     },
     {
       text: 'Committee Consideration and Mark-up Session Held.',
@@ -70,7 +168,7 @@ withBillSummary.args = {
       acted_at: '2013-07-31',
       committees: ['HSII'],
       references: [],
-      action_code: ''
+      action_code: '',
     },
     {
       text: 'Ordered to be Reported (Amended) by Voice Vote.',
@@ -79,7 +177,7 @@ withBillSummary.args = {
       acted_at: '2013-07-31',
       committees: ['HSII'],
       references: [],
-      action_code: ''
+      action_code: '',
     },
     {
       text:
@@ -88,7 +186,7 @@ withBillSummary.args = {
       acted_at: '2013-12-16',
       committees: ['HSII'],
       references: [],
-      action_code: 'H12200'
+      action_code: 'H12200',
     },
     {
       text: 'Placed on the Union Calendar, Calendar No. 215.',
@@ -98,8 +196,8 @@ withBillSummary.args = {
       acted_at: '2013-12-16',
       calendar: 'Union',
       references: [],
-      action_code: 'H12410'
-    }
+      action_code: 'H12410',
+    },
   ],
   status: 'REPORTED',
   status_at: '2013-07-31T00:00:00+00:00',
@@ -107,7 +205,7 @@ withBillSummary.args = {
   introduced_at: '2013-03-14T00:00:00+00:00',
   updated_at: '2021-02-01T22:36:36+00:00',
   created_at: '2021-02-12T01:36:31.410127+00:00',
-  by_request: false
+  by_request: false,
 };
 
 export const withBillText = Template.bind({});
@@ -118,7 +216,105 @@ withBillText.args = {
     'To sunset new Federal regulatory rules after 3 years, and for other purposes.',
   subject: 'No Subject',
   summary: 'No summary available.',
-  sponsor: 'P000599',
+  sponsor: {
+    id: 'S001181',
+    born_at: '1947-01-28T00:00:00+00:00',
+    created_at: '2021-02-01T17:20:57.696704+00:00',
+    district: null,
+    first_name: 'Jeanne',
+    gender: 'F',
+    house_terms: 0,
+    is_active: true,
+    last_name: 'Shaheen',
+    political_party: 'Democrat',
+    position: 'senator',
+    preferred_name: 'Jeanne Shaheen',
+    president_terms: 0,
+    rank: 'senior',
+    senate_terms: 3,
+    state: 'NH',
+    term_end_at: '2027-01-03T00:00:00+00:00',
+    term_start_at: '2021-01-03T00:00:00+00:00',
+    updated_at: '2021-02-25T15:45:46.395403+00:00',
+    vice_president_terms: 0,
+  },
+  cosponsorships: [
+    {
+      id: 's194-117-H001042',
+      original_cosponsor: true,
+      sponsored_at: '2021-02-03T00:00:00+00:00',
+      state: 'HI',
+      withdrawn_at: null,
+      district: null,
+      elected_official: {
+        id: 'H001042',
+        created_at: '2021-02-01T17:21:01.249182+00:00',
+        district: null,
+        first_name: 'Mazie',
+        gender: 'F',
+        house_terms: 3,
+        is_active: true,
+        last_name: 'Hirono',
+        political_party: 'Democrat',
+        position: 'senator',
+        president_terms: 0,
+        preferred_name: 'Mazie K. Hirono',
+        rank: 'junior',
+        senate_terms: 2,
+        state: 'HI',
+      },
+    },
+    {
+      id: 's194-117-T000476',
+      original_cosponsor: true,
+      sponsored_at: '2021-02-03T00:00:00+00:00',
+      state: 'NC',
+      withdrawn_at: null,
+      district: null,
+      elected_official: {
+        id: 'T000476',
+        created_at: '2021-02-01T17:21:11.093831+00:00',
+        district: null,
+        first_name: 'Thom',
+        gender: 'M',
+        house_terms: 0,
+        is_active: true,
+        last_name: 'Tillis',
+        political_party: 'Republican',
+        position: 'senator',
+        president_terms: 0,
+        preferred_name: 'Thom Tillis',
+        rank: 'junior',
+        senate_terms: 2,
+        state: 'NC',
+      },
+    },
+    {
+      id: 's194-117-C001047',
+      original_cosponsor: true,
+      sponsored_at: '2021-02-03T00:00:00+00:00',
+      state: 'WV',
+      withdrawn_at: null,
+      district: null,
+      elected_official: {
+        id: 'C001047',
+        created_at: '2021-02-01T17:20:58.769982+00:00',
+        district: null,
+        first_name: 'Shelley',
+        gender: 'F',
+        house_terms: 7,
+        is_active: true,
+        last_name: 'Capito',
+        political_party: 'Republican',
+        position: 'senator',
+        president_terms: 0,
+        preferred_name: 'Shelley Moore Capito',
+        rank: 'junior',
+        senate_terms: 2,
+        state: 'WV',
+      },
+    },
+  ],
   congress: '117',
   actions: [
     {
@@ -126,7 +322,7 @@ withBillText.args = {
       type: 'action',
       acted_at: '2021-01-21',
       references: [],
-      action_code: 'Intro-H'
+      action_code: 'Intro-H',
     },
     {
       text:
@@ -136,7 +332,7 @@ withBillText.args = {
       acted_at: '2021-01-21',
       committees: ['HSGO'],
       references: [],
-      action_code: 'H11100'
+      action_code: 'H11100',
     },
     {
       text:
@@ -145,8 +341,8 @@ withBillText.args = {
       acted_at: '2021-01-21',
       committees: ['HSJU'],
       references: [],
-      action_code: 'H11100'
-    }
+      action_code: 'H11100',
+    },
   ],
   status: 'REFERRED',
   status_at: '2021-01-21T00:00:00+00:00',
@@ -156,7 +352,7 @@ withBillText.args = {
   created_at: '2021-02-10T13:38:01.93045+00:00',
   by_request: false,
   bill_text:
-    "\n[Congressional Bills 103th Congress]\n[From the U.S. Government Printing Office]\n[S. 1168 Introduced in Senate (IS)]\n\n103d CONGRESS\n  1st Session\n                                S. 1168\n\n  To amend the Internal Revenue Code of 1986 to provide that certain \n   deductions of school bus drivers shall be allowable in computing \n                         adjusted gross income.\n\n\n_______________________________________________________________________\n\n\n                   IN THE SENATE OF THE UNITED STATES\n\n                June 29 (legislative day, June 22), 1993\n\n Mr. Johnston introduced the following bill; which was read twice and \n                  referred to the Committee on Finance\n\n_______________________________________________________________________\n\n                                 A BILL\n\n\n \n  To amend the Internal Revenue Code of 1986 to provide that certain \n   deductions of school bus drivers shall be allowable in computing \n                         adjusted gross income.\n\n    Be it enacted by the Senate and House of Representatives of the \nUnited States of America in Congress assembled,\n\nSECTION 1. DEDUCTIONS OF SCHOOL BUS DRIVERS ALLOWABLE IN COMPUTING \n              ADJUSTED GROSS INCOME.\n\n    (a) In General.--Paragraph (2) of section 62(a) of the Internal \nRevenue Code of 1986 (relating to certain trade and business deductions \nof employees) is amended by adding at the end thereof the following new \nsubparagraph:\n                    ``(C) Certain expenses of school bus drivers.--The \n                deductions allowed by part VI (section 161 and \n                following) which consist of expenses paid or incurred \n                by the taxpayer in connection with the performance by \n                the taxpayer of services as an employee while driving a \n                school bus (as defined in section 4221(d)(7)(C)).''\n    (b) Effective Date.--The amendments made by this section shall \napply to taxable years beginning after December 31, 1992.\n\n                                 <all>\n"
+    "\n[Congressional Bills 103th Congress]\n[From the U.S. Government Printing Office]\n[S. 1168 Introduced in Senate (IS)]\n\n103d CONGRESS\n  1st Session\n                                S. 1168\n\n  To amend the Internal Revenue Code of 1986 to provide that certain \n   deductions of school bus drivers shall be allowable in computing \n                         adjusted gross income.\n\n\n_______________________________________________________________________\n\n\n                   IN THE SENATE OF THE UNITED STATES\n\n                June 29 (legislative day, June 22), 1993\n\n Mr. Johnston introduced the following bill; which was read twice and \n                  referred to the Committee on Finance\n\n_______________________________________________________________________\n\n                                 A BILL\n\n\n \n  To amend the Internal Revenue Code of 1986 to provide that certain \n   deductions of school bus drivers shall be allowable in computing \n                         adjusted gross income.\n\n    Be it enacted by the Senate and House of Representatives of the \nUnited States of America in Congress assembled,\n\nSECTION 1. DEDUCTIONS OF SCHOOL BUS DRIVERS ALLOWABLE IN COMPUTING \n              ADJUSTED GROSS INCOME.\n\n    (a) In General.--Paragraph (2) of section 62(a) of the Internal \nRevenue Code of 1986 (relating to certain trade and business deductions \nof employees) is amended by adding at the end thereof the following new \nsubparagraph:\n                    ``(C) Certain expenses of school bus drivers.--The \n                deductions allowed by part VI (section 161 and \n                following) which consist of expenses paid or incurred \n                by the taxpayer in connection with the performance by \n                the taxpayer of services as an employee while driving a \n                school bus (as defined in section 4221(d)(7)(C)).''\n    (b) Effective Date.--The amendments made by this section shall \napply to taxable years beginning after December 31, 1992.\n\n                                 <all>\n",
 };
 
 export const WithLongBillSummary = Template.bind({});
@@ -169,7 +365,105 @@ WithLongBillSummary.args = {
   subject: 'Native Americans',
   summary:
     'Indian Community Economic Enhancement Act of 2017\n\n(Sec. 3) This bill amends the Native American Business Development, Trade Promotion, and Tourism Act of 2000 to establish duties for the Office of Native American Business Development (ONABD), including: (1) advising the Department of Commerce regarding the relationship between the United States and Indian tribes; and (2) serving as the point of contact for tribes, tribal organizations, and members of tribes regarding economic development and doing business in Indian lands.\n\nCommerce, Interior, and the Department of the Treasury must coordinate to support economic development in Native American communities.\n\n The Community Development Financial Institutions Fund assistance benefiting Native American community development financial institutions does not require matching funds.\n\nThe Government Accountability Office must conduct a study that assesses: (1) current programs and services that assist Native American communities with business and economic development; (2) assistance provided to Native Americans pursuant to loan, bond, and tax incentive programs; and (3) alternative incentives for tribal governments to invest in a Native American community development investment fund or bank.\n\n(Sec. 4) This bill amends the Buy Indian Act, including to require the Department of Health and Human Services (HHS) to use Native American labor and purchase Native American industry products, unless Interior or HHS determines it would be impracticable and unreasonable to do so.\n\n(Sec. 5) This bill amends the Native American Programs Act of 1974 to permit the Administration for Native Americans (ANA) to provide financial assistance to certain Native American community development financial institutions.\n\nUnder the economic opportunity program, ANA must give priority to applicants whose programs seek to develop: (1) tribal codes and court systems relating to economic development, (2) tribal business structures, (3) community development financial institutions, or (4) tribal master plans for community and economic development and infrastructure. When providing technical assistance, ANA must also prioritize those applicants.\n\nIn addition, the bill reauthorizes through FY2022 certain programs under the Act.',
-  sponsor: 'H001061',
+  sponsor: {
+    id: 'S001181',
+    born_at: '1947-01-28T00:00:00+00:00',
+    created_at: '2021-02-01T17:20:57.696704+00:00',
+    district: null,
+    first_name: 'Jeanne',
+    gender: 'F',
+    house_terms: 0,
+    is_active: true,
+    last_name: 'Shaheen',
+    political_party: 'Democrat',
+    position: 'senator',
+    preferred_name: 'Jeanne Shaheen',
+    president_terms: 0,
+    rank: 'senior',
+    senate_terms: 3,
+    state: 'NH',
+    term_end_at: '2027-01-03T00:00:00+00:00',
+    term_start_at: '2021-01-03T00:00:00+00:00',
+    updated_at: '2021-02-25T15:45:46.395403+00:00',
+    vice_president_terms: 0,
+  },
+  cosponsorships: [
+    {
+      id: 's194-117-H001042',
+      original_cosponsor: true,
+      sponsored_at: '2021-02-03T00:00:00+00:00',
+      state: 'HI',
+      withdrawn_at: null,
+      district: null,
+      elected_official: {
+        id: 'H001042',
+        created_at: '2021-02-01T17:21:01.249182+00:00',
+        district: null,
+        first_name: 'Mazie',
+        gender: 'F',
+        house_terms: 3,
+        is_active: true,
+        last_name: 'Hirono',
+        political_party: 'Democrat',
+        position: 'senator',
+        president_terms: 0,
+        preferred_name: 'Mazie K. Hirono',
+        rank: 'junior',
+        senate_terms: 2,
+        state: 'HI',
+      },
+    },
+    {
+      id: 's194-117-T000476',
+      original_cosponsor: true,
+      sponsored_at: '2021-02-03T00:00:00+00:00',
+      state: 'NC',
+      withdrawn_at: null,
+      district: null,
+      elected_official: {
+        id: 'T000476',
+        created_at: '2021-02-01T17:21:11.093831+00:00',
+        district: null,
+        first_name: 'Thom',
+        gender: 'M',
+        house_terms: 0,
+        is_active: true,
+        last_name: 'Tillis',
+        political_party: 'Republican',
+        position: 'senator',
+        president_terms: 0,
+        preferred_name: 'Thom Tillis',
+        rank: 'junior',
+        senate_terms: 2,
+        state: 'NC',
+      },
+    },
+    {
+      id: 's194-117-C001047',
+      original_cosponsor: true,
+      sponsored_at: '2021-02-03T00:00:00+00:00',
+      state: 'WV',
+      withdrawn_at: null,
+      district: null,
+      elected_official: {
+        id: 'C001047',
+        created_at: '2021-02-01T17:20:58.769982+00:00',
+        district: null,
+        first_name: 'Shelley',
+        gender: 'F',
+        house_terms: 7,
+        is_active: true,
+        last_name: 'Capito',
+        political_party: 'Republican',
+        position: 'senator',
+        president_terms: 0,
+        preferred_name: 'Shelley Moore Capito',
+        rank: 'junior',
+        senate_terms: 2,
+        state: 'WV',
+      },
+    },
+  ],
   congress: '115',
   actions: [
     {
@@ -177,7 +471,7 @@ WithLongBillSummary.args = {
       type: 'action',
       acted_at: '2017-05-11',
       references: [],
-      action_code: '10000'
+      action_code: '10000',
     },
     {
       text: 'Read twice and referred to the Committee on Indian Affairs.',
@@ -186,7 +480,7 @@ WithLongBillSummary.args = {
       acted_at: '2017-05-11',
       committees: ['SLIA'],
       references: [],
-      action_code: ''
+      action_code: '',
     },
     {
       text:
@@ -196,7 +490,7 @@ WithLongBillSummary.args = {
       acted_at: '2017-05-17',
       committees: ['SLIA'],
       references: [],
-      action_code: ''
+      action_code: '',
     },
     {
       text:
@@ -206,7 +500,7 @@ WithLongBillSummary.args = {
       committee: 'Indian Affairs',
       committees: ['SLIA'],
       references: [],
-      action_code: ''
+      action_code: '',
     },
     {
       text:
@@ -217,21 +511,21 @@ WithLongBillSummary.args = {
       acted_at: '2017-10-17',
       calendar: 'Senate Legislative',
       references: [],
-      action_code: ''
+      action_code: '',
     },
     {
       text: 'Measure laid before Senate by unanimous consent.',
       type: 'action',
       acted_at: '2018-03-22',
-      references: [{type: 'consideration', reference: 'CR S1969-1972'}],
-      action_code: ''
+      references: [{ type: 'consideration', reference: 'CR S1969-1972' }],
+      action_code: '',
     },
     {
       text: 'The committee amendments withdrawn by Unanimous Consent.',
       type: 'action',
       acted_at: '2018-03-22',
       references: [],
-      action_code: ''
+      action_code: '',
     },
     {
       how: 'by Voice Vote',
@@ -245,24 +539,24 @@ WithLongBillSummary.args = {
       references: [
         {
           type: 'text of amendment in the nature of a substitute',
-          reference: 'CR S1966-1968'
-        }
+          reference: 'CR S1966-1968',
+        },
       ],
-      action_code: ''
+      action_code: '',
     },
     {
       text: 'Message on Senate action sent to the House.',
       type: 'action',
       acted_at: '2018-03-23',
       references: [],
-      action_code: ''
+      action_code: '',
     },
     {
       text: 'Received in the House.',
       type: 'action',
       acted_at: '2018-03-26T16:01:49-04:00',
       references: [],
-      action_code: 'H14000'
+      action_code: 'H14000',
     },
     {
       text:
@@ -271,7 +565,7 @@ WithLongBillSummary.args = {
       acted_at: '2018-03-26',
       committees: ['HSII'],
       references: [],
-      action_code: 'H11100'
+      action_code: 'H11100',
     },
     {
       text:
@@ -280,7 +574,7 @@ WithLongBillSummary.args = {
       acted_at: '2018-03-26',
       committees: ['HSED'],
       references: [],
-      action_code: 'H11100'
+      action_code: 'H11100',
     },
     {
       text:
@@ -289,7 +583,7 @@ WithLongBillSummary.args = {
       acted_at: '2018-03-27',
       committees: ['HSII'],
       references: [],
-      action_code: ''
+      action_code: '',
     },
     {
       text: 'Subcommittee Hearings Held.',
@@ -297,8 +591,8 @@ WithLongBillSummary.args = {
       acted_at: '2018-07-24',
       committees: ['HSII'],
       references: [],
-      action_code: ''
-    }
+      action_code: '',
+    },
   ],
   status: 'PASS_OVER:SENATE',
   status_at: '2018-03-22T00:00:00+00:00',
@@ -307,5 +601,5 @@ WithLongBillSummary.args = {
   updated_at: '2020-12-15T17:18:47+00:00',
   created_at: '2021-02-12T01:34:15.144201+00:00',
   by_request: false,
-  bill_text: null
+  bill_text: null,
 };

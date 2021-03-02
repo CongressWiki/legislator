@@ -1,12 +1,12 @@
 import React from 'react';
-import {Story, Meta} from '@storybook/react';
+import { Story, Meta } from '@storybook/react';
 import styled from 'styled-components';
 
-import Country from './index';
+import UsaMap from './index';
 
 export default {
-  title: 'Components/Country',
-  component: Country
+  title: 'Components/UsaMap',
+  component: UsaMap,
 } as Meta;
 
 const ExampleContainer = styled.div`
@@ -17,7 +17,7 @@ const ExampleContainer = styled.div`
 
 const Template: Story = (args) => (
   <ExampleContainer>
-    <Country {...args} />
+    <UsaMap {...args} />
   </ExampleContainer>
 );
 
