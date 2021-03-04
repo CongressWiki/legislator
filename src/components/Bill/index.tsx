@@ -1,12 +1,12 @@
 import React from 'react';
-import type { Bill as BillData } from '../../types/hasura';
+import type { Bill as BillData } from '@type/hasura';
 import styled from 'styled-components';
 import UsaMapOfSponsors from '@components/UsaMapOfSponsors';
 import BillText from '@components/BillText';
 import BillSummary from '@components/BillSummary';
 import BillTitle from '@components/BillTitle';
 
-export type BillProps = BillData;
+export type BillProps = BillData & { congressImages: any[] };
 
 export default function Bill({
   type,
@@ -17,7 +17,8 @@ export default function Bill({
   summary,
   sponsor,
   cosponsorships,
-}: BillData) {
+  congressImages,
+}: BillProps) {
   return (
     <BillWrapper>
       <BillHeader>
@@ -32,14 +33,18 @@ export default function Bill({
       ) : (
         <BillSummary summary={summary} />
       )}
-      <UsaMapOfSponsors sponsor={sponsor} cosponsorships={cosponsorships} />
+      <UsaMapOfSponsors
+        sponsor={sponsor}
+        cosponsorships={cosponsorships}
+        congressImages={congressImages}
+      />
     </BillWrapper>
   );
 }
 
 const BillWrapper = styled.div`
   margin-top: 1.4rem;
-  margin-bottom: 20vh;
+  margin-bottom: 25vh;
 `;
 
 const BillHeader = styled.div`

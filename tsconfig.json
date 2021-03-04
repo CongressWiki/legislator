@@ -11,7 +11,7 @@
       "@lib/*": [
         "src/lib/*"
       ],
-      "@types/*": [
+      "@type/*": [
         "src/types/*"
       ],
       "@static/*": [

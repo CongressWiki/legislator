@@ -17,7 +17,7 @@ exports.onCreateWebpackConfig = ({ actions }) => {
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
   const result = await graphql(`
-    query BillQuery {
+    query BillsQuery {
       hasura {
         bills(
           order_by: { updated_at: desc }
@@ -85,6 +85,11 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
               rank
               senate_terms
               state
+              term_end_at
+              term_start_at
+              updated_at
+              vice_president_terms
+              born_at
             }
           }
           actions {
@@ -104,13 +109,32 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           }
         }
       }
+      congressImages: allFile(
+        filter: { sourceInstanceName: { eq: "congressImages" } }
+      ) {
+        nodes {
+          extension
+          name
+          modifiedTime
+          childImageSharp {
+            gatsbyImageData(
+              width: 300
+              placeholder: BLURRED
+              formats: [AUTO, WEBP, AVIF]
+            )
+          }
+        }
+      }
     }
   `);
 
   if (result.errors) {
     reporter.panicOnBuild(`Error while running GraphQL query.`);
+    console.error(result.errors);
     return;
   }
+
+  const images = result.data.congressImages.nodes;
 
   result.data.hasura.bills.forEach((bill) => {
     createPage({
@@ -121,6 +145,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         // in page queries as GraphQL variables.
         slug: `${bill.congress}/${bill.type}${bill.number}`,
         ...bill,
+        congressImages: images,
       },
     });
   });

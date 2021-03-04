@@ -1,5 +1,5 @@
 import React from 'react';
-import type { Bill as IBill, Official as IOfficial } from '../../types/hasura';
+import type { Bill as IBill, Official as IOfficial } from '@type/hasura';
 import { navigate } from 'gatsby';
 import Button from '@components/Button';
 

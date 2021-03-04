@@ -1,21 +1,25 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ReactComponent as UsaMapSVG } from '@static/images/UsaMap.svg';
 import styled, { css } from 'styled-components';
 import * as d3 from 'd3';
 import type {
   Cosponsorship as ICosponsorship,
   Official as IOfficial,
-} from '../../types/hasura';
+} from '@type/hasura';
+import StateSponsorsToolTip from '@components/StateSponsorsToolTip';
 
 export type UsaMapOfSponsorsProps = {
   sponsor: IOfficial;
   cosponsorships: ICosponsorship[];
+  congressImages: any[];
 };
 
 const UsaMapOfSponsors = ({
   sponsor,
   cosponsorships,
+  congressImages,
 }: UsaMapOfSponsorsProps) => {
+  const [hoveredState, setHoveredState] = useState('CA');
   useEffect(() => {
     var tooltip = d3.selectAll('.tooltip:not(.css)');
     var HTMLmouseTip = d3.select('div.tooltip.mouse');
@@ -24,27 +28,8 @@ const UsaMapOfSponsors = ({
       .selectAll('path')
       .on('mouseover', function (event) {
         const state = event.target.dataset.id;
-        const stateCosponsorships = cosponsorships.filter(
-          (cosponsorship) => cosponsorship.state === state
-        );
-        const isSponsorState = state === sponsor.state;
-        const hasCosponsorsInState = stateCosponsorships.length > 0;
-        if (!isSponsorState && !hasCosponsorsInState) {
-          return;
-        }
-
-        let text = ``;
-        if (isSponsorState) {
-          if (isSponsorState) text += `Sponsor: ${sponsor.preferred_name}`;
-        }
-        if (hasCosponsorsInState) {
-          const cosponsors = stateCosponsorships.map(
-            (cosponsor) => cosponsor.elected_official.preferred_name
-          );
-          text += `\nCosponsors: ${cosponsors.join(', ')}`;
-        }
+        setHoveredState(state);
         tooltip.style('opacity', '1');
-        tooltip.text(text);
       })
       .on('mousemove', function (event) {
         HTMLmouseTip.style('left', Math.max(0, event.pageX - 50) + 'px').style(
@@ -56,57 +41,93 @@ const UsaMapOfSponsors = ({
         return tooltip.style('opacity', '0');
       });
   });
+
+  const getSponsorOfState = (state: string) => {
+    const isSponsorState = state === sponsor.state;
+    if (isSponsorState) return sponsor;
+  };
+
+  const getCosponsorsOfState = (state: string) => {
+    const stateCosponsorships = cosponsorships.filter(
+      (cosponsorship) => cosponsorship.state === state
+    );
+
+    const hasCosponsorsInState = stateCosponsorships.length > 0;
+    if (hasCosponsorsInState) {
+      return stateCosponsorships;
+    }
+  };
+
   return (
-    <>
-      <ToolTip className="mouse tooltip">Mouse-tracking HTML Tip</ToolTip>
-      <UsaMap
-        className="usamap"
-        sponsor={sponsor}
-        cosponsorships={cosponsorships}
+    <Wrapper
+      sponsorState={sponsor.state}
+      cosponsorStates={cosponsorships.map(
+        (cosponsorship) => cosponsorship.state
+      )}
+    >
+      <StyledToolTip
+        className="mouse tooltip"
+        state={hoveredState}
+        congressImages={congressImages}
+        sponsor={getSponsorOfState(hoveredState)}
+        cosponsors={getCosponsorsOfState(hoveredState)}
       />
-    </>
+
+      <UsaMap className="usamap" />
+    </Wrapper>
   );
 };
 
-const ToolTip = styled.div`
-  pointer-events: none; /*let mouse events pass through*/
-  opacity: 0;
-  transition: opacity 0.3s;
-  text-shadow: 1px 1px 0px var(--color-gray300);
-  position: absolute;
-  background-color: var(--color-backgroundLite);
-  border: solid thin var(--color-text);
-  border-radius: 5px;
-  text-align: left;
-  padding: 0.5rem;
+const Wrapper = styled.div<{ sponsorState: string; cosponsorStates: string[] }>`
+  ${styleCosponsorStates}
+
+  svg {
+    path {
+      opacity: 0.3;
+    }
+
+    path[data-id=${(props) => props.sponsorState}] {
+      fill: #e8d803;
+      opacity: 0.9;
+    }
+
+    path:hover {
+      opacity: 1;
+    }
+  }
 `;
 
-const UsaMap = styled(UsaMapSVG)<UsaMapOfSponsorsProps>`
+const StyledToolTip = styled(StateSponsorsToolTip)`
+  pointer-events: none; /*let mouse events pass through*/
+  position: absolute;
+  text-align: left;
+  padding: 0.5rem;
+
+  opacity: 0;
+  transition: opacity 0.3s;
+
+  border: solid thin var(--color-text);
+  border-radius: 5px;
+  background-color: var(--color-backgroundLite);
+  text-shadow: 1px 1px 0px var(--color-gray300);
+`;
+
+const UsaMap = styled(UsaMapSVG)`
   padding-top: 42px;
   margin: 0;
   overflow: visible;
-
-  ${createCosponsorStatesCss}
-
-  path {
-    opacity: 0.3;
-  }
-  path[data-id=${(props) => props.sponsor.state}] {
-    fill: #e8d803;
-    opacity: 0.9;
-  }
-
-  path:hover {
-    opacity: 1;
-  }
 `;
 
-function createCosponsorStatesCss({ cosponsorships }: UsaMapOfSponsorsProps) {
+function styleCosponsorStates({
+  cosponsorStates,
+}: {
+  cosponsorStates: string[];
+}) {
   let styles = ``;
 
-  for (const cosponsorship of cosponsorships) {
+  for (const cosponsorState of cosponsorStates) {
     styles += `
-      path[data-id=${cosponsorship.state}] {
+      path[data-id=${cosponsorState}] {
         fill: #00bd00;
         opacity: 0.7;
       }

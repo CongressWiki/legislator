@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import Layout from '@components/Layouts/BillFeed';
-import type { Bill as IBill, Official as IOfficial } from '../types/hasura';
-import styled from 'styled-components';
+import type { Bill as IBill, Official as IOfficial } from '@type/hasura';
 import SEO from '@components/Seo';
 import BillLane from '@components/BillLane';
 import BillLaneHeader from '@components/BillLaneHeader';
@@ -193,7 +192,7 @@ export default function Home() {
 
   return (
     <>
-      <SEO title="Latest bills" />
+      <SEO title="Latest Bills" />
       <Layout>
         <BillLane>
           <BillLaneHeader
@@ -220,23 +219,3 @@ export default function Home() {
     </>
   );
 }
-
-// const NumberOfBills = styled.div`
-//   position: fixed;
-//   bottom: 1rem;
-//   right: 1rem;
-//   font-size: 1rem;
-//   font-family: concourse_c2;
-//   color: var(--color-text);
-
-//   width: 60px;
-//   height: 60px;
-//   border-radius: 50%;
-//   overflow: hidden;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   text-align: center;
-//   flex-shrink: 0;
-//   background-color: var(--color-gray300);
-// `;
