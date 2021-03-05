@@ -44,7 +44,7 @@ export default function Bill({
 
 const BillWrapper = styled.div`
   margin-top: 1.4rem;
-  margin-bottom: 25vh;
+  margin-bottom: 30vh;
 `;
 
 const BillHeader = styled.div`

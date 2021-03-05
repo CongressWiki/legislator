@@ -4,6 +4,7 @@ import styled from 'styled-components';
 export type AvatarProps = {
   children: React.ReactNode;
   party: string;
+  size?: string;
   className?: string;
 };
 
@@ -13,18 +14,20 @@ const PARTY_COLORS = {
   Independent: 'green',
 };
 
-const Avatar = ({ children, className, party }: AvatarProps) => {
+const Avatar = ({ children, className, party, size }: AvatarProps) => {
   return (
     <Wrapper
       className={className}
+      // @ts-expect-error
       borderColor={party in PARTY_COLORS ? PARTY_COLORS[party] : 'gray'}
+      size={size}
     >
       {children}
     </Wrapper>
   );
 };
 
-const Wrapper = styled.div<{ borderColor: string }>`
+const Wrapper = styled.div<{ borderColor: string; size?: number }>`
   z-index: 500;
   position: relative;
   display: flex;
@@ -36,8 +39,8 @@ const Wrapper = styled.div<{ borderColor: string }>`
    * Remember border size will cut into the picture's size
    * To handle this: multiply border-size by 2 then add to width & height.
    */
-  width: 50px;
-  height: 50px;
+  width: ${(props) => props.size || '50px'};
+  height: ${(props) => props.size || '50px'};
   line-height: 1px;
   border-radius: 50%;
   overflow: hidden;

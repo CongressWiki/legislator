@@ -20,14 +20,16 @@ export type StateSponsorsToolTipProps = {
 
 const StateSponsorsToolTip = ({
   state,
-  congressImages,
+  // congressImages,
   sponsor,
   cosponsors = [],
   className,
 }: StateSponsorsToolTipProps) => {
   const hasBillCosponsorships = cosponsors.length > 0;
+  const isSponsorState = !!sponsor;
+  const hasSponsors = hasBillCosponsorships || isSponsorState;
   return (
-    <Wrapper className={className}>
+    <Wrapper className={className} hide={!hasSponsors}>
       {sponsor ? <BillSponsor sponsor={sponsor} /> : null}
       {hasBillCosponsorships ? <BillCosponsor cosponsors={cosponsors} /> : null}
     </Wrapper>
@@ -36,10 +38,18 @@ const StateSponsorsToolTip = ({
 
 export default StateSponsorsToolTip;
 
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
+const Wrapper = styled.div<{ hide?: boolean }>`
+  position: absolute;
+  text-align: left;
+  padding: 0.5rem;
+
+  opacity: ${(props) => (props.hide ? 0 : 1)};
+  /* transition: opacity 0.3s; */
+
+  border: solid thin var(--color-text);
+  border-radius: 5px;
+  background-color: var(--color-backgroundLite);
+  text-shadow: 1px 1px 0px var(--color-gray300);
 `;
 
 export type BillSponsorProps = {
@@ -66,8 +76,8 @@ export const BillCosponsor = ({
     <BillSponsorWrapper>
       <ToolTipHeader>Cosponsors</ToolTipHeader>
       <ToolTipUnorderedList columns={Math.floor(cosponsors.length / 10)}>
-        {cosponsors.map((cosponsor) => (
-          <ToolTipListItem>
+        {cosponsors.map((cosponsor, index) => (
+          <ToolTipListItem key={index}>
             {cosponsor.elected_official.preferred_name}
           </ToolTipListItem>
         ))}

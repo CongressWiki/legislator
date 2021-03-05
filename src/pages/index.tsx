@@ -43,7 +43,7 @@ export default function Home() {
           modifiedTime
           childImageSharp {
             gatsbyImageData(
-              width: 300
+              width: 100
               placeholder: BLURRED
               formats: [AUTO, WEBP, AVIF]
             )
@@ -58,7 +58,6 @@ export default function Home() {
             title
             subject
             summary
-            bill_text
             congress
             status
             status_at

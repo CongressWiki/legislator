@@ -19,28 +19,29 @@ const UsaMapOfSponsors = ({
   cosponsorships,
   congressImages,
 }: UsaMapOfSponsorsProps) => {
-  const [hoveredState, setHoveredState] = useState('CA');
+  const [hoveredState, setHoveredState] = useState('');
   useEffect(() => {
-    var tooltip = d3.selectAll('.tooltip:not(.css)');
-    var HTMLmouseTip = d3.select('div.tooltip.mouse');
+    let htmlMouseTip = d3.select('div.tooltip.mouse');
 
-    d3.select('.usamap')
+    let usaMap = d3
+      .select('.usamap')
       .selectAll('path')
       .on('mouseover', function (event) {
-        const state = event.target.dataset.id;
-        setHoveredState(state);
-        tooltip.style('opacity', '1');
+        setHoveredState(event.target.dataset.id);
       })
       .on('mousemove', function (event) {
-        HTMLmouseTip.style('left', Math.max(0, event.pageX - 50) + 'px').style(
-          'top',
-          event.pageY + 20 + 'px'
-        );
+        htmlMouseTip
+          .style('left', Math.max(0, event.pageX - 50) + 'px')
+          .style('top', event.pageY + 20 + 'px');
       })
       .on('mouseout', function () {
-        return tooltip.style('opacity', '0');
+        setHoveredState('');
       });
-  });
+    return () => {
+      usaMap.interrupt();
+      htmlMouseTip.interrupt();
+    };
+  }, []);
 
   const getSponsorOfState = (state: string) => {
     const isSponsorState = state === sponsor.state;
@@ -99,17 +100,6 @@ const Wrapper = styled.div<{ sponsorState: string; cosponsorStates: string[] }>`
 
 const StyledToolTip = styled(StateSponsorsToolTip)`
   pointer-events: none; /*let mouse events pass through*/
-  position: absolute;
-  text-align: left;
-  padding: 0.5rem;
-
-  opacity: 0;
-  transition: opacity 0.3s;
-
-  border: solid thin var(--color-text);
-  border-radius: 5px;
-  background-color: var(--color-backgroundLite);
-  text-shadow: 1px 1px 0px var(--color-gray300);
 `;
 
 const UsaMap = styled(UsaMapSVG)`
