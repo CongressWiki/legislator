@@ -12,7 +12,6 @@ export type LabelValuePair = {
 
 export type StateSponsorsToolTipProps = {
   state: string;
-  congressImages: any[];
   sponsor?: IOfficial;
   cosponsors?: ICosponsorship[];
   className?: string;
@@ -20,7 +19,6 @@ export type StateSponsorsToolTipProps = {
 
 const StateSponsorsToolTip = ({
   state,
-  // congressImages,
   sponsor,
   cosponsors = [],
   className,
@@ -42,6 +40,7 @@ const Wrapper = styled.div<{ hide?: boolean }>`
   position: absolute;
   text-align: left;
   padding: 0.5rem;
+  z-index: 900;
 
   opacity: ${(props) => (props.hide ? 0 : 1)};
   /* transition: opacity 0.3s; */

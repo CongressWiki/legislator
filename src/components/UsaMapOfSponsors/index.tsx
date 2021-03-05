@@ -21,11 +21,11 @@ const UsaMapOfSponsors = ({
 }: UsaMapOfSponsorsProps) => {
   const [hoveredState, setHoveredState] = useState('');
   useEffect(() => {
-    let htmlMouseTip = d3.select('div.tooltip.mouse');
+    const htmlMouseTip = d3.select('div.tooltip.mouse');
+    const usaMap = d3.select('.usamap');
+    const states = usaMap.selectAll('path');
 
-    let usaMap = d3
-      .select('.usamap')
-      .selectAll('path')
+    states
       .on('mouseover', function (event) {
         setHoveredState(event.target.dataset.id);
       })
@@ -38,10 +38,11 @@ const UsaMapOfSponsors = ({
         setHoveredState('');
       });
     return () => {
+      states.interrupt();
       usaMap.interrupt();
       htmlMouseTip.interrupt();
     };
-  }, []);
+  }, [hoveredState]);
 
   const getSponsorOfState = (state: string) => {
     const isSponsorState = state === sponsor.state;
@@ -69,7 +70,6 @@ const UsaMapOfSponsors = ({
       <StyledToolTip
         className="mouse tooltip"
         state={hoveredState}
-        congressImages={congressImages}
         sponsor={getSponsorOfState(hoveredState)}
         cosponsors={getCosponsorsOfState(hoveredState)}
       />
@@ -78,6 +78,8 @@ const UsaMapOfSponsors = ({
     </Wrapper>
   );
 };
+
+export default UsaMapOfSponsors;
 
 const Wrapper = styled.div<{ sponsorState: string; cosponsorStates: string[] }>`
   ${styleCosponsorStates}
@@ -127,5 +129,3 @@ function styleCosponsorStates({
     ${styles}
   `;
 }
-
-export default UsaMapOfSponsors;
