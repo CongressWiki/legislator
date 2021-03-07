@@ -6,7 +6,7 @@ import BillText from '@components/BillText';
 import BillSummary from '@components/BillSummary';
 import BillTitle from '@components/BillTitle';
 
-export type BillProps = BillData & { congressImages: any[] };
+export type BillProps = BillData;
 
 export default function Bill({
   type,
@@ -17,7 +17,6 @@ export default function Bill({
   summary,
   sponsor,
   cosponsorships,
-  congressImages,
 }: BillProps) {
   return (
     <BillWrapper>
@@ -33,11 +32,7 @@ export default function Bill({
       ) : (
         <BillSummary summary={summary} />
       )}
-      <UsaMapOfSponsors
-        sponsor={sponsor}
-        cosponsorships={cosponsorships}
-        congressImages={congressImages}
-      />
+      <UsaMapOfSponsors sponsor={sponsor} cosponsorships={cosponsorships} />
     </BillWrapper>
   );
 }

@@ -1,24 +1,9 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-
-export type action = {
-  id: string;
-  acted_at: string;
-  action_code: string;
-  references: Record<string, any>;
-  text: string;
-  type?: string;
-  status?: string;
-  how?: string;
-  result?: string;
-  vote_type?: string;
-  where?: string;
-  roll?: string;
-  suspension?: string;
-};
+import { Action } from '@type/hasura';
 
 export type ActionsStepperProps = {
-  actions: action[];
+  actions: Action[];
   className?: string;
 };
 
@@ -26,7 +11,7 @@ const ActionsStepper = ({ actions, className }: ActionsStepperProps) => {
   const [activeStepId, setActiveStepId] = useState(actions[0]?.id);
 
   return (
-    <Wrapper className={`steps ${className}`}>
+    <Wrapper className={className}>
       {actions.map((action, index) => (
         <Step
           key={index}
@@ -57,31 +42,35 @@ const Wrapper = styled.div`
   width: 100%;
   min-width: 270px;
   max-width: 20vw;
-  box-shadow: 0px 10px 15px -5px rgba(0, 0, 0, 0.3);
-  background-color: var(--color-background);
   padding: 0;
+
+  div {
+    font-family: concourse_t4;
+  }
 `;
 
 const Step = styled.div<{ isActive?: boolean; minimized?: boolean }>`
   position: relative;
   padding: 0 20px 24px 50px;
   transition: all 0.4s ease-in-out;
-  background-color: var(--color-background);
 
-  ::before {
+  :before {
     position: absolute;
     content: '';
     height: 13px;
     width: 13px;
     background-color: ${(props) =>
-      props.isActive ? 'var(--color-secondary)' : 'rgb(198, 198, 198)'};
+      props.isActive ? 'var(--color-secondary)' : 'var(--color-gray700)'};
     border-radius: 15px;
+    box-shadow: ${(props) =>
+      props.isActive ? '0 0 40px 1px var(--color-secondary)' : 'none'};
+
     left: calc(50px / 2);
     transform: translateX(-45%);
     z-index: 2;
   }
 
-  ::after {
+  :after {
     position: absolute;
     content: '';
     height: 100%;
@@ -96,11 +85,13 @@ const Step = styled.div<{ isActive?: boolean; minimized?: boolean }>`
     if (props.minimized) {
       return `
         transition: background-color 0.3s ease-in-out;
-        // background-color: green;
         cursor: pointer;
 
         :hover {
-          background-color: rgba(0, 0, 0, 0.06);
+          :before {
+            background-color: var(--color-secondary);
+            box-shadow: 0 0 40px 1px var(--color-secondary);
+          }
         }
         `;
     }
@@ -109,14 +100,12 @@ const Step = styled.div<{ isActive?: boolean; minimized?: boolean }>`
 
 const StepLabel = styled.div`
   .header {
-    background: var(--color-background);
     color: var(--color-text);
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    font-family: concourse_t4;
     user-select: none;
     font-size: 1rem;
     font-weight: 600;
@@ -131,43 +120,47 @@ const StepLabel = styled.div`
 
 const StepContent = styled.div<{ minimized?: boolean }>`
   position: relative;
-  height: 160px;
-  width: 100%;
+  height: auto;
+  min-height: 100px;
+  max-height: 300px;
   margin-top: 10px;
 
   overflow: hidden;
   transition: all 0.3s ease-in-out;
-  background-color: var(--color-background);
   border-radius: 4px;
 
-  font-family: concourse_t2;
+  font-weight: 500;
+  color: var(--color-gray300);
+
   ${(props) => {
     if (props.minimized) {
       return `
-        height: 0px;
+        height: 0;
+        min-height: 0;
+        max-height: 0;
       `;
     }
   }};
 `;
 
-const NextButton = styled.button`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  border: 0;
-  padding: 10px 20px;
-  border-radius: 4px;
-  background-color: var(--color-secondary);
-  box-shadow: 0 5px 10px -3px rgba(0, 0, 0, 0.3);
-  transition: background-color 0.3s ease-in-out;
-  cursor: pointer;
-  transform: translate(-50%, -50%);
+// const NextButton = styled.button`
+//   position: absolute;
+//   top: 50%;
+//   left: 50%;
+//   border: 0;
+//   padding: 10px 20px;
+//   border-radius: 4px;
+//   background-color: var(--color-secondary);
+//   box-shadow: 0 5px 10px -3px rgba(0, 0, 0, 0.3);
+//   transition: background-color 0.3s ease-in-out;
+//   cursor: pointer;
+//   transform: translate(-50%, -50%);
 
-  :hover {
-    background-color: rgba(255, 0, 0, 0.6);
-  }
+//   :hover {
+//     background-color: rgba(255, 0, 0, 0.6);
+//   }
 
-  :focus {
-    outline: 0;
-  }
-`;
+//   :focus {
+//     outline: 0;
+//   }
+// `;

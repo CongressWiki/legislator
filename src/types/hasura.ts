@@ -9,13 +9,17 @@ export type Bill = {
   updated_at: string;
   sponsor: Official;
   cosponsorships: Cosponsorship[];
-  actions: Array<Record<string, any>>;
+  actions: Action[];
   status: string;
   status_at: string;
   introduced_at: string;
   created_at: string;
   by_request: boolean;
-  bill_text: string;
+  short_title?: string;
+  bill_text?: string;
+  subjects?: string[];
+  committee_reports?: Record<string, any>;
+  related_bills?: Record<string, any>;
 };
 
 export type Official = {
@@ -47,4 +51,20 @@ export type Cosponsorship = {
   district: string;
   withdrawn_at: any;
   elected_official: Official;
+};
+
+export type Action = {
+  id: string;
+  acted_at: string;
+  action_code: string;
+  references: Record<string, any>;
+  text: string;
+  type?: string;
+  status?: string;
+  how?: string;
+  result?: string;
+  vote_type?: string;
+  where?: string;
+  roll?: string;
+  suspension?: string;
 };

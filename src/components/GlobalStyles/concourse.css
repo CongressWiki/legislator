@@ -1,12 +1,12 @@
 /* Font: Concourse c2 */
-@font-face {
+/* @font-face {
   font-family: concourse_c2;
   font-style: normal;
   font-weight: normal;
   font-stretch: normal;
   src: url('../../../static/fonts/Concourse/C2/concourse_c2_regular.woff2')
     format('woff2');
-}
+} */
 /* @font-face {
     font-family: concourse_c2;
     font-style: italic;
@@ -32,14 +32,14 @@
   } */
 
 /* Font: Concourse c4 */
-@font-face {
+/* @font-face {
   font-family: concourse_c4;
   font-style: normal;
   font-weight: normal;
   font-stretch: normal;
   src: url('../../../static/fonts/Concourse/C4/concourse_c4_regular.woff2')
     format('woff2');
-}
+} */
 /* @font-face {
     font-family: concourse_c4;
     font-style: italic;
@@ -76,13 +76,14 @@
   } */
 
 /* Font: Concourse t2 */
-@font-face {
+/* @font-face {
   font-family: concourse_t2;
   font-style: normal;
   font-weight: normal;
   font-stretch: normal;
   src: url('../../../static/fonts/Concourse/T2/concourse_t2_regular.woff2')
     format('woff2');
+  font-display: swap;
 }
 @font-face {
   font-family: concourse_t2;
@@ -91,6 +92,7 @@
   font-stretch: normal;
   src: url('../../../static/fonts/Concourse/T2/concourse_t2_italic.woff2')
     format('woff2');
+  font-display: swap;
 }
 @font-face {
   font-family: concourse_t2;
@@ -99,6 +101,7 @@
   font-stretch: normal;
   src: url('../../../static/fonts/Concourse/T2/concourse_t2_bold.woff2')
     format('woff2');
+  font-display: swap;
 }
 @font-face {
   font-family: concourse_t2;
@@ -107,7 +110,8 @@
   font-stretch: normal;
   src: url('../../../static/fonts/Concourse/T2/concourse_t2_bold_italic.woff2')
     format('woff2');
-}
+  font-display: swap;
+} */
 
 /* Font: Concourse T3 */
 /* @font-face {
@@ -147,6 +151,7 @@
   font-stretch: normal;
   src: url('../../../static/fonts/Concourse/T4/concourse_t4_regular.woff2')
     format('woff2');
+  font-display: swap;
 }
 @font-face {
   font-family: concourse_t4;
@@ -155,6 +160,7 @@
   font-stretch: normal;
   src: url('../../../static/fonts/Concourse/T4/concourse_t4_italic.woff2')
     format('woff2');
+  font-display: swap;
 }
 @font-face {
   font-family: concourse_t4;
@@ -163,6 +169,7 @@
   font-stretch: normal;
   src: url('../../../static/fonts/Concourse/T4/concourse_t4_bold.woff2')
     format('woff2');
+  font-display: swap;
 }
 @font-face {
   font-family: concourse_t4;
@@ -171,6 +178,7 @@
   font-stretch: normal;
   src: url('../../../static/fonts/Concourse/T4/concourse_t4_bold_italic.woff2')
     format('woff2');
+  font-display: swap;
 }
 
 /* Font: Concourse t6 */

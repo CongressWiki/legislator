@@ -146,7 +146,7 @@ export default function Home() {
   const [billTypes, setBillTypes] = useState<string[]>([]);
   const [searchBy, setSearchBy] = useState('');
   const [orderByAsc, setOrderByAsc] = useState(false);
-  const limitIncrement = 10;
+  const limitIncrement = 15;
   const [limit, setLimit] = useState(limitIncrement);
   const offset = 0;
 
@@ -191,7 +191,7 @@ export default function Home() {
 
   return (
     <>
-      <SEO title="Latest Bills" />
+      <SEO title="Latest Bills" pathname="/" />
       <Layout>
         <BillLane>
           <BillLaneHeader

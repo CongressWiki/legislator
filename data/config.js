@@ -1,10 +1,12 @@
 module.exports = {
+  siteUrl: 'https://usacounts.com',
+  url: 'https://usacounts.com',
   defaultTitle: 'USACounts',
   logo: 'https://usacounts.com/favicon/favicon-512',
-  url: 'https://usacounts.com',
   author: 'Ryan Parker',
   legalName: 'Ryan Parker',
-  defaultDescription: 'The latest US bills and amendments.',
+  defaultDescription:
+    'Do your elected officials vote for YOU? Follow the latest bills and amendments being pushed through the United States Senate and House.',
   themeColor: 'hsl(50deg, 100%, 50%)',
   backgroundColor: 'hsl(250deg, 70%, 7%)',
   socialLinks: {
@@ -15,11 +17,23 @@ module.exports = {
     twitter: '@CountsUSA',
   },
   address: {
-    city: 'Ames',
-    region: 'Midwest',
     country: 'USA',
+    region: 'Midwest',
+    city: 'Ames',
     zipCode: '50014',
   },
   foundingDate: '2020',
   googleAnalyticsID: 'G-P7RGJJQ8KX',
+  keywords: [
+    'bills',
+    'amendments',
+    'votes',
+    'congress',
+    'senate',
+    'house',
+    'representatives',
+    'rollcall',
+    'sponsor',
+    'cosponsor',
+  ],
 };

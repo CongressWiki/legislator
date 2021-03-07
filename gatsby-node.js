@@ -1,5 +1,5 @@
 const path = require(`path`);
-
+const createSocialCards = require('./src/libs/create-social-cards');
 exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
     resolve: {
@@ -62,7 +62,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             updated_at
             vice_president_terms
           }
-          cosponsorships {
+          cosponsorships(order_by: { sponsored_at: desc }) {
             id
             original_cosponsor
             sponsored_at
@@ -92,7 +92,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
               born_at
             }
           }
-          actions {
+          actions(order_by: { acted_at: desc }) {
             acted_at
             action_code
             how
@@ -109,22 +109,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           }
         }
       }
-      congressImages: allFile(
-        filter: { sourceInstanceName: { eq: "congressImages" } }
-      ) {
-        nodes {
-          extension
-          name
-          modifiedTime
-          childImageSharp {
-            gatsbyImageData(
-              width: 100
-              placeholder: BLURRED
-              formats: [AUTO, WEBP, AVIF]
-            )
-          }
-        }
-      }
     }
   `);
 
@@ -134,19 +118,26 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     return;
   }
 
-  const images = result.data.congressImages.nodes;
+  for (const bill of result.data.hasura.bills) {
+    const slug = `${bill.congress}/${bill.type}${bill.number}`;
 
-  result.data.hasura.bills.forEach((bill) => {
     createPage({
-      path: `${bill.congress}/${bill.type}${bill.number}`,
+      path: slug,
       component: path.resolve(`./src/components/BillTemplate/index.tsx`),
       context: {
-        // Data passed to context is available
-        // in page queries as GraphQL variables.
-        slug: `${bill.congress}/${bill.type}${bill.number}`,
-        ...bill,
-        congressImages: images,
+        slug,
+        bill,
       },
     });
-  });
+
+    // createSocialCards({
+    //   bill: bill,
+    //   author: 'USACounts',
+    //   separator: '|',
+    //   fontFile: require.resolve(
+    //     './static/fonts/Century_Supra/T3/century_supra_t3_regular.ttf'
+    //   ),
+    //   slug,
+    // });
+  }
 };

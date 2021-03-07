@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Link} from 'gatsby';
+import { Link } from 'gatsby';
 import ThemeToggle from '@components/ThemeToggle';
 import SiteTitle from '@components/SiteTitle';
 
@@ -8,7 +8,7 @@ export type HeaderProps = {
   siteTitle?: string;
 };
 
-const Header = ({siteTitle}: HeaderProps) => {
+const Header = ({ siteTitle }: HeaderProps) => {
   return (
     <Wrapper>
       <ToolBar>
@@ -35,14 +35,12 @@ const Wrapper = styled.header`
 `;
 
 const ToolBar = styled.div`
-  margin: 0;
-  /* padding-left: 32px;
-  padding-right: 32px; */
-  display: flex;
-  align-items: center;
-
-  justify-content: space-between;
   width: 80%;
+  margin: 0;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
   a {
     text-decoration: none;

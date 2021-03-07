@@ -1,16 +1,7 @@
-const path = require('path');
 const config = require('./data/config');
 const siteAddress = new URL(config.url);
 const SITE_S3_BUCKET = 'usacounts.com';
-const IMAGES_S3_BUCKET = 'democracy-images';
-const CONGRESS_IMAGES_PATH = path.resolve(
-  __dirname,
-  '..',
-  'scrapers',
-  'images',
-  'congress',
-  'original'
-);
+// const IMAGES_S3_BUCKET = 'democracy-images';
 
 module.exports = {
   siteMetadata: {
@@ -19,6 +10,7 @@ module.exports = {
     author: config.author,
     siteUrl: siteAddress.href.slice(0, -1),
     twitter: config.social.twitter,
+    keywords: config.keywords,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -45,7 +37,7 @@ module.exports = {
         background_color: config.backgroundColor,
         theme_color: config.themeColor,
         display: `minimal-ui`,
-        icon: `static/images/USA_Map_Spotted.svg`, // This path is relative to the root of the site.
+        icon: `static/images/SpottedUsaMapLogo.png`, // This path is relative to the root of the site.
       },
     },
     {
@@ -67,33 +59,14 @@ module.exports = {
         bucketName: SITE_S3_BUCKET,
         protocol: siteAddress.protocol.slice(0, -1),
         hostname: siteAddress.hostname,
+        params: {
+          '**/*.woff2': {
+            CacheControl: 'public, max-age=31536000, immutable',
+          },
+        },
       },
     },
     'gatsby-plugin-styled-components',
-    'gatsby-plugin-sitemap',
-    {
-      resolve: `gatsby-plugin-google-gtag`,
-      options: {
-        // You can add multiple tracking ids and a pageview event will be fired for all of them.
-        trackingIds: [config.googleAnalyticsID],
-        // This object gets passed directly to the gtag config command
-        // This config will be shared across all trackingIds
-        gtagConfig: {
-          // optimize_id: 'OPT_CONTAINER_ID',
-          anonymize_ip: true,
-          cookie_expires: 0,
-        },
-        // This object is used for configuration specific to this plugin
-        pluginConfig: {
-          // Puts tracking script in the head instead of the body
-          head: true,
-          // Setting this parameter is also optional
-          respectDNT: true,
-          // Avoids sending pageview hits from custom paths
-          // exclude: ['/preview/**', '/do-not-track/me/too/'],
-        },
-      },
-    },
     'gatsby-plugin-svgr',
     // To learn more, visit: https://gatsby.dev/offline // this (optional) plugin enables Progressive Web App + Offline functionality
     `gatsby-plugin-offline`,
@@ -116,6 +89,30 @@ module.exports = {
       resolve: `gatsby-plugin-canonical-urls`,
       options: {
         siteUrl: siteAddress.href.slice(0, -1),
+      },
+    },
+    'gatsby-plugin-sitemap',
+    {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        // You can add multiple tracking ids and a pageview event will be fired for all of them.
+        trackingIds: [config.googleAnalyticsID],
+        // This object gets passed directly to the gtag config command
+        // This config will be shared across all trackingIds
+        gtagConfig: {
+          // optimize_id: 'OPT_CONTAINER_ID',
+          anonymize_ip: true,
+          cookie_expires: 0,
+        },
+        // This object is used for configuration specific to this plugin
+        pluginConfig: {
+          // Puts tracking script in the head instead of the body
+          // head: true,
+          // Setting this parameter is also optional
+          respectDNT: true,
+          // Avoids sending pageview hits from custom paths
+          // exclude: ['/preview/**', '/do-not-track/me/too/'],
+        },
       },
     },
   ],

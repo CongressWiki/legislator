@@ -1,27 +1,30 @@
-/**
- * SEO component that queries for data with
- *  Gatsby's useStaticQuery React hook
- *
- * See: https://www.gatsbyjs.com/docs/use-static-query/
- */
-
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
-// TODO: import image and use in commented out meta tags
-// import { ReactComponent as Thumbnail } from '@static/images/us-states.svg';
+import SpottedUsaMapLogo from '@static/images/SpottedUsaMapLogo.png';
 
 export type SEOProps = {
-  description?: string;
+  pathname: string;
   lang?: string;
+  title?: string;
+  description?: string;
+  keywords?: string[];
+  billSocialCard?: boolean;
   meta?: ConcatArray<
     | { name: string; content: any; property?: undefined }
     | { property: string; content: any; name?: undefined }
   >;
-  title?: string;
 };
 
-const SEO = ({ description, lang, meta, title }: SEOProps) => {
+const SEO = ({
+  pathname,
+  lang,
+  title,
+  description,
+  keywords,
+  billSocialCard,
+  meta,
+}: SEOProps) => {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -30,7 +33,9 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
             title
             description
             author
+            keywords
             twitter
+            siteUrl
           }
         }
       }
@@ -38,7 +43,21 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
   );
 
   const metaDescription = description || site.siteMetadata.description;
-  const defaultTitle = site.siteMetadata?.title;
+  let socialCard = SpottedUsaMapLogo;
+
+  if (billSocialCard) {
+    socialCard = `${site.siteMetadata.siteUrl}/${pathname}/twitter-card.jpg`;
+  }
+
+  const canonical = pathname
+    ? `${site.siteMetadata.siteUrl}/${pathname}`
+    : null;
+
+  let metaKeywords = site.siteMetadata.keywords;
+
+  if (keywords) {
+    metaKeywords = [...keywords, ...metaKeywords];
+  }
 
   return (
     <Helmet
@@ -46,16 +65,30 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
         lang,
       }}
       title={title}
-      titleTemplate={defaultTitle ? `%s - ${defaultTitle}` : 'USACounts'}
+      titleTemplate={`%s | ${site.siteMetadata.title}`}
+      link={
+        canonical
+          ? [
+              {
+                rel: 'canonical',
+                href: canonical,
+              },
+            ]
+          : []
+      }
       meta={[
         {
           name: `description`,
           content: metaDescription,
         },
-        // {
-        //   name: `image`,
-        //   content: Thumbnail,
-        // },
+        {
+          name: `keywords`,
+          content: metaKeywords.join(','),
+        },
+        {
+          name: `image`,
+          content: socialCard,
+        },
         {
           property: `og:title`,
           content: title,
@@ -64,21 +97,21 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
           property: `og:description`,
           content: metaDescription,
         },
-        // {
-        //   property: `og:image`,
-        //   content: Thumbnail,
-        // },
+        {
+          property: `og:image`,
+          content: socialCard,
+        },
         {
           property: `og:type`,
           content: `website`,
         },
         {
-          name: `twitter:card`,
-          content: `summary`,
+          name: `twitter:creator`,
+          content: site.siteMetadata.twitter,
         },
         {
-          name: `twitter:creator`,
-          content: site.siteMetadata?.twitter || ``,
+          name: `twitter:site`,
+          content: site.siteMetadata.twitter,
         },
         {
           name: `twitter:title`,
@@ -88,11 +121,15 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
           name: `twitter:description`,
           content: metaDescription,
         },
-        // {
-        //   name: `twitter:image:src`,
-        //   content: Thumbnail,
-        // },
-      ].concat(meta)}
+        {
+          name: `twitter:image`,
+          content: socialCard,
+        },
+        {
+          name: 'twitter:card',
+          content: 'summary_large_image',
+        },
+      ].concat(meta ? meta : [])}
     >
       {/* Font: Advocate */}
       {/* <link
@@ -609,13 +646,13 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
       /> */}
 
       {/* Font: Concourse */}
-      <link
+      {/* <link
         rel="preload"
         as="font"
         href="/../../fonts/Concourse/C2/concourse_c2_regular.woff2"
         type="font/ttf"
         crossOrigin="anonymous"
-      />
+      /> */}
       {/* <link
         rel="preload"
         as="font"
@@ -637,13 +674,13 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
         type="font/ttf"
         crossOrigin="anonymous"
       /> */}
-      <link
+      {/* <link
         rel="preload"
         as="font"
         href="/../../fonts/Concourse/C4/concourse_c4_regular.woff2"
         type="font/ttf"
         crossOrigin="anonymous"
-      />
+      /> */}
       {/* <link
         rel="preload"
         as="font"
@@ -672,7 +709,7 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
         type="font/ttf"
         crossOrigin="anonymous"
       /> */}
-      <link
+      {/* <link
         rel="preload"
         as="font"
         href="/../../fonts/Concourse/T2/concourse_t2_regular.woff2"
@@ -699,7 +736,7 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
         href="/../../fonts/Concourse/T2/concourse_t2_bold_italic.woff2"
         type="font/ttf"
         crossOrigin="anonymous"
-      />
+      /> */}
       {/* <link
         rel="preload"
         as="font"

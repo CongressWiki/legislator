@@ -11,13 +11,11 @@ import StateSponsorsToolTip from '@components/StateSponsorsToolTip';
 export type UsaMapOfSponsorsProps = {
   sponsor: IOfficial;
   cosponsorships: ICosponsorship[];
-  congressImages: any[];
 };
 
 const UsaMapOfSponsors = ({
   sponsor,
   cosponsorships,
-  congressImages,
 }: UsaMapOfSponsorsProps) => {
   const [hoveredState, setHoveredState] = useState('');
   useEffect(() => {

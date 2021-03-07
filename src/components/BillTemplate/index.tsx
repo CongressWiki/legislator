@@ -6,17 +6,45 @@ import SEO from '@components/Seo';
 import BillComponent from '@components/Bill';
 
 export type BillProps = {
-  pageContext: BillData;
+  pageContext: {
+    slug: string;
+    bill: BillData;
+  };
 };
 
-const Bill = ({ pageContext: bill }: BillProps) => {
+const Bill = ({ pageContext: { slug, bill } }: BillProps) => {
+  let allBillSubjects = [bill.subject];
+  if (bill.subjects) {
+    allBillSubjects = [...allBillSubjects, ...bill.subjects];
+  }
+
   return (
-    <Layout>
-      <SEO title={`${bill.type.toUpperCase()}${bill.number}`} />
-      <BillComponent {...bill} />
-      <Stepper actions={bill.actions} className="right-side" />
-    </Layout>
+    <>
+      <SEO
+        pathname={slug}
+        title={`${bill.type.toUpperCase()}${bill.number}`}
+        description={truncate(bill.title, 200)}
+        keywords={allBillSubjects}
+        billSocialCard
+      />
+      <Layout>
+        <BillComponent {...bill} />
+        <Stepper actions={bill.actions} className="right-side" />
+      </Layout>
+    </>
   );
 };
 
 export default Bill;
+
+function truncate(string: string, limit: number, useWordBoundary = true) {
+  if (string.length <= limit) {
+    return string;
+  }
+  const subString = string.substr(0, limit - 1); // the original check
+  return (
+    (useWordBoundary
+      ? subString.substr(0, subString.lastIndexOf(' '))
+      : subString) + '…'
+  );
+}

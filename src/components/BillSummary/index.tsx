@@ -41,7 +41,7 @@ export default function BillSummary({ summary }: BillSummaryProps) {
 
         // If previous paragraph ended with "{includes|to|for}..." render paragraph as list
         if (index > 0 && BillParagraphs[index - 1].endsWith('…')) {
-          console.log(BillParagraphs[index]);
+          // console.log(BillParagraphs[index]);
 
           return <BillList paragraph={paragraph} index={index} />;
         }
