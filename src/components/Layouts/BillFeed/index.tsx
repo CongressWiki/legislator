@@ -22,7 +22,7 @@ const CommonLayout = ({ children }: CommonLayoutProps) => {
     <>
       <Header siteTitle={data.site.siteMetadata?.title} />
       <HeaderSpacer />
-      <Wrapper>{children}</Wrapper>
+      <Wrapper id="layout-wrapper">{children}</Wrapper>
     </>
   );
 };

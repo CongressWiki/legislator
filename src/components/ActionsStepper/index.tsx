@@ -130,7 +130,7 @@ const StepContent = styled.div<{ minimized?: boolean }>`
   border-radius: 4px;
 
   font-weight: 500;
-  color: var(--color-gray300);
+  color: var(--color-text);
 
   ${(props) => {
     if (props.minimized) {

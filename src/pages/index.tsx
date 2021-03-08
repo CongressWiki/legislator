@@ -7,6 +7,7 @@ import BillLane from '@components/BillLane';
 import BillLaneHeader from '@components/BillLaneHeader';
 import BillLaneFooter from '@components/BillLaneFooter';
 import type { IGatsbyImageData } from 'gatsby-plugin-image';
+import withApollo from '@utils/withApollo';
 
 import BillCard from '@components/BillCard';
 
@@ -31,7 +32,7 @@ export type BillsAndCongressImagesQuery = {
   };
 };
 
-export default function Home() {
+function Home() {
   const data: BillsAndCongressImagesQuery = useStaticQuery(graphql`
     query BillsAndCongressImages {
       congressImages: allFile(
@@ -218,3 +219,5 @@ export default function Home() {
     </>
   );
 }
+
+export default withApollo(Home);

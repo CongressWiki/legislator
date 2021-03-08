@@ -2,7 +2,6 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import styled from 'styled-components';
 import BillCard, { BillCardProps } from '@components/BillCard';
-import Capital from '@components/Capital';
 
 import HomeLayout, { HomeLayoutProps } from './index';
 

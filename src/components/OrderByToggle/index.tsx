@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
-import SortDescIcon from '@components/SortDescIcon';
-import SortAscIcon from '@components/SortAscIcon';
+import SortDescIcon from '@components/icons/SortDescIcon';
+import SortAscIcon from '@components/icons/SortAscIcon';
 import ButtonCanvas from '@components/ButtonCanvas';
 
 export type OrderByToggleProps = {
@@ -13,7 +13,7 @@ export type OrderByToggleProps = {
   className?: string;
 };
 
-const OrderByToggle = ({handleToggle, className}: OrderByToggleProps) => {
+const OrderByToggle = ({ handleToggle, className }: OrderByToggleProps) => {
   const [isAscending, setIsAscending] = useState(false);
 
   const handleClick = () => {

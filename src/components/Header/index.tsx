@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
 import ThemeToggle from '@components/ThemeToggle';
+import LoginButton from '@components/LoginButton';
 import SiteTitle from '@components/SiteTitle';
 
 export type HeaderProps = {
@@ -15,7 +16,10 @@ const Header = ({ siteTitle }: HeaderProps) => {
         <Link to="/">
           <SiteTitle title={siteTitle} />
         </Link>
-        <ThemeToggle />
+        <ButtonsBar>
+          <ThemeToggle />
+          <LoginButton />
+        </ButtonsBar>
       </ToolBar>
     </Wrapper>
   );
@@ -34,7 +38,17 @@ const Wrapper = styled.header`
   background-color: var(--color-background);
 `;
 
+const ButtonsBar = styled.div`
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+`;
+
 const ToolBar = styled.div`
+  height: 100%;
   width: 80%;
   margin: 0;
 

@@ -1,5 +1,4 @@
 const path = require(`path`);
-const createSocialCards = require('./src/libs/create-social-cards');
 exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
     resolve: {
@@ -8,6 +7,8 @@ exports.onCreateWebpackConfig = ({ actions }) => {
         '@pages': path.resolve(__dirname, 'src/pages'),
         '@lib': path.resolve(__dirname, 'src/lib'),
         '@types': path.resolve(__dirname, 'src/types'),
+        '@utils': path.resolve(__dirname, 'src/utils'),
+        '@constants': path.resolve(__dirname, 'src/constants'),
         '@static': path.resolve(__dirname, 'static'),
       },
     },
@@ -130,14 +131,17 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       },
     });
 
-    // createSocialCards({
-    //   bill: bill,
-    //   author: 'USACounts',
-    //   separator: '|',
-    //   fontFile: require.resolve(
-    //     './static/fonts/Century_Supra/T3/century_supra_t3_regular.ttf'
-    //   ),
-    //   slug,
-    // });
+    if (process.env.NODE_ENV === 'production') {
+      const createSocialCards = require('./src/libs/create-social-cards');
+      createSocialCards({
+        bill: bill,
+        author: 'USACounts',
+        separator: '|',
+        fontFile: require.resolve(
+          './static/fonts/Century_Supra/T3/century_supra_t3_regular.ttf'
+        ),
+        slug,
+      });
+    }
   }
 };

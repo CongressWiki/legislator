@@ -1,13 +1,13 @@
 import React from 'react';
-import {useStaticQuery, graphql} from 'gatsby';
-import Header, {HeaderSpacer} from '@components/Header';
+import { useStaticQuery, graphql } from 'gatsby';
+import Header, { HeaderSpacer } from '@components/Header';
 import styled from 'styled-components';
 
 export type CommonLayoutProps = {
   children: React.ReactNode;
 };
 
-const CommonLayout = ({children}: CommonLayoutProps) => {
+const CommonLayout = ({ children }: CommonLayoutProps) => {
   const data = useStaticQuery(graphql`
     query {
       site {

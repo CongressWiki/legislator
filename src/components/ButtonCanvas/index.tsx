@@ -7,6 +7,7 @@ const ButtonCanvas = styled.div`
   border-radius: 50%;
   height: 2.5rem;
   width: 2.5rem;
+  align-items: center;
 
   :hover {
     cursor: pointer;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
-import Candidate from '@components/Candidate';
+import Candidate from '@components/icons/Candidate';
 
 /*
  * This component is built using the new `gatsby-plugin-image` (beta) to automatically serve optimized
