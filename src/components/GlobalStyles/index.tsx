@@ -22,10 +22,10 @@ const GlobalStyles = createGlobalStyle`
     color: var(--color-text);
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
+    margin: 0;
 
-    @media (max-width: 600px) {
-      margin: 0;
-    }
+
+
   }
 
   a {

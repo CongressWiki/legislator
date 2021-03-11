@@ -43,7 +43,7 @@ export default function BillSummary({ summary }: BillSummaryProps) {
         if (index > 0 && BillParagraphs[index - 1].endsWith('…')) {
           // console.log(BillParagraphs[index]);
 
-          return <BillList paragraph={paragraph} index={index} />;
+          return <BillList paragraph={paragraph} index={index} key={index} />;
         }
 
         // If paragraph contains ":" then render the colon's right side as list

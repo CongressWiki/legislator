@@ -82,9 +82,18 @@ module.exports = {
     //     failOnError: true,
     //   },
     // },
-    `gatsby-plugin-image`,
-    `gatsby-plugin-sharp`,
+    {
+      resolve: 'gatsby-plugin-sharp',
+      options: {
+        defaults: {
+          formats: ['avif', 'webp'],
+          quality: 80,
+          placeholder: 'none',
+        },
+      },
+    },
     `gatsby-transformer-sharp`,
+    `gatsby-plugin-image`,
     {
       resolve: `gatsby-plugin-canonical-urls`,
       options: {

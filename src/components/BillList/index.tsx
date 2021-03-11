@@ -21,7 +21,7 @@ const BillList = ({ paragraph, index }: BillListProps) => {
     const listItems = listStatements.map((statement, index) => (
       <BillListItem key={index} statement={statement} />
     ));
-    return <UnorderedList key={index}>{listItems}</UnorderedList>;
+    return <UnorderedList>{listItems}</UnorderedList>;
   }
 
   if (lastStatementHasMultiSentences) {
@@ -39,7 +39,7 @@ const BillList = ({ paragraph, index }: BillListProps) => {
     ));
 
     return (
-      <React.Fragment key={index}>
+      <React.Fragment>
         <UnorderedList>{listItems}</UnorderedList>
         {afterListText ? <BillParagraph>{afterListText}</BillParagraph> : null}
       </React.Fragment>

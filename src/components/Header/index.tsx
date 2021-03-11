@@ -31,6 +31,7 @@ const Wrapper = styled.header`
   left: 0;
   display: flex;
   justify-content: center;
+
   margin: 0;
   width: 100%;
   height: 115px;
@@ -49,7 +50,9 @@ const ButtonsBar = styled.div`
 
 const ToolBar = styled.div`
   height: 100%;
-  width: 80%;
+  width: min(140ch, calc(100% - 64px));
+  /* width: 80%; */
+  /* max-width: 1400px; */
   margin: 0;
 
   display: flex;
@@ -66,7 +69,7 @@ export const HeaderSpacer = styled.div`
   margin: 0;
   padding: 0;
   height: 0;
-  height: 107px;
+  height: 115px;
 `;
 
 export default Header;

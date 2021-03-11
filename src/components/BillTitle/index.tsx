@@ -10,11 +10,11 @@ const BillTitle = ({ title }: BillTitleProps) => {
 };
 
 const Wrapper = styled.h1<BillTitleProps>`
-  font-size: ${(props) => (props.title.length < 100 ? '3rem' : '1.8rem')};
+  font-size: ${(props) => (props.title.length < 100 ? '2rem' : '1.5rem')};
   /* line-height: 2rem; */
   /* letter-spacing: -0.011rem; */
   font-weight: 700;
-  padding-top: 26px;
+  padding-top: 22px;
   margin: 0;
 
   @media (max-width: 450px) {

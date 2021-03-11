@@ -14,12 +14,13 @@ const PARTY_COLORS = {
   Independent: 'green',
 };
 
-const Avatar = ({ children, className, party, size }: AvatarProps) => {
+const Avatar = ({ children, party, size, className }: AvatarProps) => {
   return (
     <Wrapper
       className={className}
       // @ts-expect-error
       borderColor={party in PARTY_COLORS ? PARTY_COLORS[party] : 'gray'}
+      // @ts-expect-error
       size={size}
     >
       {children}
@@ -47,7 +48,7 @@ const Wrapper = styled.div<{ borderColor: string; size?: number }>`
 
   border: solid 1px ${(props) => props.borderColor};
 
-  > * {
+  img {
     z-index: 400;
     width: 100%;
     height: 100%;

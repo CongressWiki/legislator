@@ -19,6 +19,10 @@ const Header = styled.h1`
   font-size: 4rem;
 
   color: var(--color-secondary);
+
+  @media (max-width: 600px) {
+    font-size: 3rem;
+  }
 `;
 
 export default SiteTitle;

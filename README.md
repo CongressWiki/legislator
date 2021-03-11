@@ -54,3 +54,20 @@ Test URL:
 ```url
 https://usacounts.us.auth0.com/login?client=9phT8e22TlF2r5mDaOOU5bHj8FTHWGji&protocol=oauth2&response_type=token%20id_token&redirect_uri=http://localhost:8000/callback&scope=openid%20profile
 ```
+
+## Domains
+
+- billstatus.us
+- stateofthebill.com
+- stateofthebill.us
+- billhopper.us
+- congressvote.us
+- heedcall.com
+- heedcall.org
+- heedcall.us
+- heedthecall.us
+- rollcall.us
+- rollcallvotes.us
+- theusacounts.com
+- **usacounts.com** - active
+- usacounts.org

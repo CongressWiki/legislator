@@ -19,11 +19,9 @@ export type ImageProps = {
 
 const Image = ({ imageData, alt, className }: ImageProps) => {
   const image = imageData ? getImage(imageData) : false;
-
   if (!image) {
     return <Candidate className={className} />;
   }
-
   return <GatsbyImage image={image} alt={alt} className={className} />;
 };
 

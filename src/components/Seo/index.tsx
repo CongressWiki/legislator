@@ -42,7 +42,10 @@ const SEO = ({
     `
   );
 
-  const metaDescription = description || site.siteMetadata.description;
+  const metaDescription = truncate(
+    description || site.siteMetadata.description,
+    200
+  );
   let socialCard = SpottedUsaMapLogo;
 
   if (billSocialCard) {
@@ -846,3 +849,15 @@ SEO.defaultProps = {
 };
 
 export default SEO;
+
+function truncate(string: string, limit: number, useWordBoundary = true) {
+  if (string.length <= limit) {
+    return string;
+  }
+  const subString = string.substr(0, limit - 1); // the original check
+  return (
+    (useWordBoundary
+      ? subString.substr(0, subString.lastIndexOf(' '))
+      : subString) + '…'
+  );
+}

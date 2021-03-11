@@ -1,11 +1,12 @@
 import React from 'react';
 import type { Bill as BillData } from '@type/hasura';
 import styled from 'styled-components';
+import UsaMapOfSponsors from '@components/UsaMapOfSponsors';
 import BillText from '@components/BillText';
 import BillSummary from '@components/BillSummary';
 import BillTitle from '@components/BillTitle';
 
-export type BillProps = BillData & { className?: string };
+export type BillProps = BillData;
 
 export default function Bill({
   type,
@@ -14,47 +15,47 @@ export default function Bill({
   title,
   bill_text,
   summary,
-  className,
+  sponsor,
+  cosponsorships,
 }: BillProps) {
   return (
-    <Wrapper className={className}>
+    <BillWrapper>
       <BillHeader>
         <BillId>
           {type.toUpperCase()}-{number}
         </BillId>
+        <BillSubject>{subject}</BillSubject>
       </BillHeader>
       <BillTitle title={title} />
-      {summary === 'No summary available.' && bill_text ? null : ( // <BillText billText={bill_text} />
+      {summary === 'No summary available.' && bill_text ? (
+        <BillText billText={bill_text} />
+      ) : (
         <BillSummary summary={summary} />
       )}
-    </Wrapper>
+      <UsaMapOfSponsors sponsor={sponsor} cosponsorships={cosponsorships} />
+    </BillWrapper>
   );
 }
 
-const Wrapper = styled.div`
-  width: min(70ch, calc(100% - 32px));
+const BillWrapper = styled.div`
+  margin-top: 1.4rem;
   margin-bottom: 30vh;
-  background-color: var(--color-backgroundLite);
-  border: thin solid var(--color-gray700);
-  border-radius: 1px;
-  padding: 1rem;
-  padding-bottom: 6rem;
-  /* box-shadow: 5px 3px 10px var(--color-gray300); */
-  margin: 0;
-
-  @media (max-width: 600px) {
-    width: 100%;
-  }
 `;
 
 const BillHeader = styled.div`
   margin: 0;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
 `;
 
 const BillId = styled.h2`
   margin: 0;
   font-weight: 600;
   white-space: nowrap;
+`;
+
+const BillSubject = styled.h3`
+  margin: 0;
+  font-weight: 400;
+  text-align: right;
 `;
