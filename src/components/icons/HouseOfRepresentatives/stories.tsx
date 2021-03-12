@@ -2,11 +2,11 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import styled from 'styled-components';
 
-import CheckMarkIcon from './index';
+import HouseOfRepresentativesIcon from './index';
 
 export default {
-  title: 'Components/CheckMarkIcon',
-  component: CheckMarkIcon,
+  title: 'Components/HouseOfRepresentativesIcon',
+  component: HouseOfRepresentativesIcon,
 } as Meta;
 
 const ExampleContainer = styled.div`
@@ -17,7 +17,7 @@ const ExampleContainer = styled.div`
 
 const Template: Story = (args) => (
   <ExampleContainer>
-    <CheckMarkIcon {...args} />
+    <HouseOfRepresentativesIcon {...args} />
   </ExampleContainer>
 );
 

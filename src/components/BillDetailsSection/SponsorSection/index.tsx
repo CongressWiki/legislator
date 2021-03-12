@@ -4,6 +4,10 @@ import Image from '@components/Image';
 // import FancyFrame from '@static/images/Basic_Fancy_frame.svg';
 import type { Official } from '@type/hasura';
 import CircleAvatar from '@components/CircleAvatar';
+import SectionTitle from '@components/BillDetailsSection/SectionTitle';
+import Container from '@components/BillDetailsSection/Container';
+import ContentWrapper from '@components/BillDetailsSection/ContentWrapper';
+import Wrapper from '@components/BillDetailsSection/Wrapper';
 
 export type SponsorSectionProps = {
   sponsor: Official;
@@ -28,50 +32,110 @@ const SponsorSection = ({
 
   return (
     <Wrapper className={className}>
-      <SectionTitle>Sponsors</SectionTitle>
-      <SponsorSpotlight name={sponsor.preferred_name}>
-        <Image imageData={sponsorImage} alt={sponsor.preferred_name} />
-      </SponsorSpotlight>
-      <CosponsorsGroup>
-        {cosponsors.slice(0, 24).map((cosponsor) => {
-          return (
-            <div className="tooltip">
-              <CosponsorAvatar
-                key={cosponsor.id}
-                name={cosponsor.preferred_name}
-                party={cosponsor.political_party}
-                imageData={findCosponsorImage(cosponsor.id)}
-                size="60px"
+      <Container>
+        <ContentWrapper>
+          <SectionTitle>Sponsors</SectionTitle>
+          <SponsorSpotlight>
+            <SponsorFrame name={sponsor.preferred_name}>
+              <Image
+                imageData={sponsorImage}
+                alt={sponsor.preferred_name}
+                loading="eager"
               />
-              <span className="tooltiptext">{cosponsor.preferred_name}</span>
-            </div>
-          );
-        })}
-      </CosponsorsGroup>
+            </SponsorFrame>
+            <p>{sponsor.preferred_name}</p>
+          </SponsorSpotlight>
+          <CosponsorsGroup>
+            {cosponsors.slice(0, 10).map((cosponsor) => {
+              return (
+                <Tooltip key={cosponsor.id}>
+                  <CosponsorAvatar
+                    name={cosponsor.preferred_name}
+                    party={cosponsor.political_party}
+                    imageData={findCosponsorImage(cosponsor.id)}
+                    backgroundColor="var(--color-gray700)"
+                    size="80px"
+                    loading="eager"
+                  />
+                  <span className="tooltiptext">
+                    {cosponsor.preferred_name}
+                  </span>
+                </Tooltip>
+              );
+            })}
+          </CosponsorsGroup>
+        </ContentWrapper>
+      </Container>
     </Wrapper>
   );
 };
 
 export default SponsorSection;
 
-const Wrapper = styled.div`
+const SponsorSpotlight = styled.div`
+  p {
+    margin: 0;
+    padding: 0;
+    padding-top: 0.7rem;
+    text-align: center;
+    font-family: century_supra_t3;
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--color-gray700);
+  }
+`;
+
+const SponsorFrame = styled.div<{ name: string }>`
   position: relative;
-  width: 100%;
-  height: 100%;
+  height: fit-content;
+  min-width: 200px;
+  margin: 0;
+  margin-top: 2rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+
+  border: solid 1px hsl(45, 81%, 53%);
+  -webkit-box-shadow: 0px 6px 10px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 6px 10px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.75);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  @media (max-width: 900px) {
+    min-width: 100px;
+  }
+`;
+
+const CosponsorsGroup = styled.div`
+  position: relative;
+  min-height: calc(100% - 1.5rem);
+  min-width: 280px;
+
   display: flex;
   flex-wrap: wrap;
+  padding-top: 1.5rem;
+  gap: 1rem;
+  align-items: flex-end;
 
-  .tooltip {
-    position: relative;
-    display: inline-block;
-    justify-self: center;
-    align-self: center;
+  @media (max-width: 900px) {
+    flex-direction: column;
+    min-width: 300px;
   }
+`;
 
-  .tooltip .tooltiptext {
+const Tooltip = styled.div`
+  position: relative;
+  display: inline-block;
+  /* justify-self: center; */
+
+  .tooltiptext {
     visibility: hidden;
     width: 120px;
-    background-color: #555;
+    background-color: var(--color-gray300);
     text-align: center;
     border-radius: 6px;
     padding: 5px 0;
@@ -84,7 +148,7 @@ const Wrapper = styled.div`
     transition: opacity 0.3s;
   }
 
-  .tooltip .tooltiptext::after {
+  .tooltiptext::after {
     content: '';
     position: absolute;
     top: 100%;
@@ -92,59 +156,18 @@ const Wrapper = styled.div`
     margin-left: -5px;
     border-width: 5px;
     border-style: solid;
-    border-color: #555 transparent transparent transparent;
+    border-color: var(--color-gray300) transparent transparent transparent;
   }
 
-  .tooltip:hover .tooltiptext {
+  :hover .tooltiptext {
     visibility: visible;
     opacity: 1;
   }
 `;
 
-const SectionTitle = styled.h2`
-  position: relative;
-  margin: 0;
-  padding: 0;
-
-  align-self: center;
-  text-align: center;
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
-  color: var(--color-secondary);
-  font-family: century_supra_c3;
-  font-size: 3rem;
-  font-weight: 700;
-`;
-
-const SponsorSpotlight = styled.div<{ name: string }>`
-  position: relative;
-  width: 200px;
-  height: 245px;
-  margin: 0;
-  margin-top: 2rem;
-  margin-left: 20px;
-  display: block;
-  box-sizing: content-box;
-  border: ridge 4px #f4be52;
-
-  :after {
-    content: '${(props) => props.name}';
-    text-align: center;
-  }
-`;
-
 const CosponsorAvatar = styled(CircleAvatar)`
   justify-self: center;
-  align-self: center;
-`;
-
-const CosponsorsGroup = styled.div`
-  width: 70%;
-  margin-top: 1.5rem;
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  grid-auto-rows: 1fr;
-
-  flex-direction: row;
-  flex-wrap: wrap;
+  -webkit-box-shadow: 0px 6px 7px 1px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 6px 7px 1px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 6px 7px 1px rgba(0, 0, 0, 0.75);
 `;

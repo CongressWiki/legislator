@@ -18,14 +18,11 @@ const GlobalStyles = createGlobalStyle`
 
   body {
     min-width: 370px;
-    background: var(--color-background);
+    background: hsl(215, 51%, 10%);
     color: var(--color-text);
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     margin: 0;
-
-
-
   }
 
   a {

@@ -5,20 +5,28 @@ export const COLORS = {
     dark: 'hsl(0deg, 0%, 100%)', // Near-black
   },
   background: {
-    light: 'hsl(0deg, 0%, 100%)', // White
-    dark: 'hsl(229deg, 88%, 13%)', // Navy navy blue
+    light: 'hsl(105, 55%, 96%)', // Honeydew
+    dark: 'hsl(215, 50%, 23%)', // Prussian Blue
   },
-  backgroundLite: {
-    light: 'hsl(0deg, 0%, 97%)',
-    dark: 'hsl(229deg, 88%, 16%)',
+  backgroundAlt: {
+    light: 'hsl(105, 55%, 99%)', // Honeydew
+    dark: 'hsl(215, 50%, 28%)', // Prussian Blue
   },
   primary: {
-    light: 'hsl(214deg, 20%, 80%)', // Pinkish-red
-    dark: 'hsl(229deg, 88%, 13%)', // Yellow
+    light: 'hsl(182, 43%, 76%)', // Powder blue
+    dark: 'hsl(203, 39%, 44%)', // Celadon Blue
+  },
+  primaryAlt: {
+    light: 'hsl(203, 39%, 44%)', // Celadon Blue
+    dark: 'hsl(182, 43%, 76%)', // Powder Blue
   },
   secondary: {
-    light: 'hsl(343deg, 100%, 53%)', // Purplish-blue
-    dark: 'hsl(45deg, 81%, 53%)', // Cyan
+    light: 'hsl(355, 78%, 56%)', // Imperial Red
+    dark: 'hsl(355, 78%, 56%)', // Imperial Red
+  },
+  secondaryAlt: {
+    light: 'hsl(215, 50%, 23%)', // Prussian Blue
+    dark: 'hsl(105, 55%, 96%)', // Honeydew
   },
   // Grays, scaling from least-noticeable to most-noticeable
   gray300: {

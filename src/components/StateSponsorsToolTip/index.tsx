@@ -47,7 +47,7 @@ const Wrapper = styled.div<{ hide?: boolean }>`
 
   border: solid thin var(--color-text);
   border-radius: 5px;
-  background-color: var(--color-backgroundLite);
+  background-color: var(--color-backgroundAlt);
   text-shadow: 1px 1px 0px var(--color-gray300);
 `;
 

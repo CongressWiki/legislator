@@ -1,6 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import BillDetailsSection from '@components/BillDetailsSection';
+import SectionTitle from '@components/BillDetailsSection/SectionTitle';
+import Container from '@components/BillDetailsSection/Container';
+import ContentWrapper from '@components/BillDetailsSection/ContentWrapper';
+import CheckMark from '@components/Icons/CheckMark';
+import HouseOfRepresentatives from '@components/Icons/HouseOfRepresentatives';
+import Wrapper from '@components/BillDetailsSection/Wrapper';
 
 export type HouseSectionProps = {
   className?: string;
@@ -8,24 +13,16 @@ export type HouseSectionProps = {
 
 const HouseSection = ({ className }: HouseSectionProps) => {
   return (
-    <HouseSectionWrapper className={className} variant="senate">
-      <p>House</p>
-    </HouseSectionWrapper>
+    <Wrapper className={className}>
+      <Container>
+        <ContentWrapper>
+          <SectionTitle>House</SectionTitle>
+          <CheckMark />
+          <HouseOfRepresentatives />
+        </ContentWrapper>
+      </Container>
+    </Wrapper>
   );
 };
 
 export default HouseSection;
-
-const HouseSectionWrapper = styled(BillDetailsSection)`
-  background: #215f00; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to left,
-    #ffffff,
-    #215f00
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to left,
-    #ffffff,
-    #215f00
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-`;

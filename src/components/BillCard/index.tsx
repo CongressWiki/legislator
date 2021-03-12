@@ -95,7 +95,7 @@ const Wrapper = styled.div`
   }
 
   :hover {
-    background-color: var(--color-backgroundLite);
+    background-color: var(--color-backgroundAlt);
   }
 
   .sponsor {

@@ -5,20 +5,20 @@ import Container from '@components/BillDetailsSection/Container';
 import ContentWrapper from '@components/BillDetailsSection/ContentWrapper';
 import Wrapper from '@components/BillDetailsSection/Wrapper';
 
-export type SenateSectionProps = {
+export type PresidentSectionProps = {
   className?: string;
 };
 
-const SenateSection = ({ className }: SenateSectionProps) => {
+const PresidentSection = ({ className }: PresidentSectionProps) => {
   return (
     <Wrapper className={className}>
       <Container>
         <ContentWrapper>
-          <SectionTitle>Senate</SectionTitle>
+          <SectionTitle>President</SectionTitle>
         </ContentWrapper>
       </Container>
     </Wrapper>
   );
 };
 
-export default SenateSection;
+export default PresidentSection;

@@ -18,8 +18,10 @@ const Avatar = ({ children, party, size, className }: AvatarProps) => {
   return (
     <Wrapper
       className={className}
-      // @ts-expect-error
-      borderColor={party in PARTY_COLORS ? PARTY_COLORS[party] : 'gray'}
+      partyColor={
+        // @ts-expect-error
+        party in PARTY_COLORS ? PARTY_COLORS[party] : 'var(--color-gray700)'
+      }
       // @ts-expect-error
       size={size}
     >
@@ -28,13 +30,14 @@ const Avatar = ({ children, party, size, className }: AvatarProps) => {
   );
 };
 
-const Wrapper = styled.div<{ borderColor: string; size?: number }>`
+const Wrapper = styled.div<{ partyColor: string; size?: number }>`
   z-index: 500;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
+  /* flex-shrink: 0; */
+
   /**
    * Make sure that the picture is at least 48px^2.
    * Remember border size will cut into the picture's size
@@ -42,22 +45,27 @@ const Wrapper = styled.div<{ borderColor: string; size?: number }>`
    */
   width: ${(props) => props.size || '50px'};
   height: ${(props) => props.size || '50px'};
+
+  /* Not supported by non-chrome browsers */
+  /* aspect-ratio: 1 / 1; */
+
   line-height: 1px;
-  border-radius: 50%;
   overflow: hidden;
+  border-radius: 50%;
 
-  border: solid 1px ${(props) => props.borderColor};
+  border: solid 1px ${(props) => props.partyColor};
+  background-color: var(--color-gray700);
 
-  img {
-    z-index: 400;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    object-fit: cover;
-    color: transparent;
+  /* img { */
+  /* z-index: 400; */
+  /* width: 100%;
+    height: 100%; */
+  /* text-align: center; */
+  /* object-fit: cover; */
+  /* color: transparent;
     text-indent: 10000;
-    overflow: hidden;
-  }
+    overflow: hidden; */
+  /* } */
 `;
 
 export default Avatar;

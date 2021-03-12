@@ -36,7 +36,7 @@ const Wrapper = styled.header`
   width: 100%;
   height: 115px;
   border-bottom: 1px solid var(--color-gray300);
-  background-color: var(--color-background);
+  background-color: hsl(215, 51%, 10%);
 `;
 
 const ButtonsBar = styled.div`

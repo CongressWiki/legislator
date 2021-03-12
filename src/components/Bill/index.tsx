@@ -34,10 +34,10 @@ export default function Bill({
 const Wrapper = styled.div`
   width: min(70ch, calc(100% - 32px));
   margin-bottom: 30vh;
-  background-color: var(--color-backgroundLite);
-  border: thin solid var(--color-gray700);
+  background-color: hsl(215, 51%, 17%);
+  border: thin solid hsl(215, 51%, 17%);
   border-radius: 1px;
-  padding: 1rem;
+  padding: 2rem;
   padding-bottom: 6rem;
   /* box-shadow: 5px 3px 10px var(--color-gray300); */
   margin: 0;

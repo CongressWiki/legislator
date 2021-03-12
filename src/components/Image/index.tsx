@@ -14,15 +14,31 @@ import Candidate from '@components/icons/Candidate';
 export type ImageProps = {
   imageData: any;
   alt: string;
+  loading?: 'eager' | 'lazy';
+  backgroundColor?: string;
   className?: string;
 };
 
-const Image = ({ imageData, alt, className }: ImageProps) => {
+const Image = ({
+  imageData,
+  alt,
+  loading,
+  backgroundColor,
+  className,
+}: ImageProps) => {
   const image = imageData ? getImage(imageData) : false;
   if (!image) {
     return <Candidate className={className} />;
   }
-  return <GatsbyImage image={image} alt={alt} className={className} />;
+  return (
+    <GatsbyImage
+      className={className}
+      image={image}
+      alt={alt}
+      loading={loading}
+      backgroundColor={backgroundColor}
+    />
+  );
 };
 
 export default Image;
