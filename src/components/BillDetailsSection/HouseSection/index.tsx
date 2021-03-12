@@ -18,11 +18,17 @@ const HouseSection = ({ className }: HouseSectionProps) => {
         <ContentWrapper>
           <SectionTitle>House</SectionTitle>
           <CheckMark />
-          <HouseOfRepresentatives />
+          <HouseOfRepresentativesStyled />
         </ContentWrapper>
       </Container>
     </Wrapper>
   );
 };
+
+const HouseOfRepresentativesStyled = styled(HouseOfRepresentatives)`
+  align-self: end;
+  width: 400px;
+  height: auto;
+`;
 
 export default HouseSection;
