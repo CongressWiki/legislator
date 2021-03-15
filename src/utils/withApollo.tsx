@@ -11,7 +11,7 @@ import { WebSocketLink } from '@apollo/client/link/ws';
 import fetch from 'isomorphic-fetch';
 import { getMainDefinition } from '@apollo/client/utilities';
 import ws from 'ws';
-import auth from './Auth0';
+import auth from '@utils/Auth0';
 import type { NormalizedCacheObject } from '@apollo/client';
 import { isBrowser } from '@constants';
 

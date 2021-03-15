@@ -11,10 +11,8 @@ export type LoginButtonProps = {
 
 const LoginButton = ({ className }: LoginButtonProps) => {
   const isAuthenticated = auth.isAuthenticated();
-
   if (isAuthenticated) {
     const user = auth.getUser();
-
     return (
       <StyledButtonCanvas
         className={className}
@@ -23,7 +21,7 @@ const LoginButton = ({ className }: LoginButtonProps) => {
         }}
       >
         <Avatar party="">
-          {/* <img src={user.picture} alt="User profile image" /> */}
+          <img src={user.picture} alt="User profile image" />
         </Avatar>
       </StyledButtonCanvas>
     );

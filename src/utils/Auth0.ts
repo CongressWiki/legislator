@@ -8,6 +8,7 @@ import {
   authCallbackUrl,
   authAudience,
 } from '@constants';
+import { throwServerError } from '@apollo/client';
 // import useLocalStorage from '@utils/useLocalStorage';
 // const [isLoggedIn, setIsLoggedIn] = useLocalStorage('isLoggedIn', 'false');
 
@@ -111,6 +112,10 @@ class Auth {
       return;
     }
 
+    // if (!this.expiresAt) {
+    //   this.renewSession();
+    // }
+
     // Check whether the current time is past the
     // access token's expiry time
     const expiresAt = this.expiresAt || 0;
@@ -147,7 +152,7 @@ class Auth {
     }
   }
 
-  renewSession() {
+  async renewSession() {
     const _this = this;
 
     if (!_this.auth0) {

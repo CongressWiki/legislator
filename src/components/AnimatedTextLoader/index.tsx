@@ -119,7 +119,7 @@ const AnimatedTextLoader = () => {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
         ctx.fillStyle = 'red';
-        ctx.font = 'italic bold 330px advocate_c43_mid san';
+        ctx.font = 'normal normal 330px advocate_c43_mid, sans-serif';
         ctx.fillText(
           keyword,
           canvas.width / 2 - ctx.measureText(keyword).width / 2,
@@ -144,7 +144,6 @@ const AnimatedTextLoader = () => {
         }
       },
       animateParticles: function () {
-        var p, pPos;
         if (!particleAlphabet.particles) {
           throw new Error(
             `particleAlphabet has an unexpected ${particleAlphabet.particlePositions} 'particles' property.`
@@ -155,6 +154,8 @@ const AnimatedTextLoader = () => {
             `particleAlphabet has an unexpected ${particleAlphabet.particlePositions} 'particlePositions' property.`
           );
         }
+
+        var p, pPos;
         for (var i = 0, num = particleAlphabet.particles.length; i < num; i++) {
           p = particleAlphabet.particles[i];
           pPos = particleAlphabet.particlePositions[i];
@@ -170,6 +171,7 @@ const AnimatedTextLoader = () => {
       },
       animate: function () {
         requestAnimationFrame(particleAlphabet.animate);
+
         if (!particleAlphabet.ctx) {
           throw new Error(
             `particleAlphabet has an unexpected ${particleAlphabet.ctx} 'ctx' property.`
@@ -180,7 +182,8 @@ const AnimatedTextLoader = () => {
             `particleAlphabet has an unexpected ${particleAlphabet.particlePositions} 'particlePositions' property.`
           );
         }
-        particleAlphabet.ctx.fillStyle = 'rgba(23, 41, 58, .8)';
+
+        particleAlphabet.ctx.fillStyle = 'hsl(215, 51%, 10%)';
         particleAlphabet.ctx.fillRect(
           0,
           0,
@@ -201,4 +204,10 @@ export default AnimatedTextLoader;
 
 const ChantTextCanvas = styled.canvas`
   display: block;
+  width: 100%;
+  height: 100%;
+  * {
+    margin: 0;
+    padding: 0;
+  }
 `;

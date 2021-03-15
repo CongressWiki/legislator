@@ -1,23 +1,23 @@
 import React from 'react';
-import {Story, Meta} from '@storybook/react';
+import { Story, Meta } from '@storybook/react';
 import styled from 'styled-components';
 
-import CommonLayout, {CommonLayoutProps} from './index';
+import BillViewLayout, { BillViewLayoutProps } from './index';
 
 export default {
-  title: 'Components/Layouts/Common',
-  component: CommonLayout
+  title: 'Components/Layouts/BillView',
+  component: BillViewLayout,
 } as Meta;
 
-const ExampleBox = styled.div<{backgroundColor: string}>`
+const ExampleBox = styled.div<{ backgroundColor: string }>`
   background-color: ${(props) => props.backgroundColor};
   width: 100%;
   height: 100px;
   text-align: center;
 `;
 
-const Template: Story<CommonLayoutProps> = (args) => (
-  <CommonLayout>
+const Template: Story<BillViewLayoutProps> = (args) => (
+  <BillViewLayout>
     <ExampleBox backgroundColor="lightBlue">
       <p>*Default*</p>
     </ExampleBox>
@@ -30,7 +30,7 @@ const Template: Story<CommonLayoutProps> = (args) => (
     <ExampleBox className="full-bleed" backgroundColor="red">
       <p>.full-bleed</p>
     </ExampleBox>
-  </CommonLayout>
+  </BillViewLayout>
 );
 
 export const Default = Template.bind({});

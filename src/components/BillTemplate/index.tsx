@@ -47,26 +47,18 @@ const BillWrapper = styled.div`
   grid-template-columns: repeat(2, 1fr);
   grid-template-areas: 'content bill';
   width: 100%;
-  /* z-index: -100; */
 
   .bill {
     z-index: 1000;
-    margin-bottom: 50vh;
     grid-area: bill;
     margin-top: 2rem;
-
-    -webkit-box-shadow: 0px 10px 15px 0px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 0px 10px 15px 0px rgba(0, 0, 0, 0.75);
-    box-shadow: 0px 10px 15px 0px rgba(0, 0, 0, 0.75);
+    margin-bottom: 50vh;
   }
 
   @media (max-width: 900px) {
     position: relative;
-    margin: 0;
+    margin-top: 0;
     width: 100%;
-    top: unset;
-    right: unset;
-    left: unset;
     display: flex;
     justify-content: center;
   }

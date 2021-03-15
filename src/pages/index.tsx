@@ -8,6 +8,7 @@ import BillLaneHeader from '@components/BillLaneHeader';
 import BillLaneFooter from '@components/BillLaneFooter';
 import type { IGatsbyImageData } from 'gatsby-plugin-image';
 import withApollo from '@utils/withApollo';
+import { search } from '@utils/Search';
 
 import BillCard from '@components/BillCard';
 
@@ -92,46 +93,6 @@ function Home() {
               updated_at
               vice_president_terms
             }
-            cosponsorships {
-              id
-              original_cosponsor
-              sponsored_at
-              state
-              withdrawn_at
-              district
-              elected_official {
-                id
-                created_at
-                district
-                first_name
-                gender
-                house_terms
-                is_active
-                last_name
-                political_party
-                position
-                president_terms
-                preferred_name
-                rank
-                senate_terms
-                state
-              }
-            }
-            actions {
-              id
-              type
-              acted_at
-              action_code
-              status
-              text
-              references
-              vote_type
-              how
-              where
-              roll
-              result
-              suspension
-            }
           }
           aggregate {
             count
@@ -174,7 +135,7 @@ function Home() {
     setOrderByAsc(isAscending);
   };
 
-  const filteredBills = bills.filter((bill) => {
+  let filteredBills = bills.filter((bill) => {
     const isBillType = billTypes.length === 0 || billTypes.includes(bill.type);
 
     const matchesSearchBy =
@@ -185,6 +146,21 @@ function Home() {
 
     if (isBillType && matchesSearchBy) return bill;
   });
+
+  if (searchBy) {
+    filteredBills = search(filteredBills, searchBy, {
+      keys: [
+        'id',
+        'number',
+        'type',
+        'title',
+        'sponsor.preferred_name',
+        'sponsor.political_party',
+        'sponsor.state',
+        'updated_at',
+      ],
+    });
+  }
 
   if (orderByAsc) filteredBills.reverse();
 
