@@ -17,7 +17,6 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    min-width: 370px;
     background: hsl(215, 51%, 10%);
     color: var(--color-text);
     text-rendering: optimizeLegibility;

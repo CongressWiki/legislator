@@ -4,31 +4,18 @@ import SponsorSection from '@components/BillDetailsSection/SponsorSection';
 import SenateSection from '@components/BillDetailsSection/SenateSection';
 import HouseSection from '@components/BillDetailsSection/HouseSection';
 import PresidentSection from '@components/BillDetailsSection/PresidentSection';
-import type { Official } from '@type/hasura';
+import type { OfficialWithImage, Cosponsorship } from '@type/hasura';
 
 export type BillDetailsProps = {
-  sponsor: Official;
-  sponsorImage: any;
-  cosponsors: Official[];
-  cosponsorImages: any[];
+  sponsor: OfficialWithImage;
+  cosponsors: Cosponsorship[];
   className?: string;
 };
 
-const BillDetails = ({
-  sponsor,
-  sponsorImage,
-  cosponsors,
-  cosponsorImages,
-  className,
-}: BillDetailsProps) => {
+const BillDetails = ({ sponsor, cosponsors, className }: BillDetailsProps) => {
   return (
     <Wrapper className={className}>
-      <SponsorSection
-        sponsor={sponsor}
-        sponsorImage={sponsorImage}
-        cosponsors={cosponsors}
-        cosponsorImages={cosponsorImages}
-      />
+      <SponsorSection sponsor={sponsor} cosponsors={cosponsors} />
 
       <HouseSection />
       <SenateSection />
@@ -45,5 +32,4 @@ const Wrapper = styled.div`
   display: grid;
   grid-auto-rows: 350px;
   grid-row-gap: 50px;
-  margin-bottom: 50vh;
 `;

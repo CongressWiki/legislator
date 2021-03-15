@@ -53,7 +53,7 @@ const Wrapper = styled.div<{ partyColor: string; size?: number }>`
   overflow: hidden;
   border-radius: 50%;
 
-  border: solid 1px ${(props) => props.partyColor};
+  border: ridge 1px ${(props) => props.partyColor};
   background-color: var(--color-gray700);
 
   /* img { */

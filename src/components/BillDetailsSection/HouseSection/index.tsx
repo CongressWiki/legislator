@@ -15,9 +15,8 @@ const HouseSection = ({ className }: HouseSectionProps) => {
   return (
     <Wrapper className={className}>
       <Container>
+        <SectionTitle>House</SectionTitle>
         <ContentWrapper>
-          <SectionTitle>House</SectionTitle>
-          <CheckMark />
           <HouseOfRepresentativesStyled />
         </ContentWrapper>
       </Container>
@@ -26,9 +25,14 @@ const HouseSection = ({ className }: HouseSectionProps) => {
 };
 
 const HouseOfRepresentativesStyled = styled(HouseOfRepresentatives)`
+  padding-top: 2rem;
   align-self: end;
-  width: 400px;
+  width: 300px;
   height: auto;
+
+  @media (max-width: 600px) {
+    width: 200px;
+  }
 `;
 
 export default HouseSection;

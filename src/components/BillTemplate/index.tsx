@@ -10,14 +10,10 @@ export type BillTemplateProps = {
   pageContext: {
     slug: string;
     bill: BillData;
-    sponsorImage: any;
-    cosponsorImages: any[];
   };
 };
 
-const BillTemplate = ({
-  pageContext: { slug, bill, sponsorImage, cosponsorImages },
-}: BillTemplateProps) => {
+const BillTemplate = ({ pageContext: { slug, bill } }: BillTemplateProps) => {
   let allBillSubjects = [bill.subject];
 
   if (bill.subjects) {
@@ -34,14 +30,7 @@ const BillTemplate = ({
         billSocialCard
       />
       <Layout>
-        <BillDetails
-          sponsor={bill.sponsor}
-          sponsorImage={sponsorImage}
-          cosponsors={bill.cosponsorships.map(
-            (cosponsorship) => cosponsorship.elected_official
-          )}
-          cosponsorImages={cosponsorImages}
-        />
+        <BillDetails sponsor={bill.sponsor} cosponsors={bill.cosponsorships} />
         <BillWrapper>
           <Bill className="bill" {...bill} />
         </BillWrapper>
@@ -57,12 +46,14 @@ const BillWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-areas: 'content bill';
+  width: 100%;
+  /* z-index: -100; */
 
   .bill {
+    z-index: 1000;
     margin-bottom: 50vh;
     grid-area: bill;
     margin-top: 2rem;
-    z-index: 1000;
 
     -webkit-box-shadow: 0px 10px 15px 0px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 0px 10px 15px 0px rgba(0, 0, 0, 0.75);

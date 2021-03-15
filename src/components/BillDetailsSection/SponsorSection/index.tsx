@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Image from '@components/Image';
 // import FancyFrame from '@static/images/Basic_Fancy_frame.svg';
-import type { Official } from '@type/hasura';
+import type { OfficialWithImage, Cosponsorship } from '@type/hasura';
 import CircleAvatar from '@components/CircleAvatar';
 import SectionTitle from '@components/BillDetailsSection/SectionTitle';
 import Container from '@components/BillDetailsSection/Container';
@@ -10,35 +10,39 @@ import ContentWrapper from '@components/BillDetailsSection/ContentWrapper';
 import Wrapper from '@components/BillDetailsSection/Wrapper';
 
 export type SponsorSectionProps = {
-  sponsor: Official;
-  sponsorImage: any;
-  cosponsors: Official[];
-  cosponsorImages: any[];
+  sponsor: OfficialWithImage;
+  cosponsors: Cosponsorship[];
   className?: string;
 };
 
 const SponsorSection = ({
   sponsor,
-  sponsorImage,
   cosponsors,
-  cosponsorImages,
   className,
 }: SponsorSectionProps) => {
-  function findCosponsorImage(cosponsorId: string) {
-    return cosponsorImages.find(
-      (cosponsorImage) => cosponsorImage.name === cosponsorId
-    );
-  }
+  const mediaQuery420pxScreenWidth = window.matchMedia('(max-width: 420px)');
+  const isScreenWidthLessThan420px = mediaQuery420pxScreenWidth.matches;
+  const mediaQuery1200pxScreenWidth = window.matchMedia('(max-width: 1200px)');
+  const isScreenWidthLessThan1200px = mediaQuery1200pxScreenWidth.matches;
+  const mediaQuery1300pxScreenWidth = window.matchMedia('(max-width: 1300px)');
+  const isScreenWidthLessThan1300px = mediaQuery1300pxScreenWidth.matches;
+  const CosponsorAvatarSize = isScreenWidthLessThan420px
+    ? '40px'
+    : isScreenWidthLessThan1200px
+    ? '60px'
+    : isScreenWidthLessThan1300px
+    ? '60px'
+    : '80px';
 
   return (
     <Wrapper className={className}>
       <Container>
+        <SectionTitle>Sponsors</SectionTitle>
         <ContentWrapper>
-          <SectionTitle>Sponsors</SectionTitle>
           <SponsorSpotlight>
-            <SponsorFrame name={sponsor.preferred_name}>
+            <SponsorFrame>
               <Image
-                imageData={sponsorImage}
+                imageData={sponsor.image}
                 alt={sponsor.preferred_name}
                 loading="eager"
               />
@@ -46,19 +50,21 @@ const SponsorSection = ({
             <p>{sponsor.preferred_name}</p>
           </SponsorSpotlight>
           <CosponsorsGroup>
-            {cosponsors.slice(0, 10).map((cosponsor) => {
+            {cosponsors.slice(0, 11).map((cosponsor: Cosponsorship) => {
+              const { elected_official } = cosponsor;
               return (
-                <Tooltip key={cosponsor.id}>
+                <Tooltip key={elected_official.id}>
                   <CosponsorAvatar
-                    name={cosponsor.preferred_name}
-                    party={cosponsor.political_party}
-                    imageData={findCosponsorImage(cosponsor.id)}
+                    className="avatar"
+                    name={elected_official.preferred_name}
+                    party={elected_official.political_party}
+                    imageData={elected_official.image}
                     backgroundColor="var(--color-gray700)"
-                    size="80px"
+                    size={CosponsorAvatarSize}
                     loading="eager"
                   />
                   <span className="tooltiptext">
-                    {cosponsor.preferred_name}
+                    {elected_official.preferred_name}
                   </span>
                 </Tooltip>
               );
@@ -73,6 +79,15 @@ const SponsorSection = ({
 export default SponsorSection;
 
 const SponsorSpotlight = styled.div`
+  overflow: hidden;
+  max-height: calc(100% - 2rem);
+  min-width: fit-content;
+
+  margin-top: 2rem;
+  margin-right: 1rem;
+
+  display: inline-block;
+
   p {
     margin: 0;
     padding: 0;
@@ -82,55 +97,69 @@ const SponsorSpotlight = styled.div`
     font-size: 1rem;
     font-style: italic;
     color: var(--color-gray700);
+
+    @media (max-width: 600px) {
+      font-size: 0.25rem;
+    }
   }
 `;
 
-const SponsorFrame = styled.div<{ name: string }>`
+const SponsorFrame = styled.div`
   position: relative;
-  height: fit-content;
-  min-width: 200px;
+  max-width: 200px;
   margin: 0;
-  margin-top: 2rem;
-  margin-left: 1rem;
-  margin-right: 1rem;
+  display: flex;
+  overflow: hidden;
 
   border: solid 1px hsl(45, 81%, 53%);
   -webkit-box-shadow: 0px 6px 10px 0px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0px 6px 10px 0px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.75);
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  overflow: hidden;
-
   @media (max-width: 900px) {
     min-width: 100px;
+    width: 200px;
+    height: auto;
+  }
+
+  @media (max-width: 600px) {
+    min-width: 50px;
+    width: 100px;
+    height: auto;
   }
 `;
 
 const CosponsorsGroup = styled.div`
   position: relative;
-  min-height: calc(100% - 1.5rem);
-  min-width: 280px;
+  width: auto;
+  padding-top: 1.5rem;
+  padding-bottom: 3rem;
+  padding-right: 20px;
+  padding-left: 1rem;
 
   display: flex;
   flex-wrap: wrap;
-  padding-top: 1.5rem;
-  gap: 1rem;
+  align-content: flex-end;
   align-items: flex-end;
+  column-gap: 0;
+  row-gap: 40px;
 
-  @media (max-width: 900px) {
+  @media (max-width: 1200px) {
+    max-width: 400px;
+    min-width: 216px;
+  }
+
+  @media (max-width: 600px) {
     flex-direction: column;
-    min-width: 300px;
+    min-width: unset;
+    min-width: 100px;
   }
 `;
 
 const Tooltip = styled.div`
   position: relative;
   display: inline-block;
-  /* justify-self: center; */
+  transition: all 1s;
 
   .tooltiptext {
     visibility: hidden;
@@ -142,7 +171,7 @@ const Tooltip = styled.div`
     position: absolute;
     z-index: 500;
     bottom: 125%;
-    left: 50%;
+    left: 40%;
     margin-left: -60px;
     opacity: 0;
     transition: opacity 0.3s;
@@ -159,14 +188,29 @@ const Tooltip = styled.div`
     border-color: var(--color-gray300) transparent transparent transparent;
   }
 
-  :hover .tooltiptext {
-    visibility: visible;
-    opacity: 1;
+  :hover {
+    .tooltiptext {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .avatar {
+      width: 100px;
+      height: 100px;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
   }
 `;
 
 const CosponsorAvatar = styled(CircleAvatar)`
   justify-self: center;
+  transition: all 0.3s ease-in-out;
+  margin-left: -1em;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  padding: 0;
+
   -webkit-box-shadow: 0px 6px 7px 1px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0px 6px 7px 1px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 6px 7px 1px rgba(0, 0, 0, 0.75);

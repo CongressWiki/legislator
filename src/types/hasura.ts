@@ -7,7 +7,7 @@ export type Bill = {
   subject: string;
   summary: string;
   updated_at: string;
-  sponsor: Official;
+  sponsor: OfficialWithImage;
   cosponsorships: Cosponsorship[];
   actions: Action[];
   status: string;
@@ -43,6 +43,10 @@ export type Official = {
   house_terms: number;
 };
 
+export type OfficialWithImage = Official & {
+  image?: any;
+};
+
 export type Cosponsorship = {
   id: string;
   original_cosponsor: boolean;
@@ -50,7 +54,7 @@ export type Cosponsorship = {
   state: string;
   district: string;
   withdrawn_at: any;
-  elected_official: Official;
+  elected_official: OfficialWithImage;
 };
 
 export type Action = {

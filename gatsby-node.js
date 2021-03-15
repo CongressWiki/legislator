@@ -138,9 +138,17 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   const bills = result.data.hasura.bills;
   const images = result.data.congressImages.nodes;
+  const findImage = (elected_official_id) =>
+    images.find((image) => image.name === elected_official_id);
 
-  for (const bill of bills) {
+  for (let bill of bills) {
     const slug = `${bill.congress}/${bill.type}${bill.number}`;
+    bill.sponsor.image = findImage(bill.sponsor.id);
+    bill.cosponsorships = bill.cosponsorships.map((cosponsorship) => {
+      const cosponsor_id = cosponsorship.elected_official.id;
+      cosponsorship.elected_official.image = findImage(cosponsor_id);
+      return cosponsorship;
+    });
 
     createPage({
       path: slug,
@@ -148,8 +156,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       context: {
         slug,
         bill,
-        sponsorImage: images.find((image) => image.name === bill.sponsor.id),
-        cosponsorImages: images,
       },
     });
 

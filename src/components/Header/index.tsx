@@ -29,10 +29,12 @@ const Wrapper = styled.header`
   position: absolute;
   top: 0;
   left: 0;
-  display: flex;
-  justify-content: center;
 
   margin: 0;
+  padding: 0;
+
+  display: flex;
+  justify-content: center;
   width: 100%;
   height: 115px;
   border-bottom: 1px solid var(--color-gray300);
@@ -40,6 +42,7 @@ const Wrapper = styled.header`
 `;
 
 const ButtonsBar = styled.div`
+  position: relative;
   margin: 0;
   padding: 0;
 
@@ -49,11 +52,11 @@ const ButtonsBar = styled.div`
 `;
 
 const ToolBar = styled.div`
+  position: relative;
   height: 100%;
   width: min(140ch, calc(100% - 64px));
-  /* width: 80%; */
-  /* max-width: 1400px; */
   margin: 0;
+  z-index: 100;
 
   display: flex;
   justify-content: space-between;
@@ -62,14 +65,20 @@ const ToolBar = styled.div`
   a {
     text-decoration: none;
   }
+
+  @media (max-width: 600px) {
+    width: 100%;
+    flex-direction: column;
+  }
 `;
 
 export const HeaderSpacer = styled.div`
+  position: relative;
   top: 0;
   margin: 0;
   padding: 0;
-  height: 0;
   height: 115px;
+  width: 100%;
 `;
 
 export default Header;

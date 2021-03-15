@@ -13,9 +13,8 @@ const PresidentSection = ({ className }: PresidentSectionProps) => {
   return (
     <Wrapper className={className}>
       <Container>
-        <ContentWrapper>
-          <SectionTitle>President</SectionTitle>
-        </ContentWrapper>
+        <SectionTitle>President</SectionTitle>
+        <ContentWrapper></ContentWrapper>
       </Container>
     </Wrapper>
   );
