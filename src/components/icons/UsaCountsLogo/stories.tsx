@@ -1,12 +1,12 @@
 import React from 'react';
-import {Story, Meta} from '@storybook/react';
+import { Story, Meta } from '@storybook/react';
 import styled from 'styled-components';
 
 import UsaCountsLogo from './index';
 
 export default {
-  title: 'Components/UsaCountsLogo',
-  component: UsaCountsLogo
+  title: 'Components/Icons/UsaCountsLogo',
+  component: UsaCountsLogo,
 } as Meta;
 
 const ExampleContainer = styled.div`

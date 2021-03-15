@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import CheckMarkIcon from './index';
 
 export default {
-  title: 'Components/CheckMarkIcon',
+  title: 'Components/Icons/CheckMarkIcon',
   component: CheckMarkIcon,
 } as Meta;
 

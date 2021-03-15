@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import HouseOfRepresentativesIcon from './index';
 
 export default {
-  title: 'Components/HouseOfRepresentativesIcon',
+  title: 'Components/Icons/HouseOfRepresentativesIcon',
   component: HouseOfRepresentativesIcon,
 } as Meta;
 

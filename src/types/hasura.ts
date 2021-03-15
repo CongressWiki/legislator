@@ -30,7 +30,7 @@ export type Official = {
   political_party: string;
   is_active: boolean;
   position: string;
-  rank: string;
+  rank: string | null;
   senate_terms: number;
   state: string;
   term_end_at: string;
@@ -41,6 +41,8 @@ export type Official = {
   district: string | null;
   gender: string;
   house_terms: number;
+  president_terms: number;
+  vice_president_terms: number;
 };
 
 export type OfficialWithImage = Official & {
@@ -52,7 +54,7 @@ export type Cosponsorship = {
   original_cosponsor: boolean;
   sponsored_at: string;
   state: string;
-  district: string;
+  district: string | null;
   withdrawn_at: any;
   elected_official: OfficialWithImage;
 };

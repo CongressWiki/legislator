@@ -4,7 +4,7 @@ import { Story, Meta } from '@storybook/react';
 import Bill, { BillProps } from './index';
 
 export default {
-  title: 'Components/Bill',
+  title: 'Components/BillV1',
   component: Bill,
 } as Meta;
 

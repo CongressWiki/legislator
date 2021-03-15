@@ -4,11 +4,11 @@ import { Story, Meta } from '@storybook/react';
 import SenateSection, { SenateSectionProps } from './index';
 
 export default {
-  title: 'Components/SenateSection',
+  title: 'Components/BillsDetailsSection/SenateSection',
   component: SenateSection,
 } as Meta;
 
-const Template: Story = ({ ...args }: SenateSectionProps) => (
+const Template: Story<SenateSectionProps> = ({ ...args }) => (
   <SenateSection {...args} />
 );
 

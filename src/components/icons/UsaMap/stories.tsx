@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import UsaMap from './index';
 
 export default {
-  title: 'Components/UsaMap',
+  title: 'Components/Icons/UsaMap',
   component: UsaMap,
 } as Meta;
 

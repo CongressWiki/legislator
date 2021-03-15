@@ -3,11 +3,11 @@ import { useStaticQuery, graphql } from 'gatsby';
 import Header, { HeaderSpacer } from '@components/Header';
 import styled from 'styled-components';
 
-export type CommonLayoutProps = {
+export type BillFeedLayoutProps = {
   children: React.ReactNode;
 };
 
-const CommonLayout = ({ children }: CommonLayoutProps) => {
+const BillFeedLayout = ({ children }: BillFeedLayoutProps) => {
   const data = useStaticQuery(graphql`
     query {
       site {
@@ -60,4 +60,4 @@ const Wrapper = styled.div`
   }
 `;
 
-export default CommonLayout;
+export default BillFeedLayout;

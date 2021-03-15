@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import Candidate from './index';
 
 export default {
-  title: 'Components/Candidate',
+  title: 'Components/Icons/Candidate',
   component: Candidate,
 } as Meta;
 

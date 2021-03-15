@@ -1,12 +1,12 @@
 import React from 'react';
-import {Story, Meta} from '@storybook/react';
+import { Story, Meta } from '@storybook/react';
 import styled from 'styled-components';
 
 import LibertyTorchIcon from './index';
 
 export default {
-  title: 'Components/LibertyTorchIcon',
-  component: LibertyTorchIcon
+  title: 'Components/Icons/LibertyTorchIcon',
+  component: LibertyTorchIcon,
 } as Meta;
 
 const ExampleContainer = styled.div`

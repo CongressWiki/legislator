@@ -35,7 +35,7 @@ export const globalTypes = {
 };
 
 const withThemeProvider = (Story, context) => {
-  // Copied from ThemeContext.tsx
+  // Copied from ThemeContext.tsx so that we imitate the gatsby-ssr behavior of setting CSS vars.
   function setColorMode(newValue) {
     const root = window.document.documentElement;
 

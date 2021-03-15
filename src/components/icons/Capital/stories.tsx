@@ -1,12 +1,12 @@
 import React from 'react';
-import {Story, Meta} from '@storybook/react';
+import { Story, Meta } from '@storybook/react';
 import styled from 'styled-components';
 
 import Capital from './index';
 
 export default {
-  title: 'Components/Capital',
-  component: Capital
+  title: 'Components/Icons/Capital',
+  component: Capital,
 } as Meta;
 
 const ExampleContainer = styled.div`
