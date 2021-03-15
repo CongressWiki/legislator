@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Action } from '@type/hasura';
 
 export type ActionsStepperProps = {
-  actions: Action[];
+  actions: Pick<Action, 'id' | 'acted_at' | 'text'>[];
   className?: string;
 };
 
