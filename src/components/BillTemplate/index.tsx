@@ -30,7 +30,11 @@ const BillTemplate = ({ pageContext: { slug, bill } }: BillTemplateProps) => {
         billSocialCard
       />
       <Layout>
-        <BillDetails sponsor={bill.sponsor} cosponsors={bill.cosponsorships} />
+        <BillDetails
+          sponsor={bill.sponsor}
+          cosponsors={bill.cosponsorships}
+          rollCalls={bill.roll_calls}
+        />
         <BillWrapper>
           <Bill className="bill" {...bill} />
         </BillWrapper>
@@ -47,6 +51,8 @@ const BillWrapper = styled.div`
   grid-template-columns: repeat(2, 1fr);
   grid-template-areas: 'content bill';
   width: 100%;
+
+  pointer-events: none;
 
   .bill {
     z-index: 1000;

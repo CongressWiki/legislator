@@ -3,35 +3,37 @@ import styled from 'styled-components';
 import SectionTitle from '@components/BillDetailsSection/SectionTitle';
 import Container from '@components/BillDetailsSection/Container';
 import ContentWrapper from '@components/BillDetailsSection/ContentWrapper';
-import HouseOfRepresentatives from '@components/icons/HouseOfRepresentatives';
 import Wrapper from '@components/BillDetailsSection/Wrapper';
+import { RollCall } from '@type/hasura';
+import RollCallSlide from '@components/BillDetailsSection/RollCallSlide';
 
 export type HouseSectionProps = {
+  rollCalls: RollCall[];
   className?: string;
 };
 
-const HouseSection = ({ className }: HouseSectionProps) => {
+const HouseSection = ({ rollCalls, className }: HouseSectionProps) => {
   return (
-    <Wrapper className={className}>
+    <HouseSectionWrapper className={className}>
       <Container>
         <SectionTitle>House</SectionTitle>
         <ContentWrapper>
-          <HouseOfRepresentativesStyled />
+          {rollCalls.slice(0, 1).map((rollCall) => (
+            <RollCallSlide
+              key={rollCall.id}
+              rollCall={rollCall}
+              toolTipOffsetX={640}
+              toolTipOffsetY={580}
+            />
+          ))}
         </ContentWrapper>
       </Container>
-    </Wrapper>
+    </HouseSectionWrapper>
   );
 };
 
-const HouseOfRepresentativesStyled = styled(HouseOfRepresentatives)`
-  padding-top: 2rem;
-  align-self: end;
-  width: 300px;
-  height: auto;
-
-  @media (max-width: 600px) {
-    width: 200px;
-  }
+const HouseSectionWrapper = styled(Wrapper)`
+  /* overflow-x: hidden; */
 `;
 
 export default HouseSection;

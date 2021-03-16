@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const HouseOfRepresentativesIcon = styled(HouseOfRepresentativesSvg)`
   margin: 0;
-  width: 12rem;
+  padding: 0;
 
   path {
     fill: green;

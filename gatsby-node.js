@@ -108,6 +108,33 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             vote_type
             where
           }
+          roll_calls(order_by: { date: desc }, limit: 1) {
+            id
+            amendment_id
+            category
+            chamber
+            congress
+            date
+            nomination
+            number
+            question
+            record_modified_at
+            requires
+            result
+            result_text
+            session
+            subject
+            type
+            updated_at
+            votes {
+              created_at
+              date
+              decision
+              state
+              id
+              elected_official_id
+            }
+          }
         }
       }
 

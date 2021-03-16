@@ -4,21 +4,31 @@ import SponsorSection from '@components/BillDetailsSection/SponsorSection';
 import SenateSection from '@components/BillDetailsSection/SenateSection';
 import HouseSection from '@components/BillDetailsSection/HouseSection';
 import PresidentSection from '@components/BillDetailsSection/PresidentSection';
-import type { OfficialWithImage, Cosponsorship } from '@type/hasura';
+import type { OfficialWithImage, Cosponsorship, RollCall } from '@type/hasura';
 
 export type BillDetailsProps = {
   sponsor: OfficialWithImage;
   cosponsors: Cosponsorship[];
+  rollCalls: RollCall[];
   className?: string;
 };
 
-const BillDetails = ({ sponsor, cosponsors, className }: BillDetailsProps) => {
+const BillDetails = ({
+  sponsor,
+  cosponsors,
+  rollCalls,
+  className,
+}: BillDetailsProps) => {
+  const houseRollCalls = rollCalls.filter(
+    (rollCall) => rollCall.chamber === 'h'
+  );
+  const senateVotes = rollCalls.filter((rollCall) => rollCall.chamber === 's');
+
   return (
     <Wrapper className={className}>
       <SponsorSection sponsor={sponsor} cosponsors={cosponsors} />
-
-      <HouseSection />
-      <SenateSection />
+      <HouseSection rollCalls={houseRollCalls} />
+      <SenateSection rollCalls={senateVotes} />
       <PresidentSection />
     </Wrapper>
   );
