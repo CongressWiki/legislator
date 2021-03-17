@@ -7,15 +7,11 @@ import { groupBy } from 'lodash';
 
 export type RollCallSlideProps = {
   rollCall: RollCall;
-  toolTipOffsetX: number;
-  toolTipOffsetY: number;
   className?: string;
 };
 
 const RollCallSlide = ({
   rollCall: { result, question, votes },
-  toolTipOffsetX,
-  toolTipOffsetY,
   className,
 }: RollCallSlideProps) => {
   const decisionVoteCounts = groupBy(votes, 'decision');
@@ -26,12 +22,7 @@ const RollCallSlide = ({
       <Question>{question}</Question>
       {votes ? (
         <VoteDetails>
-          <UsaMapOfVotes
-            className="map"
-            votes={votes}
-            toolTipOffsetX={toolTipOffsetX}
-            toolTipOffsetY={toolTipOffsetY}
-          />
+          <UsaMapOfVotes className="map" votes={votes} />
           <Column>
             {Object.keys(decisionVoteCounts)
               .map((decision) => ({
@@ -79,8 +70,7 @@ const Wrapper = styled.div<{ color: string }>`
   display: flex;
   flex-direction: column;
 
-  border: solid 1px lime;
-  border-color: ${(props) => props.color};
+  border: solid 1px ${(props) => props.color};
   border-radius: 10px;
   box-shadow: 0 0 10px 1px ${(props) => props.color};
 
@@ -102,23 +92,15 @@ const VoteDetails = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
-  display: grid;
-  grid-template-areas: 'map map map count';
-
-  .map {
-    grid-area: map;
-  }
-
-  .count {
-    grid-area: count;
-  }
+  display: flex;
 `;
 
 const Question = styled.h3`
+  display: block;
   margin: 0;
   text-align: center;
   width: 100%;
-  padding: 1rem;
+  padding: 0.5rem;
   height: fit-content;
   font-weight: 700;
   transition: color 0.3s ease-in-out;

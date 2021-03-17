@@ -7,17 +7,10 @@ import StateVotesToolTip from '@components/StateVotesToolTip';
 
 export type UsaMapOfVotesProps = {
   votes: RollCallVote[];
-  toolTipOffsetX: number;
-  toolTipOffsetY: number;
   className?: string;
 };
 
-const UsaMapOfVotes = ({
-  votes,
-  toolTipOffsetX,
-  toolTipOffsetY,
-  className,
-}: UsaMapOfVotesProps) => {
+const UsaMapOfVotes = ({ votes, className }: UsaMapOfVotesProps) => {
   const [hoveredState, setHoveredState] = useState('');
   useEffect(() => {
     const htmlMouseTip = d3.select('div.tooltip.mouse');
@@ -30,8 +23,8 @@ const UsaMapOfVotes = ({
       })
       .on('mousemove', function (event) {
         htmlMouseTip
-          .style('left', Math.max(0, event.pageX - toolTipOffsetX) + 'px')
-          .style('top', event.pageY - toolTipOffsetY + 'px');
+          .style('top', event.offsetY + 10 + 'px')
+          .style('left', event.offsetX + 10 + 'px');
       })
       .on('mouseout', function () {
         setHoveredState('');
@@ -54,7 +47,7 @@ const UsaMapOfVotes = ({
 
   return (
     <Wrapper votes={votes} className={className}>
-      <StyledToolTip
+      <StateVotesToolTip
         className="mouse tooltip"
         state={hoveredState}
         votes={getVotesOfState(hoveredState)}
@@ -69,8 +62,6 @@ export default UsaMapOfVotes;
 
 const Wrapper = styled.div<{ votes: RollCallVote[] }>`
   position: relative;
-  display: block;
-  height: 100%;
   width: 100%;
   overflow: visible;
 
@@ -87,15 +78,12 @@ const Wrapper = styled.div<{ votes: RollCallVote[] }>`
 `;
 
 const UsaMap = styled(UsaMapSVG)`
+  position: relative;
   margin: 0;
   padding: 0;
   overflow: visible;
   width: auto;
   height: 100%;
-`;
-
-const StyledToolTip = styled(StateVotesToolTip)`
-  pointer-events: none; /*let mouse events pass through*/
 `;
 
 function styleStatesWithVotes({ votes }: { votes: RollCallVote[] }) {

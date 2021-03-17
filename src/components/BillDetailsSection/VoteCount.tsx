@@ -21,13 +21,10 @@ export default VoteCount;
 
 const Wrapper = styled.div<{ color: string }>`
   width: 100%;
-  height: fit-content;
-  word-wrap: nowrap;
 
   display: flex;
   justify-content: space-between;
   padding: 8px;
-
   border: solid thin ${(props) => props.color};
   border-radius: 25px;
   transition: all 0.3s ease-in-out;
@@ -48,15 +45,18 @@ const Decision = styled.h4`
   margin: 0;
   padding: 0;
   font-weight: 700;
+  white-space: nowrap;
 
   :after {
-    content: ': ';
+    content: ':';
   }
 `;
 
-const Count = styled.p`
+const Count = styled.span`
   display: inline;
   margin: 0;
   padding: 0;
+  margin-left: 1rem;
+
   font-weight: 700;
 `;

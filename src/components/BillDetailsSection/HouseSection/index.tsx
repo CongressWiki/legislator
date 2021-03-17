@@ -19,12 +19,7 @@ const HouseSection = ({ rollCalls, className }: HouseSectionProps) => {
         <SectionTitle>House</SectionTitle>
         <ContentWrapper>
           {rollCalls.slice(0, 1).map((rollCall) => (
-            <RollCallSlide
-              key={rollCall.id}
-              rollCall={rollCall}
-              toolTipOffsetX={640}
-              toolTipOffsetY={580}
-            />
+            <RollCallSlide key={rollCall.id} rollCall={rollCall} />
           ))}
         </ContentWrapper>
       </Container>
@@ -32,8 +27,6 @@ const HouseSection = ({ rollCalls, className }: HouseSectionProps) => {
   );
 };
 
-const HouseSectionWrapper = styled(Wrapper)`
-  /* overflow-x: hidden; */
-`;
+const HouseSectionWrapper = styled(Wrapper)``;
 
 export default HouseSection;

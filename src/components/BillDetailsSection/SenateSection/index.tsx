@@ -19,12 +19,7 @@ const SenateSection = ({ rollCalls, className }: SenateSectionProps) => {
         <SectionTitle>Senate</SectionTitle>
         <ContentWrapper>
           {rollCalls.slice(0, 1).map((rollCall) => (
-            <RollCallSlide
-              key={rollCall.id}
-              rollCall={rollCall}
-              toolTipOffsetX={640}
-              toolTipOffsetY={980}
-            />
+            <RollCallSlide key={rollCall.id} rollCall={rollCall} />
           ))}
         </ContentWrapper>
       </Container>

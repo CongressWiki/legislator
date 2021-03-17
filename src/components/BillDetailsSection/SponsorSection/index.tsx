@@ -24,14 +24,14 @@ const SponsorSection = ({
   const isScreenWidthLessThan420px = mediaQuery420pxScreenWidth.matches;
   const mediaQuery1200pxScreenWidth = window.matchMedia('(max-width: 1200px)');
   const isScreenWidthLessThan1200px = mediaQuery1200pxScreenWidth.matches;
-  const mediaQuery1300pxScreenWidth = window.matchMedia('(max-width: 1300px)');
-  const isScreenWidthLessThan1300px = mediaQuery1300pxScreenWidth.matches;
+  const mediaQuery1400pxScreenWidth = window.matchMedia('(max-width: 1400px)');
+  const isScreenWidthLessThan1400px = mediaQuery1400pxScreenWidth.matches;
   const CosponsorAvatarSize = isScreenWidthLessThan420px
     ? '40px'
     : isScreenWidthLessThan1200px
     ? '60px'
-    : isScreenWidthLessThan1300px
-    ? '60px'
+    : isScreenWidthLessThan1400px
+    ? '70px'
     : '80px';
 
   return (
@@ -131,7 +131,7 @@ const SponsorFrame = styled.div`
 
 const CosponsorsGroup = styled.div`
   position: relative;
-  width: auto;
+  width: 100%;
   padding-top: 1.5rem;
   padding-bottom: 3rem;
   padding-right: 20px;
@@ -145,13 +145,12 @@ const CosponsorsGroup = styled.div`
   row-gap: 40px;
 
   @media (max-width: 1200px) {
-    max-width: 400px;
     min-width: 216px;
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 900px) {
     flex-direction: column;
-    min-width: unset;
+    align-content: stretch;
     min-width: 100px;
   }
 `;

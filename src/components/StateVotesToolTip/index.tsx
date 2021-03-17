@@ -27,7 +27,9 @@ const Wrapper = styled.div<{ hide?: boolean }>`
   position: absolute;
   text-align: left;
   padding: 0.5rem;
-  z-index: 900;
+  z-index: 2000;
+  /* let mouse events pass through */
+  pointer-events: none;
 
   opacity: ${(props) => (props.hide ? 0 : 1)};
   /* transition: opacity 0.3s; */
@@ -60,7 +62,6 @@ const ToolTipHeader = styled.p`
   position: relative;
   margin: 0;
   padding: 0;
-  padding-top: 0;
   padding-bottom: 0.5em;
   font-weight: 600;
 `;
@@ -69,7 +70,6 @@ const ToolTipUnorderedList = styled.ul<{ columns?: number }>`
   position: relative;
   margin: 0;
   padding: 0;
-  padding-left: 0;
   height: 100%;
 
   column-count: ${(props) => props.columns || 1};
@@ -80,9 +80,9 @@ const ToolTipUnorderedList = styled.ul<{ columns?: number }>`
 
 const ToolTipListItem = styled.li<{ icon?: string }>`
   position: relative;
+  margin: 0;
   padding: 0;
   padding-left: 1.5em;
-  margin: 0;
   font-size: 0.8rem;
   white-space: nowrap;
 
