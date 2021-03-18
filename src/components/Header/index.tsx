@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
-import ThemeToggle from '@components/ThemeToggle';
-import LoginButton from '@components/LoginButton';
+// import ThemeToggle from '@components/ThemeToggle';
+// import LoginButton from '@components/LoginButton';
 import SiteTitle from '@components/SiteTitle';
 
 export type HeaderProps = {
@@ -16,10 +16,11 @@ const Header = ({ siteTitle }: HeaderProps) => {
         <Link to="/">
           <SiteTitle title={siteTitle} />
         </Link>
-        <ButtonsBar>
+        {/* Re-enable when light theme and auth are ready   */}
+        {/* <ButtonsBar>
           <ThemeToggle />
           <LoginButton />
-        </ButtonsBar>
+        </ButtonsBar> */}
       </ToolBar>
     </Wrapper>
   );

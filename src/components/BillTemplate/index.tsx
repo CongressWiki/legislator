@@ -59,6 +59,7 @@ const BillWrapper = styled.div`
     grid-area: bill;
     margin-top: 2rem;
     margin-bottom: 50vh;
+    pointer-events: auto;
   }
 
   @media (max-width: 900px) {

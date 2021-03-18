@@ -17,7 +17,7 @@ const CircleAvatar = ({
   imageData,
   size,
   loading,
-  backgroundColor = 'var(--color-gray700)',
+  backgroundColor,
   className,
 }: CircleAvatarProps) => {
   return (

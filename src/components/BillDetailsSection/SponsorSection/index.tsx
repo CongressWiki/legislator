@@ -8,6 +8,7 @@ import SectionTitle from '@components/BillDetailsSection/SectionTitle';
 import Container from '@components/BillDetailsSection/Container';
 import ContentWrapper from '@components/BillDetailsSection/ContentWrapper';
 import Wrapper from '@components/BillDetailsSection/Wrapper';
+import Avatar from '@components/Avatar';
 
 export type SponsorSectionProps = {
   sponsor: OfficialWithImage;
@@ -69,6 +70,9 @@ const SponsorSection = ({
                 </Tooltip>
               );
             })}
+            {/* <OverflowCosponsorAvatar party="any" size={CosponsorAvatarSize}>
+              <p>{cosponsors.length - 12} </p>
+            </OverflowCosponsorAvatar> */}
           </CosponsorsGroup>
         </ContentWrapper>
       </Container>
@@ -107,6 +111,11 @@ const SponsorSpotlight = styled.div`
 const SponsorFrame = styled.div`
   position: relative;
   max-width: 200px;
+  min-width: 200px;
+  /* min-height: 250px; */
+  /* max-height: cover; */
+  align-items: center;
+
   margin: 0;
   display: flex;
   overflow: hidden;
@@ -134,15 +143,15 @@ const CosponsorsGroup = styled.div`
   width: 100%;
   padding-top: 1.5rem;
   padding-bottom: 3rem;
-  padding-right: 20px;
   padding-left: 1rem;
+  /* padding-right: 1rem; */
 
   display: flex;
   flex-wrap: wrap;
-  align-content: flex-end;
+  align-content: stretch;
   align-items: flex-end;
   column-gap: 0;
-  row-gap: 40px;
+  /* row-gap: 40px; */
 
   @media (max-width: 1200px) {
     min-width: 216px;
@@ -194,10 +203,8 @@ const Tooltip = styled.div`
     }
 
     .avatar {
-      width: 100px;
-      height: 100px;
-      margin-top: 0;
-      margin-bottom: 0;
+      z-index: 1000;
+      transform: scale(1.5);
     }
   }
 `;
@@ -213,4 +220,22 @@ const CosponsorAvatar = styled(CircleAvatar)`
   -webkit-box-shadow: 0px 6px 7px 1px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0px 6px 7px 1px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 6px 7px 1px rgba(0, 0, 0, 0.75);
+`;
+
+const OverflowCosponsorAvatar = styled(Avatar)`
+  justify-self: center;
+  transition: all 0.3s ease-in-out;
+  margin-left: -1em;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  padding: 0;
+
+  background-color: var(--color-gray300);
+  border-color: var(--color-gray300);
+
+  p {
+    margin: 0;
+    padding: 0;
+    white-space: wrap;
+  }
 `;

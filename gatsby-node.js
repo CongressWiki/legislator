@@ -41,28 +41,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           related_bills
           short_title
           subjects
-          sponsor {
-            id
-            born_at
-            created_at
-            district
-            first_name
-            gender
-            house_terms
-            is_active
-            last_name
-            political_party
-            position
-            preferred_name
-            president_terms
-            rank
-            senate_terms
-            state
-            term_end_at
-            term_start_at
-            updated_at
-            vice_president_terms
-          }
+          sponsor_id
           cosponsorships(order_by: { sponsored_at: desc }) {
             id
             original_cosponsor
@@ -70,28 +49,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             state
             withdrawn_at
             district
-            elected_official {
-              id
-              created_at
-              district
-              first_name
-              gender
-              house_terms
-              is_active
-              last_name
-              political_party
-              position
-              president_terms
-              preferred_name
-              rank
-              senate_terms
-              state
-              term_end_at
-              term_start_at
-              updated_at
-              vice_president_terms
-              born_at
-            }
+            elected_official_id
           }
           actions(order_by: { acted_at: desc }) {
             acted_at
@@ -108,7 +66,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             vote_type
             where
           }
-          roll_calls(order_by: { date: desc }, limit: 1) {
+          roll_calls(order_by: { date: desc }) {
             id
             amendment_id
             category
@@ -135,6 +93,28 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
               elected_official_id
             }
           }
+        }
+        electedOfficials: elected_officials(order_by: { term_start_at: desc }) {
+          id
+          created_at
+          district
+          first_name
+          gender
+          house_terms
+          is_active
+          last_name
+          political_party
+          position
+          president_terms
+          preferred_name
+          rank
+          senate_terms
+          state
+          term_end_at
+          term_start_at
+          updated_at
+          vice_president_terms
+          born_at
         }
       }
 
@@ -165,17 +145,41 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   const bills = result.data.hasura.bills;
   const images = result.data.congressImages.nodes;
+
   const findImage = (elected_official_id) =>
     images.find((image) => image.name === elected_official_id);
 
+  const electedOfficials = result.data.hasura.electedOfficials.map(
+    (electedOfficial) => ({
+      ...electedOfficial,
+      image: findImage(electedOfficial.id),
+    })
+  );
+
+  const findElectedOfficial = (elected_official_id) =>
+    electedOfficials.find(
+      (electedOfficial) => electedOfficial.id === elected_official_id
+    );
+
   for (let bill of bills) {
     const slug = `${bill.congress}/${bill.type}${bill.number}`;
-    bill.sponsor.image = findImage(bill.sponsor.id);
-    bill.cosponsorships = bill.cosponsorships.map((cosponsorship) => {
-      const cosponsor_id = cosponsorship.elected_official.id;
-      cosponsorship.elected_official.image = findImage(cosponsor_id);
-      return cosponsorship;
-    });
+
+    bill.sponsor = findElectedOfficial(bill.sponsor_id);
+
+    bill.cosponsorships = bill.cosponsorships.map((cosponsorship) => ({
+      ...cosponsorship,
+      elected_official: findElectedOfficial(cosponsorship.elected_official_id),
+    }));
+
+    if (bill.roll_calls.length > 0) {
+      bill.roll_calls = bill.roll_calls.map((roll_call) => ({
+        ...roll_call,
+        votes: roll_call.votes.map((vote) => ({
+          ...vote,
+          elected_official: findElectedOfficial(vote.elected_official_id),
+        })),
+      }));
+    }
 
     createPage({
       path: slug,

@@ -20,7 +20,7 @@ const Avatar = ({ children, party, size, className }: AvatarProps) => {
       className={className}
       partyColor={
         // @ts-expect-error
-        party in PARTY_COLORS ? PARTY_COLORS[party] : 'var(--color-gray700)'
+        party in PARTY_COLORS ? PARTY_COLORS[party] : 'var(--color-gray300)'
       }
       // @ts-expect-error
       size={size}
@@ -54,7 +54,7 @@ const Wrapper = styled.div<{ partyColor: string; size?: number }>`
   border-radius: 50%;
 
   border: ridge 1px ${(props) => props.partyColor};
-  background-color: var(--color-gray700);
+  background-color: var(--color-gray300);
 
   /* img { */
   /* z-index: 400; */

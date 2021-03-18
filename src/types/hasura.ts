@@ -101,6 +101,7 @@ export type RollCallVote = {
   id: string;
   created_at: string;
   elected_official_id: string;
+  elected_official: OfficialWithImage;
   roll_call_id: string;
   decision: string;
   date: string;
