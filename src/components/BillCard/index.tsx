@@ -52,7 +52,7 @@ const BillCard = ({
       {summary === 'No summary available.' ? null : (
         <Button
           className="viewBillButton"
-          onClick={async () => navigate(`${congress}/${type}${number}`)}
+          onClick={() => navigate(`${congress}/${type}${number}`)}
         >
           Bill Details
         </Button>

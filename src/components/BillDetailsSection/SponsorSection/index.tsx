@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Image from '@components/Image';
 // import FancyFrame from '@static/images/Basic_Fancy_frame.svg';
@@ -9,7 +9,7 @@ import Container from '@components/BillDetailsSection/Container';
 import ContentWrapper from '@components/BillDetailsSection/ContentWrapper';
 import Wrapper from '@components/BillDetailsSection/Wrapper';
 import Avatar from '@components/Avatar';
-
+import { isBrowser } from '@constants';
 export type SponsorSectionProps = {
   sponsor: OfficialWithImage;
   cosponsors: Cosponsorship[];
@@ -21,19 +21,33 @@ const SponsorSection = ({
   cosponsors,
   className,
 }: SponsorSectionProps) => {
-  const mediaQuery420pxScreenWidth = window.matchMedia('(max-width: 420px)');
-  const isScreenWidthLessThan420px = mediaQuery420pxScreenWidth.matches;
-  const mediaQuery1200pxScreenWidth = window.matchMedia('(max-width: 1200px)');
-  const isScreenWidthLessThan1200px = mediaQuery1200pxScreenWidth.matches;
-  const mediaQuery1400pxScreenWidth = window.matchMedia('(max-width: 1400px)');
-  const isScreenWidthLessThan1400px = mediaQuery1400pxScreenWidth.matches;
-  const CosponsorAvatarSize = isScreenWidthLessThan420px
-    ? '40px'
-    : isScreenWidthLessThan1200px
-    ? '60px'
-    : isScreenWidthLessThan1400px
-    ? '70px'
-    : '80px';
+  const [cosponsorAvatarSize, setCosponsorAvatarSize] = useState('80px');
+
+  useEffect(() => {
+    if (isBrowser) {
+      const mediaQuery420pxScreenWidth = window?.matchMedia(
+        '(max-width: 420px)'
+      );
+      const isScreenWidthLessThan420px = mediaQuery420pxScreenWidth.matches;
+      const mediaQuery1200pxScreenWidth = window?.matchMedia(
+        '(max-width: 1200px)'
+      );
+      const isScreenWidthLessThan1200px = mediaQuery1200pxScreenWidth.matches;
+      const mediaQuery1400pxScreenWidth = window?.matchMedia(
+        '(max-width: 1400px)'
+      );
+      const isScreenWidthLessThan1400px = mediaQuery1400pxScreenWidth.matches;
+      setCosponsorAvatarSize(
+        isScreenWidthLessThan420px
+          ? '40px'
+          : isScreenWidthLessThan1200px
+          ? '60px'
+          : isScreenWidthLessThan1400px
+          ? '70px'
+          : '80px'
+      );
+    }
+  }, [cosponsorAvatarSize]);
 
   return (
     <Wrapper className={className}>
@@ -61,7 +75,7 @@ const SponsorSection = ({
                     party={elected_official.political_party}
                     imageData={elected_official.image}
                     backgroundColor="var(--color-gray700)"
-                    size={CosponsorAvatarSize}
+                    size={cosponsorAvatarSize}
                     loading="eager"
                   />
                   <span className="tooltiptext">

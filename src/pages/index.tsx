@@ -7,7 +7,7 @@ import BillLane from '@components/BillLane';
 import BillLaneHeader from '@components/BillLaneHeader';
 import BillLaneFooter from '@components/BillLaneFooter';
 import type { IGatsbyImageData } from 'gatsby-plugin-image';
-import withApollo from '@utils/withApollo';
+// import withApollo from '@utils/withApollo';
 import { search } from '@utils/Search';
 
 import BillCard from '@components/BillCard';
@@ -196,4 +196,5 @@ function Home() {
   );
 }
 
-export default withApollo(Home);
+// export default withApollo(Home);
+export default Home;
