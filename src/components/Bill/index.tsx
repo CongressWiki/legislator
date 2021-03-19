@@ -44,7 +44,7 @@ const Wrapper = styled.div`
   margin-bottom: 30vh;
 
   /* https://www.css-gradient.com/?c1=2f2c28&c2=6c6051&gt=r&gd=dbb */
-  background: hsl(35, 1%, 20%);
+  background: var(--color-bill);
   background: -webkit-radial-gradient(
     bottom,
     hsl(40, 70%, 10%),

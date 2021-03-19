@@ -10,6 +10,7 @@ const BillLane = styled.div`
   grid-template-columns: 1fr;
 
   border: none;
+  background: var(--color-ribbon);
   border-radius: 0;
   border-left: solid thin var(--color-gray300);
   border-right: solid thin var(--color-gray300);

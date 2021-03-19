@@ -62,7 +62,7 @@ const ListItem = styled.li`
   font-size: ${fontSize};
   white-space: nowrap;
   color: var(--color-gray500);
-  background-color: hsl(215, 51%, 10%);
+  background-color: var(--color-background);
 
   &:before {
     content: '|';

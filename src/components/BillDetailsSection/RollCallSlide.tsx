@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { RollCall, RollCallVote } from '@type/hasura';
 import UsaMapOfVotes from '@components/UsaMapOfVotes';
@@ -11,10 +11,11 @@ export type RollCallSlideProps = {
   className?: string;
 };
 
-const RollCallSlide = ({
-  rollCall: { result, question, votes, requires },
-  className,
-}: RollCallSlideProps) => {
+const RollCallSlide = ({ rollCall, className }: RollCallSlideProps) => {
+  console.log({ rollCall });
+  const { result, question, votes, requires, date, chamber, number } = rollCall;
+
+  const [isQuestionExpanded, setIsQuestionExpanded] = useState(false);
   const rollCallStatusColor = 'lime';
 
   // Group votes by decision
@@ -31,12 +32,17 @@ const RollCallSlide = ({
 
   return (
     <Wrapper color={rollCallStatusColor} className={className}>
-      <QuestionText>{question}</QuestionText>
-      <ResultText>{result}</ResultText>
+      <QuestionContainer
+        onClick={() => setIsQuestionExpanded(!isQuestionExpanded)}
+        expanded={isQuestionExpanded}
+      >
+        {question}
+      </QuestionContainer>
       {votes ? (
         <VoteDetails>
-          <UsaMapOfVotes className="map" votes={votesByState} />
+          <UsaMapOfVotes id={chamber + number} votes={votesByState} />
           <Column>
+            <ResultText>{result}</ResultText>
             {votesByDecision.map(({ decision, color, votes }) => (
               <VoteCount
                 key={decision}
@@ -62,8 +68,7 @@ const Wrapper = styled.div<{ color: string }>`
   width: calc(100% - 2rem);
   height: calc(100% - 2rem);
   margin: 1rem;
-  padding: 1rem;
-  padding-top: 0.5rem;
+  padding: 0.5rem;
 
   display: flex;
   flex-direction: column;
@@ -77,7 +82,8 @@ const Wrapper = styled.div<{ color: string }>`
 
 const VoteDetails = styled.div`
   position: relative;
-  width: calc(100% - 2rem);
+  margin-top: 2rem;
+  width: 100%;
   height: calc(100% - 2rem);
   display: flex;
 `;
@@ -90,14 +96,24 @@ const Column = styled.div`
   padding-left: 1rem;
 `;
 
-const QuestionText = styled.h3`
-  display: block;
+const QuestionContainer = styled.h3<{ expanded: boolean }>`
+  position: absolute;
+  z-index: 200;
+
+  width: calc(100% - 1rem);
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-bottom: ${(props) => (props.expanded ? '3rem' : '1rem')};
+  max-height: ${(props) => (props.expanded ? 'calc(100% - 1rem)' : '1.8rem')};
   margin: 0;
+
+  transition: all 0.3s ease-in-out;
+  background-color: var(--color-ribbon);
+  border-bottom: solid thin var(--color-gray300);
+
   text-align: center;
-  width: 100%;
-  height: fit-content;
-  font-weight: 700;
-  transition: color 0.3s ease-in-out;
+  overflow: hidden;
+  font-weight: 600;
 `;
 
 const ResultText = styled.h4`
@@ -159,7 +175,7 @@ const getDecisionColor = (decision: string) => {
       return 'white';
     case 'Present':
     case 'Guilty':
-      return 'black';
+      return 'brown';
     default:
       return UNIQUE_DECISION_COLORS.pop() || 'black';
   }

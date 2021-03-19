@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import Layout from '@components/Layouts/BillFeed';
-import type { Bill as IBill, Official as IOfficial } from '@type/hasura';
+import type { Bill, Official, OfficialWithImage } from '@type/hasura';
 import SEO from '@components/Seo';
 import BillLane from '@components/BillLane';
 import BillLaneHeader from '@components/BillLaneHeader';
@@ -15,11 +15,12 @@ import BillCard from '@components/BillCard';
 export type BillsAndCongressImagesQuery = {
   hasura: {
     bills: {
-      nodes: Array<IBill & { sponsor: IOfficial }>;
+      nodes: Bill[];
       aggregate: {
         count: number;
       };
     };
+    electedOfficials: Official[];
   };
   congressImages: {
     nodes: Array<{
@@ -59,7 +60,6 @@ function Home() {
             number
             title
             subject
-            summary
             congress
             status
             status_at
@@ -71,39 +71,58 @@ function Home() {
             related_bills
             short_title
             subjects
-            sponsor {
-              id
-              born_at
-              created_at
-              district
-              first_name
-              gender
-              house_terms
-              is_active
-              last_name
-              political_party
-              position
-              preferred_name
-              president_terms
-              rank
-              senate_terms
-              state
-              term_end_at
-              term_start_at
-              updated_at
-              vice_president_terms
-            }
+            sponsor_id
           }
           aggregate {
             count
           }
+        }
+        electedOfficials: elected_officials(order_by: { term_start_at: desc }) {
+          id
+          created_at
+          district
+          first_name
+          gender
+          house_terms
+          is_active
+          last_name
+          political_party
+          position
+          president_terms
+          preferred_name
+          rank
+          senate_terms
+          state
+          term_end_at
+          term_start_at
+          updated_at
+          vice_president_terms
+          born_at
         }
       }
     }
   `);
 
   const images = data.congressImages.nodes;
-  const bills = data.hasura.bills.nodes;
+  let bills: Array<Bill & { sponsor?: OfficialWithImage }> =
+    data.hasura.bills.nodes;
+  const electedOfficials = data.hasura.electedOfficials;
+
+  const findElectedOfficial = (elected_official_id: string) =>
+    electedOfficials.find(
+      (electedOfficial) => electedOfficial.id === elected_official_id
+    );
+  const findElectedOfficialImage = (elected_official_id: string) =>
+    images.find((image) => image.name === elected_official_id);
+
+  // @ts-expect-error
+  bills = bills.map((bill) => ({
+    ...bill,
+    sponsor: {
+      ...findElectedOfficial(bill.sponsor_id),
+      image: findElectedOfficialImage(bill.sponsor_id),
+    },
+  }));
 
   const [billTypes, setBillTypes] = useState<string[]>([]);
   const [searchBy, setSearchBy] = useState('');
@@ -178,13 +197,7 @@ function Home() {
             billCount={filteredBills.length || 0}
           />
           {filteredBills.slice(offset, limit).map((bill) => (
-            <BillCard
-              key={bill.id}
-              sponsorImage={images.find(
-                (image) => image.name === bill.sponsor.id
-              )}
-              {...bill}
-            />
+            <BillCard key={bill.id} {...bill} />
           ))}
         </BillLane>
         <BillLaneFooter

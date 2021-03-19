@@ -46,7 +46,7 @@ const Wrapper = styled.div`
   z-index: 9999;
   width: 100%;
   height: 40.5px;
-  background-color: hsl(215, 51%, 10%);
+  background-color: var(--color-ribbon);
   overflow: hidden;
 
   position: sticky;

@@ -48,7 +48,7 @@ const LoadMoreButton = styled.button<BillLaneFooterProps>`
 
   :hover {
     cursor: pointer;
-    background-color: var(--color-backgroundAlt);
+    background-color: var(--color-background);
     border-color: var(--color-secondary);
     color: var(--color-secondary);
   }

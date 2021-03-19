@@ -30,13 +30,6 @@ const Wrapper = styled.div<{ color: string }>`
   transition: all 0.3s ease-in-out;
 
   color: var(--color-text);
-
-  :hover {
-    transition: all 0.3s ease-in-out;
-
-    color: hsl(45, 81%, 53%);
-    border-color: hsl(45, 81%, 53%);
-  }
 `;
 
 const Decision = styled.h4`

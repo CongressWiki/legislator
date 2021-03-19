@@ -71,24 +71,12 @@ module.exports = {
     // To learn more, visit: https://gatsby.dev/offline // this (optional) plugin enables Progressive Web App + Offline functionality
     // Disabled so that site updates are seen immediately.
     // `gatsby-plugin-offline`,
-    // {
-    //   resolve: `gatsby-plugin-sharp`,
-    //   options: {
-    //     // Available options and their defaults:
-    //     base64Width: 20,
-    //     forceBase64Format: `jpg`, // valid formats: png,jpg,webp
-    //     useMozJpeg: process.env.GATSBY_JPEG_ENCODER === `MOZJPEG`,
-    //     stripMetadata: true,
-    //     defaultQuality: 100,
-    //     failOnError: true,
-    //   },
-    // },
     {
       resolve: 'gatsby-plugin-sharp',
       options: {
         defaults: {
           formats: ['avif', 'webp'],
-          quality: 80,
+          quality: 100,
           placeholder: 'none',
         },
       },

@@ -1,5 +1,5 @@
 import React from 'react';
-import type { Bill as IBill, Official as IOfficial } from '@type/hasura';
+import type { Bill, OfficialWithImage } from '@type/hasura';
 import { navigate } from 'gatsby';
 import Button from '@components/Button';
 
@@ -8,20 +8,12 @@ import Image from '@components/Image';
 import Avatar from '@components/Avatar';
 
 export type BillCardProps = Pick<
-  IBill,
-  | 'id'
-  | 'type'
-  | 'number'
-  | 'title'
-  | 'subject'
-  | 'updated_at'
-  | 'congress'
-  | 'summary'
+  Bill,
+  'id' | 'type' | 'number' | 'title' | 'subject' | 'updated_at' | 'congress'
 > & {
   onClick?: () => void;
-  sponsorImage: any;
   className?: string;
-  sponsor: IOfficial;
+  sponsor: OfficialWithImage;
 };
 
 const BillCard = ({
@@ -32,15 +24,13 @@ const BillCard = ({
   congress,
   subject,
   sponsor,
-  sponsorImage,
   updated_at,
   className,
-  summary,
 }: BillCardProps) => {
   return (
     <Wrapper className={className} onClick={onClick}>
       <Avatar className="sponsor" party={sponsor.political_party}>
-        <Image imageData={sponsorImage} alt={sponsor.preferred_name} />
+        <Image imageData={sponsor.image} alt={sponsor.preferred_name} />
       </Avatar>
       <p className="sponsorName">{sponsor.preferred_name}</p>
       <p className="bill-number">{`${type.toUpperCase()} ${number}`}</p>
@@ -49,14 +39,12 @@ const BillCard = ({
 
       <p className="bill-timestamp">{new Date(updated_at).toDateString()}</p>
 
-      {summary === 'No summary available.' ? null : (
-        <Button
-          className="viewBillButton"
-          onClick={() => navigate(`${congress}/${type}${number}`)}
-        >
-          Bill Details
-        </Button>
-      )}
+      <Button
+        className="viewBillButton"
+        onClick={() => navigate(`${congress}/${type}${number}`)}
+      >
+        Bill Details
+      </Button>
     </Wrapper>
   );
 };
@@ -95,7 +83,7 @@ const Wrapper = styled.div`
   }
 
   :hover {
-    background-color: var(--color-backgroundAlt);
+    background-color: var(--color-background);
   }
 
   .sponsor {
@@ -134,7 +122,7 @@ const Wrapper = styled.div`
     text-align: right;
     align-self: start;
     font-size: 0.8rem;
-    color: hsl(0deg, 0%, 70%);
+    color: var(--color-dimText);
     font-weight: 400;
   }
 

@@ -7,6 +7,7 @@ export type Bill = {
   subject: string;
   summary: string;
   updated_at: string;
+  sponsor_id: string;
   sponsor: OfficialWithImage;
   cosponsorships: Cosponsorship[];
   actions: Action[];

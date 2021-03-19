@@ -183,7 +183,7 @@ const AnimatedTextLoader = () => {
           );
         }
 
-        particleAlphabet.ctx.fillStyle = 'hsl(215, 51%, 10%)';
+        particleAlphabet.ctx.fillStyle = 'var(--color-background)';
         particleAlphabet.ctx.fillRect(
           0,
           0,

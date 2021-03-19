@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
-// import ThemeToggle from '@components/ThemeToggle';
-// import LoginButton from '@components/LoginButton';
+import ThemeToggle from '@components/ThemeToggle';
+import LoginButton from '@components/LoginButton';
 import SiteTitle from '@components/SiteTitle';
 
 export type HeaderProps = {
@@ -17,10 +17,10 @@ const Header = ({ siteTitle }: HeaderProps) => {
           <SiteTitle title={siteTitle} />
         </Link>
         {/* Re-enable when light theme and auth are ready   */}
-        {/* <ButtonsBar>
+        <ButtonsBar>
           <ThemeToggle />
-          <LoginButton />
-        </ButtonsBar> */}
+          {/* <LoginButton /> */}
+        </ButtonsBar>
       </ToolBar>
     </Wrapper>
   );
@@ -39,7 +39,7 @@ const Wrapper = styled.header`
   width: 100%;
   height: 115px;
   border-bottom: 1px solid var(--color-gray300);
-  background-color: hsl(215, 51%, 10%);
+  background-color: var(--color-background);
 `;
 
 const ButtonsBar = styled.div`

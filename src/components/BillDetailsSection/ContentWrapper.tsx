@@ -10,8 +10,6 @@ const ContentWrapper = styled.div`
   display: flex;
   padding-left: 0.5rem;
 
-  /* padding-bottom: 3rem; */
-
   @media (max-width: 1400px) {
     width: 100%;
     padding-left: 3rem;
@@ -23,10 +21,6 @@ const ContentWrapper = styled.div`
     padding-left: 3rem;
     padding-bottom: 0;
   }
-
-  /* @media (max-width: 600px) {
-    flex-direction: column
-  } */
 `;
 
 export default ContentWrapper;

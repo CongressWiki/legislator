@@ -13,7 +13,7 @@ const SectionTitle = styled.h2`
   text-align: center;
   writing-mode: vertical-rl;
   transform: rotate(180deg);
-  color: hsl(45, 81%, 53%);
+  color: var(--color-gold);
   font-family: advocate_c43_mid;
   font-size: 2.5rem;
 

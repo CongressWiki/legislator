@@ -43,7 +43,7 @@ const Wrapper = styled.div<{ hide?: boolean }>`
   pointer-events: none;
 
   opacity: ${(props) => (props.hide ? 0 : 1)};
-  background: hsl(215, 51%, 20%);
+  background: var(--color-tooltip);
   border: solid thin var(--color-text);
   border-radius: 5px;
   text-shadow: 1px 1px 0px var(--color-gray300);

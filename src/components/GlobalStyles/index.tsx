@@ -17,7 +17,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    background: hsl(215, 51%, 10%);
+    background: var(--color-background);
     color: var(--color-text);
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;

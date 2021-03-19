@@ -9,16 +9,20 @@ import { groupBy } from 'lodash';
 export type Vote = RollCallVote & { color: string; decision: string };
 
 export type UsaMapOfVotesProps = {
+  /**
+   * Unique id used to name and identify DOM elements associated with tooltip
+   */
+  id: string;
   votes: Vote[];
   className?: string;
 };
 
-const UsaMapOfVotes = ({ votes, className }: UsaMapOfVotesProps) => {
+const UsaMapOfVotes = ({ votes, id, className }: UsaMapOfVotesProps) => {
   const [hoveredState, setHoveredState] = useState('');
 
   useEffect(() => {
-    const htmlMouseTip = d3.select('div.tooltip.mouse');
-    const usaMap = d3.select('.usamap');
+    const htmlMouseTip = d3.select(`.${id}-mousetooltip`);
+    const usaMap = d3.select(`.${id}-map`);
     const states = usaMap.selectAll('path');
 
     states
@@ -43,11 +47,11 @@ const UsaMapOfVotes = ({ votes, className }: UsaMapOfVotesProps) => {
   return (
     <Wrapper votes={votes} className={className}>
       <StateVotesToolTip
-        className="mouse tooltip"
+        className={`${id}-mousetooltip`}
         state={hoveredState}
         votes={getVotesOfState(votes, hoveredState)}
       />
-      <UsaMap className="usamap" />
+      <UsaMap className={`${id}-map`} />
     </Wrapper>
   );
 };

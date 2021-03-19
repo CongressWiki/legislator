@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Image from '@components/Image';
-// import FancyFrame from '@static/images/Basic_Fancy_frame.svg';
 import type { OfficialWithImage, Cosponsorship } from '@type/hasura';
 import CircleAvatar from '@components/CircleAvatar';
 import SectionTitle from '@components/BillDetailsSection/SectionTitle';
@@ -126,6 +125,7 @@ const SponsorFrame = styled.div`
   position: relative;
   max-width: 200px;
   min-width: 200px;
+  max-height: calc(100% - 2rem);
   /* min-height: 250px; */
   /* max-height: cover; */
   align-items: center;
@@ -134,7 +134,7 @@ const SponsorFrame = styled.div`
   display: flex;
   overflow: hidden;
 
-  border: solid 1px hsl(45, 81%, 53%);
+  border: solid 1px var(--color-gold);
   -webkit-box-shadow: 0px 6px 10px 0px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0px 6px 10px 0px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.75);
