@@ -47,11 +47,19 @@ const Wrapper = styled.div`
   background: var(--color-bill);
   background: -webkit-radial-gradient(
     bottom,
-    hsl(40, 70%, 10%),
-    hsl(40, 1%, 20%)
+    'var(--color-billGradient1)',
+    'var(--color-billGradient2)'
   );
-  background: -moz-radial-gradient(bottom, hsl(40, 70%, 10%), hsl(40, 1%, 20%));
-  background: radial-gradient(to top, hsl(40, 70%, 10%), hsl(40, 1%, 20%));
+  background: -moz-radial-gradient(
+    bottom,
+    'var(--color-billGradient1)',
+    'var(--color-billGradient2)'
+  );
+  background: radial-gradient(
+    to top,
+    'var(--color-billGradient1)',
+    'var(--color-billGradient2)'
+  );
 
   border: 1px groove hsl(40, 1%, 15%);
   border-radius: 1px;

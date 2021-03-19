@@ -14,10 +14,16 @@ export type UsaMapOfVotesProps = {
    */
   id: string;
   votes: Vote[];
+  filterByDecision?: string;
   className?: string;
 };
 
-const UsaMapOfVotes = ({ votes, id, className }: UsaMapOfVotesProps) => {
+const UsaMapOfVotes = ({
+  votes,
+  id,
+  filterByDecision,
+  className,
+}: UsaMapOfVotesProps) => {
   const [hoveredState, setHoveredState] = useState('');
 
   useEffect(() => {
@@ -44,8 +50,16 @@ const UsaMapOfVotes = ({ votes, id, className }: UsaMapOfVotesProps) => {
     };
   }, [hoveredState]);
 
+  if (filterByDecision) {
+    votes = votes.filter((vote) => vote.decision === filterByDecision);
+  }
+
   return (
-    <Wrapper votes={votes} className={className}>
+    <Wrapper
+      votes={votes}
+      filterByDecision={filterByDecision}
+      className={className}
+    >
       <StateVotesToolTip
         className={`${id}-mousetooltip`}
         state={hoveredState}
@@ -67,7 +81,7 @@ const getVotesOfState = (votes: Vote[], state: string) => {
   }
 };
 
-const Wrapper = styled.div<{ votes: Vote[] }>`
+const Wrapper = styled.div<{ votes: Vote[]; filterByDecision?: string }>`
   position: relative;
   width: 100%;
   height: 100%;
@@ -96,14 +110,24 @@ const UsaMap = styled(UsaMapSVG)`
   height: 100%;
 `;
 
-function styleStatesWithVotes({ votes }: { votes: Vote[] }) {
-  let styles = ``;
+function styleStatesWithVotes({
+  votes,
+  filterByDecision,
+}: {
+  votes: Vote[];
+  filterByDecision?: string;
+}) {
+  if (filterByDecision) {
+    votes = votes.filter((vote) => vote.decision === filterByDecision);
+  }
 
   const votesByState = groupBy(votes, 'state');
   const states = Object.keys(votesByState);
 
+  let styles = ``;
   for (const state of states) {
     const stateVotes = votesByState[state];
+
     const stateVoteColors = stateVotes.map((stateVote) => stateVote.color);
 
     styles += `

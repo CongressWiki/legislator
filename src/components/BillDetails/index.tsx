@@ -42,4 +42,5 @@ const Wrapper = styled.div`
   display: grid;
   grid-auto-rows: 350px;
   grid-row-gap: 50px;
+  margin-bottom: 50vh;
 `;

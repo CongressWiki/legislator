@@ -11,12 +11,13 @@ export type RollCallSlideProps = {
   className?: string;
 };
 
-const RollCallSlide = ({ rollCall, className }: RollCallSlideProps) => {
-  console.log({ rollCall });
-  const { result, question, votes, requires, date, chamber, number } = rollCall;
-
+const RollCallSlide = ({
+  rollCall: { result, question, votes, requires, date, chamber, number },
+  className,
+}: RollCallSlideProps) => {
   const [isQuestionExpanded, setIsQuestionExpanded] = useState(false);
-  const rollCallStatusColor = 'lime';
+  const [focusedDecision, setFocusedDecision] = useState('');
+  const rollCallStatusColor = getDecisionColor(result);
 
   // Group votes by decision
   const votesGroupedByDecision = groupBy(votes, 'decision');
@@ -40,7 +41,11 @@ const RollCallSlide = ({ rollCall, className }: RollCallSlideProps) => {
       </QuestionContainer>
       {votes ? (
         <VoteDetails>
-          <UsaMapOfVotes id={chamber + number} votes={votesByState} />
+          <UsaMapOfVotes
+            id={chamber + number}
+            votes={votesByState}
+            filterByDecision={focusedDecision}
+          />
           <Column>
             <ResultText>{result}</ResultText>
             {votesByDecision.map(({ decision, color, votes }) => (
@@ -50,6 +55,12 @@ const RollCallSlide = ({ rollCall, className }: RollCallSlideProps) => {
                 decision={decision}
                 count={votes.length}
                 color={color}
+                focusedDecision={focusedDecision}
+                onClick={() =>
+                  focusedDecision === decision
+                    ? setFocusedDecision('')
+                    : setFocusedDecision(decision)
+                }
               />
             ))}
             <RequiresText>{requires} majority to win</RequiresText>
@@ -166,15 +177,16 @@ const getDecisionColor = (decision: string) => {
   switch (decision) {
     case 'Yea':
     case 'Yes':
+    case 'Guilty':
+    case 'Passed':
       return 'lime';
     case 'Nay':
     case 'No':
+    case 'Not Guilty':
       return 'red';
     case 'Not Voting':
-    case 'Not Guilty':
       return 'white';
     case 'Present':
-    case 'Guilty':
       return 'brown';
     default:
       return UNIQUE_DECISION_COLORS.pop() || 'black';

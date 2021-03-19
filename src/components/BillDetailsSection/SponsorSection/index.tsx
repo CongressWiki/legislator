@@ -72,6 +72,7 @@ const SponsorSection = ({
                     className="avatar"
                     name={elected_official.preferred_name}
                     party={elected_official.political_party}
+                    state={elected_official.state}
                     imageData={elected_official.image}
                     backgroundColor="var(--color-gray700)"
                     size={cosponsorAvatarSize}
@@ -135,9 +136,10 @@ const SponsorFrame = styled.div`
   overflow: hidden;
 
   border: solid 1px var(--color-gold);
-  -webkit-box-shadow: 0px 6px 10px 0px rgba(0, 0, 0, 0.75);
+  /* -webkit-box-shadow: 0px 6px 10px 0px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0px 6px 10px 0px rgba(0, 0, 0, 0.75);
-  box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.75); */
+  box-shadow: 0 0 5px 2px var(--color-gold);
 
   @media (max-width: 900px) {
     min-width: 100px;
@@ -164,6 +166,7 @@ const CosponsorsGroup = styled.div`
   flex-wrap: wrap;
   align-content: stretch;
   align-items: flex-end;
+  justify-content: flex-start;
   column-gap: 0;
   /* row-gap: 40px; */
 
@@ -182,32 +185,40 @@ const Tooltip = styled.div`
   position: relative;
   display: inline-block;
   transition: all 1s;
+  margin: 0;
+  padding: 0;
+  min-width: fit-content;
+  min-height: fit-content;
 
   .tooltiptext {
     visibility: hidden;
     width: 120px;
-    background-color: var(--color-gray300);
+    background-color: var(--color-bill);
+
     text-align: center;
     border-radius: 6px;
     padding: 5px 0;
     position: absolute;
     z-index: 500;
-    bottom: 125%;
+    top: 125%;
     left: 40%;
     margin-left: -60px;
     opacity: 0;
     transition: opacity 0.3s;
+    z-index: 800;
+    font-style: italic;
   }
 
   .tooltiptext::after {
     content: '';
     position: absolute;
-    top: 100%;
+    bottom: 100%;
     left: 50%;
+    transform: rotate(180deg);
     margin-left: -5px;
     border-width: 5px;
     border-style: solid;
-    border-color: var(--color-gray300) transparent transparent transparent;
+    border-color: var(--color-bill) transparent transparent transparent;
   }
 
   :hover {
@@ -230,10 +241,6 @@ const CosponsorAvatar = styled(CircleAvatar)`
   margin-bottom: 10px;
   margin-top: 10px;
   padding: 0;
-
-  -webkit-box-shadow: 0px 6px 7px 1px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 0px 6px 7px 1px rgba(0, 0, 0, 0.75);
-  box-shadow: 0px 6px 7px 1px rgba(0, 0, 0, 0.75);
 `;
 
 const OverflowCosponsorAvatar = styled(Avatar)`

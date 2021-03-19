@@ -43,10 +43,34 @@ const Wrapper = styled.div<{ hide?: boolean }>`
   pointer-events: none;
 
   opacity: ${(props) => (props.hide ? 0 : 1)};
-  background: var(--color-tooltip);
+  /* background: var(--color-tooltip);
   border: solid thin var(--color-text);
-  border-radius: 5px;
+  border-radius: 5px; */
   text-shadow: 1px 1px 0px var(--color-gray300);
+
+  background: var(--color-bill);
+  background: -webkit-radial-gradient(
+    bottom,
+    'var(--color-billGradient1)',
+    'var(--color-billGradient2)'
+  );
+  background: -moz-radial-gradient(
+    bottom,
+    'var(--color-billGradient1)',
+    'var(--color-billGradient2)'
+  );
+  background: radial-gradient(
+    to top,
+    'var(--color-billGradient1)',
+    'var(--color-billGradient2)'
+  );
+
+  border: 1px groove hsl(40, 1%, 15%);
+  border-radius: 1px;
+
+  -webkit-box-shadow: 0px 10px 15px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 10px 15px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 10px 15px 0px rgba(0, 0, 0, 0.75);
 `;
 
 export const ToolTip = ({

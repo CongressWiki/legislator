@@ -5,12 +5,29 @@ export type VoteCountProps = {
   decision: string;
   count: number;
   color: string;
+  focusedDecision?: string;
+  onClick?: () => void;
   className?: string;
 };
 
-const VoteCount = ({ decision, count, color, className }: VoteCountProps) => {
+const VoteCount = ({
+  decision,
+  count,
+  color,
+  focusedDecision,
+  onClick,
+  className,
+}: VoteCountProps) => {
+  const isFocused = focusedDecision === decision;
+  const isDisabled = focusedDecision && !isFocused;
+
   return (
-    <Wrapper className={className} color={color}>
+    <Wrapper
+      className={className}
+      onClick={onClick}
+      color={color}
+      isDisabled={isDisabled}
+    >
       <Decision>{decision}</Decision>
       <Count>{count}</Count>
     </Wrapper>
@@ -19,7 +36,7 @@ const VoteCount = ({ decision, count, color, className }: VoteCountProps) => {
 
 export default VoteCount;
 
-const Wrapper = styled.div<{ color: string }>`
+const Wrapper = styled.div<{ color: string; isDisabled: boolean }>`
   width: 100%;
 
   display: flex;
@@ -28,6 +45,8 @@ const Wrapper = styled.div<{ color: string }>`
   border: solid thin ${(props) => props.color};
   border-radius: 25px;
   transition: all 0.3s ease-in-out;
+
+  opacity: ${(props) => (props.isDisabled ? '0.5' : 1)};
 
   color: var(--color-text);
 `;

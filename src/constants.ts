@@ -46,11 +46,19 @@ export const COLORS = {
     dark: 'hsl(0deg, 0%, 70%)',
   },
   bill: {
-    light: 'hsl(35, 1%, 20%)',
+    light: 'hsl(37, 60%, 81%)',
     dark: 'hsl(35, 1%, 20%)',
   },
+  billGradient1: {
+    light: 'hsl(36, 100%, 60%)',
+    dark: 'hsl(40, 70%, 10%)',
+  },
+  billGradient2: {
+    light: 'hsl(36, 70%, 80%)',
+    dark: 'hsl(40, 1%, 20%)',
+  },
   ribbon: {
-    light: 'hsl(215, 51%, 14%)',
+    light: 'hsl(215,100%, 57%)',
     dark: 'hsl(215, 51%, 14%)',
   },
   gold: {
@@ -58,7 +66,7 @@ export const COLORS = {
     dark: 'hsl(45, 81%, 53%)',
   },
   tooltip: {
-    light: 'hsl(215, 51%, 20%)',
+    light: 'hsl(215, 51%, 90%)',
     dark: 'hsl(215, 51%, 20%)',
   },
 };

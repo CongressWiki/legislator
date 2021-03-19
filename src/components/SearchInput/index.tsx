@@ -37,7 +37,7 @@ const StyledInput = styled.input`
 
   border: 0;
   display: flex;
-  background-color: var(--color-ribbon);
+  background-color: var(--color-background);
   text-align: center;
   font-family: concourse_t4;
   font-size: 1.4rem;

@@ -2,6 +2,7 @@ import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import Header, { HeaderSpacer } from '@components/Header';
 import styled from 'styled-components';
+import Footer from '@components/Footer';
 
 export type BillFeedLayoutProps = {
   children: React.ReactNode;
@@ -22,7 +23,8 @@ const BillFeedLayout = ({ children }: BillFeedLayoutProps) => {
     <>
       <Header siteTitle={data.site.siteMetadata?.title} />
       <HeaderSpacer />
-      <Wrapper id="layout-wrapper">{children}</Wrapper>
+      <Wrapper>{children}</Wrapper>
+      <Footer className="full-bleed" />
     </>
   );
 };
