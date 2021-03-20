@@ -109,7 +109,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           modifiedTime
           childImageSharp {
             gatsbyImageData(
-              width: 300
+              width: 200
               placeholder: BLURRED
               formats: [AUTO, WEBP, AVIF]
             )
@@ -148,6 +148,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
     // Sponsor
     bill.sponsor = findElectedOfficial(bill.sponsor_id);
+
     // Cosponsor
     bill.cosponsorships = bill.cosponsorships.map((cosponsorship) => ({
       ...cosponsorship,
@@ -174,17 +175,17 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       },
     });
 
-    // if (process.env.NODE_ENV === 'production') {
-    //   const createSocialCards = require('./src/libs/create-social-cards');
-    //   createSocialCards({
-    //     bill: bill,
-    //     author: 'USACounts',
-    //     separator: '|',
-    //     fontFile: require.resolve(
-    //       './static/fonts/Century_Supra/T3/century_supra_t3_regular.ttf'
-    //     ),
-    //     slug,
-    //   });
-    // }
+    if (process.env.NODE_ENV === 'production') {
+      const createSocialCards = require('./src/libs/create-social-cards');
+      createSocialCards({
+        bill: bill,
+        author: 'USACounts',
+        separator: '|',
+        fontFile: require.resolve(
+          './static/fonts/Century_Supra/T3/century_supra_t3_regular.ttf'
+        ),
+        slug,
+      });
+    }
   }
 };

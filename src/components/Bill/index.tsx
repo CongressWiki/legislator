@@ -82,7 +82,8 @@ const BillStatusStamp = styled(StampText)`
 
   @media (max-width: 400px) {
     margin-top: 0;
-    width: 200px;
+    /* min-width: unset; */
+    max-width: 200px;
   }
 `;
 

@@ -78,7 +78,7 @@ module.exports = {
       options: {
         defaults: {
           formats: ['avif', 'webp'],
-          quality: 100,
+          quality: 80,
           placeholder: 'none',
         },
       },

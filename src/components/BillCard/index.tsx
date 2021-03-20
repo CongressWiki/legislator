@@ -108,6 +108,7 @@ const Wrapper = styled(motion.div)`
     align-self: start;
     justify-self: center;
     font-weight: 700;
+    white-space: nowrap;
   }
 
   .bill-title {

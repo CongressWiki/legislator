@@ -46,7 +46,7 @@ function Home() {
           modifiedTime
           childImageSharp {
             gatsbyImageData(
-              width: 100
+              width: 50
               placeholder: BLURRED
               formats: [AUTO, WEBP, AVIF]
             )
@@ -66,11 +66,7 @@ function Home() {
             type
             introduced_at
             updated_at
-            created_at
-            by_request
-            related_bills
             short_title
-            subjects
             sponsor_id
           }
           aggregate {
@@ -79,25 +75,11 @@ function Home() {
         }
         electedOfficials: elected_officials(order_by: { term_start_at: desc }) {
           id
-          created_at
-          district
-          first_name
-          gender
-          house_terms
           is_active
-          last_name
           political_party
           position
-          president_terms
           preferred_name
-          rank
-          senate_terms
           state
-          term_end_at
-          term_start_at
-          updated_at
-          vice_president_terms
-          born_at
         }
       }
     }
@@ -127,7 +109,7 @@ function Home() {
   const [billTypes, setBillTypes] = useState<string[]>([]);
   const [searchBy, setSearchBy] = useState('');
   const [orderByAsc, setOrderByAsc] = useState(false);
-  const limitIncrement = 50;
+  const limitIncrement = 20;
   const [limit, setLimit] = useState(limitIncrement);
   const offset = 0;
 

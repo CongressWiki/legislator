@@ -9,6 +9,14 @@ const ButtonCanvas = styled.div`
   width: 2.5rem;
   align-items: center;
 
+  // Prevent highlighting on click
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: -moz-none;
+  -o-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
   :hover {
     cursor: pointer;
     border: 2px var(--color-secondary) solid;

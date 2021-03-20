@@ -42,19 +42,18 @@ const Wrapper = styled.div`
   background: transparent;
   padding: 0;
   margin: 0;
-  padding-top: 2rem;
 
-  width: auto;
-  height: auto;
+  width: 100%;
+  height: 100%;
 `;
 
 const StateText = styled.span`
   position: absolute;
-  top: -18px;
-  right: -14px;
+  top: -0.5rem;
+  right: -0.5rem;
   font-family: advocate_c43_mid;
-  font-size: 2rem;
-  z-index: -400;
+  /* font-size: 2rem; */
+  z-index: 700;
   color: var(--color-text);
 `;
 

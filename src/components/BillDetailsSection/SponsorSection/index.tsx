@@ -54,18 +54,18 @@ const SponsorSection = ({
       <Container>
         <SectionTitle>Sponsors</SectionTitle>
         <SponsorContentWrapper>
-          <SponsorSpotlight>
-            <SponsorState>{sponsor.state}</SponsorState>
-            <SponsorFrame>
-              <Image
-                imageData={sponsor.image}
-                alt={sponsor.preferred_name}
-                loading="eager"
-              />
-            </SponsorFrame>
-            <p>{sponsor.preferred_name}</p>
-          </SponsorSpotlight>
           <CosponsorsGroup>
+            <SponsorSpotlight>
+              <SponsorState>{sponsor.state}</SponsorState>
+              <SponsorFrame>
+                <Image
+                  imageData={sponsor.image}
+                  alt={sponsor.preferred_name}
+                  loading="eager"
+                />
+              </SponsorFrame>
+              <p>{sponsor.preferred_name}</p>
+            </SponsorSpotlight>
             {cosponsors.slice(0, 11).map((cosponsor: Cosponsorship) => {
               const { elected_official } = cosponsor;
               return (
@@ -98,11 +98,7 @@ const SponsorSection = ({
 
 export default SponsorSection;
 
-const SponsorContentWrapper = styled(ContentWrapper)`
-  @media (max-width: 400px) {
-    /* flex-direction: column; */
-  }
-`;
+const SponsorContentWrapper = styled(ContentWrapper)``;
 
 const SponsorSpotlight = styled.div`
   position: relative;
@@ -110,7 +106,7 @@ const SponsorSpotlight = styled.div`
   max-height: calc(100% - 2rem);
   min-width: fit-content;
 
-  margin-top: 2rem;
+  /* margin-top: 2rem; */
   margin-right: 1rem;
 
   display: inline-block;
@@ -144,9 +140,9 @@ const SponsorState = styled.span`
 
 const SponsorFrame = styled.div`
   position: relative;
-  max-width: 200px;
+  max-width: fit-content;
   min-width: 200px;
-  max-height: calc(100% - 2rem);
+  max-height: min(fit-content, calc(100% - 2rem));
   align-items: center;
 
   margin: 0;
@@ -158,8 +154,10 @@ const SponsorFrame = styled.div`
   box-shadow: 0 0 5px 2px var(--color-gold);
 
   @media (max-width: 400px) {
-    min-width: 140px;
-    max-width: 140px;
+    min-width: 100px;
+    max-width: 100px;
+    /* min-width: unset; */
+    /* max-width: unset; */
     /* width: 200px; */
     /* height: auto; */
   }
@@ -168,28 +166,39 @@ const SponsorFrame = styled.div`
 const CosponsorsGroup = styled.div`
   position: relative;
   width: 100%;
-  padding-top: 1.5rem;
-  padding-bottom: 3rem;
+  /* height: calc(100% - 4.5rem); */
+
   padding-left: 1rem;
   padding-right: 1rem;
+  padding-top: 1.5rem;
+  padding-bottom: 3rem;
 
   display: flex;
-  flex-wrap: wrap;
+  justify-content: flex-start;
   align-content: stretch;
   align-items: flex-end;
-  justify-content: flex-start;
-  column-gap: 0;
-  /* row-gap: 40px; */
+  flex-wrap: wrap;
+  gap: 0;
 
   @media (max-width: 1200px) {
-    min-width: 216px;
+    gap: 1rem;
   }
 
   @media (max-width: 900px) {
-    /* flex-direction: column; */
+    padding: 0;
+    /* padding-left: 0.5rem; */
+    padding-top: 1.5rem;
+    padding-right: 1.5rem;
+
+    flex-direction: column;
+    justify-content: flex-start;
     align-content: stretch;
-    min-width: 140px;
-    column-gap: 10px;
+    align-items: flex-start;
+    gap: 1rem;
+
+    /* align-content: stretch; */
+    /* min-width: 100px; */
+    /* column-gap: 1px; */
   }
 `;
 
@@ -200,6 +209,10 @@ const CosponsorAvatar = styled(CircleAvatar)`
 
   margin-bottom: 10px;
   padding: 0;
+
+  @media (max-width: 400px) {
+    margin: 0;
+  }
 `;
 
 const OverflowCosponsorAvatar = styled(Avatar)`
@@ -246,6 +259,10 @@ const Tooltip = styled.div`
     transition: opacity 0.3s;
     z-index: 800;
     font-style: italic;
+
+    @media (max-width: 400px) {
+      width: 100px;
+    }
   }
 
   .tooltiptext::after {

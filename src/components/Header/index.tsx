@@ -38,6 +38,8 @@ const Wrapper = styled.header`
   justify-content: center;
   width: 100%;
   height: 115px;
+  /* min-height: 130px; */
+
   border-bottom: 1px solid var(--color-gray300);
   background-color: var(--color-background);
 `;
@@ -55,6 +57,7 @@ const ButtonsBar = styled.div`
 const ToolBar = styled.div`
   position: relative;
   height: 100%;
+  min-height: 64px;
   width: min(140ch, calc(100% - 64px));
   margin: 0;
   z-index: 100;
@@ -70,6 +73,7 @@ const ToolBar = styled.div`
   @media (max-width: 600px) {
     width: 100%;
     flex-direction: column;
+    min-height: 130px;
   }
 `;
 
@@ -80,6 +84,7 @@ export const HeaderSpacer = styled.div`
   padding: 0;
   height: 115px;
   width: 100%;
+  /* min-height: 130px; */
 `;
 
 export default Header;
