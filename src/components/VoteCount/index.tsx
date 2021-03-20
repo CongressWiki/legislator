@@ -19,7 +19,7 @@ const VoteCount = ({
   className,
 }: VoteCountProps) => {
   const isFocused = focusedDecision === decision;
-  const isDisabled = focusedDecision && !isFocused;
+  const isDisabled = Boolean(focusedDecision && !isFocused);
 
   return (
     <Wrapper
@@ -37,18 +37,26 @@ const VoteCount = ({
 export default VoteCount;
 
 const Wrapper = styled.div<{ color: string; isDisabled: boolean }>`
+  position: relative;
+  height: auto;
   width: 100%;
 
   display: flex;
   justify-content: space-between;
   padding: 8px;
-  border: solid thin ${(props) => props.color};
+  border: solid 2px ${(props) => props.color};
   border-radius: 25px;
   transition: all 0.3s ease-in-out;
 
   opacity: ${(props) => (props.isDisabled ? '0.5' : 1)};
 
-  color: var(--color-text);
+  @media (max-width: 400px) {
+    width: 45%;
+    flex-wrap: nowrap;
+    border-width: 1px;
+    padding: 4px;
+    min-height: 25px;
+  }
 `;
 
 const Decision = styled.h4`
@@ -62,13 +70,21 @@ const Decision = styled.h4`
   :after {
     content: ':';
   }
+
+  @media (max-width: 400px) {
+    font-size: 0.7em;
+  }
 `;
 
 const Count = styled.span`
   display: inline;
   margin: 0;
+  margin-left: 1ch;
   padding: 0;
-  margin-left: 1rem;
 
   font-weight: 700;
+
+  @media (max-width: 400px) {
+    font-size: 0.7em;
+  }
 `;

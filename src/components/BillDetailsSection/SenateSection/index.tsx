@@ -3,9 +3,9 @@ import styled from 'styled-components';
 import SectionTitle from '@components/BillDetailsSection/SectionTitle';
 import Container from '@components/BillDetailsSection/Container';
 import ContentWrapper from '@components/BillDetailsSection/ContentWrapper';
-import Wrapper from '@components/BillDetailsSection/Wrapper';
+import Wrapper from '@components/BillDetailsSection/SectionRibbon';
 import { RollCall } from '@type/hasura';
-import RollCallSlide from '@components/BillDetailsSection/RollCallSlide';
+import RollCallSlide from '@components/RollCallSlide';
 import Calendar from '@components/icons/Calendar';
 
 export type SenateSectionProps = {

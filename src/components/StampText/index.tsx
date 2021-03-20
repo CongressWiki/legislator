@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-// @ts-expect-error
 import StampTexture from '@static/images/StampTexture.png';
 
 // export type StampTextProps = {
@@ -12,10 +11,8 @@ import StampTexture from '@static/images/StampTexture.png';
 // };
 
 const StampText = styled.span`
-  position: absolute;
   align-self: center;
-  margin-bottom: 1rem;
-  padding: 0.25rem 1rem;
+  padding: 0.25rem 0.5rem;
   display: block;
 
   text-align: center;
@@ -34,6 +31,5 @@ const StampText = styled.span`
   mix-blend-mode: normal;
 
   border: 0.5rem solid #0a9928;
-  border-radius: 0;
 `;
 export default StampText;

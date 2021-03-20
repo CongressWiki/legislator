@@ -38,14 +38,10 @@ const Wrapper = styled.div<{ hide?: boolean }>`
   text-align: left;
   padding: 0.5rem;
   z-index: 2000;
-
+  opacity: ${(props) => (props.hide ? 0 : 1)};
   /* let mouse events pass through */
   pointer-events: none;
 
-  opacity: ${(props) => (props.hide ? 0 : 1)};
-  /* background: var(--color-tooltip);
-  border: solid thin var(--color-text);
-  border-radius: 5px; */
   text-shadow: 1px 1px 0px var(--color-gray300);
 
   background: var(--color-bill);
@@ -65,7 +61,7 @@ const Wrapper = styled.div<{ hide?: boolean }>`
     'var(--color-billGradient2)'
   );
 
-  border: 1px groove hsl(40, 1%, 15%);
+  border: 1px groove var(--color-bill);
   border-radius: 1px;
 
   -webkit-box-shadow: 0px 10px 15px 0px rgba(0, 0, 0, 0.75);

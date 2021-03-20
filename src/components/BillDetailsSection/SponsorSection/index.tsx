@@ -6,9 +6,10 @@ import CircleAvatar from '@components/CircleAvatar';
 import SectionTitle from '@components/BillDetailsSection/SectionTitle';
 import Container from '@components/BillDetailsSection/Container';
 import ContentWrapper from '@components/BillDetailsSection/ContentWrapper';
-import Wrapper from '@components/BillDetailsSection/Wrapper';
+import Wrapper from '@components/BillDetailsSection/SectionRibbon';
 import Avatar from '@components/Avatar';
 import { isBrowser } from '@constants';
+
 export type SponsorSectionProps = {
   sponsor: OfficialWithImage;
   cosponsors: Cosponsorship[];
@@ -38,7 +39,7 @@ const SponsorSection = ({
       const isScreenWidthLessThan1400px = mediaQuery1400pxScreenWidth.matches;
       setCosponsorAvatarSize(
         isScreenWidthLessThan420px
-          ? '40px'
+          ? '50px'
           : isScreenWidthLessThan1200px
           ? '60px'
           : isScreenWidthLessThan1400px
@@ -52,8 +53,9 @@ const SponsorSection = ({
     <Wrapper className={className}>
       <Container>
         <SectionTitle>Sponsors</SectionTitle>
-        <ContentWrapper>
+        <SponsorContentWrapper>
           <SponsorSpotlight>
+            <SponsorState>{sponsor.state}</SponsorState>
             <SponsorFrame>
               <Image
                 imageData={sponsor.image}
@@ -88,7 +90,7 @@ const SponsorSection = ({
               <p>{cosponsors.length - 12} </p>
             </OverflowCosponsorAvatar> */}
           </CosponsorsGroup>
-        </ContentWrapper>
+        </SponsorContentWrapper>
       </Container>
     </Wrapper>
   );
@@ -96,8 +98,15 @@ const SponsorSection = ({
 
 export default SponsorSection;
 
+const SponsorContentWrapper = styled(ContentWrapper)`
+  @media (max-width: 400px) {
+    /* flex-direction: column; */
+  }
+`;
+
 const SponsorSpotlight = styled.div`
-  overflow: hidden;
+  position: relative;
+  overflow: show;
   max-height: calc(100% - 2rem);
   min-width: fit-content;
 
@@ -114,11 +123,22 @@ const SponsorSpotlight = styled.div`
     font-family: century_supra_t3;
     font-size: 1rem;
     font-style: italic;
-    color: var(--color-gray700);
+  }
+`;
 
-    @media (max-width: 600px) {
-      font-size: 0.25rem;
-    }
+const SponsorState = styled.span`
+  position: absolute;
+  top: -27px;
+  right: -17px;
+  text-shadow: 2px 2px var(--color-background);
+  font-family: advocate_c43_mid;
+  font-size: 3rem;
+  z-index: 1000;
+
+  @media (max-width: 400px) {
+    top: -15px;
+    right: -15px;
+    font-size: 2rem;
   }
 `;
 
@@ -127,30 +147,21 @@ const SponsorFrame = styled.div`
   max-width: 200px;
   min-width: 200px;
   max-height: calc(100% - 2rem);
-  /* min-height: 250px; */
-  /* max-height: cover; */
   align-items: center;
 
   margin: 0;
+  margin-left: 1rem;
   display: flex;
   overflow: hidden;
 
   border: solid 1px var(--color-gold);
-  /* -webkit-box-shadow: 0px 6px 10px 0px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 0px 6px 10px 0px rgba(0, 0, 0, 0.75);
-  box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.75); */
   box-shadow: 0 0 5px 2px var(--color-gold);
 
-  @media (max-width: 900px) {
-    min-width: 100px;
-    width: 200px;
-    height: auto;
-  }
-
-  @media (max-width: 600px) {
-    min-width: 50px;
-    width: 100px;
-    height: auto;
+  @media (max-width: 400px) {
+    min-width: 140px;
+    max-width: 140px;
+    /* width: 200px; */
+    /* height: auto; */
   }
 `;
 
@@ -160,7 +171,7 @@ const CosponsorsGroup = styled.div`
   padding-top: 1.5rem;
   padding-bottom: 3rem;
   padding-left: 1rem;
-  /* padding-right: 1rem; */
+  padding-right: 1rem;
 
   display: flex;
   flex-wrap: wrap;
@@ -175,9 +186,37 @@ const CosponsorsGroup = styled.div`
   }
 
   @media (max-width: 900px) {
-    flex-direction: column;
+    /* flex-direction: column; */
     align-content: stretch;
-    min-width: 100px;
+    min-width: 140px;
+    column-gap: 10px;
+  }
+`;
+
+const CosponsorAvatar = styled(CircleAvatar)`
+  justify-self: center;
+  transition: all 0.3s ease-in-out;
+  margin-left: -1em;
+
+  margin-bottom: 10px;
+  padding: 0;
+`;
+
+const OverflowCosponsorAvatar = styled(Avatar)`
+  justify-self: center;
+  transition: all 0.3s ease-in-out;
+  margin-left: -1em;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  padding: 0;
+
+  background-color: var(--color-gray300);
+  border-color: var(--color-gray300);
+
+  p {
+    margin: 0;
+    padding: 0;
+    white-space: wrap;
   }
 `;
 
@@ -231,32 +270,5 @@ const Tooltip = styled.div`
       z-index: 1000;
       transform: scale(1.5);
     }
-  }
-`;
-
-const CosponsorAvatar = styled(CircleAvatar)`
-  justify-self: center;
-  transition: all 0.3s ease-in-out;
-  margin-left: -1em;
-  margin-bottom: 10px;
-  margin-top: 10px;
-  padding: 0;
-`;
-
-const OverflowCosponsorAvatar = styled(Avatar)`
-  justify-self: center;
-  transition: all 0.3s ease-in-out;
-  margin-left: -1em;
-  margin-bottom: 10px;
-  margin-top: 10px;
-  padding: 0;
-
-  background-color: var(--color-gray300);
-  border-color: var(--color-gray300);
-
-  p {
-    margin: 0;
-    padding: 0;
-    white-space: wrap;
   }
 `;

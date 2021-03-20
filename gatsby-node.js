@@ -22,95 +22,81 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       hasura {
         bills(order_by: { updated_at: desc }) {
           id
-          number
-          title
-          subject
-          summary
+          type
           congress
+          number
+          subject
+          subjects
+          title
+          short_title
+          summary
+          sponsor_id
+          by_request
           status
           status_at
-          type
           introduced_at
-          updated_at
           created_at
-          by_request
-          related_bills
-          short_title
-          subjects
-          sponsor_id
-          cosponsorships(order_by: { sponsored_at: desc }) {
+          updated_at
+          cosponsorships(
+            order_by: { sponsored_at: desc }
+            where: { withdrawn_at: { _is_null: true } }
+          ) {
             id
             original_cosponsor
-            sponsored_at
             state
-            withdrawn_at
             district
+            sponsored_at
+            withdrawn_at
             elected_official_id
-          }
-          actions(order_by: { acted_at: desc }) {
-            acted_at
-            action_code
-            how
-            id
-            references
-            result
-            roll
-            status
-            suspension
-            text
-            type
-            vote_type
-            where
           }
           roll_calls(order_by: { date: desc }) {
             id
-            amendment_id
-            category
+            type
             chamber
+            session
             congress
-            date
-            nomination
             number
+            category
             question
-            record_modified_at
             requires
             result
             result_text
-            session
+            date
             subject
-            type
+            nomination
+            record_modified_at
             updated_at
             votes {
-              created_at
-              date
-              decision
-              state
               id
+              decision
               elected_official_id
+              state
+              date
+              created_at
             }
           }
         }
         electedOfficials: elected_officials(order_by: { term_start_at: desc }) {
           id
-          created_at
+          position
+          rank
+          state
+          political_party
+          gender
           district
           first_name
-          gender
-          house_terms
-          is_active
           last_name
-          political_party
-          position
-          president_terms
           preferred_name
-          rank
+          is_active
+          house_terms
           senate_terms
-          state
+          vice_president_terms
+          president_terms
           term_end_at
           term_start_at
-          updated_at
-          vice_president_terms
           born_at
+          created_at
+          updated_at
         }
       }
 

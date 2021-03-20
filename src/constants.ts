@@ -1,5 +1,6 @@
 // Styles
 export const COLORS = {
+  // Text
   text: {
     light: 'hsl(0deg, 0%, 10%)', // White
     dark: 'hsl(0deg, 0%, 100%)', // Near-black
@@ -8,14 +9,16 @@ export const COLORS = {
     light: 'hsl(0deg, 0%, 70%)',
     dark: 'hsl(0deg, 0%, 70%)',
   },
+  // Backgrounds
   background: {
-    light: 'hsl(105, 55%, 96%)', // Honeydew
+    light: 'hsl(105, 48%, 96%)', // Honeydew
     dark: 'hsl(215, 51%, 10%)', // Prussian Blue
   },
   backgroundAlt: {
     light: 'hsl(105, 55%, 99%)', // Honeydew
-    dark: 'hsl(215, 50%, 28%)', // Prussian Blue
+    dark: 'hsl(215, 70%, 14%)', // Prussian Blue
   },
+  // Theme
   primary: {
     light: 'hsl(182, 43%, 76%)', // Powder blue
     dark: 'hsl(203, 39%, 44%)', // Celadon Blue
@@ -45,6 +48,7 @@ export const COLORS = {
     light: 'hsl(0deg, 0%, 30%)',
     dark: 'hsl(0deg, 0%, 70%)',
   },
+  // Bill specific
   bill: {
     light: 'hsl(37, 60%, 81%)',
     dark: 'hsl(35, 1%, 20%)',
@@ -57,9 +61,14 @@ export const COLORS = {
     light: 'hsl(36, 70%, 80%)',
     dark: 'hsl(40, 1%, 20%)',
   },
+  // Misc components
   ribbon: {
-    light: 'hsl(215,100%, 57%)',
+    light: 'hsl(105, 15%, 98%)',
     dark: 'hsl(215, 51%, 14%)',
+  },
+  ribbonCard: {
+    light: 'hsl(105, 30%, 96%)',
+    dark: 'hsl(215, 70%, 14%)',
   },
   gold: {
     light: 'hsl(45, 81%, 53%)',

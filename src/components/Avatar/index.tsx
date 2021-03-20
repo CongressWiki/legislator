@@ -22,7 +22,6 @@ const Avatar = ({ children, party, size, className }: AvatarProps) => {
         // @ts-expect-error
         party in PARTY_COLORS ? PARTY_COLORS[party] : 'var(--color-gray300)'
       }
-      // @ts-expect-error
       size={size}
     >
       {children}
@@ -30,7 +29,7 @@ const Avatar = ({ children, party, size, className }: AvatarProps) => {
   );
 };
 
-const Wrapper = styled.div<{ partyColor: string; size?: number }>`
+const Wrapper = styled.div<{ partyColor?: string; size?: string }>`
   z-index: 500;
   position: relative;
   display: flex;

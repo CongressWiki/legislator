@@ -15,7 +15,6 @@ const Template: Story<StateVotesToolTipProps> = ({ ...args }) => (
 export const Default = Template.bind({});
 Default.args = {
   state: 'IA',
-  sponsor: undefined,
-  cosponsors: [],
+  votes: [],
   className: '',
 };

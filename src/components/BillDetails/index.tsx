@@ -43,4 +43,8 @@ const Wrapper = styled.div`
   grid-auto-rows: 350px;
   grid-row-gap: 50px;
   margin-bottom: 50vh;
+
+  @media (max-width: 900px) {
+    margin-bottom: 50px;
+  }
 `;

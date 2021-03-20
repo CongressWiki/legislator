@@ -127,7 +127,7 @@ function Home() {
   const [billTypes, setBillTypes] = useState<string[]>([]);
   const [searchBy, setSearchBy] = useState('');
   const [orderByAsc, setOrderByAsc] = useState(false);
-  const limitIncrement = 15;
+  const limitIncrement = 50;
   const [limit, setLimit] = useState(limitIncrement);
   const offset = 0;
 

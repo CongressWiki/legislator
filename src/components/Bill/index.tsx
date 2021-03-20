@@ -18,11 +18,12 @@ export default function Bill({
   summary,
   className,
 }: BillProps) {
-  const billStatus = normalizeBillStatus(status);
+  const originalChamber = getOriginalChamber(type);
+  const billStatus = normalizeBillStatus(status, originalChamber);
 
   return (
     <Wrapper className={className}>
-      <BillStatusStamp>{status}</BillStatusStamp>
+      <BillStatusStamp>{billStatus}</BillStatusStamp>
       <BillHeader>
         <BillId>
           {type}-{number}
@@ -74,8 +75,15 @@ const Wrapper = styled.div`
 `;
 
 const BillStatusStamp = styled(StampText)`
+  position: absolute;
+  /* top: 0; */
   margin-top: 1rem;
-  transform: rotate(-10deg);
+  transform: rotate(-8deg);
+
+  @media (max-width: 400px) {
+    margin-top: 0;
+    width: 200px;
+  }
 `;
 
 const BillHeader = styled.div`
@@ -93,7 +101,7 @@ const BillId = styled.h2`
   text-transform: uppercase;
 `;
 
-const normalizeBillStatus = (result: string) => {
+const normalizeBillStatus = (result: string, originalChamber: string) => {
   switch (result) {
     case 'PASSED':
       return 'PASSED';
@@ -110,7 +118,7 @@ const normalizeBillStatus = (result: string) => {
     case 'FAIL:ORIGINATING:SENATE':
       return 'FAIL:ORIGINATING:SENATE';
     case 'PASSED:SIMPLERES':
-      return 'PASSED:SIMPLERES';
+      return `PASSED IN ${originalChamber}`;
     case 'PASSED:CONSTAMEND':
       return 'PASSED:CONSTAMEND';
     case 'PASS_OVER:HOUSE':
@@ -155,5 +163,22 @@ const normalizeBillStatus = (result: string) => {
       return 'ENACTED:VETO_OVERRIDE';
     case 'ENACTED:TENDAYRULE':
       return 'ENACTED:TENDAYRULE';
+  }
+};
+
+const getOriginalChamber = (type: string) => {
+  const HOUSE = 'HOUSE';
+  const SENATE = 'SENATE';
+
+  switch (type) {
+    case 's':
+    case 'sres':
+    case 'sjres':
+      return SENATE;
+    case 'hr':
+    case 'hres':
+    case 'hjres':
+    default:
+      return HOUSE;
   }
 };

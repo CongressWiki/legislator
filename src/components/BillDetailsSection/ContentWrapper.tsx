@@ -8,7 +8,6 @@ const ContentWrapper = styled.div`
   width: 70ch;
   max-width: 900px;
   display: flex;
-  padding-left: 0.5rem;
 
   @media (max-width: 1400px) {
     width: 100%;

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { RollCall, RollCallVote } from '@type/hasura';
 import UsaMapOfVotes from '@components/UsaMapOfVotes';
-import VoteCount from '@components/BillDetailsSection/VoteCount';
+import VoteCount from '@components/VoteCount';
 import { groupBy } from 'lodash';
 import type { Vote as MapVote } from '@components/UsaMapOfVotes';
 
@@ -24,12 +24,14 @@ const RollCallSlide = ({
 
   const decisions = Object.keys(votesGroupedByDecision);
 
-  //  Shape and sort by vote count
+  //  Shape decision votes and sort by vote count
   const votesByDecision = shapeVotesByDecision(
     votesGroupedByDecision,
     decisions
   );
-  const votesByState = shapeVotesByState(votesByDecision);
+
+  // Flatten votes and attach color, decision to each
+  const usaMapVotes = flattenAndShapeVotesForUsaMap(votesByDecision);
 
   return (
     <Wrapper color={rollCallStatusColor} className={className}>
@@ -43,7 +45,7 @@ const RollCallSlide = ({
         <VoteDetails>
           <UsaMapOfVotes
             id={chamber + number}
-            votes={votesByState}
+            votes={usaMapVotes}
             filterByDecision={focusedDecision}
           />
           <Column>
@@ -77,34 +79,22 @@ export default RollCallSlide;
 const Wrapper = styled.div<{ color: string }>`
   position: relative;
   width: calc(100% - 2rem);
+  max-width: calc(100% - 2rem);
   height: calc(100% - 2rem);
+  max-height: calc(100% - 2rem);
+
   margin: 1rem;
   padding: 0.5rem;
 
   display: flex;
   flex-direction: column;
 
+  background-color: var(--color-backgroundAlt);
   border: solid 1px ${(props) => props.color};
   border-radius: 10px;
   box-shadow: 0 0 10px 1px ${(props) => props.color};
 
   transition: all 0.3s ease-in-out;
-`;
-
-const VoteDetails = styled.div`
-  position: relative;
-  margin-top: 2rem;
-  width: 100%;
-  height: calc(100% - 2rem);
-  display: flex;
-`;
-
-const Column = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 1rem;
-  padding-left: 1rem;
 `;
 
 const QuestionContainer = styled.h3<{ expanded: boolean }>`
@@ -115,24 +105,68 @@ const QuestionContainer = styled.h3<{ expanded: boolean }>`
   padding-left: 2rem;
   padding-right: 2rem;
   padding-bottom: ${(props) => (props.expanded ? '3rem' : '1rem')};
-  max-height: ${(props) => (props.expanded ? 'calc(100% - 1rem)' : '1.8rem')};
+  max-height: ${(props) => (props.expanded ? 'calc(100% - 1rem)' : '1.7rem')};
   margin: 0;
 
   transition: all 0.3s ease-in-out;
-  background-color: var(--color-ribbon);
+  background-color: var(--color-ribbonCard);
   border-bottom: solid thin var(--color-gray300);
 
   text-align: center;
-  overflow: hidden;
+  overflow: ${(props) => (props.expanded ? 'auto' : 'hidden')};
   font-weight: 600;
+`;
+
+const VoteDetails = styled.div`
+  position: relative;
+  margin-top: 2rem;
+  width: 100%;
+  max-width: 100%;
+  height: calc(100% - 2rem);
+  max-height: calc(100% - 2rem);
+
+  display: flex;
+
+  @media (max-width: 400px) {
+    flex-direction: column;
+  }
+`;
+
+const Column = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  padding-left: 1rem;
+
+  @media (max-width: 400px) {
+    padding: 0;
+    padding-top: 1.25rem;
+    padding-bottom: 1rem;
+    min-height: 90px;
+    width: 100%;
+
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+  }
 `;
 
 const ResultText = styled.h4`
   padding: 0;
   margin: 0;
-  height: auto;
   text-align: center;
   font-weight: 600;
+
+  @media (max-width: 400px) {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    font-size: 1rem;
+    min-height: 10px;
+  }
 `;
 
 const RequiresText = styled.p`
@@ -140,6 +174,14 @@ const RequiresText = styled.p`
   margin: 0;
   text-align: center;
   font-weight: 400;
+
+  @media (max-width: 400px) {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    font-size: 0.5rem;
+    min-height: 10px;
+  }
 `;
 
 export type VotesByDecision = {
@@ -185,15 +227,17 @@ const getDecisionColor = (decision: string) => {
     case 'Not Guilty':
       return 'red';
     case 'Not Voting':
-      return 'white';
+      return 'var(--color-gray700)';
     case 'Present':
-      return 'brown';
+      return 'orange';
     default:
       return UNIQUE_DECISION_COLORS.pop() || 'black';
   }
 };
 
-const shapeVotesByState = (votesByDecisions: VotesByDecision[]): MapVote[] => {
+const flattenAndShapeVotesForUsaMap = (
+  votesByDecisions: VotesByDecision[]
+): MapVote[] => {
   let votes: MapVote[] = [];
   for (const votesByDecision of votesByDecisions) {
     votes = [

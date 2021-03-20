@@ -59,6 +59,8 @@ module.exports = {
         bucketName: SITE_S3_BUCKET,
         protocol: siteAddress.protocol.slice(0, -1),
         hostname: siteAddress.hostname,
+        // generateRedirectObjectsForPermanentRedirects: true,
+        // generateRoutingRules: false,
         params: {
           '**/*.woff2': {
             CacheControl: 'public, max-age=31536000, immutable',

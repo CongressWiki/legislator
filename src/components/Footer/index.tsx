@@ -20,7 +20,6 @@ const Footer = ({}: FooterProps) => {
 const Wrapper = styled.header`
   display: block;
   height: 10vh;
-  width: 100vw;
   margin: 0;
   padding: 0;
 

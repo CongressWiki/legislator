@@ -60,6 +60,10 @@ const BillWrapper = styled.div`
     margin-top: 2rem;
     margin-bottom: 50vh;
     pointer-events: auto;
+
+    @media (max-width: 400px) {
+      margin-top: 0;
+    }
   }
 
   @media (max-width: 900px) {

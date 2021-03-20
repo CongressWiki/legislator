@@ -1,8 +1,8 @@
 import React from 'react';
 import type { Bill, OfficialWithImage } from '@type/hasura';
-import { navigate } from 'gatsby';
+import { Link } from 'gatsby';
+import { motion } from 'framer-motion';
 import Button from '@components/Button';
-
 import styled from 'styled-components';
 import Image from '@components/Image';
 import Avatar from '@components/Avatar';
@@ -28,7 +28,7 @@ const BillCard = ({
   className,
 }: BillCardProps) => {
   return (
-    <Wrapper className={className} onClick={onClick}>
+    <Wrapper className={className} onClick={onClick} variants={motionVariant}>
       <Avatar className="sponsor" party={sponsor.political_party}>
         <Image imageData={sponsor.image} alt={sponsor.preferred_name} />
       </Avatar>
@@ -39,19 +39,24 @@ const BillCard = ({
 
       <p className="bill-timestamp">{new Date(updated_at).toDateString()}</p>
 
-      <Button
-        className="viewBillButton"
-        onClick={() => navigate(`${congress}/${type}${number}`)}
-      >
-        Bill Details
-      </Button>
+      <Link className="viewBillButton" to={`${congress}/${type}${number}/`}>
+        <Button>Bill Details</Button>
+      </Link>
     </Wrapper>
   );
 };
 
+const motionVariant = {
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+  },
+};
+
 export default BillCard;
 
-const Wrapper = styled.div`
+const Wrapper = styled(motion.div)`
   max-width: none;
   width: 100%;
   margin: 0;
