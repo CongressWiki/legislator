@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import BillSummary from '@components/BillSummary';
 import BillTitle from '@components/BillTitle';
 import StampText from '@components/StampText';
+import { motion } from 'framer-motion';
 
 export type BillProps = BillData & { className?: string };
 
@@ -22,7 +23,12 @@ export default function Bill({
   const billStatus = normalizeBillStatus(status, originalChamber);
 
   return (
-    <Wrapper className={className}>
+    <Wrapper
+      className={className}
+      variants={motionVariants}
+      initial="hidden"
+      animate="visible"
+    >
       <BillStatusStamp>{billStatus}</BillStatusStamp>
       <BillHeader>
         <BillId>
@@ -37,7 +43,19 @@ export default function Bill({
   );
 }
 
-const Wrapper = styled.div`
+const motionVariants = {
+  hidden: { opacity: 0, scale: 4 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      duration: 0.7,
+      delay: 0.7,
+    },
+  },
+};
+
+const Wrapper = styled(motion.div)`
   width: min(70ch, calc(100% - 32px));
   padding: 2rem;
   padding-bottom: 6rem;
@@ -76,13 +94,12 @@ const Wrapper = styled.div`
 
 const BillStatusStamp = styled(StampText)`
   position: absolute;
-  /* top: 0; */
   margin-top: 1rem;
   transform: rotate(-8deg);
 
   @media (max-width: 400px) {
     margin-top: 0;
-    /* min-width: unset; */
+    min-width: unset;
     max-width: 200px;
   }
 `;
@@ -104,12 +121,14 @@ const BillId = styled.h2`
 
 const normalizeBillStatus = (result: string, originalChamber: string) => {
   switch (result) {
+    case 'INTRODUCED':
+      return `INTRODUCED IN ${originalChamber}`;
     case 'PASSED':
       return 'PASSED';
     case 'REFERRED':
-      return 'REFERRED';
+      return 'REFERRED TO COMMITTEES';
     case 'REPORTED':
-      return 'REPORTED';
+      return `REPORTED TO ${originalChamber}`;
     case 'PROV_KILL:SUSPENSIONFAILED':
       return 'PROV_KILL:SUSPENSIONFAILED';
     case 'PROV_KILL:CLOTUREFAILED':

@@ -30,7 +30,6 @@ const Avatar = ({ children, party, size, className }: AvatarProps) => {
 };
 
 const Wrapper = styled.div<{ partyColor?: string; size?: string }>`
-  z-index: 500;
   position: relative;
   display: flex;
   align-items: center;

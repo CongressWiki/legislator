@@ -131,6 +131,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const findImage = (elected_official_id) =>
     images.find((image) => image.name === elected_official_id);
 
+  // Inject elected_official's Image  data
   const electedOfficials = result.data.hasura.electedOfficials.map(
     (electedOfficial) => ({
       ...electedOfficial,
@@ -146,16 +147,16 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   for (let bill of bills) {
     const slug = `${bill.congress}/${bill.type}${bill.number}`;
 
-    // Sponsor
+    // Inject Sponsor's elected_official data
     bill.sponsor = findElectedOfficial(bill.sponsor_id);
 
-    // Cosponsor
+    // Inject Cosponsor's elected_official data
     bill.cosponsorships = bill.cosponsorships.map((cosponsorship) => ({
       ...cosponsorship,
       elected_official: findElectedOfficial(cosponsorship.elected_official_id),
     }));
 
-    // Roll call voters
+    // Inject Roll call voter's elected_official data
     if (bill.roll_calls.length > 0) {
       bill.roll_calls = bill.roll_calls.map((roll_call) => ({
         ...roll_call,

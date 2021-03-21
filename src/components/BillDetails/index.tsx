@@ -5,6 +5,7 @@ import SenateSection from '@components/BillDetailsSection/SenateSection';
 import HouseSection from '@components/BillDetailsSection/HouseSection';
 import PresidentSection from '@components/BillDetailsSection/PresidentSection';
 import type { OfficialWithImage, Cosponsorship, RollCall } from '@type/hasura';
+import { motion } from 'framer-motion';
 
 export type BillDetailsProps = {
   sponsor: OfficialWithImage;
@@ -25,7 +26,12 @@ const BillDetails = ({
   const senateVotes = rollCalls.filter((rollCall) => rollCall.chamber === 's');
 
   return (
-    <Wrapper className={className}>
+    <Wrapper
+      className={className}
+      variants={motionVariants}
+      initial="hidden"
+      animate="visible"
+    >
       <SponsorSection sponsor={sponsor} cosponsors={cosponsors} />
       <HouseSection rollCalls={houseRollCalls} />
       <SenateSection rollCalls={senateVotes} />
@@ -34,9 +40,21 @@ const BillDetails = ({
   );
 };
 
+const motionVariants = {
+  hidden: { opacity: 1, scale: 0 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      delayChildren: 0.3,
+      staggerChildren: 0.2,
+    },
+  },
+};
+
 export default BillDetails;
 
-const Wrapper = styled.div`
+const Wrapper = styled(motion.div)`
   position: relative;
   width: 100%;
   display: grid;

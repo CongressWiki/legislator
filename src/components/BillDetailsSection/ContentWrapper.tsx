@@ -4,22 +4,14 @@ import styled from 'styled-components';
 const ContentWrapper = styled.div`
   position: relative;
   float: right;
+  width: 100%;
+  max-width: 710px;
   height: 100%;
-  width: 70ch;
-  max-width: 900px;
+
+  padding-left: 3rem;
+  padding-bottom: 0;
+
   display: flex;
-
-  @media (max-width: 1400px) {
-    width: 100%;
-    padding-left: 3rem;
-    padding-bottom: 0;
-  }
-
-  @media (max-width: 900px) {
-    width: 100%;
-    padding-left: 3rem;
-    padding-bottom: 0;
-  }
 `;
 
 export default ContentWrapper;

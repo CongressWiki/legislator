@@ -16,6 +16,8 @@ export type ImageProps = {
   alt: string;
   loading?: 'eager' | 'lazy';
   backgroundColor?: string;
+  aspectRatio?: number;
+  placeholder?: string;
   className?: string;
 };
 
@@ -24,6 +26,8 @@ const Image = ({
   alt,
   loading,
   backgroundColor,
+  aspectRatio = 4 / 5,
+  placeholder = 'blurred',
   className,
 }: ImageProps) => {
   const image = imageData ? getImage(imageData) : false;
@@ -37,6 +41,9 @@ const Image = ({
       alt={alt}
       loading={loading}
       backgroundColor={backgroundColor}
+      // @ts-expect-error
+      aspectRatio={aspectRatio}
+      placeholder={placeholder}
     />
   );
 };

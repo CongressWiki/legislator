@@ -6,7 +6,7 @@ import Avatar from '@components/Avatar';
 export type CircleAvatarProps = {
   name: string;
   party: string;
-  state: string;
+  state?: string;
   imageData?: any;
   size?: string;
   className?: string;
@@ -24,7 +24,7 @@ const CircleAvatar = ({
 }: CircleAvatarProps) => {
   return (
     <Wrapper className={className}>
-      <StateText>{state}</StateText>
+      {state ? <StateText>{state}</StateText> : null}
       <Container party={party} size={size}>
         <Image
           imageData={imageData}
@@ -48,16 +48,20 @@ const Wrapper = styled.div`
 `;
 
 const StateText = styled.span`
+  z-index: 510;
   position: absolute;
-  top: -0.5rem;
-  right: -0.5rem;
+  top: -10px;
+  right: 0;
+
+  margin: 0;
+  padding: 0;
+  font-size: 1.2rem;
   font-family: advocate_c43_mid;
-  /* font-size: 2rem; */
-  z-index: 700;
   color: var(--color-text);
 `;
 
 const Container = styled(Avatar)`
+  z-index: 500;
   position: relative;
 
   -webkit-box-shadow: 0px 6px 7px 1px rgba(0, 0, 0, 0.75);

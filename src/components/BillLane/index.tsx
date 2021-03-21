@@ -25,7 +25,7 @@ const BillLane = styled(motion.div)`
   }
 `;
 
-const motionVariant = {
+const motionVariants = {
   hidden: { opacity: 1, scale: 0 },
   visible: {
     opacity: 1,
@@ -38,7 +38,7 @@ const motionVariant = {
 };
 
 export default ({ children }: BillLaneProps) => (
-  <BillLane variants={motionVariant} initial="hidden" animate="visible">
+  <BillLane variants={motionVariants} initial="hidden" animate="visible">
     {children}
   </BillLane>
 );

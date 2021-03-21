@@ -32,6 +32,9 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+
+  // Prevent horizontal scroll bar from appearing when ribbons are sliding in
+  overflow: hidden;
 `;
 
 export default BillViewLayout;

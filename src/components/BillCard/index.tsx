@@ -4,8 +4,7 @@ import { Link } from 'gatsby';
 import { motion } from 'framer-motion';
 import Button from '@components/Button';
 import styled from 'styled-components';
-import Image from '@components/Image';
-import Avatar from '@components/Avatar';
+import CircleAvatar from '@components/CircleAvatar';
 
 export type BillCardProps = Pick<
   Bill,
@@ -28,10 +27,15 @@ const BillCard = ({
   className,
 }: BillCardProps) => {
   return (
-    <Wrapper className={className} onClick={onClick} variants={motionVariant}>
-      <Avatar className="sponsor" party={sponsor.political_party}>
-        <Image imageData={sponsor.image} alt={sponsor.preferred_name} />
-      </Avatar>
+    <Wrapper className={className} onClick={onClick} variants={motionVariants}>
+      <CircleAvatar
+        className="sponsor"
+        name={sponsor.preferred_name}
+        party={sponsor.political_party}
+        imageData={sponsor.image}
+        backgroundColor="var(--color-gray700)"
+        loading="eager"
+      />
       <p className="sponsorName">{sponsor.preferred_name}</p>
       <p className="bill-number">{`${type.toUpperCase()} ${number}`}</p>
 
@@ -46,7 +50,7 @@ const BillCard = ({
   );
 };
 
-const motionVariant = {
+const motionVariants = {
   hidden: { y: 20, opacity: 0 },
   visible: {
     y: 0,
@@ -73,7 +77,7 @@ const Wrapper = styled(motion.div)`
     'sponsor title       title       title       title       title       title       title         title         title'
     'sponsor ......      ......      ......      ......      viewBillButton      viewBillButton      viewBillButton        viewBillButton viewBillButton';
 
-  overflow: hidden;
+  overflow: show;
 
   border: 0;
   border-radius: 0;

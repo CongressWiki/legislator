@@ -84,6 +84,7 @@ const Wrapper = styled.div<{ color: string }>`
   max-height: calc(100% - 2rem);
 
   margin: 1rem;
+  margin-left: 0;
   padding: 0.5rem;
 
   display: flex;
