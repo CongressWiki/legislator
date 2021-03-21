@@ -13,15 +13,16 @@ const BillLane = styled(motion.div)`
 
   display: grid;
   grid-template-columns: 1fr;
+  gap: 32px;
 
   border: none;
   background: var(--color-background);
   border-radius: 0;
-  border-left: solid thin var(--color-gray300);
-  border-right: solid thin var(--color-gray300);
 
   @media (max-width: 600px) {
     border: none;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
   }
 `;
 

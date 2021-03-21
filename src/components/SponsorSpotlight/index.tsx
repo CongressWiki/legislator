@@ -32,22 +32,22 @@ const Wrapper = styled.div`
   max-height: calc(100% - 2rem);
   min-width: fit-content;
 
-  /* margin-top: 2rem; */
   margin-right: 1rem;
+  margin-bottom: auto;
 
   display: inline-block;
 `;
 
 const SponsorState = styled.span`
+  z-index: 1000;
   position: absolute;
   top: 0px;
   right: 5px;
   text-shadow: 2px 2px var(--color-background);
   font-family: advocate_c43_mid;
   font-size: 2.5rem;
-  z-index: 1000;
 
-  @media (max-width: 400px) {
+  @media (max-width: 450px) {
     top: -15px;
     right: -15px;
     font-size: 2rem;
@@ -69,7 +69,7 @@ const SponsorFrame = styled.div`
   border: solid 1px var(--color-gold);
   box-shadow: 0 0 5px 2px var(--color-gold);
 
-  @media (max-width: 400px) {
+  @media (max-width: 450px) {
     min-width: 100px;
     max-width: 100px;
   }

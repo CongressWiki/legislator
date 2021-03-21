@@ -25,6 +25,10 @@ const SponsorSection = ({
 
   useEffect(() => {
     if (isBrowser) {
+      const mediaQuery320pxScreenWidth = window?.matchMedia(
+        '(max-width: 320px)'
+      );
+      const isScreenWidthLessThan320px = mediaQuery320pxScreenWidth.matches;
       const mediaQuery420pxScreenWidth = window?.matchMedia(
         '(max-width: 420px)'
       );
@@ -38,8 +42,10 @@ const SponsorSection = ({
       );
       const isScreenWidthLessThan1400px = mediaQuery1400pxScreenWidth.matches;
       setCosponsorAvatarSize(
-        isScreenWidthLessThan420px
+        isScreenWidthLessThan320px
           ? '50px'
+          : isScreenWidthLessThan420px
+          ? '60px'
           : isScreenWidthLessThan1200px
           ? '70px'
           : isScreenWidthLessThan1400px
@@ -47,7 +53,7 @@ const SponsorSection = ({
           : '80px'
       );
     }
-  }, [cosponsorAvatarSize]);
+  }, []);
 
   return (
     <Wrapper className={className}>
@@ -55,29 +61,32 @@ const SponsorSection = ({
         <SectionTitle>Sponsors</SectionTitle>
         <SponsorContentWrapper>
           <SponsorSpotlight sponsor={sponsor} />
-          {cosponsors.slice(0, 11).map((cosponsor: Cosponsorship) => {
-            const { elected_official } = cosponsor;
-            return (
-              <Tooltip key={elected_official.id}>
-                <CosponsorAvatar
-                  className="avatar"
-                  name={elected_official.preferred_name}
-                  party={elected_official.political_party}
-                  state={elected_official.state}
-                  imageData={elected_official.image}
-                  backgroundColor="var(--color-gray700)"
-                  size={cosponsorAvatarSize}
-                  loading="eager"
-                />
-                <span className="tooltiptext">
-                  {elected_official.preferred_name}
-                </span>
-              </Tooltip>
-            );
-          })}
-          {/* <OverflowCosponsorAvatar party="any" size={CosponsorAvatarSize}>
+          <CosponsorGroup>
+            {cosponsors.slice(0, 12).map((cosponsor: Cosponsorship) => {
+              const { elected_official } = cosponsor;
+              return (
+                <Tooltip key={elected_official.id}>
+                  <CosponsorAvatar
+                    className="avatar"
+                    name={elected_official.preferred_name}
+                    party={elected_official.political_party}
+                    state={elected_official.state}
+                    imageData={elected_official.image}
+                    backgroundColor="var(--color-gray700)"
+                    size={cosponsorAvatarSize}
+                    loading="eager"
+                  />
+                  <span className="tooltiptext">
+                    {elected_official.preferred_name}
+                  </span>
+                </Tooltip>
+              );
+            })}
+
+            {/* <OverflowCosponsorAvatar party="any" size={CosponsorAvatarSize}>
               <p>{cosponsors.length - 12} </p>
             </OverflowCosponsorAvatar> */}
+          </CosponsorGroup>
         </SponsorContentWrapper>
       </Container>
     </Wrapper>
@@ -87,57 +96,43 @@ const SponsorSection = ({
 export default SponsorSection;
 
 const SponsorContentWrapper = styled(ContentWrapper)`
-  /* padding-left: 2rem; */
-  /* padding-right: 1rem; */
   padding-top: 2rem;
   padding-bottom: 3rem;
 
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-self: flex-start;
   justify-content: flex-start;
   align-content: stretch;
   align-items: flex-start;
+`;
+
+const CosponsorGroup = styled.div`
+  height: 100%;
+
+  display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
-
-  @media (max-width: 900px) {
-    column-gap: 0;
-  }
-
-  /* @media (max-width: 900px) {
-    padding: 0;
-    padding-top: 1.5rem;
-    padding-right: 1.5rem;
-
-    flex-direction: column;
-    justify-content: flex-start;
-    align-content: stretch;
-    align-items: flex-start;
-    gap: 1rem;
-  } */
+  align-items: space-evenly;
 `;
 
 const CosponsorAvatar = styled(CircleAvatar)`
   justify-self: center;
   transition: all 0.3s ease-in-out;
-  /* margin-left: -1em; */
-
-  /* margin-bottom: 10px; */
   padding: 0;
+  flex: 1;
 
-  @media (max-width: 400px) {
+  @media (max-width: 450px) {
     margin: 0;
   }
 `;
 
 const OverflowCosponsorAvatar = styled(Avatar)`
-  justify-self: center;
-  transition: all 0.3s ease-in-out;
-  /* margin-left: -1em; */
   margin-bottom: 10px;
   margin-top: 10px;
   padding: 0;
+
+  justify-self: center;
+  transition: all 0.3s ease-in-out;
 
   background-color: var(--color-gray300);
   border-color: var(--color-gray300);
@@ -179,7 +174,7 @@ const Tooltip = styled.div`
     z-index: 800;
     font-style: italic;
 
-    @media (max-width: 400px) {
+    @media (max-width: 450px) {
       width: 100px;
     }
   }

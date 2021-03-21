@@ -32,7 +32,7 @@ const BillFeedLayout = ({ children }: BillFeedLayoutProps) => {
 const Wrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr min(70ch, calc(100% - 64px)) 1fr;
-  grid-column-gap: 32px;
+
   margin: 0;
   padding: 0;
 

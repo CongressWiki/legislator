@@ -92,9 +92,8 @@ const Wrapper = styled(motion.div)`
 
   overflow: show;
 
-  border: 0;
-  border-radius: 0;
-  border-bottom: solid thin var(--color-gray300);
+  border: solid thin var(--color-gray300);
+  border-radius: 10px;
 
   text-align: left;
   align-items: start;

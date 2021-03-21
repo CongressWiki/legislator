@@ -176,17 +176,17 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       },
     });
 
-    if (process.env.NODE_ENV === 'production') {
-      const createSocialCards = require('./src/libs/create-social-cards');
-      createSocialCards({
-        bill: bill,
-        author: 'USACounts',
-        separator: '|',
-        fontFile: require.resolve(
-          './static/fonts/Century_Supra/T3/century_supra_t3_regular.ttf'
-        ),
-        slug,
-      });
-    }
+    // if (process.env.NODE_ENV === 'production') {
+    //   const createSocialCards = require('./src/libs/create-social-cards');
+    //   createSocialCards({
+    //     bill: bill,
+    //     author: 'USACounts',
+    //     separator: '|',
+    //     fontFile: require.resolve(
+    //       './static/fonts/Century_Supra/T3/century_supra_t3_regular.ttf'
+    //     ),
+    //     slug,
+    //   });
+    // }
   }
 };

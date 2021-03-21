@@ -86,7 +86,7 @@ export const BillCosponsor = ({
 };
 
 const BillSponsorWrapper = styled.div`
-  max-height: 400px;
+  max-height: 450px;
 `;
 
 const ToolTipHeader = styled.p`

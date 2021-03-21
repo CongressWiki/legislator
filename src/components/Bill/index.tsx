@@ -100,7 +100,7 @@ const BillStatusStamp = styled(StampText)`
   margin-top: 1rem;
   transform: rotate(-8deg);
 
-  @media (max-width: 400px) {
+  @media (max-width: 450px) {
     margin-top: 0;
     min-width: unset;
     max-width: 200px;

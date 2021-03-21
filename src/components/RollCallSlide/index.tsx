@@ -128,7 +128,8 @@ const VoteDetails = styled.div`
 
   display: flex;
 
-  @media (max-width: 400px) {
+  @media (max-width: 450px) {
+    max-height: 50%;
     flex-direction: column;
   }
 `;
@@ -141,12 +142,11 @@ const Column = styled.div`
   gap: 1rem;
   padding-left: 1rem;
 
-  @media (max-width: 400px) {
-    padding: 0;
-    padding-top: 1.25rem;
-    padding-bottom: 1rem;
-    min-height: 90px;
+  @media (max-width: 450px) {
+    min-height: calc(100% - 2rem);
     width: 100%;
+    height: 50%;
+    padding: 0;
 
     flex-direction: row;
     flex-wrap: wrap;
@@ -161,9 +161,7 @@ const ResultText = styled.h4`
   text-align: center;
   font-weight: 600;
 
-  @media (max-width: 400px) {
-    position: absolute;
-    top: 0;
+  @media (max-width: 450px) {
     width: 100%;
     font-size: 1rem;
     min-height: 10px;
@@ -176,9 +174,7 @@ const RequiresText = styled.p`
   text-align: center;
   font-weight: 400;
 
-  @media (max-width: 400px) {
-    position: absolute;
-    bottom: 0;
+  @media (max-width: 450px) {
     width: 100%;
     font-size: 0.5rem;
     min-height: 10px;

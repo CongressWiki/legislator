@@ -70,7 +70,7 @@ const BillWrapper = styled.div`
     margin-bottom: 50vh;
     pointer-events: auto;
 
-    @media (max-width: 400px) {
+    @media (max-width: 450px) {
       margin-top: 0;
     }
   }

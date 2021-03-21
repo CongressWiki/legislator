@@ -92,7 +92,7 @@ export const ToolTip = ({
 
 const VoteWrapper = styled.div`
   position: relative;
-  max-height: 400px;
+  max-height: 450px;
 `;
 
 const ToolTipHeader = styled.p`

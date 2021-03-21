@@ -50,7 +50,7 @@ const Wrapper = styled.div<{ color: string; isDisabled: boolean }>`
 
   opacity: ${(props) => (props.isDisabled ? '0.5' : 1)};
 
-  @media (max-width: 400px) {
+  @media (max-width: 450px) {
     width: 45%;
     flex-wrap: nowrap;
     border-width: 1px;
@@ -71,7 +71,7 @@ const Decision = styled.h4`
     content: ':';
   }
 
-  @media (max-width: 400px) {
+  @media (max-width: 450px) {
     font-size: 0.7em;
   }
 `;
@@ -84,7 +84,7 @@ const Count = styled.span`
 
   font-weight: 700;
 
-  @media (max-width: 400px) {
+  @media (max-width: 450px) {
     font-size: 0.7em;
   }
 `;
