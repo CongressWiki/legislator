@@ -36,7 +36,16 @@ const BillTemplate = ({ pageContext: { slug, bill } }: BillTemplateProps) => {
           rollCalls={bill.roll_calls}
         />
         <BillWrapper>
-          <Bill className="bill" {...bill} />
+          <Bill
+            className="bill"
+            type={bill.type}
+            number={bill.number}
+            status={bill.status}
+            subject={bill.subject}
+            title={bill.title}
+            bill_text={bill.bill_text}
+            summary={bill.summary}
+          />
         </BillWrapper>
       </Layout>
     </>

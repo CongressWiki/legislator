@@ -2,13 +2,21 @@ import React from 'react';
 import type { Bill, OfficialWithImage } from '@type/hasura';
 import { Link } from 'gatsby';
 import { motion } from 'framer-motion';
-import Button from '@components/Button';
+import StampText from '@components/StampText';
 import styled from 'styled-components';
 import CircleAvatar from '@components/CircleAvatar';
+import Arrow from '@components/icons/Arrow';
 
 export type BillCardProps = Pick<
   Bill,
-  'id' | 'type' | 'number' | 'title' | 'subject' | 'updated_at' | 'congress'
+  | 'id'
+  | 'type'
+  | 'number'
+  | 'title'
+  | 'subject'
+  | 'updated_at'
+  | 'congress'
+  | 'status'
 > & {
   onClick?: () => void;
   className?: string;
@@ -22,6 +30,7 @@ const BillCard = ({
   title,
   congress,
   subject,
+  status,
   sponsor,
   updated_at,
   className,
@@ -43,9 +52,13 @@ const BillCard = ({
 
       <p className="bill-timestamp">{new Date(updated_at).toDateString()}</p>
 
-      <Link className="viewBillButton" to={`${congress}/${type}${number}/`}>
-        <Button>Bill Details</Button>
-      </Link>
+      <StampText className="status">{status}</StampText>
+
+      <div className="viewBillButton">
+        <Link to={`${congress}/${type}${number}/`}>
+          <Arrow />
+        </Link>
+      </div>
     </Wrapper>
   );
 };
@@ -75,7 +88,7 @@ const Wrapper = styled(motion.div)`
     'sponsor sponsorName sponsorName sponsorName sponsorName sponsorName timestamp timestamp   timestamp   timestamp'
     'sponsor ........... ........... id          id          id          id          ......        ......        ......'
     'sponsor title       title       title       title       title       title       title         title         title'
-    'sponsor ......      ......      ......      ......      viewBillButton      viewBillButton      viewBillButton        viewBillButton viewBillButton';
+    'sponsor ......      ......      ......      status      status      ......      ......        ...... viewBillButton';
 
   overflow: show;
 
@@ -136,9 +149,27 @@ const Wrapper = styled(motion.div)`
     font-weight: 400;
   }
 
+  .status {
+    grid-area: status;
+    font-size: 1rem;
+    border-width: 0.2rem;
+    transform: rotate(2deg);
+    margin-bottom: 0.5rem;
+  }
+
   .viewBillButton {
     grid-area: viewBillButton;
     justify-self: end;
     align-self: center;
+    height: 2.5rem;
+    width: 2.5rem;
+
+    :hover {
+      svg {
+        path {
+          fill: var(--color-secondary);
+        }
+      }
+    }
   }
 `;

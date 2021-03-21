@@ -15,8 +15,9 @@ const StampText = styled.span`
   padding: 0.25rem 0.5rem;
   display: block;
   min-width: fit-content;
-  max-width: 2ch;
+  max-width: 100%;
   min-height: fit-content;
+  max-height: 100%;
 
   text-align: center;
   text-transform: uppercase;

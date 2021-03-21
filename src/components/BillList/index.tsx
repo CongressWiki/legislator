@@ -24,27 +24,29 @@ const BillList = ({ paragraph, index }: BillListProps) => {
     return <UnorderedList>{listItems}</UnorderedList>;
   }
 
-  if (lastStatementHasMultiSentences) {
-    const lastStatementSentences = lastStatement.split(
-      /(?<!(i|e|H|Res))\.+(?!$)/g
-    );
+  // if (lastStatementHasMultiSentences) {
+  //   const lastStatementSentences = lastStatement;
+  //   // Safari  & IOS do not support zero-width look behinds
+  //   // .split(
+  //   //   /(?:(?<!i)|(?<!e)|(?<!H)|(?<!Res))\.+(?!$)/g
+  //   // );
 
-    const actualLastStatement = `${lastStatementSentences.shift()}`;
-    listStatements[listStatements.length - 1] = actualLastStatement;
+  //   const actualLastStatement = `${lastStatementSentences.shift()}`;
+  //   listStatements[listStatements.length - 1] = actualLastStatement;
 
-    const afterListText = lastStatementSentences.join('');
+  //   const afterListText = lastStatementSentences.join('');
 
-    const listItems = listStatements.map((statement, index) => (
-      <BillListItem key={index} statement={statement} />
-    ));
+  //   const listItems = listStatements.map((statement, index) => (
+  //     <BillListItem key={index} statement={statement} />
+  //   ));
 
-    return (
-      <React.Fragment>
-        <UnorderedList>{listItems}</UnorderedList>
-        {afterListText ? <BillParagraph>{afterListText}</BillParagraph> : null}
-      </React.Fragment>
-    );
-  }
+  //   return (
+  //     <React.Fragment>
+  //       <UnorderedList>{listItems}</UnorderedList>
+  //       {afterListText ? <BillParagraph>{afterListText}</BillParagraph> : null}
+  //     </React.Fragment>
+  //   );
+  // }
 
   return <></>;
 };

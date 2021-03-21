@@ -62,7 +62,7 @@ const SponsorFrame = styled.div`
   align-items: center;
 
   margin: 0;
-  margin-left: 1rem;
+  /* margin-left: 1rem; */
   display: flex;
   overflow: hidden;
 

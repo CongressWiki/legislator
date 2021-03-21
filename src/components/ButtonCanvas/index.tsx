@@ -2,12 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 
 const ButtonCanvas = styled.div`
+  width: 2.5rem;
+  height: 2.5rem;
+
   display: flex;
   justify-content: center;
-  border-radius: 50%;
-  height: 2.5rem;
-  width: 2.5rem;
   align-items: center;
+
+  border-radius: 50%;
 
   // Prevent highlighting on click
   -webkit-user-select: none;

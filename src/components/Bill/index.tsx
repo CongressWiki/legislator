@@ -7,18 +7,21 @@ import BillTitle from '@components/BillTitle';
 import StampText from '@components/StampText';
 import { motion } from 'framer-motion';
 
-export type BillProps = BillData & { className?: string };
+export type BillProps = Pick<
+  BillData,
+  'type' | 'number' | 'status' | 'subject' | 'title' | 'bill_text' | 'summary'
+> & { className?: string };
 
-export default function Bill({
+const Bill = ({
   type,
   number,
   status,
-  subject,
+  // subject,
   title,
-  bill_text,
+  // bill_text,
   summary,
   className,
-}: BillProps) {
+}: BillProps) => {
   const originalChamber = getOriginalChamber(type);
   const billStatus = normalizeBillStatus(status, originalChamber);
 
@@ -36,15 +39,15 @@ export default function Bill({
         </BillId>
       </BillHeader>
       <BillTitle title={title} />
-      {summary === 'No summary available.' && bill_text ? null : ( // <BillText billText={bill_text} />
-        <BillSummary summary={summary} />
-      )}
+      <BillSummary summary={summary} />
     </Wrapper>
   );
-}
+};
+
+export default Bill;
 
 const motionVariants = {
-  hidden: { opacity: 0, scale: 4 },
+  hidden: { opacity: 0, scale: 2 },
   visible: {
     opacity: 1,
     scale: 1,
