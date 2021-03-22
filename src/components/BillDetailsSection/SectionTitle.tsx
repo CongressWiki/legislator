@@ -13,13 +13,13 @@ const SectionTitle = styled.h2`
   text-align: center;
   writing-mode: vertical-rl;
   transform: rotate(180deg);
-  color: var(--color-gold);
+  color: var(--color-primary);
   font-family: advocate_c43_mid;
   font-size: 2.5rem;
 
-  @media (max-width: 1400px) {
+  /* @media (max-width: 1400px) {
     right: unset;
-  }
+  } */
 `;
 
 export default SectionTitle;

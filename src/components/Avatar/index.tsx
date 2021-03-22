@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { getPartyColors } from '@constants';
 
 export type AvatarProps = {
   children: React.ReactNode;
@@ -8,20 +9,11 @@ export type AvatarProps = {
   className?: string;
 };
 
-const PARTY_COLORS = {
-  Democrat: 'blue',
-  Republican: 'red',
-  Independent: 'green',
-};
-
 const Avatar = ({ children, party, size, className }: AvatarProps) => {
   return (
     <Wrapper
       className={className}
-      partyColor={
-        // @ts-expect-error
-        party in PARTY_COLORS ? PARTY_COLORS[party] : 'var(--color-gray300)'
-      }
+      partyColor={getPartyColors(party)}
       size={size}
     >
       {children}
@@ -30,11 +22,11 @@ const Avatar = ({ children, party, size, className }: AvatarProps) => {
 };
 
 const Wrapper = styled.div<{ partyColor?: string; size?: string }>`
+  z-index: 500;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  /* flex-shrink: 0; */
 
   /**
    * Make sure that the picture is at least 48px^2.
@@ -51,19 +43,12 @@ const Wrapper = styled.div<{ partyColor?: string; size?: string }>`
   overflow: hidden;
   border-radius: 50%;
 
-  border: ridge 1px ${(props) => props.partyColor};
+  border: solid 1px ${(props) => props.partyColor};
   background-color: var(--color-gray300);
 
-  /* img { */
-  /* z-index: 400; */
-  /* width: 100%;
-    height: 100%; */
-  /* text-align: center; */
-  /* object-fit: cover; */
-  /* color: transparent;
-    text-indent: 10000;
-    overflow: hidden; */
-  /* } */
+  img {
+    z-index: 400;
+  }
 `;
 
 export default Avatar;

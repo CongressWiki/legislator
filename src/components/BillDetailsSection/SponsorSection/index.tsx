@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import SponsorSpotlight from '@components/SponsorSpotlight';
 import type { OfficialWithImage, Cosponsorship } from '@type/hasura';
-import CircleAvatar from '@components/CircleAvatar';
+import TooltipAvatar from '@components/TooltipAvatar';
 import SectionTitle from '@components/BillDetailsSection/SectionTitle';
 import Container from '@components/BillDetailsSection/Container';
 import ContentWrapper from '@components/BillDetailsSection/ContentWrapper';
@@ -62,26 +62,22 @@ const SponsorSection = ({
         <SponsorContentWrapper>
           <SponsorSpotlight sponsor={sponsor} />
           <CosponsorGroup>
-            {cosponsors.slice(0, 12).map((cosponsor: Cosponsorship) => {
-              const { elected_official } = cosponsor;
-              return (
-                <Tooltip key={elected_official.id}>
-                  <CosponsorAvatar
+            {cosponsors
+              .slice(0, 12)
+              .map(({ elected_official }: Cosponsorship) => {
+                return (
+                  <TooltipAvatar
                     className="avatar"
-                    name={elected_official.preferred_name}
-                    party={elected_official.political_party}
+                    preferred_name={elected_official.preferred_name}
+                    political_party={elected_official.political_party}
+                    image={elected_official.image}
                     state={elected_official.state}
-                    imageData={elected_official.image}
                     backgroundColor="var(--color-gray700)"
                     size={cosponsorAvatarSize}
-                    loading="eager"
+                    loading="lazy"
                   />
-                  <span className="tooltiptext">
-                    {elected_official.preferred_name}
-                  </span>
-                </Tooltip>
-              );
-            })}
+                );
+              })}
 
             {/* <OverflowCosponsorAvatar party="any" size={CosponsorAvatarSize}>
               <p>{cosponsors.length - 12} </p>
@@ -115,17 +111,6 @@ const CosponsorGroup = styled.div`
   align-items: space-evenly;
 `;
 
-const CosponsorAvatar = styled(CircleAvatar)`
-  justify-self: center;
-  transition: all 0.3s ease-in-out;
-  padding: 0;
-  flex: 1;
-
-  @media (max-width: 450px) {
-    margin: 0;
-  }
-`;
-
 const OverflowCosponsorAvatar = styled(Avatar)`
   margin-bottom: 10px;
   margin-top: 10px;
@@ -141,66 +126,5 @@ const OverflowCosponsorAvatar = styled(Avatar)`
     margin: 0;
     padding: 0;
     white-space: wrap;
-  }
-`;
-
-const Tooltip = styled.div`
-  position: relative;
-  display: inline-block;
-  transition: all 1s;
-  margin: 0;
-  padding: 0;
-  min-width: fit-content;
-  max-width: fit-content;
-  min-height: fit-content;
-  max-height: fit-content;
-
-  .tooltiptext {
-    visibility: hidden;
-    width: 120px;
-    background-color: var(--color-bill);
-
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px 0;
-    position: absolute;
-    /* z-index: 500; */
-    top: 125%;
-    left: 50%;
-    margin-left: -60px;
-    opacity: 0;
-    transition: opacity 0.3s;
-    transition: top 0.3s;
-    z-index: 800;
-    font-style: italic;
-
-    @media (max-width: 450px) {
-      width: 100px;
-    }
-  }
-
-  .tooltiptext::after {
-    content: '';
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    transform: rotate(180deg);
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: var(--color-bill) transparent transparent transparent;
-  }
-
-  :hover {
-    .avatar {
-      z-index: 1000;
-      transform: scale(1.5);
-    }
-
-    .tooltiptext {
-      visibility: visible;
-      opacity: 1;
-      top: 150%;
-    }
   }
 `;

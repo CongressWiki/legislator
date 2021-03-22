@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import type { OfficialWithImage } from '@type/hasura';
 import Image from '@components/Image';
+import { getPartyColors } from '@constants';
 
 export type SponsorSpotlightProps = {
   sponsor: OfficialWithImage;
@@ -11,8 +12,8 @@ export type SponsorSpotlightProps = {
 const SponsorSpotlight = ({ sponsor }: SponsorSpotlightProps) => {
   return (
     <Wrapper>
-      <SponsorState>{sponsor.state}</SponsorState>
-      <SponsorFrame>
+      <SponsorFrame color={getPartyColors(sponsor.political_party)}>
+        <SponsorState className="state">{sponsor.state}</SponsorState>
         <Image
           imageData={sponsor.image}
           alt={sponsor.preferred_name}
@@ -28,7 +29,6 @@ export default SponsorSpotlight;
 
 const Wrapper = styled.div`
   position: relative;
-  overflow: show;
   max-height: calc(100% - 2rem);
   min-width: fit-content;
 
@@ -38,12 +38,45 @@ const Wrapper = styled.div`
   display: inline-block;
 `;
 
+const SponsorFrame = styled.div<{ color: string }>`
+  position: relative;
+  max-width: fit-content;
+  min-width: 200px;
+  max-height: 250px;
+
+  margin: 0;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+
+  border: solid 1px ${(props) => props.color};
+  box-shadow: 0 0 5px 2px ${(props) => props.color};
+
+  :hover {
+    .state {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  @media (max-width: 450px) {
+    min-width: 100px;
+    max-width: 100px;
+  }
+`;
+
 const SponsorState = styled.span`
-  z-index: 1000;
   position: absolute;
+  z-index: 100;
   top: 0px;
   right: 5px;
-  text-shadow: 2px 2px var(--color-background);
+
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s;
+
+  color: var(--color-secondary);
   font-family: advocate_c43_mid;
   font-size: 2.5rem;
 
@@ -54,33 +87,16 @@ const SponsorState = styled.span`
   }
 `;
 
-const SponsorFrame = styled.div`
-  position: relative;
-  max-width: fit-content;
-  min-width: 200px;
-  max-height: min(fit-content, calc(100% - 2rem));
-  align-items: center;
-
-  margin: 0;
-  /* margin-left: 1rem; */
-  display: flex;
-  overflow: hidden;
-
-  border: solid 1px var(--color-gold);
-  box-shadow: 0 0 5px 2px var(--color-gold);
-
-  @media (max-width: 450px) {
-    min-width: 100px;
-    max-width: 100px;
-  }
-`;
-
 const SponsorLabel = styled.p`
   position: relative;
+  width: 100%;
+
   margin: 0;
   padding: 0;
   padding-top: 0.7rem;
+
   text-align: center;
+
   font-family: century_supra_t3;
   font-size: 1rem;
   font-style: italic;

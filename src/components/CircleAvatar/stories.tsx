@@ -14,9 +14,9 @@ const Template: Story<CircleAvatarProps> = ({ ...args }) => (
 
 export const Default = Template.bind({});
 Default.args = {
-  name: '',
-  party: '',
-  imageData: {},
+  preferred_name: '',
+  political_party: '',
+  image: {},
   size: '',
   className: '',
 };

@@ -39,13 +39,15 @@ const BillCard = ({
     <Wrapper className={className} onClick={onClick} variants={motionVariants}>
       <CircleAvatar
         className="sponsor"
-        name={sponsor.preferred_name}
-        party={sponsor.political_party}
-        imageData={sponsor.image}
+        preferred_name={sponsor.preferred_name}
+        political_party={sponsor.political_party}
+        image={sponsor.image}
         backgroundColor="var(--color-gray700)"
-        loading="eager"
+        loading="lazy"
       />
-      <p className="sponsorName">{sponsor.preferred_name}</p>
+      <p className="sponsorName">
+        {sponsor.preferred_name} · {sponsor.state}
+      </p>
       <p className="bill-number">{`${type.toUpperCase()} ${number}`}</p>
 
       <p className="bill-title">{title}</p>
@@ -85,10 +87,10 @@ const Wrapper = styled(motion.div)`
   grid-template-columns: 62px repeat(9, 1fr);
   grid-template-rows: 30px 30px 1fr 50px;
   grid-template-areas:
-    'sponsor sponsorName sponsorName sponsorName sponsorName sponsorName timestamp timestamp   timestamp   timestamp'
-    'sponsor ........... ........... id          id          id          id          ......        ......        ......'
-    'sponsor title       title       title       title       title       title       title         title         title'
-    'sponsor ......      ......      ......      status      status      ......      ......        ...... viewBillButton';
+    'sponsor sponsorName sponsorName sponsorName sponsorName sponsorName timestamp timestamp timestamp timestamp'
+    'sponsor ........... ........... id          id          id          id     ...... ......... .........'
+    'sponsor title       title       title       title       title       title title  title     title'
+    'sponsor ......      ......      ......      status      status      ..... ...... ......    viewBillButton';
 
   overflow: show;
 
@@ -152,7 +154,7 @@ const Wrapper = styled(motion.div)`
     grid-area: status;
     font-size: 1rem;
     border-width: 0.2rem;
-    transform: rotate(2deg);
+    transform: rotate(-2deg);
     margin-bottom: 0.5rem;
   }
 

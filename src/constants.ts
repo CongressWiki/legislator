@@ -2,51 +2,39 @@
 export const COLORS = {
   // Text
   text: {
-    light: 'hsl(0deg, 0%, 10%)', // White
-    dark: 'hsl(0deg, 0%, 100%)', // Near-black
+    light: 'hsl(0, 0%, 10%)',
+    dark: 'hsl(0, 0%, 100%)',
   },
   dimText: {
-    light: 'hsl(0deg, 0%, 70%)',
-    dark: 'hsl(0deg, 0%, 70%)',
+    light: 'hsl(0, 0%, 7%)',
+    dark: 'hsl(0, 0%, 70%)',
   },
   // Backgrounds
   background: {
-    light: 'hsl(105, 48%, 96%)', // Honeydew
-    dark: 'hsl(215, 51%, 10%)', // Prussian Blue
-  },
-  backgroundAlt: {
-    light: 'hsl(105, 55%, 99%)', // Honeydew
-    dark: 'hsl(215, 70%, 14%)', // Prussian Blue
+    light: 'hsl(105, 30%, 96%)',
+    dark: 'hsl(215, 51%, 10%)',
   },
   // Theme
   primary: {
-    light: 'hsl(182, 43%, 76%)', // Powder blue
-    dark: 'hsl(203, 39%, 44%)', // Celadon Blue
-  },
-  primaryAlt: {
-    light: 'hsl(203, 39%, 44%)', // Celadon Blue
-    dark: 'hsl(182, 43%, 76%)', // Powder Blue
+    light: 'hsl(355, 78%, 56%)',
+    dark: 'hsl(45, 81%, 53%)',
   },
   secondary: {
-    light: 'hsl(355, 78%, 56%)', // Imperial Red
-    dark: 'hsl(355, 78%, 56%)', // Imperial Red
-  },
-  secondaryAlt: {
-    light: 'hsl(215, 50%, 23%)', // Prussian Blue
-    dark: 'hsl(105, 55%, 96%)', // Honeydew
+    light: 'hsl(355, 78%, 56%)',
+    dark: 'hsl(355, 78%, 56%)',
   },
   // Grays, scaling from least-noticeable to most-noticeable
   gray300: {
-    light: 'hsl(0deg, 0%, 70%)',
-    dark: 'hsl(0deg, 0%, 30%)',
+    light: 'hsl(0, 0%, 70%)',
+    dark: 'hsl(0, 0%, 30%)',
   },
   gray500: {
-    light: 'hsl(0deg, 0%, 50%)',
-    dark: 'hsl(0deg, 0%, 50%)',
+    light: 'hsl(0, 0%, 50%)',
+    dark: 'hsl(0, 0%, 50%)',
   },
   gray700: {
-    light: 'hsl(0deg, 0%, 30%)',
-    dark: 'hsl(0deg, 0%, 70%)',
+    light: 'hsl(0, 0%, 30%)',
+    dark: 'hsl(0, 0%, 70%)',
   },
   // Bill specific
   bill: {
@@ -63,25 +51,62 @@ export const COLORS = {
   },
   // Misc components
   ribbon: {
-    light: 'hsl(105, 15%, 98%)',
+    light: 'hsl(105, 30%, 97%)',
     dark: 'hsl(215, 51%, 14%)',
   },
   ribbonCard: {
-    light: 'hsl(105, 30%, 96%)',
+    light: 'hsl(105, 30%, 98%)',
     dark: 'hsl(215, 70%, 14%)',
   },
   gold: {
     light: 'hsl(45, 81%, 53%)',
     dark: 'hsl(45, 81%, 53%)',
   },
-  tooltip: {
-    light: 'hsl(215, 51%, 90%)',
-    dark: 'hsl(215, 51%, 20%)',
+  // Party
+  democratBlue: {
+    light: 'hsl(200,80%, 53%)',
+    dark: 'hsl(200, 80%, 43%)',
+  },
+  republicanRed: {
+    light: 'hsl(2, 80%, 53%)',
+    dark: 'hsl(4, 80%, 43%)',
+  },
+  independentGreen: {
+    light: 'hsl(114, 80%, 53%)',
+    dark: 'hsl(114, 80%, 43%)',
+  },
+  // Decisions / Status
+  yeaGreen: {
+    light: 'hsl(130, 100%, 37%)',
+    dark: 'hsl(133, 84%, 41%)',
+  },
+  nayRed: {
+    light: 'hsl(5, 96%, 51%)',
+    dark: 'hsl(5, 96%, 41%)',
   },
 };
 
 export const COLOR_MODE_KEY = 'color-mode';
 export const INITIAL_COLOR_MODE_CSS_PROP = '--initial-color-mode';
+
+export const PARTY_COLORS = {
+  Democrat: 'var(--color-democratBlue)',
+  Republican: 'var(--color-republicanRed)',
+  Independent: 'var(--color-independentGreen)',
+};
+
+export const getPartyColors = (party: string) => {
+  switch (party) {
+    case 'Democrat':
+      return 'var(--color-democratBlue)';
+    case 'Republican':
+      return 'var(--color-republicanRed)';
+    case 'Independent':
+      return 'var(--color-independentGreen)';
+    default:
+      return 'var(--color-gray300)';
+  }
+};
 
 // Window
 export const isBrowser = typeof window !== 'undefined';

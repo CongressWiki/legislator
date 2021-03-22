@@ -7,7 +7,7 @@ const Calendar = styled(CalendarSvg)`
   width: 50%;
 
   path {
-    /* fill: var(--color-text); */
+    fill: var(--color-gray500);
   }
 `;
 

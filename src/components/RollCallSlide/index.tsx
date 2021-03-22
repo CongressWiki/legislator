@@ -90,7 +90,7 @@ const Wrapper = styled.div<{ color: string }>`
   display: flex;
   flex-direction: column;
 
-  background-color: var(--color-backgroundAlt);
+  background-color: var(--color-ribbonCard);
   border: solid 1px ${(props) => props.color};
   border-radius: 10px;
   box-shadow: 0 0 10px 1px ${(props) => props.color};
@@ -114,7 +114,7 @@ const QuestionContainer = styled.h3<{ expanded: boolean }>`
   border-bottom: solid thin var(--color-gray300);
 
   text-align: center;
-  overflow: ${(props) => (props.expanded ? 'auto' : 'hidden')};
+  overflow: ${(props) => (props.expanded ? 'show' : 'hidden')};
   font-weight: 600;
 `;
 
@@ -151,7 +151,7 @@ const Column = styled.div`
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.75rem;
   }
 `;
 
@@ -218,11 +218,11 @@ const getDecisionColor = (decision: string) => {
     case 'Yes':
     case 'Guilty':
     case 'Passed':
-      return 'lime';
+      return 'var(--color-yeaGreen)';
     case 'Nay':
     case 'No':
     case 'Not Guilty':
-      return 'red';
+      return 'var(--color-nayRed)';
     case 'Not Voting':
       return 'var(--color-gray700)';
     case 'Present':

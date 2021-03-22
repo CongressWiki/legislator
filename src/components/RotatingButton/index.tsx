@@ -1,10 +1,14 @@
-import * as React from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
-const RotatingButton = () => (
+export type RotatingButtonProps = {
+  className: string;
+};
+
+const RotatingButton = ({ className }: RotatingButtonProps) => (
   <Wrapper
-    className="container"
+    className={className}
     whileHover={{ scale: 1.2, rotate: 90 }}
     whileTap={{ scale: 0.8, rotate: -90, borderRadius: '100%' }}
   />

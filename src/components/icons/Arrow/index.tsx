@@ -7,7 +7,7 @@ const ArrowIcon = styled(ArrowSvg)`
   height: 100%;
 
   path {
-    fill: var(--color-text);
+    fill: var(--color-gray500);
   }
 `;
 
