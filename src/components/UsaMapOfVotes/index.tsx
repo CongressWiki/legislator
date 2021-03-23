@@ -133,7 +133,7 @@ function styleStatesWithVotes({
     styles += `
       path[data-id=${state}] {
         fill: ${findHighestOccurrenceAndNum(stateVoteColors)};
-        opacity: 0.7;
+        opacity: 0.9;
       }
     `;
   }

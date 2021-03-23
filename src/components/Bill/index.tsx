@@ -6,6 +6,7 @@ import BillSummary from '@components/BillSummary';
 import BillTitle from '@components/BillTitle';
 import StampText from '@components/StampText';
 import { motion } from 'framer-motion';
+import { getOriginalChamber, normalizeBillStatus } from '@constants';
 
 export type BillProps = Pick<
   BillData,
@@ -121,87 +122,3 @@ const BillId = styled.h2`
   white-space: nowrap;
   text-transform: uppercase;
 `;
-
-const normalizeBillStatus = (result: string, originalChamber: string) => {
-  switch (result) {
-    case 'INTRODUCED':
-      return `INTRODUCED IN ${originalChamber}`;
-    case 'PASSED':
-      return 'PASSED';
-    case 'REFERRED':
-      return 'REFERRED TO COMMITTEES';
-    case 'REPORTED':
-      return `REPORTED TO ${originalChamber}`;
-    case 'PROV_KILL:SUSPENSIONFAILED':
-      return 'PROV_KILL:SUSPENSIONFAILED';
-    case 'PROV_KILL:CLOTUREFAILED':
-      return 'PROV_KILL:CLOTUREFAILED';
-    case 'FAIL:ORIGINATING:HOUSE':
-      return 'FAIL:ORIGINATING:HOUSE';
-    case 'FAIL:ORIGINATING:SENATE':
-      return 'FAIL:ORIGINATING:SENATE';
-    case 'PASSED:SIMPLERES':
-      return `PASSED IN ${originalChamber}`;
-    case 'PASSED:CONSTAMEND':
-      return 'PASSED:CONSTAMEND';
-    case 'PASS_OVER:HOUSE':
-      return 'PASS_OVER:HOUSE';
-    case 'PASS_OVER:SENATE':
-      return 'PASS_OVER:SENATE';
-    case 'PASSED:CONCURRENTRES':
-      return 'PASSED:CONCURRENTRES';
-    case 'FAIL:SECOND:HOUSE':
-      return 'FAIL:SECOND:HOUSE';
-    case 'FAIL:SECOND:SENATE':
-      return 'FAIL:SECOND:SENATE';
-    case 'PASS_BACK:HOUSE':
-      return 'PASS_BACK:HOUSE';
-    case 'PASS_BACK:SENATE':
-      return 'PASS_BACK:SENATE';
-    case 'PROV_KILL:PINGPONGFAIL':
-      return 'PROV_KILL:PINGPONGFAIL';
-    case 'PASSED:BILL':
-      return 'PASSED:BILL';
-    case 'CONFERENCE:PASSED:HOUSE':
-      return 'CONFERENCE:PASSED:HOUSE';
-    case 'CONFERENCE:PASSED:SENATE':
-      return 'CONFERENCE:PASSED:SENATE';
-    case 'ENACTED:SIGNED':
-      return 'ENACTED:SIGNED';
-    case 'PROV_KILL:VETO':
-      return 'VETOED:POCKET';
-    case 'VETOED:OVERRIDE_FAIL_ORIGINATING:HOUSE':
-      return 'VETOED:OVERRIDE_FAIL_ORIGINATING:HOUSE';
-    case 'VETOED:OVERRIDE_FAIL_ORIGINATING:SENATE':
-      return 'VETOED:OVERRIDE_FAIL_ORIGINATING:SENATE';
-    case 'VETOED:OVERRIDE_PASS_OVER:HOUSE':
-      return 'VETOED:OVERRIDE_PASS_OVER:HOUSE';
-    case 'VETOED:OVERRIDE_PASS_OVER:SENATE':
-      return 'VETOED:OVERRIDE_PASS_OVER:SENATE';
-    case 'VETOED:OVERRIDE_FAIL_SECOND:HOUSE':
-      return 'VETOED:OVERRIDE_FAIL_SECOND:HOUSE';
-    case 'VETOED:OVERRIDE_FAIL_SECOND:SENATE':
-      return 'VETOED:OVERRIDE_FAIL_SECOND:SENATE';
-    case 'ENACTED:VETO_OVERRIDE':
-      return 'ENACTED:VETO_OVERRIDE';
-    case 'ENACTED:TENDAYRULE':
-      return 'ENACTED:TENDAYRULE';
-  }
-};
-
-const getOriginalChamber = (type: string) => {
-  const HOUSE = 'HOUSE';
-  const SENATE = 'SENATE';
-
-  switch (type) {
-    case 's':
-    case 'sres':
-    case 'sjres':
-      return SENATE;
-    case 'hr':
-    case 'hres':
-    case 'hjres':
-    default:
-      return HOUSE;
-  }
-};

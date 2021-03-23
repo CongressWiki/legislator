@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import ButtonCanvas from '@components/ButtonCanvas';
-import auth from '@utils/Auth0';
+
 import Avatar from '@components/Avatar';
 
 export type LogoutButtonProps = {
@@ -10,12 +10,7 @@ export type LogoutButtonProps = {
 
 const LogoutButton = ({ className }: LogoutButtonProps) => {
   return (
-    <StyledButtonCanvas
-      className={className}
-      onClick={() => {
-        auth.logout();
-      }}
-    >
+    <StyledButtonCanvas className={className} onClick={() => {}}>
       {/* <LogoutIcon /> */}
     </StyledButtonCanvas>
   );

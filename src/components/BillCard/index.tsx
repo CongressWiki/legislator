@@ -6,6 +6,7 @@ import StampText from '@components/StampText';
 import styled from 'styled-components';
 import CircleAvatar from '@components/CircleAvatar';
 import Arrow from '@components/icons/Arrow';
+import { normalizeBillStatus, getOriginalChamber } from '@constants';
 
 export type BillCardProps = Pick<
   Bill,
@@ -35,6 +36,9 @@ const BillCard = ({
   updated_at,
   className,
 }: BillCardProps) => {
+  const originalBillChamber = getOriginalChamber(type);
+  const billStatus = normalizeBillStatus(status, originalBillChamber);
+
   return (
     <Wrapper className={className} onClick={onClick} variants={motionVariants}>
       <CircleAvatar
@@ -42,20 +46,18 @@ const BillCard = ({
         preferred_name={sponsor.preferred_name}
         political_party={sponsor.political_party}
         image={sponsor.image}
-        backgroundColor="var(--color-gray700)"
         loading="lazy"
       />
       <p className="sponsorName">
         {sponsor.preferred_name} · {sponsor.state}
       </p>
+      <p className="bill-timestamp">{new Date(updated_at).toDateString()}</p>
+
       <p className="bill-number">{`${type.toUpperCase()} ${number}`}</p>
 
       <p className="bill-title">{title}</p>
 
-      <p className="bill-timestamp">{new Date(updated_at).toDateString()}</p>
-
-      <StampText className="status">{status}</StampText>
-
+      <StampText className="status">{billStatus}</StampText>
       <div className="viewBillButton">
         <Link to={`${congress}/${type}${number}/`}>
           <Arrow />
@@ -87,7 +89,7 @@ const Wrapper = styled(motion.div)`
   grid-template-columns: 62px repeat(9, 1fr);
   grid-template-rows: 30px 30px 1fr 50px;
   grid-template-areas:
-    'sponsor sponsorName sponsorName sponsorName sponsorName sponsorName timestamp timestamp timestamp timestamp'
+    'sponsor sponsorName sponsorName sponsorName sponsorName sponsorName sponsorName subject timestamp timestamp'
     'sponsor ........... ........... id          id          id          id     ...... ......... .........'
     'sponsor title       title       title       title       title       title title  title     title'
     'sponsor ......      ......      ......      status      status      ..... ...... ......    viewBillButton';
@@ -119,6 +121,13 @@ const Wrapper = styled(motion.div)`
     grid-area: sponsorName;
     font-weight: 300;
     font-size: 0.9rem;
+  }
+
+  .subject {
+    grid-area: subject;
+    position: relative;
+    margin: 0;
+    padding: 0;
   }
 
   .bill-number {

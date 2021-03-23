@@ -5,13 +5,12 @@ import {
   HttpLink,
   split,
 } from '@apollo/client';
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { SubscriptionClient } from 'subscriptions-transport-ws';
 import { WebSocketLink } from '@apollo/client/link/ws';
 import fetch from 'isomorphic-fetch';
 import { getMainDefinition } from '@apollo/client/utilities';
 import ws from 'ws';
-import auth from '@utils/Auth0';
 import type { NormalizedCacheObject } from '@apollo/client';
 import { isBrowser } from '@constants';
 
@@ -24,10 +23,6 @@ let apolloClient: ApolloClient<NormalizedCacheObject>;
 
 const getHeaders = () => {
   const headers: Record<string, any> = {};
-  const token = auth.getIdToken();
-  if (token) {
-    headers.authorization = `Bearer ${token}`;
-  }
 
   if (!isBrowser) {
     headers['x-hasura-admin-secret'] = GATSBY_HASURA_GRAPHQL_ADMIN_SECRET;

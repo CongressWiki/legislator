@@ -15,8 +15,8 @@ const CircleAvatar = ({
   political_party,
   image,
   size,
-  loading,
-  backgroundColor,
+  loading = 'lazy',
+  backgroundColor = 'var(--color-gray700)',
   className,
 }: CircleAvatarProps) => {
   return (
