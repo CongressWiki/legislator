@@ -12,22 +12,13 @@ import fetch from 'isomorphic-fetch';
 import { getMainDefinition } from '@apollo/client/utilities';
 import ws from 'ws';
 import type { NormalizedCacheObject } from '@apollo/client';
-import { isBrowser } from '@constants';
 
-console.info('Initializing Apollo Wrapper');
-
-const GATSBY_HASURA_GRAPHQL_ADMIN_SECRET =
-  process.env.GATSBY_HASURA_GRAPHQL_ADMIN_SECRET;
+const GATSBY_HASURA_GRAPHQL_URL = process.env.GATSBY_HASURA_GRAPHQL_URL;
 
 let apolloClient: ApolloClient<NormalizedCacheObject>;
 
 const getHeaders = () => {
   const headers: Record<string, any> = {};
-
-  if (!isBrowser) {
-    headers['x-hasura-admin-secret'] = GATSBY_HASURA_GRAPHQL_ADMIN_SECRET;
-  }
-
   return headers;
 };
 
@@ -37,7 +28,7 @@ const createApolloClient = () => {
   }
 
   const httpLink = new HttpLink({
-    uri: 'https://usacounts.com/v1/graphql',
+    uri: `https://${GATSBY_HASURA_GRAPHQL_URL}`,
     credentials: 'same-origin',
     headers: getHeaders(),
     fetch,
@@ -47,7 +38,7 @@ const createApolloClient = () => {
 
   const wsLink = new WebSocketLink(
     new SubscriptionClient(
-      'wss://usacounts.com/v1/graphql',
+      `wss://${GATSBY_HASURA_GRAPHQL_URL}`,
       {
         timeout: 30000,
         reconnect: true,

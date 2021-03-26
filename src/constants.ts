@@ -201,19 +201,19 @@ export const normalizeBillStatus = (
 export const isBrowser = typeof window !== 'undefined';
 
 // Apollo
-const scheme = (proto: string) => {
-  if (!isBrowser) {
-    return proto;
-  }
-  return window.location.protocol === 'https:' ? `${proto}s` : proto;
-};
+// const scheme = (proto: string) => {
+//   if (!isBrowser) {
+//     return proto;
+//   }
+//   return window.location.protocol === 'https:' ? `${proto}s` : proto;
+// };
 
-const HASURA_GRAPHQL_ENGINE_HOSTNAME = 'usacounts.com';
+// const HASURA_GRAPHQL_ENGINE_HOSTNAME = 'usacounts.com';
 
-export const GRAPHQL_URL = `${scheme(
-  'http'
-)}://${HASURA_GRAPHQL_ENGINE_HOSTNAME}/v1alpha1/graphql`;
+// export const GRAPHQL_URL = `${scheme(
+//   'http'
+// )}://${HASURA_GRAPHQL_ENGINE_HOSTNAME}/v1/graphql`;
 
-export const REALTIME_GRAPHQL_URL = `${scheme(
-  'ws'
-)}://${HASURA_GRAPHQL_ENGINE_HOSTNAME}/v1alpha1/graphql`;
+// export const REALTIME_GRAPHQL_URL = `${scheme(
+//   'ws'
+// )}://${HASURA_GRAPHQL_ENGINE_HOSTNAME}/v1alpha1/graphql`;

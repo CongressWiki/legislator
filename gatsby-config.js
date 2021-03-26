@@ -1,10 +1,14 @@
 const config = require('./data/config');
 const siteAddress = new URL(config.url);
-const SITE_S3_BUCKET = 'usacounts.com';
-// const IMAGES_S3_BUCKET = 'democracy-images';
 const { HttpLink, from } = require('@apollo/client');
 const { RetryLink } = require('@apollo/client/link/retry');
 const fetch = require('isomorphic-fetch');
+
+require('dotenv').config({ path: '.env' });
+
+const SITE_S3_BUCKET = process.env.SITE_S3_BUCKET;
+const GATSBY_HASURA_GRAPHQL_URL = process.env.GATSBY_HASURA_GRAPHQL_URL;
+const HASURA_GRAPHQL_SECRET = process.env.HASURA_GRAPHQL_SECRET;
 
 module.exports = {
   siteMetadata: {
@@ -55,9 +59,9 @@ module.exports = {
               },
             }),
             new HttpLink({
-              uri: 'https://usacounts.com/v1/graphql',
+              uri: `https://${GATSBY_HASURA_GRAPHQL_URL}`,
               headers: {
-                'x-hasura-admin-secret': 'gd4yRbE36n6nDy6G',
+                'x-hasura-admin-secret': HASURA_GRAPHQL_SECRET,
               },
               fetch,
             }),

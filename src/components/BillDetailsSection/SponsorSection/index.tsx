@@ -67,6 +67,7 @@ const SponsorSection = ({
               .map(({ elected_official }: Cosponsorship) => {
                 return (
                   <TooltipAvatar
+                    key={elected_official.preferred_name}
                     className="avatar"
                     preferred_name={elected_official.preferred_name}
                     political_party={elected_official.political_party}
