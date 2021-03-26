@@ -42,23 +42,23 @@ const BillCard = ({
   return (
     <Wrapper className={className} onClick={onClick} variants={motionVariants}>
       <CircleAvatar
-        className="sponsor"
+        className="bill-sponsorImage"
         preferred_name={sponsor.preferred_name}
         political_party={sponsor.political_party}
         image={sponsor.image}
         loading="lazy"
       />
-      <p className="sponsorName">
+      <p className="bill-sponsorName">
         {sponsor.preferred_name} · {sponsor.state}
       </p>
+      <StampText className="bill-status">{billStatus}</StampText>
       <p className="bill-timestamp">{new Date(updated_at).toDateString()}</p>
 
       <p className="bill-number">{`${type.toUpperCase()} ${number}`}</p>
 
       <p className="bill-title">{title}</p>
 
-      <StampText className="status">{billStatus}</StampText>
-      <div className="viewBillButton">
+      <div className="bill-open">
         <Link to={`${congress}/${type}${number}/`}>
           <Arrow />
         </Link>
@@ -89,12 +89,10 @@ const Wrapper = styled(motion.div)`
   grid-template-columns: 62px repeat(9, 1fr);
   grid-template-rows: 30px 30px 1fr 50px;
   grid-template-areas:
-    'sponsor sponsorName sponsorName sponsorName sponsorName sponsorName sponsorName subject timestamp timestamp'
-    'sponsor ........... ........... id          id          id          id     ...... ......... .........'
-    'sponsor title       title       title       title       title       title title  title     title'
-    'sponsor ......      ......      ......      status      status      ..... ...... ......    viewBillButton';
-
-  overflow: show;
+    'sponsorImage sponsorName sponsorName sponsorName sponsorName    sponsorName    timestamp timestamp timestamp    timestamp'
+    'sponsorImage ........... ........... id          id             id             id          ...... ......... .........'
+    'sponsorImage title       title       title       title          title          title       title  title     title'
+    'sponsorImage ......      ......      ......      status         status         .....       ...... viewBillButton    viewBillButton';
 
   border: solid thin var(--color-gray300);
   border-radius: 10px;
@@ -111,19 +109,19 @@ const Wrapper = styled(motion.div)`
     background-color: var(--color-background);
   }
 
-  .sponsor {
-    grid-area: sponsor;
+  .bill-sponsorImage {
+    grid-area: sponsorImage;
     align-self: start;
     margin-right: 0.75rem;
   }
 
-  .sponsorName {
+  .bill-sponsorName {
     grid-area: sponsorName;
     font-weight: 300;
     font-size: 0.9rem;
   }
 
-  .subject {
+  .bill-subject {
     grid-area: subject;
     position: relative;
     margin: 0;
@@ -159,15 +157,14 @@ const Wrapper = styled(motion.div)`
     font-weight: 400;
   }
 
-  .status {
+  .bill-status {
     grid-area: status;
     font-size: 1rem;
     border-width: 0.2rem;
-    transform: rotate(-2deg);
-    margin-bottom: 0.5rem;
+    transform: rotate(4deg);
   }
 
-  .viewBillButton {
+  .bill-open {
     grid-area: viewBillButton;
     justify-self: end;
     align-self: center;

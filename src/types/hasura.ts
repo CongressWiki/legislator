@@ -58,6 +58,7 @@ export type Cosponsorship = {
   state: string;
   district: string | null;
   withdrawn_at: any;
+  elected_official_id: string;
   elected_official: OfficialWithImage;
 };
 

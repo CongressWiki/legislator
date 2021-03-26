@@ -112,7 +112,7 @@ export const getOriginalChamber = (type: string) => {
   const HOUSE = 'HOUSE';
   const SENATE = 'SENATE';
 
-  switch (type) {
+  switch (type.toLowerCase()) {
     case 's':
     case 'sres':
     case 'sjres':
