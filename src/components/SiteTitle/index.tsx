@@ -18,7 +18,11 @@ const Header = styled.h1`
   font-family: advocate_c43_mid;
   font-size: 4rem;
 
-  color: var(--color-secondary);
+  color: var(--color-primary);
+
+  @media (max-width: 600px) {
+    font-size: 3rem;
+  }
 `;
 
 export default SiteTitle;

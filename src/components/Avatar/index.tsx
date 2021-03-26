@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { getPartyColors } from '@constants';
 
 export type AvatarProps = {
   children: React.ReactNode;
@@ -8,18 +9,11 @@ export type AvatarProps = {
   className?: string;
 };
 
-const PARTY_COLORS = {
-  Democrat: 'blue',
-  Republican: 'red',
-  Independent: 'green',
-};
-
-const Avatar = ({ children, className, party, size }: AvatarProps) => {
+const Avatar = ({ children, party, size, className }: AvatarProps) => {
   return (
     <Wrapper
       className={className}
-      // @ts-expect-error
-      borderColor={party in PARTY_COLORS ? PARTY_COLORS[party] : 'gray'}
+      partyColor={getPartyColors(party)}
       size={size}
     >
       {children}
@@ -27,13 +21,13 @@ const Avatar = ({ children, className, party, size }: AvatarProps) => {
   );
 };
 
-const Wrapper = styled.div<{ borderColor: string; size?: number }>`
+const Wrapper = styled.div<{ partyColor?: string; size?: string }>`
   z-index: 500;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
+
   /**
    * Make sure that the picture is at least 48px^2.
    * Remember border size will cut into the picture's size
@@ -41,21 +35,19 @@ const Wrapper = styled.div<{ borderColor: string; size?: number }>`
    */
   width: ${(props) => props.size || '50px'};
   height: ${(props) => props.size || '50px'};
+
+  /* Not supported by non-chrome browsers */
+  /* aspect-ratio: 1 / 1; */
+
   line-height: 1px;
-  border-radius: 50%;
   overflow: hidden;
+  border-radius: 50%;
 
-  border: solid 1px ${(props) => props.borderColor};
+  border: solid 1px ${(props) => props.partyColor};
+  background-color: var(--color-gray300);
 
-  > * {
+  img {
     z-index: 400;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    object-fit: cover;
-    color: transparent;
-    text-indent: 10000;
-    overflow: hidden;
   }
 `;
 

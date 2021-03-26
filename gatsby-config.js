@@ -2,6 +2,9 @@ const config = require('./data/config');
 const siteAddress = new URL(config.url);
 const SITE_S3_BUCKET = 'usacounts.com';
 // const IMAGES_S3_BUCKET = 'democracy-images';
+const { HttpLink, from } = require('@apollo/client');
+const { RetryLink } = require('@apollo/client/link/retry');
+const fetch = require('isomorphic-fetch');
 
 module.exports = {
   siteMetadata: {
@@ -13,7 +16,9 @@ module.exports = {
     keywords: config.keywords,
   },
   plugins: [
-    `gatsby-plugin-react-helmet`,
+    {
+      resolve: `gatsby-plugin-react-helmet`,
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -29,6 +34,37 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-source-graphql',
+      options: {
+        // This type will contain remote schema Query type
+        typeName: 'HASURA',
+        // This is the field under which it's accessible
+        fieldName: 'hasura',
+        createLink: () =>
+          from([
+            new RetryLink({
+              delay: {
+                initial: 100,
+                max: 2000,
+                jitter: true,
+              },
+              attempts: {
+                max: 5,
+                retryIf: (error, operation) =>
+                  Boolean(error) && ![500, 400].includes(error.statusCode),
+              },
+            }),
+            new HttpLink({
+              uri: 'https://usacounts.com/v1/graphql',
+              headers: {
+                'x-hasura-admin-secret': 'gd4yRbE36n6nDy6G',
+              },
+              fetch,
+            }),
+          ]),
+      },
+    },
+    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: config.defaultTitle,
@@ -41,24 +77,13 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-source-graphql',
-      options: {
-        // This type will contain remote schema Query type
-        typeName: 'HASURA',
-        // This is the field under which it's accessible
-        fieldName: 'hasura',
-        url: `https://usacounts.com/v1/graphql`,
-        headers: {
-          'x-hasura-admin-secret': 'gd4yRbE36n6nDy6G',
-        },
-      },
-    },
-    {
       resolve: `gatsby-plugin-s3`,
       options: {
         bucketName: SITE_S3_BUCKET,
         protocol: siteAddress.protocol.slice(0, -1),
         hostname: siteAddress.hostname,
+        // generateRedirectObjectsForPermanentRedirects: true,
+        // generateRoutingRules: false,
         params: {
           '**/*.woff2': {
             CacheControl: 'public, max-age=31536000, immutable',
@@ -66,32 +91,41 @@ module.exports = {
         },
       },
     },
-    'gatsby-plugin-styled-components',
-    'gatsby-plugin-svgr',
+    {
+      resolve: `gatsby-plugin-styled-components`,
+    },
+    {
+      resolve: 'gatsby-plugin-svgr',
+    },
+
     // To learn more, visit: https://gatsby.dev/offline // this (optional) plugin enables Progressive Web App + Offline functionality
-    `gatsby-plugin-offline`,
-    // {
-    //   resolve: `gatsby-plugin-sharp`,
-    //   options: {
-    //     // Available options and their defaults:
-    //     base64Width: 20,
-    //     forceBase64Format: `jpg`, // valid formats: png,jpg,webp
-    //     useMozJpeg: process.env.GATSBY_JPEG_ENCODER === `MOZJPEG`,
-    //     stripMetadata: true,
-    //     defaultQuality: 100,
-    //     failOnError: true,
-    //   },
-    // },
-    `gatsby-plugin-image`,
-    `gatsby-plugin-sharp`,
-    `gatsby-transformer-sharp`,
+    // Disabled so that site updates are seen immediately.
+    // `gatsby-plugin-offline`,
+    {
+      resolve: 'gatsby-plugin-sharp',
+      options: {
+        defaults: {
+          formats: ['avif', 'webp'],
+          quality: 80,
+          placeholder: 'blurred',
+        },
+      },
+    },
+    {
+      resolve: `gatsby-transformer-sharp`,
+    },
+    {
+      resolve: `gatsby-plugin-image`,
+    },
     {
       resolve: `gatsby-plugin-canonical-urls`,
       options: {
         siteUrl: siteAddress.href.slice(0, -1),
       },
     },
-    'gatsby-plugin-sitemap',
+    {
+      resolve: 'gatsby-plugin-sitemap',
+    },
     {
       resolve: `gatsby-plugin-google-gtag`,
       options: {

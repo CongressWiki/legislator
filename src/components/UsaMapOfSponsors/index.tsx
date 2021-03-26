@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ReactComponent as UsaMapSVG } from '@static/images/UsaMap.svg';
+import { ReactComponent as UsaMapSVG } from '@static/images/USA_Map.svg';
 import styled, { css } from 'styled-components';
 import * as d3 from 'd3';
 import type {
@@ -103,9 +103,11 @@ const StyledToolTip = styled(StateSponsorsToolTip)`
 `;
 
 const UsaMap = styled(UsaMapSVG)`
-  padding-top: 42px;
+  /* padding-top: 32px; */
   margin: 0;
   overflow: visible;
+  width: 100%;
+  height: 100%;
 `;
 
 function styleCosponsorStates({

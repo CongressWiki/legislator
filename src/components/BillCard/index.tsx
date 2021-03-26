@@ -1,14 +1,15 @@
 import React from 'react';
-import type { Bill as IBill, Official as IOfficial } from '@type/hasura';
-import { navigate } from 'gatsby';
-import Button from '@components/Button';
-
+import type { Bill, OfficialWithImage } from '@type/hasura';
+import { Link } from 'gatsby';
+import { motion } from 'framer-motion';
+import StampText from '@components/StampText';
 import styled from 'styled-components';
-import Image from '@components/Image';
-import Avatar from '@components/Avatar';
+import CircleAvatar from '@components/CircleAvatar';
+import Arrow from '@components/icons/Arrow';
+import { normalizeBillStatus, getOriginalChamber } from '@constants';
 
 export type BillCardProps = Pick<
-  IBill,
+  Bill,
   | 'id'
   | 'type'
   | 'number'
@@ -16,12 +17,11 @@ export type BillCardProps = Pick<
   | 'subject'
   | 'updated_at'
   | 'congress'
-  | 'summary'
+  | 'status'
 > & {
   onClick?: () => void;
-  sponsorImage: any;
   className?: string;
-  sponsor: IOfficial;
+  sponsor: OfficialWithImage;
 };
 
 const BillCard = ({
@@ -31,39 +31,53 @@ const BillCard = ({
   title,
   congress,
   subject,
+  status,
   sponsor,
-  sponsorImage,
   updated_at,
   className,
-  summary,
 }: BillCardProps) => {
+  const originalBillChamber = getOriginalChamber(type);
+  const billStatus = normalizeBillStatus(status, originalBillChamber);
+
   return (
-    <Wrapper className={className} onClick={onClick}>
-      <Avatar className="sponsor" party={sponsor.political_party}>
-        <Image imageData={sponsorImage} alt={sponsor.preferred_name} />
-      </Avatar>
-      <p className="sponsorName">{sponsor.preferred_name}</p>
+    <Wrapper className={className} onClick={onClick} variants={motionVariants}>
+      <CircleAvatar
+        className="bill-sponsorImage"
+        preferred_name={sponsor.preferred_name}
+        political_party={sponsor.political_party}
+        image={sponsor.image}
+        loading="lazy"
+      />
+      <p className="bill-sponsorName">
+        {sponsor.preferred_name} · {sponsor.state}
+      </p>
+      <StampText className="bill-status">{billStatus}</StampText>
+      <p className="bill-timestamp">{new Date(updated_at).toDateString()}</p>
+
       <p className="bill-number">{`${type.toUpperCase()} ${number}`}</p>
 
       <p className="bill-title">{title}</p>
 
-      <p className="bill-timestamp">{new Date(updated_at).toDateString()}</p>
-
-      {summary === 'No summary available.' ? null : (
-        <Button
-          className="viewBillButton"
-          onClick={async () => navigate(`${congress}/${type}${number}`)}
-        >
-          Bill Details
-        </Button>
-      )}
+      <div className="bill-open">
+        <Link to={`${congress}/${type}${number}/`}>
+          <Arrow />
+        </Link>
+      </div>
     </Wrapper>
   );
 };
 
+const motionVariants = {
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+  },
+};
+
 export default BillCard;
 
-const Wrapper = styled.div`
+const Wrapper = styled(motion.div)`
   max-width: none;
   width: 100%;
   margin: 0;
@@ -75,16 +89,13 @@ const Wrapper = styled.div`
   grid-template-columns: 62px repeat(9, 1fr);
   grid-template-rows: 30px 30px 1fr 50px;
   grid-template-areas:
-    'sponsor sponsorName sponsorName sponsorName sponsorName sponsorName timestamp timestamp   timestamp   timestamp'
-    'sponsor ........... ........... id          id          id          id          ......        ......        ......'
-    'sponsor title       title       title       title       title       title       title         title         title'
-    'sponsor ......      ......      ......      ......      viewBillButton      viewBillButton      viewBillButton        viewBillButton viewBillButton';
+    'sponsorImage sponsorName sponsorName sponsorName sponsorName    sponsorName    timestamp timestamp timestamp    timestamp'
+    'sponsorImage ........... ........... id          id             id             id          ...... ......... .........'
+    'sponsorImage title       title       title       title          title          title       title  title     title'
+    'sponsorImage ......      ......      ......      status         status         .....       ...... viewBillButton    viewBillButton';
 
-  overflow: hidden;
-
-  border: 0;
-  border-radius: 0;
-  border-bottom: solid thin var(--color-gray300);
+  border: solid thin var(--color-gray300);
+  border-radius: 10px;
 
   text-align: left;
   align-items: start;
@@ -95,19 +106,26 @@ const Wrapper = styled.div`
   }
 
   :hover {
-    background-color: var(--color-backgroundLite);
+    background-color: var(--color-background);
   }
 
-  .sponsor {
-    grid-area: sponsor;
+  .bill-sponsorImage {
+    grid-area: sponsorImage;
     align-self: start;
     margin-right: 0.75rem;
   }
 
-  .sponsorName {
+  .bill-sponsorName {
     grid-area: sponsorName;
     font-weight: 300;
     font-size: 0.9rem;
+  }
+
+  .bill-subject {
+    grid-area: subject;
+    position: relative;
+    margin: 0;
+    padding: 0;
   }
 
   .bill-number {
@@ -115,6 +133,7 @@ const Wrapper = styled.div`
     align-self: start;
     justify-self: center;
     font-weight: 700;
+    white-space: nowrap;
   }
 
   .bill-title {
@@ -134,13 +153,30 @@ const Wrapper = styled.div`
     text-align: right;
     align-self: start;
     font-size: 0.8rem;
-    color: hsl(0deg, 0%, 70%);
+    color: var(--color-dimText);
     font-weight: 400;
   }
 
-  .viewBillButton {
+  .bill-status {
+    grid-area: status;
+    font-size: 1rem;
+    border-width: 0.2rem;
+    transform: rotate(4deg);
+  }
+
+  .bill-open {
     grid-area: viewBillButton;
     justify-self: end;
     align-self: center;
+    height: 2.5rem;
+    width: 2.5rem;
+
+    :hover {
+      svg {
+        path {
+          fill: var(--color-secondary);
+        }
+      }
+    }
   }
 `;

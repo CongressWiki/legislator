@@ -43,7 +43,7 @@ const BillLaneHeader = ({
 };
 
 const Wrapper = styled.div`
-  z-index: 9999;
+  z-index: 1000;
   width: 100%;
   height: 40.5px;
   background-color: var(--color-background);

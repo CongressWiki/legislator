@@ -14,9 +14,15 @@
       "@type/*": [
         "src/types/*"
       ],
+      "@utils/*": [
+        "src/utils/*"
+      ],
       "@static/*": [
         "static/*"
       ],
+      "@constants": [
+        "src/constants"
+      ]
     },
     "target": "ES2019",
     "module": "commonjs",

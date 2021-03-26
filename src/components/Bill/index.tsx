@@ -1,61 +1,124 @@
 import React from 'react';
 import type { Bill as BillData } from '@type/hasura';
 import styled from 'styled-components';
-import UsaMapOfSponsors from '@components/UsaMapOfSponsors';
-import BillText from '@components/BillText';
+// import BillText from '@components/BillText';
 import BillSummary from '@components/BillSummary';
 import BillTitle from '@components/BillTitle';
+import StampText from '@components/StampText';
+import { motion } from 'framer-motion';
+import { getOriginalChamber, normalizeBillStatus } from '@constants';
 
-export type BillProps = BillData;
+export type BillProps = Pick<
+  BillData,
+  'type' | 'number' | 'status' | 'subject' | 'title' | 'bill_text' | 'summary'
+> & { className?: string };
 
-export default function Bill({
+const Bill = ({
   type,
   number,
-  subject,
+  status,
+  // subject,
   title,
-  bill_text,
+  // bill_text,
   summary,
-  sponsor,
-  cosponsorships,
-}: BillProps) {
+  className,
+}: BillProps) => {
+  const originalChamber = getOriginalChamber(type);
+  const billStatus = normalizeBillStatus(status, originalChamber);
+
   return (
-    <BillWrapper>
+    <Wrapper
+      className={className}
+      variants={motionVariants}
+      initial="hidden"
+      animate="visible"
+    >
+      <BillStatusStamp>{billStatus}</BillStatusStamp>
       <BillHeader>
         <BillId>
-          {type.toUpperCase()}-{number}
+          {type}-{number}
         </BillId>
-        <BillSubject>{subject}</BillSubject>
       </BillHeader>
       <BillTitle title={title} />
-      {summary === 'No summary available.' && bill_text ? (
-        <BillText billText={bill_text} />
-      ) : (
-        <BillSummary summary={summary} />
-      )}
-      <UsaMapOfSponsors sponsor={sponsor} cosponsorships={cosponsorships} />
-    </BillWrapper>
+      <BillSummary summary={summary} />
+    </Wrapper>
   );
-}
+};
 
-const BillWrapper = styled.div`
-  margin-top: 1.4rem;
+export default Bill;
+
+const motionVariants = {
+  hidden: { opacity: 0, scale: 2 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      duration: 0.7,
+      delay: 0.7,
+    },
+  },
+};
+
+const Wrapper = styled(motion.div)`
+  width: min(70ch, calc(100% - 32px));
+  padding: 2rem;
+  padding-bottom: 6rem;
+  margin: 0;
   margin-bottom: 30vh;
+
+  /* https://www.css-gradient.com/?c1=2f2c28&c2=6c6051&gt=r&gd=dbb */
+  background: var(--color-bill);
+  background: -webkit-radial-gradient(
+    bottom,
+    'var(--color-billGradient1)',
+    'var(--color-billGradient2)'
+  );
+  background: -moz-radial-gradient(
+    bottom,
+    'var(--color-billGradient1)',
+    'var(--color-billGradient2)'
+  );
+  background: radial-gradient(
+    to top,
+    'var(--color-billGradient1)',
+    'var(--color-billGradient2)'
+  );
+
+  border: 1px groove hsl(40, 1%, 15%);
+  border-radius: 1px;
+
+  -webkit-box-shadow: 0px 10px 15px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 10px 15px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 10px 15px 0px rgba(0, 0, 0, 0.75);
+
+  @media (max-width: 900px) {
+    width: 100%;
+  }
+`;
+
+const BillStatusStamp = styled(StampText)`
+  position: absolute;
+  margin-top: 1rem;
+  transform: rotate(-8deg);
+
+  @media (max-width: 450px) {
+    margin-top: 0;
+    min-width: unset;
+    max-width: 200px;
+  }
 `;
 
 const BillHeader = styled.div`
   margin: 0;
+  margin-top: 150px;
+  margin-bottom: 100px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 `;
 
 const BillId = styled.h2`
   margin: 0;
   font-weight: 600;
   white-space: nowrap;
-`;
-
-const BillSubject = styled.h3`
-  margin: 0;
-  font-weight: 400;
-  text-align: right;
+  text-transform: uppercase;
 `;

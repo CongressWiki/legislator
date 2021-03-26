@@ -7,7 +7,8 @@ export type Bill = {
   subject: string;
   summary: string;
   updated_at: string;
-  sponsor: Official;
+  sponsor_id: string;
+  sponsor: OfficialWithImage;
   cosponsorships: Cosponsorship[];
   actions: Action[];
   status: string;
@@ -20,6 +21,7 @@ export type Bill = {
   subjects?: string[];
   committee_reports?: Record<string, any>;
   related_bills?: Record<string, any>;
+  roll_calls: RollCall[];
 };
 
 export type Official = {
@@ -30,7 +32,7 @@ export type Official = {
   political_party: string;
   is_active: boolean;
   position: string;
-  rank: string;
+  rank: string | null;
   senate_terms: number;
   state: string;
   term_end_at: string;
@@ -41,6 +43,12 @@ export type Official = {
   district: string | null;
   gender: string;
   house_terms: number;
+  president_terms: number;
+  vice_president_terms: number;
+};
+
+export type OfficialWithImage = Official & {
+  image?: any;
 };
 
 export type Cosponsorship = {
@@ -48,9 +56,10 @@ export type Cosponsorship = {
   original_cosponsor: boolean;
   sponsored_at: string;
   state: string;
-  district: string;
+  district: string | null;
   withdrawn_at: any;
-  elected_official: Official;
+  elected_official_id: string;
+  elected_official: OfficialWithImage;
 };
 
 export type Action = {
@@ -67,4 +76,36 @@ export type Action = {
   where?: string;
   roll?: string;
   suspension?: string;
+};
+
+export type RollCall = {
+  id: string;
+  date: string;
+  updated_at: string;
+  congress: number;
+  number: number;
+  chamber: string;
+  question: string;
+  requires: string;
+  result: string;
+  session: string;
+  subject: string | null;
+  type: string;
+  record_modified_at: string | null;
+  result_text: string;
+  nomination: Record<string, any> | null;
+  bill_id: string | null;
+  amendment_id: string | null;
+  votes?: RollCallVote[];
+};
+
+export type RollCallVote = {
+  id: string;
+  created_at: string;
+  elected_official_id: string;
+  elected_official: OfficialWithImage;
+  roll_call_id: string;
+  decision: string;
+  date: string;
+  state: string | null;
 };

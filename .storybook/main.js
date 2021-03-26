@@ -69,8 +69,13 @@ module.exports = {
 
     config.resolve.alias = {
       ...config.resolve.alias,
-      '@components': path.resolve(__dirname, '..', 'src', 'components'),
       '@static': path.resolve(__dirname, '..', 'static'),
+      '@components': path.resolve(__dirname, '..', 'src', 'components'),
+      '@pages': path.resolve(__dirname, '..', 'src', 'pages'),
+      '@lib': path.resolve(__dirname, '..', 'src', 'lib'),
+      '@type': path.resolve(__dirname, '..', 'src', 'types'),
+      '@utils': path.resolve(__dirname, '..', 'src', 'utils'),
+      '@constants': path.resolve(__dirname, '..', 'src', 'constants'),
     };
 
     return config;

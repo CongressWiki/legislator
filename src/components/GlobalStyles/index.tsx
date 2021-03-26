@@ -17,15 +17,11 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    min-width: 370px;
     background: var(--color-background);
     color: var(--color-text);
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
-
-    @media (max-width: 600px) {
-      margin: 0;
-    }
+    margin: 0;
   }
 
   a {

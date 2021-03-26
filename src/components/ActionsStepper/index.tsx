@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Action } from '@type/hasura';
 
 export type ActionsStepperProps = {
-  actions: Action[];
+  actions: Pick<Action, 'id' | 'acted_at' | 'text'>[];
   className?: string;
 };
 
@@ -130,6 +130,7 @@ const StepContent = styled.div<{ minimized?: boolean }>`
   border-radius: 4px;
 
   font-weight: 500;
+  color: var(--color-text);
 
   ${(props) => {
     if (props.minimized) {

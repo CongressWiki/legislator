@@ -1,22 +1,45 @@
 import React from 'react';
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
-const BillLane = styled.div`
+export type BillLaneProps = {
+  children: React.ReactNode;
+};
+
+const BillLane = styled(motion.div)`
   width: 100%;
   margin: 0;
   padding: 0;
 
   display: grid;
   grid-template-columns: 1fr;
+  gap: 32px;
 
   border: none;
+  background: var(--color-background);
   border-radius: 0;
-  border-left: solid thin var(--color-gray300);
-  border-right: solid thin var(--color-gray300);
 
   @media (max-width: 600px) {
     border: none;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
   }
 `;
 
-export default BillLane;
+const motionVariants = {
+  hidden: { opacity: 1, scale: 0 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      delayChildren: 0.3,
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+export default ({ children }: BillLaneProps) => (
+  <BillLane variants={motionVariants} initial="hidden" animate="visible">
+    {children}
+  </BillLane>
+);

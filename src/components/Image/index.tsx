@@ -1,6 +1,6 @@
 import React from 'react';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
-import Candidate from '@components/Candidate';
+import Candidate from '@components/icons/Candidate';
 
 /*
  * This component is built using the new `gatsby-plugin-image` (beta) to automatically serve optimized
@@ -14,17 +14,38 @@ import Candidate from '@components/Candidate';
 export type ImageProps = {
   imageData: any;
   alt: string;
+  loading?: 'eager' | 'lazy';
+  backgroundColor?: string;
+  aspectRatio?: number;
+  placeholder?: string;
   className?: string;
 };
 
-const Image = ({ imageData, alt, className }: ImageProps) => {
+const Image = ({
+  imageData,
+  alt,
+  loading,
+  backgroundColor,
+  aspectRatio = 4 / 5,
+  placeholder = 'blurred',
+  className,
+}: ImageProps) => {
   const image = imageData ? getImage(imageData) : false;
-
   if (!image) {
     return <Candidate className={className} />;
   }
-
-  return <GatsbyImage image={image} alt={alt} className={className} />;
+  return (
+    <GatsbyImage
+      className={className}
+      image={image}
+      alt={alt}
+      loading={loading}
+      backgroundColor={backgroundColor}
+      // @ts-expect-error
+      aspectRatio={aspectRatio}
+      placeholder={placeholder}
+    />
+  );
 };
 
 export default Image;

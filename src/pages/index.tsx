@@ -1,23 +1,27 @@
 import React, { useState } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import Layout from '@components/Layouts/BillFeed';
-import type { Bill as IBill, Official as IOfficial } from '@type/hasura';
+import type { Bill, Official, OfficialWithImage } from '@type/hasura';
 import SEO from '@components/Seo';
 import BillLane from '@components/BillLane';
 import BillLaneHeader from '@components/BillLaneHeader';
 import BillLaneFooter from '@components/BillLaneFooter';
 import type { IGatsbyImageData } from 'gatsby-plugin-image';
+// import withApollo from '@utils/withApollo';
+import { search } from '@utils/Search';
+import type { PageProps } from 'gatsby';
 
 import BillCard from '@components/BillCard';
 
 export type BillsAndCongressImagesQuery = {
   hasura: {
     bills: {
-      nodes: Array<IBill & { sponsor: IOfficial }>;
+      nodes: Bill[];
       aggregate: {
         count: number;
       };
     };
+    electedOfficials: Official[];
   };
   congressImages: {
     nodes: Array<{
@@ -31,7 +35,7 @@ export type BillsAndCongressImagesQuery = {
   };
 };
 
-export default function Home() {
+function Home(_props: PageProps) {
   const data: BillsAndCongressImagesQuery = useStaticQuery(graphql`
     query BillsAndCongressImages {
       congressImages: allFile(
@@ -43,7 +47,7 @@ export default function Home() {
           modifiedTime
           childImageSharp {
             gatsbyImageData(
-              width: 100
+              width: 50
               placeholder: BLURRED
               formats: [AUTO, WEBP, AVIF]
             )
@@ -51,102 +55,79 @@ export default function Home() {
         }
       }
       hasura {
-        bills: bills_aggregate(order_by: { updated_at: desc }) {
+        bills: bills_aggregate(order_by: { status_at: desc }) {
           nodes {
             id
             number
             title
             subject
-            summary
             congress
             status
             status_at
             type
             introduced_at
             updated_at
-            created_at
-            by_request
-            related_bills
             short_title
-            subjects
-            sponsor {
-              id
-              born_at
-              created_at
-              district
-              first_name
-              gender
-              house_terms
-              is_active
-              last_name
-              political_party
-              position
-              preferred_name
-              president_terms
-              rank
-              senate_terms
-              state
-              term_end_at
-              term_start_at
-              updated_at
-              vice_president_terms
-            }
-            cosponsorships {
-              id
-              original_cosponsor
-              sponsored_at
-              state
-              withdrawn_at
-              district
-              elected_official {
-                id
-                created_at
-                district
-                first_name
-                gender
-                house_terms
-                is_active
-                last_name
-                political_party
-                position
-                president_terms
-                preferred_name
-                rank
-                senate_terms
-                state
-              }
-            }
-            actions {
-              id
-              type
+            sponsor_id
+            actions(order_by: { acted_at: desc }, limit: 3) {
               acted_at
               action_code
-              status
-              text
-              references
-              vote_type
+              amendment_id
+              bill_id
               how
-              where
-              roll
+              id
+              references
               result
+              roll
+              status
               suspension
+              text
+              type
+              vote_type
+              where
             }
           }
           aggregate {
             count
           }
         }
+        electedOfficials: elected_officials(order_by: { term_start_at: desc }) {
+          id
+          is_active
+          political_party
+          position
+          preferred_name
+          state
+        }
       }
     }
   `);
 
   const images = data.congressImages.nodes;
-  const bills = data.hasura.bills.nodes;
+  let bills: Array<Bill & { sponsor?: OfficialWithImage }> =
+    data.hasura.bills.nodes;
+  const electedOfficials = data.hasura.electedOfficials;
+
+  const findElectedOfficial = (elected_official_id: string) =>
+    electedOfficials.find(
+      (electedOfficial) => electedOfficial.id === elected_official_id
+    );
+  const findElectedOfficialImage = (elected_official_id: string) =>
+    images.find((image) => image.name === elected_official_id);
+
+  // @ts-expect-error
+  bills = bills.map((bill) => ({
+    ...bill,
+    sponsor: {
+      ...findElectedOfficial(bill.sponsor_id),
+      image: findElectedOfficialImage(bill.sponsor_id),
+    },
+  }));
 
   const [billTypes, setBillTypes] = useState<string[]>([]);
   const [searchBy, setSearchBy] = useState('');
   const [orderByAsc, setOrderByAsc] = useState(false);
-  const limitIncrement = 15;
+  const limitIncrement = 20;
   const [limit, setLimit] = useState(limitIncrement);
   const offset = 0;
 
@@ -173,7 +154,7 @@ export default function Home() {
     setOrderByAsc(isAscending);
   };
 
-  const filteredBills = bills.filter((bill) => {
+  let filteredBills = bills.filter((bill) => {
     const isBillType = billTypes.length === 0 || billTypes.includes(bill.type);
 
     const matchesSearchBy =
@@ -184,6 +165,21 @@ export default function Home() {
 
     if (isBillType && matchesSearchBy) return bill;
   });
+
+  if (searchBy) {
+    filteredBills = search(filteredBills, searchBy, {
+      keys: [
+        'id',
+        'number',
+        'type',
+        'title',
+        'sponsor.preferred_name',
+        'sponsor.political_party',
+        'sponsor.state',
+        'updated_at',
+      ],
+    });
+  }
 
   if (orderByAsc) filteredBills.reverse();
 
@@ -201,13 +197,7 @@ export default function Home() {
             billCount={filteredBills.length || 0}
           />
           {filteredBills.slice(offset, limit).map((bill) => (
-            <BillCard
-              key={bill.id}
-              sponsorImage={images.find(
-                (image) => image.name === bill.sponsor.id
-              )}
-              {...bill}
-            />
+            <BillCard key={bill.id} {...bill} />
           ))}
         </BillLane>
         <BillLaneFooter
@@ -218,3 +208,6 @@ export default function Home() {
     </>
   );
 }
+
+// export default withApollo(Home);
+export default Home;

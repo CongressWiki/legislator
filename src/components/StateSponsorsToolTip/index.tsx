@@ -47,7 +47,7 @@ const Wrapper = styled.div<{ hide?: boolean }>`
 
   border: solid thin var(--color-text);
   border-radius: 5px;
-  background-color: var(--color-backgroundLite);
+  background-color: var(--color-background);
   text-shadow: 1px 1px 0px var(--color-gray300);
 `;
 
@@ -86,7 +86,7 @@ export const BillCosponsor = ({
 };
 
 const BillSponsorWrapper = styled.div`
-  max-height: 400px;
+  max-height: 450px;
 `;
 
 const ToolTipHeader = styled.p`
