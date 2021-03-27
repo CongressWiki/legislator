@@ -54,8 +54,12 @@ module.exports = {
               },
               attempts: {
                 max: 5,
-                retryIf: (error, operation) =>
-                  Boolean(error) && ![500, 400].includes(error.statusCode),
+                retryIf: (error, operation) => {
+                  console.error(error);
+                  return (
+                    Boolean(error) && ![500, 400].includes(error.statusCode)
+                  );
+                },
               },
             }),
             new HttpLink({
