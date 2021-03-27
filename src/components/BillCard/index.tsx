@@ -51,7 +51,7 @@ const BillCard = ({
       <p className="bill-sponsorName">
         {sponsor.preferred_name} · {sponsor.state}
       </p>
-      <StampText className="bill-status">{billStatus}</StampText>
+      <SmallStampText className="bill-status">{billStatus}</SmallStampText>
       <p className="bill-timestamp">{new Date(updated_at).toDateString()}</p>
 
       <p className="bill-number">{`${type.toUpperCase()} ${number}`}</p>
@@ -87,7 +87,7 @@ const Wrapper = styled(motion.div)`
 
   display: grid;
   grid-template-columns: 62px repeat(9, 1fr);
-  grid-template-rows: 30px 30px 1fr 50px;
+  grid-template-rows: 30px 30px 1fr 70px;
   grid-template-areas:
     'sponsorImage sponsorName sponsorName sponsorName sponsorName    sponsorName    timestamp timestamp timestamp    timestamp'
     'sponsorImage ........... ........... id          id             id             id          ...... ......... .........'
@@ -179,4 +179,17 @@ const Wrapper = styled(motion.div)`
       }
     }
   }
+`;
+
+const SmallStampText = styled(StampText)`
+  padding: 0.1rem;
+  font-size: 8px;
+
+  mask-size: 472px 302px;
+  -webkit-mask-size: 472px 302px;
+  mask-position: 472px 302px;
+  -webkit-mask-position: 472px 302px;
+  mix-blend-mode: normal;
+
+  max-height: 50px;
 `;

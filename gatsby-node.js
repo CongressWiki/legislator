@@ -16,45 +16,79 @@ exports.onCreateWebpackConfig = ({ actions }) => {
 };
 
 exports.createPages = async ({ graphql, actions: gatsbyActions, reporter }) => {
-  const billsQuery = await graphql(`
-    query BillsQuery {
+  const billCountQuery = await graphql(`
+    query BillCountQuery {
       hasura {
-        bills(order_by: { status_at: desc }) {
-          id
-          congress
-          type
-          number
-          type
-          congress
-          number
-          subject
-          subjects
-          title
-          short_title
-          summary
-          sponsor_id
-          by_request
-          status
-          status_at
-          introduced_at
-          created_at
-          updated_at
-          cosponsorships(
-            order_by: { sponsored_at: desc }
-            where: { withdrawn_at: { _is_null: true } }
-          ) {
-            id
-            original_cosponsor
-            state
-            district
-            sponsored_at
-            withdrawn_at
-            elected_official_id
+        bills_aggregate {
+          aggregate {
+            count
           }
         }
       }
     }
   `);
+
+  const billsCount = billCountQuery.data.hasura.bills_aggregate.aggregate.count;
+
+  let bills = [];
+  const queryLimit = 1000;
+
+  for (let offset = 0; billsCount > offset; offset = offset + queryLimit) {
+    const billsQuery = await graphql(
+      `
+        query BillsQuery($limit: Int!, $offset: Int!) {
+          hasura {
+            bills(
+              limit: $limit
+              offset: $offset
+              order_by: { status_at: desc }
+            ) {
+              id
+              congress
+              type
+              number
+              type
+              congress
+              number
+              subject
+              subjects
+              title
+              short_title
+              summary
+              sponsor_id
+              by_request
+              status
+              status_at
+              introduced_at
+              created_at
+              updated_at
+              cosponsorships(
+                order_by: { sponsored_at: desc }
+                where: { withdrawn_at: { _is_null: true } }
+              ) {
+                id
+                original_cosponsor
+                state
+                district
+                sponsored_at
+                withdrawn_at
+                elected_official_id
+              }
+            }
+          }
+        }
+      `,
+      { limit: queryLimit, offset: offset }
+    );
+
+    if (billsQuery.errors) {
+      reporter.panicOnBuild(`Error while running GraphQL query.`);
+      console.error(billsQuery.errors);
+      return;
+    }
+
+    bills = [...bills, ...billsQuery.data.hasura.bills];
+  }
 
   const actionsQuery = await graphql(`
     query ActionsQuery {
@@ -165,13 +199,6 @@ exports.createPages = async ({ graphql, actions: gatsbyActions, reporter }) => {
 
   const { createPage } = gatsbyActions;
 
-  if (billsQuery.errors) {
-    reporter.panicOnBuild(`Error while running GraphQL query.`);
-    console.error(billsQuery.errors);
-    return;
-  }
-
-  const bills = billsQuery.data.hasura.bills;
   const actions = actionsQuery.data.hasura.actions;
   const rollCalls = rollCallsQuery.data.hasura.rollCalls;
   let electedOfficials = electedOfficialsQuery.data.hasura.electedOfficials;
@@ -199,7 +226,25 @@ exports.createPages = async ({ graphql, actions: gatsbyActions, reporter }) => {
   }));
 
   const BillTemplate = path.resolve(`./src/components/BillTemplate/index.tsx`);
+  const ElectedOfficialTemplate = path.resolve(
+    `./src/components/ElectedOfficialTemplate/index.tsx`
+  );
 
+  // Create Elected Official pages //
+  for (const electedOfficial of electedOfficials) {
+    const slug = `officials/${electedOfficial.id}`;
+
+    createPage({
+      path: slug,
+      component: ElectedOfficialTemplate,
+      context: {
+        slug,
+        electedOfficial: electedOfficial,
+      },
+    });
+  }
+
+  // Create Bill pages //
   for (const bill of bills) {
     // Inject Sponsor's elected_official data
     bill.sponsor = findElectedOfficial(bill.sponsor_id);
