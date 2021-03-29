@@ -66,26 +66,8 @@ function Home(_props: PageProps) {
             status_at
             type
             introduced_at
-            updated_at
             short_title
             sponsor_id
-            actions(order_by: { acted_at: desc }, limit: 3) {
-              acted_at
-              action_code
-              amendment_id
-              bill_id
-              how
-              id
-              references
-              result
-              roll
-              status
-              suspension
-              text
-              type
-              vote_type
-              where
-            }
           }
           aggregate {
             count

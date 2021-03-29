@@ -15,7 +15,7 @@ export type BillCardProps = Pick<
   | 'number'
   | 'title'
   | 'subject'
-  | 'updated_at'
+  | 'status_at'
   | 'congress'
   | 'status'
 > & {
@@ -33,7 +33,7 @@ const BillCard = ({
   subject,
   status,
   sponsor,
-  updated_at,
+  status_at,
   className,
 }: BillCardProps) => {
   const originalBillChamber = getOriginalChamber(type);
@@ -52,7 +52,7 @@ const BillCard = ({
         {sponsor.preferred_name} · {sponsor.state}
       </p>
       <SmallStampText className="bill-status">{billStatus}</SmallStampText>
-      <p className="bill-timestamp">{new Date(updated_at).toDateString()}</p>
+      <p className="bill-timestamp">{new Date(status_at).toDateString()}</p>
 
       <p className="bill-number">{`${type.toUpperCase()} ${number}`}</p>
 
@@ -185,11 +185,6 @@ const SmallStampText = styled(StampText)`
   padding: 0.1rem;
   font-size: 8px;
 
-  mask-size: 472px 302px;
-  -webkit-mask-size: 472px 302px;
-  mask-position: 472px 302px;
-  -webkit-mask-position: 472px 302px;
-  mix-blend-mode: normal;
-
   max-height: 50px;
+  max-width: 95%;
 `;

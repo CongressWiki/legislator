@@ -20,6 +20,9 @@ const BillTemplate = ({ pageContext: { slug, bill } }: BillTemplateProps) => {
     allBillSubjects = [...allBillSubjects, ...bill.subjects];
   }
 
+  // console.log(bill.actions);
+  // console.log(bill.roll_calls);
+
   return (
     <>
       <SEO

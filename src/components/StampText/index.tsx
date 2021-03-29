@@ -5,9 +5,11 @@ import StampTexture from '@static/images/StampTexture.png';
 const StampText = styled.span`
   align-self: center;
   padding: 0.25rem;
-  display: block;
   /* min-width: fit-content; */
   /* min-height: fit-content; */
+  overflow: hidden;
+  width: auto;
+  max-width: 80%;
 
   text-align: center;
   text-transform: uppercase;
@@ -18,8 +20,8 @@ const StampText = styled.span`
 
   mask-image: url(${StampTexture});
   -webkit-mask-image: url(${StampTexture});
-  mask-size: 944px 604px;
-  -webkit-mask-size: 944px 604px;
+  mask-size: 472px 302px;
+  -webkit-mask-size: 472px 302px;
   mask-position: 13rem 6rem;
   -webkit-mask-position: 13rem 6rem;
   mix-blend-mode: normal;

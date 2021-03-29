@@ -114,7 +114,8 @@ const QuestionContainer = styled.h3<{ expanded: boolean }>`
   border-bottom: solid thin var(--color-gray300);
 
   text-align: center;
-  overflow: ${(props) => (props.expanded ? 'show' : 'hidden')};
+  overflow: hidden;
+
   font-weight: 600;
 `;
 

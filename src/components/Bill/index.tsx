@@ -60,11 +60,13 @@ const motionVariants = {
 };
 
 const Wrapper = styled(motion.div)`
+  position: relative;
   width: min(70ch, calc(100% - 32px));
   padding: 2rem;
   padding-bottom: 6rem;
   margin: 0;
   margin-bottom: 30vh;
+  overflow: hidden;
 
   /* https://www.css-gradient.com/?c1=2f2c28&c2=6c6051&gt=r&gd=dbb */
   background: var(--color-bill);
@@ -98,12 +100,13 @@ const Wrapper = styled(motion.div)`
 
 const BillStatusStamp = styled(StampText)`
   position: absolute;
-  margin-top: 1rem;
+  margin-top: 0.25rem;
+  max-width: 60%;
+
   transform: rotate(-8deg);
 
   @media (max-width: 450px) {
     margin-top: 0;
-    min-width: unset;
     max-width: 200px;
   }
 `;

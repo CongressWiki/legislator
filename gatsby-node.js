@@ -109,30 +109,35 @@ exports.createPages = async ({ graphql, actions: gatsbyActions, reporter }) => {
           type
           vote_type
           where
+          committees {
+            committee_id
+          }
         }
       }
     }
   `);
 
   const rollCallsQuery = await graphql(`
-    query RollCalls {
+    query RollCallsQuery {
       hasura {
         rollCalls: roll_calls(order_by: { date: desc }) {
           id
           type
           chamber
-          session
           congress
           number
-          category
-          question
           requires
+          date
+          amendment_id
+          bill_id
           result
           result_text
-          date
+          category
           subject
           nomination
+          question
           record_modified_at
+          session
           updated_at
           votes {
             id
@@ -142,6 +147,40 @@ exports.createPages = async ({ graphql, actions: gatsbyActions, reporter }) => {
             date
             created_at
           }
+        }
+      }
+    }
+  `);
+
+  const committeesQuery = await graphql(`
+    query CommitteesQuery {
+      hasura {
+        committees {
+          id
+          created_at
+          updated_at
+          type
+          name
+          description
+          jurisdiction
+          house_committee_id
+          senate_committee_id
+          url
+          subcommittees {
+            id
+          }
+        }
+      }
+    }
+  `);
+
+  const subcommitteesQuery = await graphql(`
+    query SubCommitteesQuery {
+      hasura {
+        subcommittees {
+          id
+          name
+          committee_id
         }
       }
     }
@@ -202,6 +241,8 @@ exports.createPages = async ({ graphql, actions: gatsbyActions, reporter }) => {
   const actions = actionsQuery.data.hasura.actions;
   const rollCalls = rollCallsQuery.data.hasura.rollCalls;
   let electedOfficials = electedOfficialsQuery.data.hasura.electedOfficials;
+  const committees = committeesQuery.data.hasura.committeesQuery;
+  const subcommittees = subcommitteesQuery.data.hasura.subcommitteesQuery;
   const images = imagesQuery.data.congressImages.nodes;
 
   const findImage = (elected_official_id) =>
@@ -231,18 +272,18 @@ exports.createPages = async ({ graphql, actions: gatsbyActions, reporter }) => {
   );
 
   // Create Elected Official pages //
-  for (const electedOfficial of electedOfficials) {
-    const slug = `officials/${electedOfficial.id}`;
+  // for (const electedOfficial of electedOfficials) {
+  //   const slug = `officials/${electedOfficial.id}`;
 
-    createPage({
-      path: slug,
-      component: ElectedOfficialTemplate,
-      context: {
-        slug,
-        electedOfficial: electedOfficial,
-      },
-    });
-  }
+  //   createPage({
+  //     path: slug,
+  //     component: ElectedOfficialTemplate,
+  //     context: {
+  //       slug,
+  //       electedOfficial: electedOfficial,
+  //     },
+  //   });
+  // }
 
   // Create Bill pages //
   for (const bill of bills) {
