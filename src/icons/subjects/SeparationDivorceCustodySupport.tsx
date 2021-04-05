@@ -4,7 +4,7 @@ function SvgSeparationDivorceCustodySupport(
   props: React.SVGProps<SVGSVGElement>
 ) {
   return (
-    <svg height={100} width={100} xmlns="http://www.w3.org/2000/svg" {...props}>
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" {...props}>
       <path d="M27.904 24.346c3.742 0 5.853 3.084 6.417 4.785l4.323 14.287c.916 3.251-3.22 4.596-4.204 1.429l-3.862-13.05h-1.797l6.247 23.515h-5.682v17.685c0 3.282-4.936 3.267-4.936 0V55.185h-2.012l.003 17.786c0 3.307-4.957 3.307-4.957 0V55.312H10.82l7.114-23.515h-1.928l-3.881 13.15c-.985 3.036-5.156 1.788-4.201-1.464l4.337-14.351c.493-1.725 2-4.784 5.776-4.784h9.866v-.002z" />
       <circle cx={23.523} cy={17.718} r={5.225} />
       <circle cx={81.885} cy={17.792} r={5.362} />

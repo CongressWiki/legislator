@@ -1,4 +1,4 @@
-import { ReactComponent as CalendarSvg } from '@static/images/Calendar.svg';
+import CalendarSvg from '@icons/misc/Calendar';
 import styled from 'styled-components';
 
 const Calendar = styled(CalendarSvg)`

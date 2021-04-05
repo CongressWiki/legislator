@@ -4,7 +4,7 @@ function SvgMilitaryPersonnelAndDependents(
   props: React.SVGProps<SVGSVGElement>
 ) {
   return (
-    <svg height={100} width={100} xmlns="http://www.w3.org/2000/svg" {...props}>
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" {...props}>
       <style>
         {
           '.military-personnel-and-dependents_svg__st0,.military-personnel-and-dependents_svg__st2{fill:none;stroke:#000;stroke-width:3;stroke-miterlimit:10}.military-personnel-and-dependents_svg__st2{stroke-width:2}'

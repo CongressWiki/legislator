@@ -4,7 +4,7 @@ function SvgSenateSpecialCommitteeOnAging(
   props: React.SVGProps<SVGSVGElement>
 ) {
   return (
-    <svg height={100} width={100} xmlns="http://www.w3.org/2000/svg" {...props}>
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" {...props}>
       <path
         fill="none"
         d="M75.686 21.537l.642-.222c.061-.021.103-.112.103-.206v-.128c0-.094-.043-.185-.103-.206l-.642-.222c-.258-.089-.549.032-.549.306v.371c0 .275.29.396.549.307z"

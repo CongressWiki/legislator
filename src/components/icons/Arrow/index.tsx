@@ -1,4 +1,4 @@
-import { ReactComponent as ArrowSvg } from '@static/images/Arrow.svg';
+import ArrowSvg from '@icons/misc/Arrow';
 import styled from 'styled-components';
 
 const ArrowIcon = styled(ArrowSvg)`

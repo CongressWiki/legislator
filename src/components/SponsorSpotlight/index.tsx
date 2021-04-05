@@ -15,6 +15,7 @@ const SponsorSpotlight = ({ sponsor }: SponsorSpotlightProps) => {
       <SponsorFrame color={getPartyColors(sponsor.political_party)}>
         <SponsorState className="state">{sponsor.state}</SponsorState>
         <Image
+          className="image"
           imageData={sponsor.image}
           alt={sponsor.preferred_name}
           loading="eager"
@@ -42,6 +43,7 @@ const SponsorFrame = styled.div<{ color: string }>`
   position: relative;
   max-width: fit-content;
   min-width: 200px;
+  min-height: 100px;
   max-height: 250px;
 
   margin: 0;
@@ -52,6 +54,11 @@ const SponsorFrame = styled.div<{ color: string }>`
 
   border: solid 1px ${(props) => props.color};
   box-shadow: 0 0 5px 2px ${(props) => props.color};
+
+  .image {
+    width: 100%;
+    height: auto;
+  }
 
   :hover {
     .state {

@@ -2,7 +2,7 @@ import * as React from 'react';
 
 function SvgPresidentialAdministrations(props: React.SVGProps<SVGSVGElement>) {
   return (
-    <svg height={100} width={100} xmlns="http://www.w3.org/2000/svg" {...props}>
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" {...props}>
       <circle cx={52.101} cy={34.235} r={4.031} />
       <circle cx={34.686} cy={69.173} r={4.032} />
       <circle cx={23.988} cy={69.173} r={4.032} />

@@ -2,7 +2,7 @@ import * as React from 'react';
 
 function SvgMexico(props: React.SVGProps<SVGSVGElement>) {
   return (
-    <svg height={100} width={100} xmlns="http://www.w3.org/2000/svg" {...props}>
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" {...props}>
       <style>
         {
           '.mexico_svg__st0{fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10}'

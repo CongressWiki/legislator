@@ -1,4 +1,4 @@
-import {ReactComponent as CapitalSvg} from '@static/images/Capital_Detailed.svg';
+import CapitalSvg from '@icons/misc/CapitalDetailed';
 import styled from 'styled-components';
 
 const Capital = styled(CapitalSvg)`

@@ -107,6 +107,8 @@ const SponsorContentWrapper = styled(ContentWrapper)`
 const CosponsorGroup = styled.div`
   height: 100%;
 
+  gap: 5px;
+
   display: flex;
   flex-wrap: wrap;
   align-items: space-evenly;

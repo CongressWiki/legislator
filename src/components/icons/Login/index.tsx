@@ -1,4 +1,4 @@
-import { ReactComponent as LoginSvg } from '@static/images/Login.svg';
+import LoginSvg from '@icons/misc/Login';
 import styled from 'styled-components';
 
 const LoginIcon = styled(LoginSvg)`

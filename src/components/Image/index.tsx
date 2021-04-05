@@ -1,6 +1,7 @@
 import React from 'react';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import Candidate from '@components/icons/Candidate';
+import styled from 'styled-components';
 
 /*
  * This component is built using the new `gatsby-plugin-image` (beta) to automatically serve optimized
@@ -42,7 +43,7 @@ const Image = ({
       loading={loading}
       backgroundColor={backgroundColor}
       // @ts-expect-error
-      aspectRatio={aspectRatio}
+      // aspectRatio={aspectRatio}
       placeholder={placeholder}
     />
   );

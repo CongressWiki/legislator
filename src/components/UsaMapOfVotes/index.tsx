@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ReactComponent as UsaMapSVG } from '@static/images/USA_Map.svg';
+import UsaMapSVG from '@icons/misc/USAMap';
 import styled, { css } from 'styled-components';
 import * as d3 from 'd3';
 import type { RollCallVote } from '@type/hasura';

@@ -2,7 +2,7 @@ import * as React from 'react';
 
 function SvgDealBreaker(props: React.SVGProps<SVGSVGElement>) {
   return (
-    <svg height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" {...props}>
       <style>{'.Deal_Breaker_svg__st1{fill:#000}'}</style>
       <path d="M45.6 9.1h9.5c1.4 0 2.4 1.3 2.2 2.6l-6.2 45.5-7.6-45.4c-.4-1.3.7-2.7 2.1-2.7z" />
       <path

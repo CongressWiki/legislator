@@ -2,7 +2,7 @@ import * as React from 'react';
 
 function SvgTeam(props: React.SVGProps<SVGSVGElement>) {
   return (
-    <svg height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" {...props}>
       <circle cx={16.075} cy={27.406} r={6.455} />
       <circle cx={33.111} cy={27.406} r={6.455} />
       <circle cx={24.342} cy={12.351} r={6.454} />

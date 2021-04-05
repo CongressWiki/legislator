@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import StampText from '@components/StampText';
 import styled from 'styled-components';
 import CircleAvatar from '@components/CircleAvatar';
-import Arrow from '@components/icons/Arrow';
+import Arrow from '@icons/misc/Arrow';
 import { normalizeBillStatus, getOriginalChamber } from '@constants';
 import SubjectIcon from '@components/SubjectIcon';
 
@@ -54,8 +54,9 @@ const BillCard = ({
       <p className="bill-sponsorName">
         {sponsor.preferred_name} · {sponsor.state}
       </p>
-      <p className="bill-timestamp">{new Date(status_at).toDateString()}</p>
-      <SubjectIcon subject={subject} className="bill-subject" />
+      {/* <p className="bill-timestamp">{new Date(status_at).toDateString()}</p> */}
+      <p className="bill-subject">{subject}</p>
+      <SubjectIcon subject={subject} className="bill-subjectIcon" />
 
       <p className="bill-number">{`${type.toUpperCase()} ${number}`}</p>
 
@@ -91,12 +92,12 @@ const Wrapper = styled(motion.div)`
 
   display: grid;
   grid-template-columns: 62px repeat(9, 1fr);
-  grid-template-rows: 30px 30px 1fr 70px;
+  grid-template-rows: 50px 30px 1fr 70px;
   grid-template-areas:
-    'sponsorImage sponsorName sponsorName sponsorName sponsorName    sponsorName    timestamp timestamp subject  subject'
-    'sponsorImage ........... ........... id          id             id             id          ...... subject subject'
-    'sponsorImage title       title       title       title          title          title       title  title     title'
-    'sponsorImage ......      ......      ......      status         status         .....       ...... viewBillButton    viewBillButton';
+    'sponsorImage sponsorName sponsorName sponsorName sponsorName    subject   subject   subject    subject subjectIcon'
+    'sponsorImage ........... ........... id          id             id        id        ......     ......  ......'
+    'sponsorImage title       title       title       title          title     title     title      title   title'
+    'sponsorImage .....       ......      ......      status         status    .....     ......     ......  openBill';
 
   border: solid thin var(--color-gray300);
   border-radius: 10px;
@@ -127,17 +128,27 @@ const Wrapper = styled(motion.div)`
 
   .bill-subject {
     grid-area: subject;
+    text-align: right;
+    align-self: start;
+    font-size: 0.8rem;
+    color: var(--color-dimText);
+    font-weight: 400;
+  }
+
+  .bill-subjectIcon {
+    grid-area: subjectIcon;
     position: relative;
     margin: 0;
     padding: 0;
     max-width: 100%;
     max-height: 100%;
-    width: 1em;
-    height: 1em;
+    width: 100%;
+    height: auto;
+    text-align: right;
 
     path {
-      fill: var(--color-text);
-      stroke: var(--color-text);
+      fill: var(--color-dimText);
+      stroke: var(--color-dimText);
     }
   }
 
@@ -178,11 +189,19 @@ const Wrapper = styled(motion.div)`
   }
 
   .bill-open {
-    grid-area: viewBillButton;
-    justify-self: end;
+    grid-area: openBill;
     align-self: center;
-    height: 2.5rem;
-    width: 2.5rem;
+    text-align: center;
+
+    svg {
+      max-width: 100%;
+      max-height: 100%;
+      width: 60%;
+      height: auto;
+      path {
+        fill: var(--color-text);
+      }
+    }
 
     :hover {
       svg {

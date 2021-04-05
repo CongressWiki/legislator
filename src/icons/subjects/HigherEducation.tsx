@@ -2,7 +2,7 @@ import * as React from 'react';
 
 function SvgHigherEducation(props: React.SVGProps<SVGSVGElement>) {
   return (
-    <svg height={100} width={100} xmlns="http://www.w3.org/2000/svg" {...props}>
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" {...props}>
       <g data-name="Iconos">
         <path d="M46.68 43.36a4.1 4.1 0 10-1.21-2.91 4.09 4.09 0 001.21 2.91zm2.12-3.7a1.12 1.12 0 111.59 1.58 1.14 1.14 0 01-1.59 0 1.11 1.11 0 010-1.58z" />
         <rect x={36.93} y={54.44} width={6} height={8.5} rx={1.5} ry={1.5} />

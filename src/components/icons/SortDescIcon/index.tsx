@@ -1,4 +1,4 @@
-import { ReactComponent as SortDescIconSvg } from '@static/images/Sort_Desc.svg';
+import SortDescIconSvg from '@icons/misc/SortDesc';
 import styled from 'styled-components';
 
 const SortDescIcon = styled(SortDescIconSvg)`

@@ -1,4 +1,4 @@
-import { ReactComponent as UsaMapSVG } from '@static/images/USA_Map.svg';
+import UsaMapSVG from '@icons/misc/USAMap';
 import styled from 'styled-components';
 
 const UsaMap = styled(UsaMapSVG)`

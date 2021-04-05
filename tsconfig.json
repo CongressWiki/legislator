@@ -17,14 +17,14 @@
       "@utils/*": [
         "src/utils/*"
       ],
+      "@icons/*": [
+        "src/icons/*"
+      ],
       "@static/*": [
         "static/*"
       ],
       "@images/*": [
         "static/images/*"
-      ],
-      "@icons/*": [
-        "src/icons/*"
       ],
       "@constants": [
         "src/constants"

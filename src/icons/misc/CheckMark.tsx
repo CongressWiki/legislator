@@ -2,7 +2,7 @@ import * as React from 'react';
 
 function SvgCheckMark(props: React.SVGProps<SVGSVGElement>) {
   return (
-    <svg height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" {...props}>
       <path
         style={{
           textIndent: 0,

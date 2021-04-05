@@ -1,4 +1,4 @@
-import { ReactComponent as HouseOfRepresentativesSvg } from '@static/images/Assembly_House_Of_Representatives.svg';
+import HouseOfRepresentativesSvg from '@icons/misc/AssemblyHouseOfRepresentatives';
 import styled from 'styled-components';
 
 const HouseOfRepresentativesIcon = styled(HouseOfRepresentativesSvg)`

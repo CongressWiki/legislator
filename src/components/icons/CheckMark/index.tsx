@@ -1,4 +1,4 @@
-import { ReactComponent as CheckMarkSvg } from '@static/images/Check_Mark.svg';
+import CheckMarkSvg from '@icons/misc/CheckMark';
 import styled from 'styled-components';
 
 const CheckMarkIcon = styled(CheckMarkSvg)`

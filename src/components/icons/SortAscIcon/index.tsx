@@ -1,4 +1,4 @@
-import { ReactComponent as SortAscIconSvg } from '@static/images/Sort_Asc.svg';
+import SortAscIconSvg from '@icons/misc/SortAsc';
 
 import styled from 'styled-components';
 

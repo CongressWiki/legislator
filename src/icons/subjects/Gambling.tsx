@@ -2,7 +2,7 @@ import * as React from 'react';
 
 function SvgGambling(props: React.SVGProps<SVGSVGElement>) {
   return (
-    <svg height={100} width={100} xmlns="http://www.w3.org/2000/svg" {...props}>
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" {...props}>
       <path d="M89.3 52.5H60.7c-4.5 0-8.2 3.7-8.2 8.2v28.6c0 4.5 3.7 8.2 8.2 8.2h28.6c4.5 0 8.2-3.7 8.2-8.2V60.7c0-4.5-3.7-8.2-8.2-8.2zm3.3 36.8c0 1.8-1.5 3.3-3.3 3.3H60.7c-1.8 0-3.3-1.5-3.3-3.3V60.7c0-1.8 1.5-3.3 3.3-3.3h28.6c1.8 0 3.3 1.5 3.3 3.3v28.6z" />
       <circle cx={65.9} cy={65.9} r={4.3} />
       <circle cx={75} cy={75} r={4.3} />

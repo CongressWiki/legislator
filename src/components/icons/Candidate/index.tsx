@@ -1,4 +1,4 @@
-import { ReactComponent as CandidateSvg } from '@static/images/Candidate.svg';
+import CandidateSvg from '@icons/misc/Candidate';
 import styled from 'styled-components';
 
 const Candidate = styled(CandidateSvg)`

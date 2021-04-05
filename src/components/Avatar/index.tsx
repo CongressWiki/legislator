@@ -10,12 +10,9 @@ export type AvatarProps = {
 };
 
 const Avatar = ({ children, party, size, className }: AvatarProps) => {
+  const partyColor = getPartyColors(party);
   return (
-    <Wrapper
-      className={className}
-      partyColor={getPartyColors(party)}
-      size={size}
-    >
+    <Wrapper className={className} partyColor={partyColor} size={size}>
       {children}
     </Wrapper>
   );
@@ -39,12 +36,11 @@ const Wrapper = styled.div<{ partyColor?: string; size?: string }>`
   /* Not supported by non-chrome browsers */
   /* aspect-ratio: 1 / 1; */
 
-  line-height: 1px;
   overflow: hidden;
   border-radius: 50%;
 
   border: solid 1px ${(props) => props.partyColor};
-  background-color: var(--color-gray300);
+  background-color: ${(props) => props.partyColor};
 
   img {
     z-index: 400;

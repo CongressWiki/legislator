@@ -1,4 +1,4 @@
-import { ReactComponent as LibertyTorchSvg } from '@static/images/Liberty_Torch.svg';
+import LibertyTorchSvg from '@icons/misc/LibertyTorch';
 import styled from 'styled-components';
 
 const LibertyTorchIcon = styled(LibertyTorchSvg)`
