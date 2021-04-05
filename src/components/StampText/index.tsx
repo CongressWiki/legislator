@@ -15,7 +15,7 @@ const StampText = styled.span`
   text-transform: uppercase;
 
   color: var(--color-yeaGreen);
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: bold;
 
   mask-image: url(${StampTexture});

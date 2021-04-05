@@ -102,10 +102,6 @@ module.exports = {
     {
       resolve: `gatsby-plugin-styled-components`,
     },
-    {
-      resolve: 'gatsby-plugin-svgr',
-    },
-
     // To learn more, visit: https://gatsby.dev/offline // this (optional) plugin enables Progressive Web App + Offline functionality
     // Disabled so that site updates are seen immediately.
     // `gatsby-plugin-offline`,

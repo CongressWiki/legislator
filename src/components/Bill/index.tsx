@@ -101,7 +101,7 @@ const Wrapper = styled(motion.div)`
 const BillStatusStamp = styled(StampText)`
   position: absolute;
   margin-top: 0.25rem;
-  max-width: 60%;
+  max-width: 40%;
 
   transform: rotate(-8deg);
 

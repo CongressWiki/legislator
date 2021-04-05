@@ -219,6 +219,8 @@ const getDecisionColor = (decision: string) => {
     case 'Yes':
     case 'Guilty':
     case 'Passed':
+    case 'Bill Passed':
+    case 'Amendment Passed':
       return 'var(--color-yeaGreen)';
     case 'Nay':
     case 'No':

@@ -7,17 +7,18 @@ import styled from 'styled-components';
 import CircleAvatar from '@components/CircleAvatar';
 import Arrow from '@components/icons/Arrow';
 import { normalizeBillStatus, getOriginalChamber } from '@constants';
+import SubjectIcon from '@components/SubjectIcon';
 
 export type BillCardProps = Pick<
   Bill,
   | 'id'
   | 'type'
   | 'number'
+  | 'congress'
   | 'title'
   | 'subject'
-  | 'status_at'
-  | 'congress'
   | 'status'
+  | 'status_at'
 > & {
   onClick?: () => void;
   className?: string;
@@ -41,23 +42,26 @@ const BillCard = ({
 
   return (
     <Wrapper className={className} onClick={onClick} variants={motionVariants}>
-      <CircleAvatar
-        className="bill-sponsorImage"
-        preferred_name={sponsor.preferred_name}
-        political_party={sponsor.political_party}
-        image={sponsor.image}
-        loading="lazy"
-      />
+      <Link to={`officials/${sponsor.id}`}>
+        <CircleAvatar
+          className="bill-sponsorImage"
+          preferred_name={sponsor.preferred_name}
+          political_party={sponsor.political_party}
+          image={sponsor.image}
+          loading="lazy"
+        />
+      </Link>
       <p className="bill-sponsorName">
         {sponsor.preferred_name} · {sponsor.state}
       </p>
-      <SmallStampText className="bill-status">{billStatus}</SmallStampText>
       <p className="bill-timestamp">{new Date(status_at).toDateString()}</p>
+      <SubjectIcon subject={subject} className="bill-subject" />
 
       <p className="bill-number">{`${type.toUpperCase()} ${number}`}</p>
 
       <p className="bill-title">{title}</p>
 
+      <SmallStampText className="bill-status">{billStatus}</SmallStampText>
       <div className="bill-open">
         <Link to={`${congress}/${type}${number}/`}>
           <Arrow />
@@ -89,8 +93,8 @@ const Wrapper = styled(motion.div)`
   grid-template-columns: 62px repeat(9, 1fr);
   grid-template-rows: 30px 30px 1fr 70px;
   grid-template-areas:
-    'sponsorImage sponsorName sponsorName sponsorName sponsorName    sponsorName    timestamp timestamp timestamp    timestamp'
-    'sponsorImage ........... ........... id          id             id             id          ...... ......... .........'
+    'sponsorImage sponsorName sponsorName sponsorName sponsorName    sponsorName    timestamp timestamp subject  subject'
+    'sponsorImage ........... ........... id          id             id             id          ...... subject subject'
     'sponsorImage title       title       title       title          title          title       title  title     title'
     'sponsorImage ......      ......      ......      status         status         .....       ...... viewBillButton    viewBillButton';
 
@@ -126,6 +130,15 @@ const Wrapper = styled(motion.div)`
     position: relative;
     margin: 0;
     padding: 0;
+    max-width: 100%;
+    max-height: 100%;
+    width: 1em;
+    height: 1em;
+
+    path {
+      fill: var(--color-text);
+      stroke: var(--color-text);
+    }
   }
 
   .bill-number {

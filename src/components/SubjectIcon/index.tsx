@@ -1,54 +1,60 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
+import _ from 'lodash';
 
-export type SubjectIconProps = {
-  name: string;
-  size?: string;
-  fill?: string;
+export type IconProps = {
+  subject: string;
   className?: string;
 };
 
-/**
- * Broken, throws webpack errors.
- */
-const SubjectIcon = ({
-  name,
-  size = '1rem',
-  fill = 'var(--color-gray700)',
-  className,
-}: SubjectIconProps) => {
-  const ImportedSubjectIconRef = useRef(null);
-  const [loading, setLoading] = useState(false);
+const normalize = (string: string) => {
+  string = string.replace(/ /g, '-');
+  string = string.replace(/,/g, '-');
+  string = string.replace(/\./g, '-');
+  string = string.replace(/'/g, '');
+  string = string.replace(/\(/g, '');
+  string = string.replace(/\)/g, '');
+  string = string.replace(/--/g, '-');
+  string = string.toLowerCase();
+  string = _.upperFirst(_.camelCase(string));
+  return string;
+};
 
-  useEffect(() => {
+const Icon = ({ subject, className, ...rest }: IconProps) => {
+  subject = normalize(subject);
+  // console.log({ subject });
+
+  const ImportedIconRef = React.useRef<
+    false | React.FC<React.SVGProps<SVGSVGElement>>
+  >(false);
+  const [loading, setLoading] = React.useState(false);
+
+  React.useEffect(() => {
     setLoading(true);
-    const importSubjectIcon = async () => {
+    const importIcon = async () => {
       try {
-        const { default: namedImport } = await import(
-          `@static/images/subjects/${name}/${name}`
+        const { default: ReactComponent } = await import(
+          `@icons/subjects/${subject}`
         );
-        ImportedSubjectIconRef.current = namedImport;
+        ImportedIconRef.current = ReactComponent;
       } catch (err) {
-        throw err;
+        console.log(err);
       } finally {
         setLoading(false);
       }
     };
-    importSubjectIcon();
-  }, [name]);
+    importIcon();
+    return () => {
+      ImportedIconRef.current = false;
+    };
+  }, []);
 
-  if (!loading && ImportedSubjectIconRef.current) {
-    const { current: ImportedSubjectIcon } = ImportedSubjectIconRef;
-    return (
-      <ImportedSubjectIcon
-        width={size}
-        height={size}
-        fill={fill}
-        className={className}
-      />
-    );
+  if (!loading && ImportedIconRef.current) {
+    const { current: ImportedIcon } = ImportedIconRef;
+    if (!ImportedIcon) throw new Error('ImportedIcon is not a component.');
+    return <ImportedIcon className={className} {...rest} />;
   }
 
   return null;
 };
 
-export default SubjectIcon;
+export default Icon;

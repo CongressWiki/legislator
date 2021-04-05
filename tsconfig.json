@@ -20,6 +20,12 @@
       "@static/*": [
         "static/*"
       ],
+      "@images/*": [
+        "static/images/*"
+      ],
+      "@icons/*": [
+        "src/icons/*"
+      ],
       "@constants": [
         "src/constants"
       ]

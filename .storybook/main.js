@@ -70,6 +70,8 @@ module.exports = {
     config.resolve.alias = {
       ...config.resolve.alias,
       '@static': path.resolve(__dirname, '..', 'static'),
+      '@images': path.resolve(__dirname, '..', 'static', 'images'),
+      '@icons': path.resolve(__dirname, '..', 'src', 'icons'),
       '@components': path.resolve(__dirname, '..', 'src', 'components'),
       '@pages': path.resolve(__dirname, '..', 'src', 'pages'),
       '@lib': path.resolve(__dirname, '..', 'src', 'lib'),

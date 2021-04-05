@@ -10,6 +10,9 @@ exports.onCreateWebpackConfig = ({ actions }) => {
         '@utils': path.resolve(__dirname, 'src/utils'),
         '@constants': path.resolve(__dirname, 'src/constants'),
         '@static': path.resolve(__dirname, 'static'),
+        '@images': path.resolve(__dirname, 'static/images'),
+        '@icons': path.resolve(__dirname, 'src/icons'),
+        '@states': path.resolve(__dirname, 'static/images/states'),
       },
     },
   });
@@ -226,7 +229,7 @@ exports.createPages = async ({ graphql, actions: gatsbyActions, reporter }) => {
           modifiedTime
           childImageSharp {
             gatsbyImageData(
-              width: 200
+              width: 500
               placeholder: BLURRED
               formats: [AUTO, WEBP, AVIF]
             )
@@ -272,18 +275,19 @@ exports.createPages = async ({ graphql, actions: gatsbyActions, reporter }) => {
   );
 
   // Create Elected Official pages //
-  // for (const electedOfficial of electedOfficials) {
-  //   const slug = `officials/${electedOfficial.id}`;
+  for (const electedOfficial of electedOfficials) {
+    const slug = `officials/${electedOfficial.id}`;
 
-  //   createPage({
-  //     path: slug,
-  //     component: ElectedOfficialTemplate,
-  //     context: {
-  //       slug,
-  //       electedOfficial: electedOfficial,
-  //     },
-  //   });
-  // }
+    createPage({
+      path: slug,
+      component: ElectedOfficialTemplate,
+      context: {
+        slug,
+        id: electedOfficial.id,
+        electedOfficial,
+      },
+    });
+  }
 
   // Create Bill pages //
   for (const bill of bills) {
