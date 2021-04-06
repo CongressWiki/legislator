@@ -20,7 +20,7 @@ const OptionDetail = ({
 }: OptionDetailProps) => {
   const center = ['rollCalls', 'committees', 'subcommittees'].includes(type);
   return (
-    <Wrapper className={className} center={center}>
+    <Wrapper className={className} center={center} variants={motionVariants}>
       {['bills', 'cosponsorships', 'amendments'].includes(type) ? (
         <Link to={slug}>
           <p className="text">{text}</p>
@@ -45,7 +45,7 @@ const motionVariants = {
 
 const Wrapper = styled(motion.div)<{ center: boolean }>`
   width: 100%;
-  max-width: 100%;
+
   margin: 0;
   padding-top: 0.75rem;
   padding-left: 1rem;

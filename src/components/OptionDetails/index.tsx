@@ -51,7 +51,25 @@ export default OptionDetails;
 const Wrapper = styled(BillLane)`
   max-width: 40ch;
   height: 100%;
+
   overflow: auto;
+  /* width */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: var(--color-background);
+  }
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-gray300);
+    border-radius: 10px;
+  }
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-gray500);
+  }
 
   padding: 1rem;
 

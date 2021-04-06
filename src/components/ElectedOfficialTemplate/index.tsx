@@ -318,26 +318,21 @@ const ElectedOfficialTemplate = ({
     },
   ];
 
-  let localDateStringOptions = {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
-  };
-
-  const normalizePosition = (position: string) => {
-    if (position === 'house_representative') return 'House Representative';
-    if (position === 'senator') return 'Senator';
-    if (position === 'president') return 'President';
-    if (position === 'vp') return 'Vice President';
-    return position;
-  };
-
   return (
     <MinimumLayout>
       <SEO
         pathname={slug}
         title={electedOfficial.preferred_name}
         description={electedOfficial.preferred_name}
+        keywords={[
+          electedOfficial.preferred_name,
+          electedOfficial.position,
+          electedOfficial.political_party,
+          electedOfficial.state,
+          electedOfficial.first_name,
+          electedOfficial.last_name,
+          electedOfficial.gender,
+        ]}
       />
       <ContentLayout>
         <div className="title">
@@ -397,6 +392,20 @@ const ElectedOfficialTemplate = ({
   );
 };
 
+const localDateStringOptions = {
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric',
+};
+
+const normalizePosition = (position: string) => {
+  if (position === 'house_representative') return 'House Representative';
+  if (position === 'senator') return 'Senator';
+  if (position === 'president') return 'President';
+  if (position === 'vp') return 'Vice President';
+  return position;
+};
+
 export default ElectedOfficialTemplate;
 
 const Name = styled.h2`
@@ -421,16 +430,17 @@ const TermDate = styled.p`
 `;
 
 const ContentLayout = styled.div`
-  width: 100%;
-  height: 100%;
+  min-width: 860px;
+  overflow: hidden;
+
+  justify-self: center;
 
   display: grid;
   grid-template-columns: 1fr auto 1fr;
-  grid-template-rows: 150px 30vw 125px;
+  grid-template-rows: 50px 600px 1fr;
   grid-template-areas:
     '....... title details'
-    'options img   details'
-    'foot    foot  foot';
+    'options img   details';
 
   .title {
     grid-area: title;
@@ -454,7 +464,7 @@ const ContentLayout = styled.div`
     grid-area: details;
 
     div:first-child {
-      margin-top: 150px;
+      margin-top: 170px;
     }
   }
 
@@ -477,6 +487,8 @@ const ContentLayout = styled.div`
 const OptionsContainer = styled.div`
   width: 100%;
   height: 100%;
+  max-height: 400px;
+  align-self: center;
 
   display: grid;
   grid-template-columns: repeat(10, 1fr);
@@ -488,6 +500,7 @@ const OptionsContainer = styled.div`
     'e e e e e e e e e .'
     'f f f f f f f f f f';
   align-items: center;
+  align-content: space-evenly;
   text-align: right;
 
   .a {

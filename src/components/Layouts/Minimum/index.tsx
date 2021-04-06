@@ -28,7 +28,7 @@ const MinimumLayout = ({ children }: MinimumLayoutProps) => {
 };
 
 const Wrapper = styled.div`
-  height: 100%;
+  height: 100vh;
   width: 100%;
 `;
 
