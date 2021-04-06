@@ -4,28 +4,23 @@ import { motion } from 'framer-motion';
 
 export type BillLaneProps = {
   children: React.ReactNode;
+  gap?: string;
   className?: string;
 };
 
-const BillLane = styled(motion.div)`
-  width: 100%;
-  margin: 0;
-  padding: 0;
+const BillLane = ({ children, className, gap }: BillLaneProps) => (
+  <Wrapper
+    className={className}
+    variants={motionVariants}
+    initial="hidden"
+    animate="visible"
+    gap={gap}
+  >
+    {children}
+  </Wrapper>
+);
 
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 32px;
-
-  border: none;
-  background: var(--color-background);
-  border-radius: 0;
-
-  @media (max-width: 600px) {
-    border: none;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-  }
-`;
+export default BillLane;
 
 const motionVariants = {
   hidden: { opacity: 1, scale: 0 },
@@ -39,13 +34,22 @@ const motionVariants = {
   },
 };
 
-export default ({ children, className }: BillLaneProps) => (
-  <BillLane
-    className={className}
-    variants={motionVariants}
-    initial="hidden"
-    animate="visible"
-  >
-    {children}
-  </BillLane>
-);
+const Wrapper = styled(motion.div)<{ gap?: string }>`
+  width: 100%;
+  margin: 0;
+  padding: 0;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: ${({ gap }) => gap || '32px'};
+
+  border: none;
+  background: var(--color-background);
+  border-radius: 0;
+
+  @media (max-width: 600px) {
+    border: none;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+`;

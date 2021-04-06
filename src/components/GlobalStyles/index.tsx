@@ -29,9 +29,23 @@ const GlobalStyles = createGlobalStyle`
     text-decoration: unset;
   }
 
-
-
-
+  /* width */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: var(--color-background);
+  }
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-gray300);
+    border-radius: 10px;
+  }
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-gray500);
+  }
 `;
 
 export default GlobalStyles;

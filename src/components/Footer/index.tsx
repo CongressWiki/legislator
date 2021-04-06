@@ -58,6 +58,7 @@ const ToolBar = styled.div`
 
   a {
     text-decoration: none;
+    color: var(--color-secondary);
     :hover {
       color: var(--color-gold);
     }

@@ -30,7 +30,7 @@ const OptionDetails = ({
   className,
 }: OptionDetailsProps) => {
   return (
-    <Wrapper className={className}>
+    <Wrapper className={className} gap="27px">
       {details
         ? details.map(({ text, subtext, slug }, index) => (
             <OptionDetail
@@ -53,23 +53,6 @@ const Wrapper = styled(BillLane)`
   height: 100%;
 
   overflow: auto;
-  /* width */
-  ::-webkit-scrollbar {
-    width: 10px;
-  }
-  /* Track */
-  ::-webkit-scrollbar-track {
-    background: var(--color-background);
-  }
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: var(--color-gray300);
-    border-radius: 10px;
-  }
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: var(--color-gray500);
-  }
 
   padding: 1rem;
 

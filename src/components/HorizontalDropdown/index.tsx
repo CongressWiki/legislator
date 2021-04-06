@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-const fontFamily = 'concourse_t4';
+const fontFamily = 'advocate_c43_mid';
 const fontSize = '1.4em';
 
 const DropDownContainer = styled.div`

@@ -39,8 +39,8 @@ const StyledInput = styled.input`
   display: flex;
   background-color: var(--color-background);
   text-align: center;
-  font-family: concourse_t4;
-  font-size: 1.4rem;
+  font-family: advocate_c43_mid;
+  font-size: 1.4em;
   color: var(--color-text);
 
   ::placeholder {

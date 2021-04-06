@@ -62,6 +62,8 @@ const Wrapper = styled.div`
   grid-template-areas: 'chamber . searchInput searchInput searchInput searchInput . billCount . orderBy';
   align-items: center;
 
+  font-family: advocate_c43_mid;
+
   .chamber {
     grid-area: chamber;
   }
@@ -76,9 +78,9 @@ const Wrapper = styled.div`
     padding: 0;
     margin: 0;
     white-space: nowrap;
+    font-family: advocate_c43_mid;
 
     color: var(--color-gray500);
-    font-family: concourse_t4;
     font-size: 1.4rem;
   }
   .orderBy {
