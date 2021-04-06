@@ -2,37 +2,24 @@ import React from 'react';
 import _ from 'lodash';
 
 export type IconProps = {
-  subject: string;
+  state: string;
   className?: string;
 };
 
-const normalize = (string: string) => {
-  string = string.replace(/ /g, '-');
-  string = string.replace(/,/g, '-');
-  string = string.replace(/\./g, '-');
-  string = string.replace(/'/g, '');
-  string = string.replace(/\(/g, '');
-  string = string.replace(/\)/g, '');
-  string = string.replace(/--/g, '-');
-  string = string.toLowerCase();
-  string = _.upperFirst(_.camelCase(string));
-  return string;
-};
-
-const SubjectIcon = ({ subject, className, ...rest }: IconProps) => {
-  subject = normalize(subject);
-
+const StateIcon = ({ state, className, ...rest }: IconProps) => {
   const ImportedIconRef = React.useRef<
     false | React.FC<React.SVGProps<SVGSVGElement>>
   >(false);
   const [loading, setLoading] = React.useState(false);
+
+  state = _.upperFirst(_.camelCase(state));
 
   React.useEffect(() => {
     setLoading(true);
     const importIcon = async () => {
       try {
         const { default: ReactComponent } = await import(
-          `@icons/subjects/${subject}`
+          `@icons/states/${state}`
         );
         ImportedIconRef.current = ReactComponent;
       } catch (err) {
@@ -56,4 +43,4 @@ const SubjectIcon = ({ subject, className, ...rest }: IconProps) => {
   return null;
 };
 
-export default SubjectIcon;
+export default StateIcon;

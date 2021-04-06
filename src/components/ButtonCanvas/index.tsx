@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 const ButtonCanvas = styled.div`
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2.5em;
+  height: 2.5em;
 
   display: flex;
   justify-content: center;
@@ -19,9 +19,19 @@ const ButtonCanvas = styled.div`
   user-select: none;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
+  svg {
+    width: 100%;
+    height: auto;
+
+    text-align: center;
+
+    path {
+      fill: var(--color-gray500);
+    }
+  }
+
   :hover {
     cursor: pointer;
-    border: 2px var(--color-secondary) solid;
 
     svg {
       path {

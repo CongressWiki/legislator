@@ -20,13 +20,12 @@ export type BillCardProps = Pick<
   | 'status'
   | 'status_at'
 > & {
+  sponsor: OfficialWithImage;
   onClick?: () => void;
   className?: string;
-  sponsor: OfficialWithImage;
 };
 
 const BillCard = ({
-  onClick,
   type,
   number,
   title,
@@ -36,12 +35,18 @@ const BillCard = ({
   sponsor,
   status_at,
   className,
+  onClick,
 }: BillCardProps) => {
   const originalBillChamber = getOriginalChamber(type);
   const billStatus = normalizeBillStatus(status, originalBillChamber);
 
   return (
-    <Wrapper className={className} onClick={onClick} variants={motionVariants}>
+    <Wrapper
+      className={className}
+      onClick={onClick}
+      variants={motionVariants}
+      number={number}
+    >
       <Link to={`officials/${sponsor.id}`}>
         <CircleAvatar
           className="bill-sponsorImage"
@@ -62,12 +67,10 @@ const BillCard = ({
 
       <p className="bill-title">{title}</p>
 
-      <SmallStampText className="bill-status">{billStatus}</SmallStampText>
-      <div className="bill-open">
-        <Link to={`${congress}/${type}${number}/`}>
-          <Arrow />
-        </Link>
-      </div>
+      <StampText className="bill-status">{billStatus}</StampText>
+      <Link className="bill-open" to={`${congress}/${type}${number}/`}>
+        <Arrow />
+      </Link>
     </Wrapper>
   );
 };
@@ -82,7 +85,7 @@ const motionVariants = {
 
 export default BillCard;
 
-const Wrapper = styled(motion.div)`
+const Wrapper = styled(motion.div)<{ number: number }>`
   max-width: none;
   width: 100%;
   margin: 0;
@@ -94,10 +97,10 @@ const Wrapper = styled(motion.div)`
   grid-template-columns: 62px repeat(9, 1fr);
   grid-template-rows: 50px 30px 1fr 70px;
   grid-template-areas:
-    'sponsorImage sponsorName sponsorName sponsorName sponsorName    subject   subject   subject    subject subjectIcon'
+    'sponsorImage sponsorName sponsorName sponsorName sponsorName    sponsorName   subject   subject    subject subjectIcon'
     'sponsorImage ........... ........... id          id             id        id        ......     ......  ......'
     'sponsorImage title       title       title       title          title     title     title      title   title'
-    'sponsorImage .....       ......      ......      status         status    .....     ......     ......  openBill';
+    'sponsorImage .....       ......      status      status         status    status     ......     openBill  openBill';
 
   border: solid thin var(--color-gray300);
   border-radius: 10px;
@@ -133,18 +136,28 @@ const Wrapper = styled(motion.div)`
     font-size: 0.8rem;
     color: var(--color-dimText);
     font-weight: 400;
+
+    @media (max-width: 450px) {
+      visibility: hidden;
+      display: hidden;
+      opacity: 0;
+    }
   }
 
   .bill-subjectIcon {
     grid-area: subjectIcon;
     position: relative;
-    margin: 0;
-    padding: 0;
-    max-width: 100%;
-    max-height: 100%;
+
     width: 100%;
     height: auto;
+    max-width: 2.5rem;
+    max-height: 100%;
+
+    margin: 0;
+    padding: 0;
+
     text-align: right;
+    justify-self: end;
 
     path {
       fill: var(--color-dimText);
@@ -183,20 +196,34 @@ const Wrapper = styled(motion.div)`
 
   .bill-status {
     grid-area: status;
+    max-width: 15ch;
+    padding: 1px;
+
+    justify-self: center;
+
     font-size: 1rem;
-    border-width: 0.2rem;
-    transform: rotate(4deg);
+    border-width: 0.3rem;
+
+    // Alternate stamp angle to give it a realistic behavior
+    transform: ${(props) =>
+      props.number % 2 === 1 ? 'rotate(4deg)' : 'rotate(-3deg)'};
   }
 
   .bill-open {
     grid-area: openBill;
+
+    width: 100%;
+    max-width: 2.5rem;
+    height: auto;
     align-self: center;
     text-align: center;
+    align-items: center;
+    justify-self: end;
 
     svg {
       max-width: 100%;
       max-height: 100%;
-      width: 60%;
+      width: 100%;
       height: auto;
       path {
         fill: var(--color-text);
@@ -210,13 +237,11 @@ const Wrapper = styled(motion.div)`
         }
       }
     }
+
+    @media (max-width: 450px) {
+      svg {
+        width: 100%;
+      }
+    }
   }
-`;
-
-const SmallStampText = styled(StampText)`
-  padding: 0.1rem;
-  font-size: 8px;
-
-  max-height: 50px;
-  max-width: 95%;
 `;

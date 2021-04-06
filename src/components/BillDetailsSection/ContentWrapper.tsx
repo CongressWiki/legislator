@@ -12,6 +12,17 @@ const ContentWrapper = styled.div`
   padding-bottom: 0;
 
   display: flex;
+
+  .image {
+    width: 100%;
+    height: auto;
+    max-height: 50%;
+    align-self: center;
+
+    path {
+      fill: var(--color-gray500);
+    }
+  }
 `;
 
 export default ContentWrapper;

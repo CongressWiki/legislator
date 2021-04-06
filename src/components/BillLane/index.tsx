@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 
 export type BillLaneProps = {
   children: React.ReactNode;
+  className?: string;
 };
 
 const BillLane = styled(motion.div)`
@@ -38,8 +39,13 @@ const motionVariants = {
   },
 };
 
-export default ({ children }: BillLaneProps) => (
-  <BillLane variants={motionVariants} initial="hidden" animate="visible">
+export default ({ children, className }: BillLaneProps) => (
+  <BillLane
+    className={className}
+    variants={motionVariants}
+    initial="hidden"
+    animate="visible"
+  >
     {children}
   </BillLane>
 );

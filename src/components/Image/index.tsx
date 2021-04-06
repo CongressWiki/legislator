@@ -1,6 +1,6 @@
 import React from 'react';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
-import Candidate from '@components/icons/Candidate';
+import Candidate from '@icons/misc/Candidate';
 import styled from 'styled-components';
 
 /*
@@ -33,7 +33,7 @@ const Image = ({
 }: ImageProps) => {
   const image = imageData ? getImage(imageData) : false;
   if (!image) {
-    return <Candidate className={className} />;
+    return <StyledCandidate className={className} />;
   }
   return (
     <GatsbyImage
@@ -50,3 +50,12 @@ const Image = ({
 };
 
 export default Image;
+
+const StyledCandidate = styled(Candidate)`
+  width: 100%;
+  height: auto;
+
+  path {
+    fill: var(--color-text);
+  }
+`;

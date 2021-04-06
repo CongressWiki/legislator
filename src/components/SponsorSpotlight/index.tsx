@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import type { OfficialWithImage } from '@type/hasura';
 import Image from '@components/Image';
 import { getPartyColors } from '@constants';
+import { Link } from 'gatsby';
 
 export type SponsorSpotlightProps = {
   sponsor: OfficialWithImage;
@@ -12,16 +13,17 @@ export type SponsorSpotlightProps = {
 const SponsorSpotlight = ({ sponsor }: SponsorSpotlightProps) => {
   return (
     <Wrapper>
-      <SponsorFrame color={getPartyColors(sponsor.political_party)}>
-        <SponsorState className="state">{sponsor.state}</SponsorState>
-        <Image
-          className="image"
-          imageData={sponsor.image}
-          alt={sponsor.preferred_name}
-          loading="eager"
-        />
-      </SponsorFrame>
-      <SponsorLabel>{sponsor.preferred_name}</SponsorLabel>
+      <Link to={`/officials/${sponsor.id}`}>
+        <SponsorFrame color={getPartyColors(sponsor.political_party)}>
+          <SponsorState className="state">{sponsor.state}</SponsorState>
+          <Image
+            imageData={sponsor.image}
+            alt={sponsor.preferred_name}
+            loading="eager"
+          />
+        </SponsorFrame>
+        <SponsorLabel>{sponsor.preferred_name}</SponsorLabel>
+      </Link>
     </Wrapper>
   );
 };
@@ -55,10 +57,7 @@ const SponsorFrame = styled.div<{ color: string }>`
   border: solid 1px ${(props) => props.color};
   box-shadow: 0 0 5px 2px ${(props) => props.color};
 
-  .image {
-    width: 100%;
-    height: auto;
-  }
+  background-color: ${(props) => props.color};
 
   :hover {
     .state {
@@ -83,7 +82,7 @@ const SponsorState = styled.span`
   opacity: 0;
   transition: opacity 0.3s;
 
-  color: var(--color-secondary);
+  color: var(--color-gray700);
   font-family: advocate_c43_mid;
   font-size: 2.5rem;
 

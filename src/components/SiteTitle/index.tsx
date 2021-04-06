@@ -13,6 +13,7 @@ const Wrapper = styled.div``;
 
 const Header = styled.h1`
   margin: 0;
+  padding: 0;
   display: inline-block;
 
   font-family: advocate_c43_mid;

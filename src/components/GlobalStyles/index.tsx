@@ -25,7 +25,8 @@ const GlobalStyles = createGlobalStyle`
   }
 
   a {
-    color: var(--color-secondary);
+    color: unset;
+    text-decoration: unset;
   }
 
 

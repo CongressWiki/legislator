@@ -3,15 +3,14 @@ import { graphql, useStaticQuery } from 'gatsby';
 import Layout from '@components/Layouts/BillFeed';
 import type { Bill, Official, OfficialWithImage } from '@type/hasura';
 import SEO from '@components/Seo';
+import BillCard from '@components/BillCard';
 import BillLane from '@components/BillLane';
 import BillLaneHeader from '@components/BillLaneHeader';
 import BillLaneFooter from '@components/BillLaneFooter';
 import type { IGatsbyImageData } from 'gatsby-plugin-image';
-// import withApollo from '@utils/withApollo';
 import { search } from '@utils/Search';
 import type { PageProps } from 'gatsby';
-
-import BillCard from '@components/BillCard';
+// import withApollo from '@utils/withApollo';
 
 export type BillsAndCongressImagesQuery = {
   hasura: {

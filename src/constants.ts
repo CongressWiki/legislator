@@ -11,7 +11,7 @@ export const COLORS = {
   },
   // Backgrounds
   background: {
-    light: 'hsl(105, 30%, 96%)',
+    light: 'hsl(105, 20%, 96%)',
     dark: 'hsl(215, 51%, 10%)',
   },
   // Theme
@@ -61,6 +61,11 @@ export const COLORS = {
   gold: {
     light: 'hsl(45, 81%, 53%)',
     dark: 'hsl(45, 81%, 53%)',
+  },
+  // Stamp
+  stamp: {
+    light: 'hsl(133, 84%, 30%)',
+    dark: 'hsl(133, 84%, 30%)',
   },
   // Party
   democratBlue: {

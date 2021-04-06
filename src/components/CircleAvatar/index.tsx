@@ -21,12 +21,7 @@ const CircleAvatar = ({
 }: CircleAvatarProps) => {
   return (
     <StyledAvatar party={political_party} size={size} className={className}>
-      <Image
-        imageData={image}
-        alt={preferred_name}
-        loading={loading}
-        className="image"
-      />
+      <Image imageData={image} alt={preferred_name} loading={loading} />
     </StyledAvatar>
   );
 };

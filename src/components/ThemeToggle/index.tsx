@@ -1,6 +1,6 @@
 import React from 'react';
 import { ThemeContext } from '@components/ThemeContext';
-import LibertyTorchIcon from '@components/icons/LibertyTorch';
+import LibertyTorchIcon from '@icons/misc/LibertyTorch';
 import styled from 'styled-components';
 import ButtonCanvas from '@components/ButtonCanvas';
 
@@ -23,8 +23,8 @@ const ThemeToggle = ({ className }: ThemeToggleProps) => {
 };
 
 const StyledButtonCanvas = styled(ButtonCanvas)`
-  height: 4rem;
-  width: 4rem;
+  height: 3rem;
+  width: 3rem;
 `;
 
 export default ThemeToggle;

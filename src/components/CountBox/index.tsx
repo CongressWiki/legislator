@@ -42,6 +42,7 @@ const Wrapper = styled.div<{ isActive: boolean }>`
     margin: 0;
     padding: 0;
     font-size: 1.2rem;
+    font-family: century_supra_c3;
     transition: all 0.3s;
 
     text-underline-offset: 3px;

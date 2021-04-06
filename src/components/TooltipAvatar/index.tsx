@@ -22,7 +22,7 @@ const TooltipAvatar = ({
   className,
 }: TooltipAvatarProps) => {
   return (
-    <Wrapper className={className}>
+    <Wrapper className={className} size={size}>
       <Tooltip>
         {state ? <StateText className="state">{state}</StateText> : null}
         <CircleAvatar
@@ -40,11 +40,12 @@ const TooltipAvatar = ({
   );
 };
 
-const Wrapper = styled.div`
+const Wrapper = styled.div<{ size: string }>`
   position: relative;
   background: transparent;
   padding: 0;
   margin: 0;
+  height: ${(props) => props.size};
   transition: all 0.3s ease-in-out;
 
   .avatar {
@@ -56,8 +57,6 @@ const Tooltip = styled.div`
   position: relative;
   min-width: fit-content;
   max-width: fit-content;
-  /* min-height: fit-content;
-  max-height: fit-content; */
 
   margin: 0;
   padding: 0;

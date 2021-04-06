@@ -9,6 +9,7 @@ import ContentWrapper from '@components/BillDetailsSection/ContentWrapper';
 import Wrapper from '@components/BillDetailsSection/SectionRibbon';
 import Avatar from '@components/Avatar';
 import { isBrowser } from '@constants';
+import { Link } from 'gatsby';
 
 export type SponsorSectionProps = {
   sponsor: OfficialWithImage;
@@ -25,29 +26,29 @@ const SponsorSection = ({
 
   useEffect(() => {
     if (isBrowser) {
-      const mediaQuery320pxScreenWidth = window?.matchMedia(
-        '(max-width: 320px)'
+      const mediaQuery370pxScreenWidth = window?.matchMedia(
+        '(max-width: 370px)'
       );
-      const isScreenWidthLessThan320px = mediaQuery320pxScreenWidth.matches;
+      const isScreenWidthLessThan370px = mediaQuery370pxScreenWidth.matches;
       const mediaQuery420pxScreenWidth = window?.matchMedia(
         '(max-width: 420px)'
       );
       const isScreenWidthLessThan420px = mediaQuery420pxScreenWidth.matches;
-      const mediaQuery1200pxScreenWidth = window?.matchMedia(
-        '(max-width: 1200px)'
+      const mediaQuery960pxScreenWidth = window?.matchMedia(
+        '(max-width: 960px)'
       );
-      const isScreenWidthLessThan1200px = mediaQuery1200pxScreenWidth.matches;
+      const isScreenWidthLessThan960px = mediaQuery960pxScreenWidth.matches;
       const mediaQuery1400pxScreenWidth = window?.matchMedia(
         '(max-width: 1400px)'
       );
       const isScreenWidthLessThan1400px = mediaQuery1400pxScreenWidth.matches;
       setCosponsorAvatarSize(
-        isScreenWidthLessThan320px
+        isScreenWidthLessThan370px
           ? '50px'
           : isScreenWidthLessThan420px
           ? '60px'
-          : isScreenWidthLessThan1200px
-          ? '70px'
+          : isScreenWidthLessThan960px
+          ? '60px'
           : isScreenWidthLessThan1400px
           ? '70px'
           : '80px'
@@ -66,17 +67,21 @@ const SponsorSection = ({
               .slice(0, 12)
               .map(({ elected_official }: Cosponsorship) => {
                 return (
-                  <TooltipAvatar
+                  <Link
                     key={elected_official.preferred_name}
-                    className="avatar"
-                    preferred_name={elected_official.preferred_name}
-                    political_party={elected_official.political_party}
-                    image={elected_official.image}
-                    state={elected_official.state}
-                    backgroundColor="var(--color-gray700)"
-                    size={cosponsorAvatarSize}
-                    loading="lazy"
-                  />
+                    to={`/officials/${elected_official.id}`}
+                  >
+                    <TooltipAvatar
+                      className="avatar"
+                      preferred_name={elected_official.preferred_name}
+                      political_party={elected_official.political_party}
+                      image={elected_official.image}
+                      state={elected_official.state}
+                      backgroundColor="var(--color-gray700)"
+                      size={cosponsorAvatarSize}
+                      loading="lazy"
+                    />
+                  </Link>
                 );
               })}
 
@@ -93,6 +98,8 @@ const SponsorSection = ({
 export default SponsorSection;
 
 const SponsorContentWrapper = styled(ContentWrapper)`
+  min-width: 320px;
+
   padding-top: 2rem;
   padding-bottom: 3rem;
 
@@ -107,7 +114,8 @@ const SponsorContentWrapper = styled(ContentWrapper)`
 const CosponsorGroup = styled.div`
   height: 100%;
 
-  gap: 5px;
+  row-gap: 0;
+  column-gap: 6px;
 
   display: flex;
   flex-wrap: wrap;

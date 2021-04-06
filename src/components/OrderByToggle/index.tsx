@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import React, { useState } from 'react';
 
-import SortDescIcon from '@components/icons/SortDescIcon';
-import SortAscIcon from '@components/icons/SortAscIcon';
+import SortDescIcon from '@icons/misc/SortDesc';
+import SortAscIcon from '@icons/misc/SortAsc';
 import ButtonCanvas from '@components/ButtonCanvas';
 
 export type OrderByToggleProps = {

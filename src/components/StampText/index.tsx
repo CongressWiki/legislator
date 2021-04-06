@@ -14,18 +14,18 @@ const StampText = styled.span`
   text-align: center;
   text-transform: uppercase;
 
-  color: var(--color-yeaGreen);
+  color: var(--color-stamp);
   font-size: 1.5rem;
   font-weight: bold;
 
   mask-image: url(${StampTexture});
   -webkit-mask-image: url(${StampTexture});
-  mask-size: 472px 302px;
-  -webkit-mask-size: 472px 302px;
+  mask-size: 944px 604px;
+  -webkit-mask-size: 944px 604px;
   mask-position: 13rem 6rem;
   -webkit-mask-position: 13rem 6rem;
   mix-blend-mode: normal;
 
-  border: 0.5rem solid var(--color-yeaGreen);
+  border: 0.5rem solid var(--color-stamp);
 `;
 export default StampText;

@@ -221,10 +221,12 @@ const getDecisionColor = (decision: string) => {
     case 'Passed':
     case 'Bill Passed':
     case 'Amendment Passed':
+    case 'Concurrent Resolution Agreed to':
       return 'var(--color-yeaGreen)';
     case 'Nay':
     case 'No':
     case 'Not Guilty':
+    case 'Concurrent Resolution Disagreed to':
       return 'var(--color-nayRed)';
     case 'Not Voting':
       return 'var(--color-gray700)';

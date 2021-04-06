@@ -86,7 +86,7 @@ const Wrapper = styled(motion.div)`
     'var(--color-billGradient2)'
   );
 
-  border: 1px groove hsl(40, 1%, 15%);
+  border: 1px groove var(--color-bill);
   border-radius: 1px;
 
   -webkit-box-shadow: 0px 10px 15px 0px rgba(0, 0, 0, 0.75);
@@ -103,7 +103,8 @@ const BillStatusStamp = styled(StampText)`
   margin-top: 0.25rem;
   max-width: 40%;
 
-  transform: rotate(-8deg);
+  // Alternate stamp angle to give it a realistic behavior
+  transform: ${() => (Math.random() < 0.5 ? 'rotate(3deg)' : 'rotate(-8deg)')};
 
   @media (max-width: 450px) {
     margin-top: 0;

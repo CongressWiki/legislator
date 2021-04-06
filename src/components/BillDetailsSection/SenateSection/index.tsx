@@ -6,7 +6,7 @@ import ContentWrapper from '@components/BillDetailsSection/ContentWrapper';
 import Wrapper from '@components/BillDetailsSection/SectionRibbon';
 import { RollCall } from '@type/hasura';
 import RollCallSlide from '@components/RollCallSlide';
-import Calendar from '@components/icons/Calendar';
+import Calendar from '@icons/misc/Calendar';
 
 export type SenateSectionProps = {
   rollCalls: RollCall[];
@@ -27,7 +27,7 @@ const SenateSection = ({ rollCalls, className }: SenateSectionProps) => {
                 <RollCallSlide key={rollCall.id} rollCall={rollCall} />
               ))
           ) : (
-            <Calendar />
+            <Calendar className="image" />
           )}
         </ContentWrapper>
       </Container>
