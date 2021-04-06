@@ -1,3 +1,5 @@
+const createBillSocialCards = require('./src/libs/create-bill-social-cards');
+const createOfficialSocialCards = require('./src/libs/create-official-social-cards');
 const path = require(`path`);
 exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
@@ -287,6 +289,18 @@ exports.createPages = async ({ graphql, actions: gatsbyActions, reporter }) => {
         electedOfficial,
       },
     });
+
+    if (process.env.NODE_ENV === 'production') {
+      createOfficialSocialCards({
+        electedOfficial: electedOfficial,
+        author: 'USACounts',
+        separator: '|',
+        fontFile: require.resolve(
+          './static/fonts/Century_Supra/T3/century_supra_t3_regular.ttf'
+        ),
+        slug,
+      });
+    }
   }
 
   // Create Bill pages //
@@ -331,8 +345,7 @@ exports.createPages = async ({ graphql, actions: gatsbyActions, reporter }) => {
     });
 
     if (process.env.NODE_ENV === 'production') {
-      const createSocialCards = require('./src/libs/create-social-cards');
-      createSocialCards({
+      createBillSocialCards({
         bill: bill,
         author: 'USACounts',
         separator: '|',
