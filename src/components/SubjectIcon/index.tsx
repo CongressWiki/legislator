@@ -20,6 +20,9 @@ const normalize = (string: string) => {
 };
 
 const SubjectIcon = ({ subject, className, ...rest }: IconProps) => {
+  if (subject === 'No Subject') {
+    return null;
+  }
   subject = normalize(subject);
 
   const ImportedIconRef = React.useRef<

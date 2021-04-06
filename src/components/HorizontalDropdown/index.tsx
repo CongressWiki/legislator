@@ -2,78 +2,6 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const fontFamily = 'advocate_c43_mid';
-const fontSize = '1.4em';
-
-const DropDownContainer = styled.div`
-  margin: 0;
-  padding: 0;
-  display: flex;
-  align-items: center;
-
-  color: var(--color-gray500);
-`;
-
-const DropDownHeader = styled.div`
-  position: relative;
-  margin: 0;
-  padding: 0;
-  display: inline-block;
-
-  font-size: ${fontSize};
-  font-family: ${fontFamily};
-  color: var(--color-gray500);
-  white-space: nowrap;
-
-  &:hover {
-    cursor: pointer;
-    color: var(--color-secondary);
-  }
-`;
-
-type DropDownListContainerProps = {
-  isOpen: boolean;
-  selectedOptionLength: number;
-};
-
-const DropDownListContainer = styled.div<DropDownListContainerProps>`
-  width: ${(props) => (props.isOpen ? '180px' : '0px')};
-  position: absolute;
-  left: ${(props) => props.selectedOptionLength + 4}ch;
-  margin: 0;
-  padding: 0;
-
-  overflow: hidden;
-  transition: all 100ms ease-in;
-`;
-
-const DropDownList = styled.ul`
-  margin: 0;
-  padding: 0;
-
-  list-style: none;
-`;
-
-const ListItem = styled.li`
-  margin: 0;
-  padding: 0;
-  display: inline;
-
-  font-family: ${fontFamily};
-  font-size: ${fontSize};
-  white-space: nowrap;
-  color: var(--color-gray500);
-  background-color: var(--color-background);
-
-  &:before {
-    content: '|';
-    position: relative;
-  }
-
-  &:hover {
-    cursor: pointer;
-    color: var(--color-secondary);
-  }
-`;
 
 export type HorizontalDropdownProps = {
   options: string[];
@@ -99,12 +27,16 @@ const HorizontalDropdown = ({
     onOptionSelect(value);
   };
 
+  const unselectedOptions = options.filter((o) => o !== selectedOption);
+
+  const unselectedOptionsLength = unselectedOptions.join('').length;
+
   return (
-    <DropDownContainer className={className}>
+    <Wrapper className={className}>
       <DropDownHeader onClick={toggling}>{selectedOption}</DropDownHeader>
       <DropDownListContainer
         isOpen={isOpen}
-        selectedOptionLength={selectedOption.length}
+        unselectedOptionsLength={unselectedOptionsLength}
       >
         <DropDownList>
           {options.map((option) =>
@@ -116,8 +48,84 @@ const HorizontalDropdown = ({
           )}
         </DropDownList>
       </DropDownListContainer>
-    </DropDownContainer>
+    </Wrapper>
   );
 };
 
 export default HorizontalDropdown;
+
+const Wrapper = styled.div`
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+
+  overflow: show;
+
+  color: var(--color-gray500);
+`;
+
+const DropDownHeader = styled.div`
+  position: relative;
+  width: auto;
+
+  margin: 0;
+  padding: 0;
+
+  display: inline-block;
+
+  font-family: ${fontFamily};
+  color: var(--color-gray500);
+  white-space: nowrap;
+
+  :hover {
+    cursor: pointer;
+    color: var(--color-secondary);
+  }
+`;
+
+export type DropDownListContainerProps = {
+  isOpen: boolean;
+  unselectedOptionsLength: number;
+};
+
+const DropDownListContainer = styled.div<DropDownListContainerProps>`
+  width: ${(props) =>
+    props.isOpen ? `calc(${props.unselectedOptionsLength} * 1ch );` : '0px'};
+
+  margin: 0;
+  padding: 0;
+
+  overflow: hidden;
+  transition: all 100ms ease-in;
+`;
+
+const DropDownList = styled.ul`
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+`;
+
+const ListItem = styled.li`
+  margin: 0;
+  padding: 0;
+
+  background-color: var(--color-background);
+  display: inline;
+
+  font-family: ${fontFamily};
+  white-space: nowrap;
+  color: var(--color-gray500);
+
+  &:before {
+    content: '|';
+    position: relative;
+  }
+
+  &:hover {
+    cursor: pointer;
+    color: var(--color-secondary);
+  }
+`;

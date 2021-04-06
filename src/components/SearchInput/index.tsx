@@ -23,24 +23,30 @@ const SearchInput = ({ className, handleInput }: SearchInputProps) => {
   );
 };
 
-const Wrapper = styled.div`
+export default SearchInput;
+
+const Wrapper = styled.form`
   height: 100%;
-  min-width: 0;
+  width: auto;
+
   display: flex;
 `;
 
 const StyledInput = styled.input`
-  margin: 0;
-  padding: 0;
   height: 100%;
-  min-width: 0;
+  width: 5em;
 
-  border: 0;
-  display: flex;
+  padding: 0;
+  margin: 0;
+
   background-color: var(--color-background);
+  border: 0;
+
+  display: flex;
   text-align: center;
+
   font-family: advocate_c43_mid;
-  font-size: 1.4em;
+  font-size: 1em;
   color: var(--color-text);
 
   ::placeholder {
@@ -55,5 +61,3 @@ const StyledInput = styled.input`
     }
   }
 `;
-
-export default SearchInput;

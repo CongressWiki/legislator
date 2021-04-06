@@ -59,7 +59,7 @@ const BillCard = ({
       <p className="bill-sponsorName">
         {sponsor.preferred_name} · {sponsor.state}
       </p>
-      {/* <p className="bill-timestamp">{new Date(status_at).toDateString()}</p> */}
+      <p className="bill-timestamp">{new Date(status_at).toDateString()}</p>
       <p className="bill-subject">{subject}</p>
       <SubjectIcon subject={subject} className="bill-subjectIcon" />
 
@@ -90,17 +90,18 @@ const Wrapper = styled(motion.div)<{ number: number }>`
   width: 100%;
   margin: 0;
   padding-top: 0.75rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-left: 1em;
+  padding-right: 1em;
 
   display: grid;
   grid-template-columns: 62px repeat(9, 1fr);
-  grid-template-rows: 50px 30px 1fr 70px;
+  grid-template-rows: 20px 2.5em 30px 1fr 70px;
   grid-template-areas:
-    'sponsorImage sponsorName sponsorName sponsorName sponsorName    sponsorName   subject   subject    subject subjectIcon'
-    'sponsorImage ........... ........... id          id             id        id        ......     ......  ......'
-    'sponsorImage title       title       title       title          title     title     title      title   title'
-    'sponsorImage .....       ......      status      status         status    status     ......     openBill  openBill';
+    'sponsorImage sponsorName sponsorName sponsorName sponsorName    sponsorName subject   subject    subject subject'
+    'sponsorImage timestamp   timestamp   timestamp   timestamp    ........... .......   .......    ....... subjectIcon'
+    'sponsorImage ........... ........... id          id             id          id        ......     ......  ......'
+    'sponsorImage title       title       title       title          title       title     title      title   title'
+    'sponsorImage .....       ......      status      status         status      status    ......     openBill  openBill';
 
   border: solid thin var(--color-gray300);
   border-radius: 10px;
@@ -120,28 +121,28 @@ const Wrapper = styled(motion.div)<{ number: number }>`
   .bill-sponsorImage {
     grid-area: sponsorImage;
     align-self: start;
-    margin-right: 0.75rem;
+    margin-right: 0.75em;
   }
 
   .bill-sponsorName {
     grid-area: sponsorName;
-    font-weight: 300;
-    font-size: 0.9rem;
+    font-size: 0.9em;
+    font-weight: 400;
   }
 
   .bill-subject {
     grid-area: subject;
     text-align: right;
-    align-self: start;
-    font-size: 0.8rem;
+
     color: var(--color-dimText);
+    font-size: 0.8rem;
     font-weight: 400;
 
-    @media (max-width: 450px) {
+    /* @media (max-width: 450px) {
       visibility: hidden;
       display: hidden;
       opacity: 0;
-    }
+    } */
   }
 
   .bill-subjectIcon {
@@ -150,13 +151,13 @@ const Wrapper = styled(motion.div)<{ number: number }>`
 
     width: 100%;
     height: auto;
-    max-width: 2.5rem;
+    max-width: 2.5em;
     max-height: 100%;
 
     margin: 0;
     padding: 0;
 
-    text-align: right;
+    /* text-align: right; */
     justify-self: end;
 
     path {
@@ -167,29 +168,26 @@ const Wrapper = styled(motion.div)<{ number: number }>`
 
   .bill-number {
     grid-area: id;
-    align-self: start;
-    justify-self: center;
-    font-weight: 700;
+    text-align: center;
+    font-weight: bold;
     white-space: nowrap;
   }
 
   .bill-title {
     grid-area: title;
     max-width: min(70ch);
-    align-self: start;
-    font-size: 1.1rem;
-    letter-spacing: -0.063px;
 
-    @media (max-width: 450px) {
-      font-size: 1rem;
-    }
+    align-self: start;
+
+    font-size: 1.1em;
+    letter-spacing: -0.063px;
   }
 
   .bill-timestamp {
     grid-area: timestamp;
-    text-align: right;
-    align-self: start;
-    font-size: 0.8rem;
+    text-align: left;
+
+    font-size: 0.8em;
     color: var(--color-dimText);
     font-weight: 400;
   }
@@ -201,8 +199,8 @@ const Wrapper = styled(motion.div)<{ number: number }>`
 
     justify-self: center;
 
-    font-size: 1rem;
-    border-width: 0.3rem;
+    font-size: 0.8em;
+    border-width: 0.3em;
 
     // Alternate stamp angle to give it a realistic behavior
     transform: ${(props) =>
@@ -213,18 +211,19 @@ const Wrapper = styled(motion.div)<{ number: number }>`
     grid-area: openBill;
 
     width: 100%;
-    max-width: 2.5rem;
+    max-width: 2.5em;
     height: auto;
-    align-self: center;
-    text-align: center;
-    align-items: center;
+
     justify-self: end;
+    align-self: center;
+    align-items: center;
+    text-align: center;
 
     svg {
-      max-width: 100%;
-      max-height: 100%;
       width: 100%;
       height: auto;
+      max-width: 100%;
+      max-height: 100%;
       path {
         fill: var(--color-text);
       }
@@ -235,12 +234,6 @@ const Wrapper = styled(motion.div)<{ number: number }>`
         path {
           fill: var(--color-secondary);
         }
-      }
-    }
-
-    @media (max-width: 450px) {
-      svg {
-        width: 100%;
       }
     }
   }

@@ -31,16 +31,15 @@ const BillLaneHeader = ({
 }: BillLaneHeaderProps) => {
   return (
     <Wrapper className={className}>
-      <ChamberDropdown
-        className="chamber"
-        handleSelection={handleChamberSelection}
-      />
-      <p className="billCount">{billCount} Bills</p>
-      <SearchInput className="searchInput" handleInput={handleSearchInput} />
-      <OrderByToggle className="orderBy" handleToggle={handleOrderAscToggle} />
+      <ChamberDropdown handleSelection={handleChamberSelection} />
+      <SearchInput handleInput={handleSearchInput} />
+      <BillCount>{billCount} Bills</BillCount>
+      <OrderByToggle handleToggle={handleOrderAscToggle} />
     </Wrapper>
   );
 };
+
+export default BillLaneHeader;
 
 const Wrapper = styled.div`
   z-index: 1000;
@@ -52,41 +51,24 @@ const Wrapper = styled.div`
   position: sticky;
   top: -0.5px;
 
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-left: 1em;
+  padding-right: 1em;
 
   border-bottom: solid thin var(--color-gray300);
 
-  display: grid;
-  grid-template-columns: repeat(10, 1fr);
-  grid-template-areas: 'chamber . searchInput searchInput searchInput searchInput . billCount . orderBy';
+  display: flex;
+  justify-content: space-between;
   align-items: center;
 
   font-family: advocate_c43_mid;
-
-  .chamber {
-    grid-area: chamber;
-  }
-
-  .searchInput {
-    grid-area: searchInput;
-  }
-
-  .billCount {
-    grid-area: billCount;
-    width: 100%;
-    padding: 0;
-    margin: 0;
-    white-space: nowrap;
-    font-family: advocate_c43_mid;
-
-    color: var(--color-gray500);
-    font-size: 1.4rem;
-  }
-  .orderBy {
-    grid-area: orderBy;
-    justify-self: end;
-  }
+  font-size: 1.4em;
 `;
 
-export default BillLaneHeader;
+const BillCount = styled.p`
+  padding: 0;
+  margin: 0;
+  white-space: nowrap;
+
+  color: var(--color-gray500);
+  font-family: advocate_c43_mid;
+`;
