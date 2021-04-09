@@ -1,4 +1,4 @@
-// import React from 'react';
+// Import React from 'react';
 // import { Story, Meta } from '@storybook/react';
 
 // import BillDetails, {

@@ -20,7 +20,7 @@
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
     "lint": "prettier --check src && eslint src",
-    "fix": "prettier --write src ",
+    "fix": "prettier --write src && eslint --fix src",
     "chromatic": "chromatic --project-token CHROMATIC_PROJECT_TOKEN --exit-zero-on-changes",
     "clean:ports": "lsof -nti:8000 | xargs kill -9",
     "clean:svg": "svgo static/images/*.svg static/images/**/*.svg --pretty --recursive",
