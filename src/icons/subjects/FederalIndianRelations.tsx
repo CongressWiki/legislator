@@ -1,13 +1,15 @@
 import * as React from 'react';
 
-function SvgFederalIndianRelations(props: React.SVGProps<SVGSVGElement>) {
+const SvgFederalIndianRelations = (
+  properties: React.SVGProps<SVGSVGElement>
+) => {
   return (
     <svg
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 66 66"
-      {...props}
+      {...properties}
     >
       <path d="M33.686 47.309a.97.97 0 00-1.373 0L24.66 54.96c-.919.92.478 2.266 1.372 1.372l5.998-5.999V64.03c0 1.282 1.939 1.285 1.939 0V50.334l6 5.998c.907.908 2.278-.463 1.371-1.37l-7.654-7.653z" />
       <path d="M33.686 40.835a.97.97 0 00-1.371 0l-10.89 10.89c-.908.908.464 2.278 1.37 1.372L33 42.892l10.205 10.205c.894.894 2.29-.453 1.37-1.371l-10.89-10.89zM32.63 18.9a.97.97 0 001.057-.21l7.652-7.652c.908-.908-.464-2.278-1.371-1.371l-5.998 5.998V1.97c0-1.285-1.94-1.282-1.94 0v13.695l-5.998-5.998c-.908-.908-2.279.464-1.372 1.371 8.021 7.983 7.63 7.722 7.97 7.863z" />
@@ -15,6 +17,6 @@ function SvgFederalIndianRelations(props: React.SVGProps<SVGSVGElement>) {
       <path d="M14.382 33.003l6.202 5.132 6.21-5.132-6.202-5.138zM26.794 33.003l6.202 5.132 6.21-5.132-6.202-5.138zM39.206 33.003l6.202 5.132 6.21-5.132-6.202-5.138zM57.828 27.865l-6.21 5.138 6.202 5.132 6.21-5.132z" />
     </svg>
   );
-}
+};
 
 export default SvgFederalIndianRelations;

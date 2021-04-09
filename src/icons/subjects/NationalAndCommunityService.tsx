@@ -1,13 +1,15 @@
 import * as React from 'react';
 
-function SvgNationalAndCommunityService(props: React.SVGProps<SVGSVGElement>) {
+const SvgNationalAndCommunityService = (
+  properties: React.SVGProps<SVGSVGElement>
+) => {
   return (
     <svg
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
-      {...props}
+      {...properties}
     >
       <g fill="#000" fillRule="nonzero">
         <circle cx={4.483} cy={9.564} r={1.553} />
@@ -18,6 +20,6 @@ function SvgNationalAndCommunityService(props: React.SVGProps<SVGSVGElement>) {
       </g>
     </svg>
   );
-}
+};
 
 export default SvgNationalAndCommunityService;

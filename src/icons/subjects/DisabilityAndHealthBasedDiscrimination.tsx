@@ -1,15 +1,15 @@
 import * as React from 'react';
 
-function SvgDisabilityAndHealthBasedDiscrimination(
-  props: React.SVGProps<SVGSVGElement>
-) {
+const SvgDisabilityAndHealthBasedDiscrimination = (
+  properties: React.SVGProps<SVGSVGElement>
+) => {
   return (
     <svg
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 512 512"
-      {...props}
+      {...properties}
     >
       <path d="M413.31 34.28A28.3 28.3 0 01386.49 15a5 5 0 00-4.74-3.4A5 5 0 00377 15a28.34 28.34 0 01-26.84 19.24h-34a5 5 0 00-5 5v66.78a95.69 95.69 0 0055.31 86.56l13.12 6.08a5 5 0 004.21 0l13.2-6.04a95.69 95.69 0 0055.3-86.56V39.28a5 5 0 00-5-5zm29 71.78a85.66 85.66 0 01-49.5 77.49l-11 5.1-11-5.1a85.67 85.67 0 01-49.51-77.49V44.28h29a38.33 38.33 0 0031.45-16.58 38.32 38.32 0 0031.56 16.58h29z" />
       <path d="M333.86 107.77a48.08 48.08 0 0096.16 0 49 49 0 00-.28-5.28 5 5 0 00-9.95 1.08 37 37 0 01.23 4.2 38.06 38.06 0 11-11.41-27.18 5 5 0 007-7.14 48.09 48.09 0 00-81.76 34.32z" />
@@ -17,6 +17,6 @@ function SvgDisabilityAndHealthBasedDiscrimination(
       <path d="M146.77 467.85a71.22 71.22 0 0012.14-141.4l-.41-.07a71.22 71.22 0 10-11.73 141.47zm-15.94-81.51a16 16 0 0031.88 0 19 19 0 11-31.88 0zm15.94-50.94q3 0 6 .29v49.95a6 6 0 11-12 0v-36.13a5 5 0 00-10 0v23a29 29 0 1032 0v-34.98a61.2 61.2 0 11-16-2.13zM43.3 482a5 5 0 00-5-5H17.67a5 5 0 000 10H38.3a5 5 0 005-5z" />
     </svg>
   );
-}
+};
 
 export default SvgDisabilityAndHealthBasedDiscrimination;

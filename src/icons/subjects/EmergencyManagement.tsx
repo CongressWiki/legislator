@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-function SvgEmergencyManagement(props: React.SVGProps<SVGSVGElement>) {
+const SvgEmergencyManagement = (properties: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg
       height="1em"
@@ -12,7 +12,7 @@ function SvgEmergencyManagement(props: React.SVGProps<SVGSVGElement>) {
       shapeRendering="geometricPrecision"
       textRendering="geometricPrecision"
       imageRendering="optimizeQuality"
-      {...props}
+      {...properties}
     >
       <defs>
         <style>
@@ -29,6 +29,6 @@ function SvgEmergencyManagement(props: React.SVGProps<SVGSVGElement>) {
       />
     </svg>
   );
-}
+};
 
 export default SvgEmergencyManagement;

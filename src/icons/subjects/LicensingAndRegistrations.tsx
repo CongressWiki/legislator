@@ -1,13 +1,15 @@
 import * as React from 'react';
 
-function SvgLicensingAndRegistrations(props: React.SVGProps<SVGSVGElement>) {
+const SvgLicensingAndRegistrations = (
+  properties: React.SVGProps<SVGSVGElement>
+) => {
   return (
     <svg
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 64 64"
-      {...props}
+      {...properties}
     >
       <path d="M55 17V7a1 1 0 00-1-1h-4v2h3v9zM9 32v25a1 1 0 001 1h40a1 1 0 001-1v-7h-2v6H11V32zM41.414 2.1c-.031-.014-.061-.022-.093-.033a1 1 0 00-.259-.052C41.04 2.011 41.021 2 41 2H10a1 1 0 00-1 1v2h2V4h29v8a1 1 0 001 1h8v5h2v-6c0-.021-.011-.04-.012-.062a1 1 0 00-.052-.259c-.011-.032-.019-.062-.033-.093a1 1 0 00-.2-.293l-9-9a1 1 0 00-.289-.193zm6.172 8.9H42V5.414z" />
       <path d="M25 44v8a1 1 0 001 1h13v-2H27v-6h5v-2h-6a1 1 0 00-1 1z" />
@@ -18,6 +20,6 @@ function SvgLicensingAndRegistrations(props: React.SVGProps<SVGSVGElement>) {
       <path d="M9.293 23.707a1 1 0 001.414 0l10-10-1.414-1.414L10 21.586l-2.293-2.293-1.414 1.414z" />
     </svg>
   );
-}
+};
 
 export default SvgLicensingAndRegistrations;

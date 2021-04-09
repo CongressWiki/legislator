@@ -1,13 +1,15 @@
 import * as React from 'react';
 
-function SvgScientificCommunication(props: React.SVGProps<SVGSVGElement>) {
+const SvgScientificCommunication = (
+  properties: React.SVGProps<SVGSVGElement>
+) => {
   return (
     <svg
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 60 54"
-      {...props}
+      {...properties}
     >
       <g fill="#000" fillRule="evenodd">
         <path d="M58 5c0 .551-.449 1-1 1H3c-.551 0-1-.449-1-1V3c0-.551.449-1 1-1h54c.551 0 1 .449 1 1v2zM4 42h52V8H4v34zm28 8c0 1.103-.897 2-2 2s-2-.897-2-2 .897-2 2-2 2 .897 2 2zM57 0H3C1.346 0 0 1.346 0 3v2c0 1.302.839 2.402 2 2.816V43a1 1 0 001 1h26v2.142c-1.72.447-3 2-3 3.858 0 2.206 1.794 4 4 4s4-1.794 4-4c0-1.858-1.28-3.411-3-3.858V44h26a1 1 0 001-1V7.816A2.996 2.996 0 0060 5V3c0-1.654-1.346-3-3-3z" />
@@ -15,6 +17,6 @@ function SvgScientificCommunication(props: React.SVGProps<SVGSVGElement>) {
       </g>
     </svg>
   );
-}
+};
 
 export default SvgScientificCommunication;

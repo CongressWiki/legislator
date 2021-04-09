@@ -1,13 +1,13 @@
 import * as React from 'react';
 
-function SvgProfessionalSports(props: React.SVGProps<SVGSVGElement>) {
+const SvgProfessionalSports = (properties: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 32 32"
-      {...props}
+      {...properties}
     >
       <path
         style={{
@@ -33,6 +33,6 @@ function SvgProfessionalSports(props: React.SVGProps<SVGSVGElement>) {
       />
     </svg>
   );
-}
+};
 
 export default SvgProfessionalSports;

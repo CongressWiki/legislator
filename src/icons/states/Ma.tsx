@@ -1,8 +1,12 @@
 import * as React from 'react';
 
-function SvgMa(props: React.SVGProps<SVGSVGElement>) {
+const SvgMa = (properties: React.SVGProps<SVGSVGElement>) => {
   return (
-    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <svg
+      viewBox="0 0 100 100"
+      xmlns="http://www.w3.org/2000/svg"
+      {...properties}
+    >
       <path
         d="M45.312 32.05l-.291-.193v.29l.29-.096zM42.4 29.43l.68-.291v-.388zm12.036-7.57l-.097-1.36-.194-.776.29 2.135zm-42.417-9.998l-.68.29-5.532 1.651-1.941.68-2.233.679-.776.291v.291l.291 5.048.291 4.659.291 4.27.486.292 1.747-.486 7.862-2.33.194.486 13.977-5.338.097.194 1.262-.486 4.465-1.747 4.27 5.145.583-.486.291-1.456-.097 2.33h.97l.292 1.165.874 1.65 4.562-5.533 3.785 1.262.874-1.941 6.212-3.3-2.621-5.145.68 3.3-3.204 2.427-3.591.291-7.183-7.668-3.203-4.853 3.203-3.397-3.3-.194L33.858.699l-.097-.194-5.532 6.018-12.23 4.077-3.98 1.262z"
         fill="#f9f9f9"
@@ -13,6 +17,6 @@ function SvgMa(props: React.SVGProps<SVGSVGElement>) {
       />
     </svg>
   );
-}
+};
 
 export default SvgMa;

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-function SvgMotorVehicles(props: React.SVGProps<SVGSVGElement>) {
+const SvgMotorVehicles = (properties: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg
       height="1em"
@@ -12,7 +12,7 @@ function SvgMotorVehicles(props: React.SVGProps<SVGSVGElement>) {
       shapeRendering="geometricPrecision"
       textRendering="geometricPrecision"
       imageRendering="optimizeQuality"
-      {...props}
+      {...properties}
     >
       <defs>
         <style>
@@ -81,6 +81,6 @@ function SvgMotorVehicles(props: React.SVGProps<SVGSVGElement>) {
       <path className="motor-vehicles_svg__fil2" d="M0 0h6.827v6.827H0z" />
     </svg>
   );
-}
+};
 
 export default SvgMotorVehicles;

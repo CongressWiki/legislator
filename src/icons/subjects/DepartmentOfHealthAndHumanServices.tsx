@@ -1,15 +1,15 @@
 import * as React from 'react';
 
-function SvgDepartmentOfHealthAndHumanServices(
-  props: React.SVGProps<SVGSVGElement>
-) {
+const SvgDepartmentOfHealthAndHumanServices = (
+  properties: React.SVGProps<SVGSVGElement>
+) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
       width={1200}
       height={1200}
-      {...props}
+      {...properties}
     >
       <image
         data-name="Color Fill 2"
@@ -21,6 +21,6 @@ function SvgDepartmentOfHealthAndHumanServices(
       />
     </svg>
   );
-}
+};
 
 export default SvgDepartmentOfHealthAndHumanServices;

@@ -1,13 +1,17 @@
 import * as React from 'react';
 
-function SvgEconomicPerformanceAndConditions(
-  props: React.SVGProps<SVGSVGElement>
-) {
+const SvgEconomicPerformanceAndConditions = (
+  properties: React.SVGProps<SVGSVGElement>
+) => {
   return (
-    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <svg
+      viewBox="0 0 100 100"
+      xmlns="http://www.w3.org/2000/svg"
+      {...properties}
+    >
       <path d="M91.035 8.251l-1.389 17.853a3.017 3.017 0 01-3.009 2.778c-.071 0-.151 0-.231-.01a3.014 3.014 0 01-2.778-3.24l.543-6.904-26.617 40.013a3.015 3.015 0 01-3.764 1.077l-5.364-2.446-11.161 17.833a3.035 3.035 0 01-3.17 1.359l-4.207-.876-11.351 13.274h66.752a3.02 3.02 0 013.019 3.019A3.015 3.015 0 0185.289 95H11.975a3.021 3.021 0 01-3.019-3.019V18.677a3.021 3.021 0 013.019-3.019 3.016 3.016 0 013.019 3.019v65.142l11.462-13.405a3 3 0 012.909-.996l3.895.805 11.442-18.296a3.023 3.023 0 013.814-1.147l5.435 2.476 24.948-37.517-5.716 2.727c-1.51.714-3.311.08-4.025-1.419a3.004 3.004 0 011.419-4.025l16.152-7.729a3.017 3.017 0 013.009.242 3.01 3.01 0 011.297 2.716z" />
     </svg>
   );
-}
+};
 
 export default SvgEconomicPerformanceAndConditions;

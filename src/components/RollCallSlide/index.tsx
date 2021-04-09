@@ -36,8 +36,10 @@ const RollCallSlide = ({
   return (
     <Wrapper color={rollCallStatusColor} className={className}>
       <QuestionContainer
-        onClick={() => setIsQuestionExpanded(!isQuestionExpanded)}
         expanded={isQuestionExpanded}
+        onClick={() => {
+          setIsQuestionExpanded(!isQuestionExpanded);
+        }}
       >
         {question}
       </QuestionContainer>
@@ -58,11 +60,11 @@ const RollCallSlide = ({
                 count={votes.length}
                 color={color}
                 focusedDecision={focusedDecision}
-                onClick={() =>
+                onClick={() => {
                   focusedDecision === decision
                     ? setFocusedDecision('')
-                    : setFocusedDecision(decision)
-                }
+                    : setFocusedDecision(decision);
+                }}
               />
             ))}
             <RequiresText>{requires} majority to win</RequiresText>
@@ -74,6 +76,7 @@ const RollCallSlide = ({
     </Wrapper>
   );
 };
+
 export default RollCallSlide;
 
 const Wrapper = styled.div<{ color: string }>`
@@ -91,9 +94,9 @@ const Wrapper = styled.div<{ color: string }>`
   flex-direction: column;
 
   background-color: var(--color-ribbonCard);
-  border: solid 1px ${(props) => props.color};
+  border: solid 1px ${(properties) => properties.color};
   border-radius: 10px;
-  box-shadow: 0 0 10px 1px ${(props) => props.color};
+  box-shadow: 0 0 10px 1px ${(properties) => properties.color};
 
   transition: all 0.3s ease-in-out;
 `;
@@ -105,8 +108,9 @@ const QuestionContainer = styled.h3<{ expanded: boolean }>`
   width: calc(100% - 1rem);
   padding-left: 2rem;
   padding-right: 2rem;
-  padding-bottom: ${(props) => (props.expanded ? '3rem' : '1rem')};
-  max-height: ${(props) => (props.expanded ? 'calc(100% - 1rem)' : '1.7rem')};
+  padding-bottom: ${(properties) => (properties.expanded ? '3rem' : '1rem')};
+  max-height: ${(properties) =>
+    properties.expanded ? 'calc(100% - 1rem)' : '1.7rem'};
   margin: 0;
 
   transition: all 0.3s ease-in-out;
@@ -198,7 +202,7 @@ const shapeVotesByDecision = (
 
   return decisions
     .map((decision, index) => ({
-      decision: decision,
+      decision,
       color: decisionColors[index],
       votes: [...votesByDecision[decision]],
     }))
@@ -215,25 +219,25 @@ const UNIQUE_DECISION_COLORS = [
 
 const getDecisionColor = (decision: string) => {
   switch (decision) {
-    case 'Yea':
-    case 'Yes':
-    case 'Guilty':
-    case 'Passed':
-    case 'Bill Passed':
-    case 'Amendment Passed':
-    case 'Concurrent Resolution Agreed to':
-      return 'var(--color-yeaGreen)';
-    case 'Nay':
-    case 'No':
-    case 'Not Guilty':
-    case 'Concurrent Resolution Disagreed to':
-      return 'var(--color-nayRed)';
-    case 'Not Voting':
-      return 'var(--color-gray700)';
-    case 'Present':
-      return 'orange';
-    default:
-      return UNIQUE_DECISION_COLORS.pop() || 'black';
+  case 'Yea':
+  case 'Yes':
+  case 'Guilty':
+  case 'Passed':
+  case 'Bill Passed':
+  case 'Amendment Passed':
+  case 'Concurrent Resolution Agreed to':
+    return 'var(--color-yeaGreen)';
+  case 'Nay':
+  case 'No':
+  case 'Not Guilty':
+  case 'Concurrent Resolution Disagreed to':
+    return 'var(--color-nayRed)';
+  case 'Not Voting':
+    return 'var(--color-gray700)';
+  case 'Present':
+    return 'orange';
+  default:
+    return UNIQUE_DECISION_COLORS.pop() || 'black';
   }
 };
 
@@ -251,5 +255,6 @@ const flattenAndShapeVotesForUsaMap = (
       })),
     ];
   }
+
   return votes;
 };

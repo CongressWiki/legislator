@@ -1,13 +1,13 @@
 import * as React from 'react';
 
-function SvgEmployeePerformance(props: React.SVGProps<SVGSVGElement>) {
+const SvgEmployeePerformance = (properties: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 64 64"
-      {...props}
+      {...properties}
     >
       <path
         style={{
@@ -33,6 +33,6 @@ function SvgEmployeePerformance(props: React.SVGProps<SVGSVGElement>) {
       />
     </svg>
   );
-}
+};
 
 export default SvgEmployeePerformance;

@@ -45,7 +45,7 @@ const Wrapper = styled.div<{ size: string }>`
   background: transparent;
   padding: 0;
   margin: 0;
-  height: ${(props) => props.size};
+  height: ${(properties) => properties.size};
   transition: all 0.3s ease-in-out;
 
   .avatar {

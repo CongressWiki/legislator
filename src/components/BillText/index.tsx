@@ -7,7 +7,7 @@ export type BillTextProps = {
 };
 
 export default function BillText({ billText }: BillTextProps) {
-  // console.log(rawText);
+  // Console.log(rawText);
 
   // const billTextSplitByLines = rawText.split(/[-_]{10,}/gm);
   // let billText = billTextSplitByLines[billTextSplitByLines.length - 1];

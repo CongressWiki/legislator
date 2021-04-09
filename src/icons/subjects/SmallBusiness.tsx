@@ -1,13 +1,13 @@
 import * as React from 'react';
 
-function SvgSmallBusiness(props: React.SVGProps<SVGSVGElement>) {
+const SvgSmallBusiness = (properties: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 64 64"
-      {...props}
+      {...properties}
     >
       <style>
         {
@@ -19,6 +19,6 @@ function SvgSmallBusiness(props: React.SVGProps<SVGSVGElement>) {
       <circle cx={32} cy={46} r={1} />
     </svg>
   );
-}
+};
 
 export default SvgSmallBusiness;

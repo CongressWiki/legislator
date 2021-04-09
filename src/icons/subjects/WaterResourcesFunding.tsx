@@ -1,8 +1,14 @@
 import * as React from 'react';
 
-function SvgWaterResourcesFunding(props: React.SVGProps<SVGSVGElement>) {
+const SvgWaterResourcesFunding = (
+  properties: React.SVGProps<SVGSVGElement>
+) => {
   return (
-    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <svg
+      viewBox="0 0 100 100"
+      xmlns="http://www.w3.org/2000/svg"
+      {...properties}
+    >
       <path
         fill="none"
         stroke="#000"
@@ -16,6 +22,6 @@ function SvgWaterResourcesFunding(props: React.SVGProps<SVGSVGElement>) {
       <path d="M45.93 38.5h2v39.743h-2zM51.93 38.5h2v39.743h-2z" />
     </svg>
   );
-}
+};
 
 export default SvgWaterResourcesFunding;

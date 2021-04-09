@@ -1,15 +1,15 @@
 import * as React from 'react';
 
-function SvgScienceTechnologyCommunications(
-  props: React.SVGProps<SVGSVGElement>
-) {
+const SvgScienceTechnologyCommunications = (
+  properties: React.SVGProps<SVGSVGElement>
+) => {
   return (
     <svg
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 64 64"
-      {...props}
+      {...properties}
     >
       <path d="M14 9h2v15h-2zM22 8h2v2h-2zM22 24v2h2v-2h-2z" />
       <path d="M20 23a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-3v2h11v2H22v2h11a4.973 4.973 0 013 1V7a3 3 0 00-3-3H18v20h2zm8-17h5v2h-5zm0 4h5v2h-5zm0 4h5v2h-5zm0 4h5v2h-5zm0 4h5v2h-5zm0 4h5v2h-5zM20 7a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1zm0 8a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1z" />
@@ -20,6 +20,6 @@ function SvgScienceTechnologyCommunications(
       <path d="M53 5.414V7h1.586L53 5.414zM35.561 51a5.79 5.79 0 003.268 1H49v-2H38.829a5.79 5.79 0 00-3.268 1zM59 50h-1v2h1a1 1 0 000-2zM51 50h5v2h-5z" />
     </svg>
   );
-}
+};
 
 export default SvgScienceTechnologyCommunications;

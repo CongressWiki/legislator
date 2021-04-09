@@ -1,8 +1,12 @@
 import * as React from 'react';
 
-function SvgMs(props: React.SVGProps<SVGSVGElement>) {
+const SvgMs = (properties: React.SVGProps<SVGSVGElement>) => {
   return (
-    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <svg
+      viewBox="0 0 100 100"
+      xmlns="http://www.w3.org/2000/svg"
+      {...properties}
+    >
       <path
         d="M49.76 98.784l-.485.097v.097l.485-.194zm9.027-1.164h-1.359l1.262.097.097-.097zm-11.26.97l-.388.388.097.097.292-.485zm9.124-.776h-3.688l3.494.097zM16.176 5.312v.098L12.1 12.204l.388 5.241-5.533 6.115 1.456 1.748-3.688 15.53 1.747 3.3-.97.68.096 2.135v.679l2.233 5.241-.194 3.204 3.591 4.367-7.377 12.619-1.165 7.57-2.038 3.01 1.359 3.494-1.262 1.262L34.23 84.71l-1.165 4.66 4.271 8.347 2.232 2.814v-.097l3.592-4.076 7.57-1.65 6.99.776 1.067-1.359v-.097l-4.95-29.895-.194-21.84-.583-39.795-1.359-.874-.388-.776h-.194l-4.853.679-8.542 1.165-19.412 2.426-2.136.194z"
         fill="#f9f9f9"
@@ -13,6 +17,6 @@ function SvgMs(props: React.SVGProps<SVGSVGElement>) {
       />
     </svg>
   );
-}
+};
 
 export default SvgMs;

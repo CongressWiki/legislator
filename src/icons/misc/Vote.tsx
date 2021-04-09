@@ -1,13 +1,13 @@
 import * as React from 'react';
 
-function SvgVote(props: React.SVGProps<SVGSVGElement>) {
+const SvgVote = (properties: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="-346 256 100 100"
-      {...props}
+      {...properties}
     >
       <circle cx={-332.243} cy={261.297} r={5.175} />
       <path d="M-322.004 280.889v-6.924c0-2.98-1.753-5.9-5.242-5.9l-10.061-.005c-3.178 0-5.171 2.589-5.171 5.823v7.007h20.474z" />
@@ -19,6 +19,6 @@ function SvgVote(props: React.SVGProps<SVGSVGElement>) {
       <path d="M-250.487 280.889v-6.924c0-2.98-1.752-5.9-5.24-5.9l-10.061-.005c-3.179 0-5.173 2.589-5.173 5.823v7.007h20.474zm-14.212 26.508v10.125c0 .65 2.496.65 2.496 0v-5.882c0-4.026 5.974-4.026 5.974 0V356h-27.762v-8.505s-12.47-7.699-12.47-12.314v-23.326c0-4.673 6.569-4.89 6.569 0v13.443c0 .706 2.264.64 2.264-.066v-35.729c0-4.02 6.027-4.02 6.027 0v28.02c0 .65 2.44.65 2.44 0v-13.81c0-4.026 6.026-4.026 6.026 0v13.81c0 .65 2.408.65 2.408 0v-10.125c0-4.028 6.028-4.028 6.028-.001z" />
     </svg>
   );
-}
+};
 
 export default SvgVote;

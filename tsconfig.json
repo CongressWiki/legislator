@@ -48,5 +48,8 @@
     "noEmit": true,
     // "skipLibCheck": true
     "sourceMap": true
-  }
+  },
+  "include": [
+    "src"
+  ]
 }

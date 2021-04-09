@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 import SpottedUsaMapLogo from '@static/images/SpottedUsaMapLogo.png';
 
-export type SEOProps = {
+export type SeoProps = {
   pathname: string;
   lang?: string;
   title?: string;
@@ -16,7 +16,22 @@ export type SEOProps = {
   >;
 };
 
-const SEO = ({
+const siteMetadataQuery = graphql`
+  query {
+    site {
+      siteMetadata {
+        title
+        description
+        author
+        keywords
+        twitter
+        siteUrl
+      }
+    }
+  }
+`;
+
+const Seo = ({
   pathname,
   lang,
   title,
@@ -24,26 +39,11 @@ const SEO = ({
   keywords,
   billSocialCard,
   meta,
-}: SEOProps) => {
-  const { site } = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            title
-            description
-            author
-            keywords
-            twitter
-            siteUrl
-          }
-        }
-      }
-    `
-  );
+}: SeoProps) => {
+  const { site } = useStaticQuery(siteMetadataQuery);
 
   const metaDescription = truncate(
-    description || site.siteMetadata.description,
+    description ?? site.siteMetadata.description,
     200
   );
   let socialCard = SpottedUsaMapLogo;
@@ -72,60 +72,60 @@ const SEO = ({
       link={
         canonical
           ? [
-              {
-                rel: 'canonical',
-                href: canonical,
-              },
-            ]
+            {
+              rel: 'canonical',
+              href: canonical,
+            },
+          ]
           : []
       }
       meta={[
         {
-          name: `description`,
+          name: 'description',
           content: metaDescription,
         },
         {
-          name: `keywords`,
+          name: 'keywords',
           content: metaKeywords.join(','),
         },
         {
-          name: `image`,
+          name: 'image',
           content: socialCard,
         },
         {
-          property: `og:title`,
+          property: 'og:title',
           content: title,
         },
         {
-          property: `og:description`,
+          property: 'og:description',
           content: metaDescription,
         },
         {
-          property: `og:image`,
+          property: 'og:image',
           content: socialCard,
         },
         {
-          property: `og:type`,
-          content: `website`,
+          property: 'og:type',
+          content: 'website',
         },
         {
-          name: `twitter:creator`,
+          name: 'twitter:creator',
           content: site.siteMetadata.twitter,
         },
         {
-          name: `twitter:site`,
+          name: 'twitter:site',
           content: site.siteMetadata.twitter,
         },
         {
-          name: `twitter:title`,
+          name: 'twitter:title',
           content: title,
         },
         {
-          name: `twitter:description`,
+          name: 'twitter:description',
           content: metaDescription,
         },
         {
-          name: `twitter:image`,
+          name: 'twitter:image',
           content: socialCard,
         },
         {
@@ -842,22 +842,23 @@ const SEO = ({
   );
 };
 
-SEO.defaultProps = {
-  lang: `en`,
+Seo.defaultProps = {
+  lang: 'en',
   meta: [],
-  description: ``,
+  description: '',
 };
 
-export default SEO;
+export default Seo;
 
 function truncate(string: string, limit: number, useWordBoundary = true) {
   if (string.length <= limit) {
     return string;
   }
-  const subString = string.substr(0, limit - 1); // the original check
+
+  const subString = string.slice(0, Math.max(0, limit - 1)); // The original check
   return (
     (useWordBoundary
-      ? subString.substr(0, subString.lastIndexOf(' '))
+      ? subString.slice(0, Math.max(0, subString.lastIndexOf(' ')))
       : subString) + '…'
   );
 }

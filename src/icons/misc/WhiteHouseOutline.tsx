@@ -1,13 +1,13 @@
 import * as React from 'react';
 
-function SvgWhiteHouseOutline(props: React.SVGProps<SVGSVGElement>) {
+const SvgWhiteHouseOutline = (properties: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 80 80"
-      {...props}
+      {...properties}
     >
       <path
         style={{
@@ -63,6 +63,6 @@ function SvgWhiteHouseOutline(props: React.SVGProps<SVGSVGElement>) {
       <path d="M39.1 55.758h2.96v3.981H39.1zm9.327.301c.705 0 1.262.568 1.273 1.273l.018 2.09-1.31-.056-1.254.014v-2.048a1.27 1.27 0 011.273-1.273zm-15.754 0c-.705 0-1.263.568-1.273 1.273l-.018 2.065 1.309-.031 1.255-.012v-2.022a1.27 1.27 0 00-1.273-1.273z" />
     </svg>
   );
-}
+};
 
 export default SvgWhiteHouseOutline;

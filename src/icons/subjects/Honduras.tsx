@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-function SvgHonduras(props: React.SVGProps<SVGSVGElement>) {
+const SvgHonduras = (properties: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg
       height="1em"
@@ -11,7 +11,7 @@ function SvgHonduras(props: React.SVGProps<SVGSVGElement>) {
       clipRule="evenodd"
       strokeLinejoin="round"
       strokeMiterlimit={1.414}
-      {...props}
+      {...properties}
     >
       <path fill="none" d="M0 0h122.88v122.88H0z" />
       <g fillRule="nonzero">
@@ -21,6 +21,6 @@ function SvgHonduras(props: React.SVGProps<SVGSVGElement>) {
       </g>
     </svg>
   );
-}
+};
 
 export default SvgHonduras;

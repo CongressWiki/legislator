@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Bill as BillData } from '@type/hasura';
 import styled from 'styled-components';
-// import BillText from '@components/BillText';
+// Import BillText from '@components/BillText';
 import BillSummary from '@components/BillSummary';
 import BillTitle from '@components/BillTitle';
 import StampText from '@components/StampText';
@@ -17,9 +17,9 @@ const Bill = ({
   type,
   number,
   status,
-  // subject,
+  // Subject,
   title,
-  // bill_text,
+  // Bill_text,
   summary,
   className,
 }: BillProps) => {

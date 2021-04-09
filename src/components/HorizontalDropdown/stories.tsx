@@ -1,18 +1,20 @@
 import React from 'react';
-import {Story, Meta} from '@storybook/react';
+import { Story, Meta } from '@storybook/react';
 
-import HorizontalDropdown, {HorizontalDropdownProps} from './index';
+import HorizontalDropdown, {
+  HorizontalDropdownProps as HorizontalDropdownProperties,
+} from './index';
 
 export default {
   title: 'Components/HorizontalDropdown',
-  component: HorizontalDropdown
+  component: HorizontalDropdown,
 } as Meta;
 
-const Template: Story<HorizontalDropdownProps> = (args) => (
-  <HorizontalDropdown {...args} />
+const Template: Story<HorizontalDropdownProperties> = (arguments_) => (
+  <HorizontalDropdown {...arguments_} />
 );
 
 export const Default = Template.bind({});
 Default.args = {
-  options: ['Bears', 'Beats', 'Battlestar Galactica']
+  options: ['Bears', 'Beats', 'Battlestar Galactica'],
 };

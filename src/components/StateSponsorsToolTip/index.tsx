@@ -24,7 +24,7 @@ const StateSponsorsToolTip = ({
   className,
 }: StateSponsorsToolTipProps) => {
   const hasBillCosponsorships = cosponsors.length > 0;
-  const isSponsorState = !!sponsor;
+  const isSponsorState = Boolean(sponsor);
   const hasSponsors = hasBillCosponsorships || isSponsorState;
   return (
     <Wrapper className={className} hide={!hasSponsors}>
@@ -42,7 +42,7 @@ const Wrapper = styled.div<{ hide?: boolean }>`
   padding: 0.5rem;
   z-index: 900;
 
-  opacity: ${(props) => (props.hide ? 0 : 1)};
+  opacity: ${(properties) => (properties.hide ? 0 : 1)};
   /* transition: opacity 0.3s; */
 
   border: solid thin var(--color-text);
@@ -103,7 +103,7 @@ const ToolTipUnorderedList = styled.ul<{ columns?: number }>`
   padding-left: 0;
   height: 100%;
 
-  column-count: ${(props) => props.columns || 1};
+  column-count: ${(properties) => properties.columns || 1};
   column-gap: 1.5em;
 
   list-style: none;

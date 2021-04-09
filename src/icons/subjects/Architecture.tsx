@@ -1,13 +1,13 @@
 import * as React from 'react';
 
-function SvgArchitecture(props: React.SVGProps<SVGSVGElement>) {
+const SvgArchitecture = (properties: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 512 512"
-      {...props}
+      {...properties}
     >
       <path d="M480.998 423.4a4.001 4.001 0 01-3.991-3.761l-.025-.313c-.008-.116-.011-.232-.008-.349l.014-.483c.006-.163.013-.325.013-.489a4 4 0 018 0v1.395a4 4 0 01-3.882 3.998l-.121.002z" />
       <path d="M421 425a4 4 0 01-4-4V111c0-19.476 14.913-34.732 33.95-34.732 18.775 0 34.05 16.086 34.05 35.858v306.868a4 4 0 01-8 0V112.125c0-15.361-11.686-27.858-26.05-27.858C436.156 84.268 425 95.76 425 111v310a4 4 0 01-4 4z" />
@@ -18,6 +18,6 @@ function SvgArchitecture(props: React.SVGProps<SVGSVGElement>) {
       <path d="M326 85a4 4 0 01-4-4V41a4 4 0 018 0v40a4 4 0 01-4 4zM296 85a4 4 0 01-4-4V41a4 4 0 018 0v40a4 4 0 01-4 4zM316 435a4 4 0 01-4-4V321a4 4 0 014-4h20a4 4 0 010 8h-16v106a4 4 0 01-4 4zM256 225h-70a4 4 0 010-8h70a4 4 0 010 8z" />
     </svg>
   );
-}
+};
 
 export default SvgArchitecture;

@@ -1,19 +1,19 @@
 import * as React from 'react';
 
-function SvgNativeAmericans(props: React.SVGProps<SVGSVGElement>) {
+const SvgNativeAmericans = (properties: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 66 66"
-      {...props}
+      {...properties}
     >
       <path d="M39.89 21.032a1.034 1.034 0 00-1.262 0L33 25.374l-5.627-4.342a1.033 1.033 0 00-1.261 0l-14.454 11.15a1.032 1.032 0 000 1.635l14.454 11.15c.37.287.889.287 1.26 0L33 40.627l5.628 4.342c.372.286.89.286 1.262 0l14.452-11.15c.506-.392.506-1.244 0-1.636L39.89 21.032zM26.742 42.847L13.977 33l12.765-9.847 4.568 3.525-7.135 5.504a1.034 1.034 0 000 1.635l7.135 5.505-4.568 3.525zM33 27.982L39.505 33 33 38.018 26.496 33 33 27.982zm6.259 14.865l-4.569-3.525 7.134-5.505c.508-.39.508-1.244 0-1.635l-7.134-5.504 4.569-3.525L52.022 33l-12.763 9.847z" />
       <circle cx={60.917} cy={32.656} r={4.083} />
       <circle cx={5.083} cy={33.344} r={4.083} />
     </svg>
   );
-}
+};
 
 export default SvgNativeAmericans;

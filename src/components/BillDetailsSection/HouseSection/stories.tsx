@@ -1,15 +1,15 @@
-import React from 'react';
-import { Story, Meta } from '@storybook/react';
+// Import React from 'react';
+// import { Story, Meta } from '@storybook/react';
 
-import HouseSection, { HouseSectionProps } from './index';
+// import HouseSection, { HouseSectionProps } from './index';
 
-export default {
-  title: 'Components/BillsDetailsSection/HouseSection',
-  component: HouseSection,
-} as Meta;
+// export default {
+//   title: 'Components/BillsDetailsSection/HouseSection',
+//   component: HouseSection,
+// } as Meta;
 
-const Template: Story<HouseSectionProps> = ({ ...args }) => (
-  <HouseSection {...args} />
-);
+// const Template: Story<HouseSectionProps> = ({ ...args }) => (
+//   <HouseSection {...args} />
+// );
 
-export const Default = Template.bind({});
+// export const Default = Template.bind({});

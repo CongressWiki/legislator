@@ -14,7 +14,7 @@ export default function useLocalStorage(key: string, initialValue?: string) {
         // Parse stored json or if none return initialValue
         return item ? JSON.parse(item) : initialValue;
       }
-    } catch (error) {
+    } catch (error: unknown) {
       // If error also return initialValue
       console.log(error);
       return initialValue;
@@ -36,7 +36,7 @@ export default function useLocalStorage(key: string, initialValue?: string) {
         // Save to local storage
         window.localStorage.setItem(key, JSON.stringify(valueToStore));
       }
-    } catch (error) {
+    } catch (error: unknown) {
       // A more advanced implementation would handle the error case
       console.log(error);
     }

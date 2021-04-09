@@ -1,15 +1,15 @@
 import * as React from 'react';
 
-function SvgGovernmentEmployeePayBenefitsPersonnelManagement(
-  props: React.SVGProps<SVGSVGElement>
-) {
+const SvgGovernmentEmployeePayBenefitsPersonnelManagement = (
+  properties: React.SVGProps<SVGSVGElement>
+) => {
   return (
     <svg
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 48 48"
-      {...props}
+      {...properties}
     >
       <g transform="translate(-377.999 -1733.373)">
         <path
@@ -117,6 +117,6 @@ function SvgGovernmentEmployeePayBenefitsPersonnelManagement(
       />
     </svg>
   );
-}
+};
 
 export default SvgGovernmentEmployeePayBenefitsPersonnelManagement;

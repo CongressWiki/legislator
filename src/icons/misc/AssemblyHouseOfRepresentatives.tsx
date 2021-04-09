@@ -1,15 +1,15 @@
 import * as React from 'react';
 
-function SvgAssemblyHouseOfRepresentatives(
-  props: React.SVGProps<SVGSVGElement>
-) {
+const SvgAssemblyHouseOfRepresentatives = (
+  properties: React.SVGProps<SVGSVGElement>
+) => {
   return (
     <svg
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="-349 211 100 100"
-      {...props}
+      {...properties}
     >
       <circle cx={-343.7} cy={278.8} r={0.9} />
       <circle cx={-341.3} cy={278.8} r={0.9} />
@@ -441,6 +441,6 @@ function SvgAssemblyHouseOfRepresentatives(
       <circle cx={-254.5} cy={270.9} r={0.9} />
     </svg>
   );
-}
+};
 
 export default SvgAssemblyHouseOfRepresentatives;

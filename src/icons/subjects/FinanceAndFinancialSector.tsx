@@ -1,13 +1,15 @@
 import * as React from 'react';
 
-function SvgFinanceAndFinancialSector(props: React.SVGProps<SVGSVGElement>) {
+const SvgFinanceAndFinancialSector = (
+  properties: React.SVGProps<SVGSVGElement>
+) => {
   return (
     <svg
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 128 128"
-      {...props}
+      {...properties}
     >
       <path d="M58 13c-1.7 0-3 1.3-3 3v98c0 1.7 1.3 3 3 3s3-1.3 3-3V16c0-1.7-1.3-3-3-3zM31.2 115.1c.1.2.2.4.3.5.1.2.2.3.4.5.6.6 1.3.9 2.1.9s1.6-.3 2.1-.9c.6-.6.9-1.3.9-2.1 0-.2 0-.4-.1-.6 0-.2-.1-.4-.2-.6-.1-.2-.2-.3-.3-.5s-.2-.3-.4-.5l-.4-.4c-.2-.1-.3-.2-.5-.3-.2-.1-.4-.1-.6-.2-1-.2-2 .1-2.7.8-.1.1-.3.3-.4.5s-.2.3-.3.5c-.1.2-.1.4-.2.6 0 .2-.1.4-.1.6s0 .4.1.6c.2.3.2.5.3.6z" />
       <circle cx={34} cy={68} r={3} />
@@ -25,6 +27,6 @@ function SvgFinanceAndFinancialSector(props: React.SVGProps<SVGSVGElement>) {
       <path d="M124 121h-4V54c0-1.7-1.3-3-3-3h-9V34c0-1.7-1.3-3-3-3h-9v-9c0-1.7-1.3-3-3-3h-9V4c0-1.7-1.3-3-3-3H46c-1.7 0-3 1.3-3 3v15h-9c-1.7 0-3 1.3-3 3v9h-9c-1.7 0-3 1.3-3 3v17h-9c-1.7 0-3 1.3-3 3v67H4c-1.7 0-3 1.3-3 3s1.3 3 3 3h120c1.7 0 3-1.3 3-3s-1.3-3-3-3zm-10-64v64h-6V57h6zm-12 64H84V37h18v84zM90 25v6h-6v-6h6zm-53 0h6v6h-6v-6zM25 37h18v84H25V37zM13 57h6v64h-6V57zm36 64V7h29v114H49z" />
     </svg>
   );
-}
+};
 
 export default SvgFinanceAndFinancialSector;

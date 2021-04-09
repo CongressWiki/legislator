@@ -14,6 +14,9 @@ import ws from 'ws';
 import type { NormalizedCacheObject } from '@apollo/client';
 
 const GATSBY_HASURA_GRAPHQL_URL = process.env.GATSBY_HASURA_GRAPHQL_URL;
+if (!GATSBY_HASURA_GRAPHQL_URL) {
+  throw new Error('Missing env var: `GATSBY_HASURA_GRAPHQL_URL');
+}
 
 let apolloClient: ApolloClient<NormalizedCacheObject>;
 
@@ -71,17 +74,17 @@ const createApolloClient = () => {
   return client;
 };
 
-// export type withApolloProps = {
+// Export type withApolloProps = {
 //   children: ReactNode;
 // };
 
-const withApollo = <PageProps extends object>(
-  PageComponent: React.ComponentType<PageProps>
+const withApollo = <PageProperties extends Record<string, unknown>>(
+  PageComponent: React.ComponentType<PageProperties>
 ) => {
-  const WithApollo = (pageProps: PageProps) => {
+  const WithApollo = (pageProperties: PageProperties) => {
     return (
       <ApolloProvider client={createApolloClient()}>
-        <PageComponent {...pageProps} />
+        <PageComponent {...pageProperties} />
       </ApolloProvider>
     );
   };

@@ -1,13 +1,13 @@
 import * as React from 'react';
 
-function SvgConsumerCredit(props: React.SVGProps<SVGSVGElement>) {
+const SvgConsumerCredit = (properties: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 64 64"
-      {...props}
+      {...properties}
     >
       <g data-name="Layer 2">
         <path d="M18 42h20v2H18zM18 37h7v2h-7zM18 32h5v2h-5zM18 27h5v2h-5zM18 22h5v2h-5z" />
@@ -16,6 +16,6 @@ function SvgConsumerCredit(props: React.SVGProps<SVGSVGElement>) {
       </g>
     </svg>
   );
-}
+};
 
 export default SvgConsumerCredit;

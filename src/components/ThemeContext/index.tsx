@@ -52,9 +52,9 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
       localStorage.setItem(COLOR_MODE_KEY, newValue);
 
       Object.entries(COLORS).forEach(([name, colorByTheme]) => {
-        const cssVarName = `--color-${name}`;
+        const cssVariableName = `--color-${name}`;
 
-        root.style.setProperty(cssVarName, colorByTheme[newValue]);
+        root.style.setProperty(cssVariableName, colorByTheme[newValue]);
       });
 
       rawSetColorMode(newValue);

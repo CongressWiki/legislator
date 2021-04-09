@@ -1,8 +1,14 @@
 import * as React from 'react';
 
-function SvgGeneralPublicLandsMatters(props: React.SVGProps<SVGSVGElement>) {
+const SvgGeneralPublicLandsMatters = (
+  properties: React.SVGProps<SVGSVGElement>
+) => {
   return (
-    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <svg
+      viewBox="0 0 100 100"
+      xmlns="http://www.w3.org/2000/svg"
+      {...properties}
+    >
       <path d="M41.6 46.3h-8.1c-.6 0-1-.4-1-1s.4-1 1-1h8.1c.6 0 1 .4 1 1s-.4 1-1 1z" />
       <path d="M89.7 73.8H10.3c-.3 0-.6-.2-.8-.4-.2-.3-.2-.6-.1-.9L20.5 45c.2-.4.5-.6.9-.6h4c.6 0 1 .4 1 1s-.4 1-1 1H22L11.8 71.8h76.4L77.9 46.3h-3.4c-.6 0-1-.4-1-1s.4-1 1-1h4c.4 0 .8.2.9.6l11.1 27.5c.1.3.1.7-.1.9-.1.3-.4.5-.7.5z" />
       <path d="M67.3 46.3h-9c-.6 0-1-.4-1-1s.4-1 1-1h9c.6 0 1 .4 1 1s-.4 1-1 1z" />
@@ -24,6 +30,6 @@ function SvgGeneralPublicLandsMatters(props: React.SVGProps<SVGSVGElement>) {
       </g>
     </svg>
   );
-}
+};
 
 export default SvgGeneralPublicLandsMatters;

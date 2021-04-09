@@ -1,13 +1,13 @@
 import * as React from 'react';
 
-function SvgOrganizedCrime(props: React.SVGProps<SVGSVGElement>) {
+const SvgOrganizedCrime = (properties: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 64 64"
-      {...props}
+      {...properties}
     >
       <path d="M31.974 60.001a27.995 27.995 0 01-13.972-3.753C4.635 48.532.036 31.375 7.749 18.002c4.99-8.637 14.294-14.001 24.28-14.001 4.886 0 9.717 1.298 13.97 3.753C59.367 15.47 63.965 32.627 56.248 46c-4.985 8.636-14.287 14.001-24.274 14.001zm.055-54c-9.274 0-17.915 4.981-22.548 13.001-7.162 12.417-2.891 28.35 9.521 35.514a25.99 25.99 0 0012.972 3.485c9.275 0 17.913-4.982 22.542-13.001 7.166-12.417 2.897-28.349-9.517-35.513a25.983 25.983 0 00-12.97-3.486z" />
       <path d="M17 50.999a1 1 0 01-1-1c0-3.859 3.141-7 7-7a1 1 0 110 2c-2.757 0-5 2.243-5 5a1 1 0 01-1 1z" />
@@ -46,6 +46,6 @@ function SvgOrganizedCrime(props: React.SVGProps<SVGSVGElement>) {
       </g>
     </svg>
   );
-}
+};
 
 export default SvgOrganizedCrime;

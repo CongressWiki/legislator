@@ -43,9 +43,9 @@ const BillCard = ({
   return (
     <Wrapper
       className={className}
-      onClick={onClick}
       variants={motionVariants}
       number={number}
+      onClick={onClick}
     >
       <Link to={`officials/${sponsor.id}`}>
         <CircleAvatar
@@ -203,8 +203,8 @@ const Wrapper = styled(motion.div)<{ number: number }>`
     border-width: 0.3em;
 
     // Alternate stamp angle to give it a realistic behavior
-    transform: ${(props) =>
-      props.number % 2 === 1 ? 'rotate(4deg)' : 'rotate(-3deg)'};
+    transform: ${(properties) =>
+    properties.number % 2 === 1 ? 'rotate(4deg)' : 'rotate(-3deg)'};
   }
 
   .bill-open {

@@ -1,15 +1,15 @@
 import * as React from 'react';
 
-function SvgMilitaryOperationsAndStrategy(
-  props: React.SVGProps<SVGSVGElement>
-) {
+const SvgMilitaryOperationsAndStrategy = (
+  properties: React.SVGProps<SVGSVGElement>
+) => {
   return (
     <svg
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 512 512"
-      {...props}
+      {...properties}
     >
       <path d="M194.502 299.064l-8.485-8.486-16.099 16.1-16.099-16.1-8.486 8.486 16.1 16.099-16.1 16.099 8.486 8.486 16.099-16.1 16.099 16.1 8.485-8.486-16.099-16.099zM332.547 384.193l-8.486-8.484-16.098 16.1-16.1-16.1-8.486 8.484 16.1 16.1-16.1 16.1 8.486 8.484 16.1-16.1 16.098 16.1 8.486-8.484-16.1-16.1zM98.443 267.473h10.336v12H98.443zM44.137 267.473h45.372v12H44.137zM44.137 288.15h64.642v12H44.137zM44.137 308.828h64.642v12H44.137zM44.137 329.505h64.642v12H44.137z" />
       <g>
@@ -21,6 +21,6 @@ function SvgMilitaryOperationsAndStrategy(
       </g>
     </svg>
   );
-}
+};
 
 export default SvgMilitaryOperationsAndStrategy;

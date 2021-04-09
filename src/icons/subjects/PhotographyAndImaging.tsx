@@ -1,6 +1,8 @@
 import * as React from 'react';
 
-function SvgPhotographyAndImaging(props: React.SVGProps<SVGSVGElement>) {
+const SvgPhotographyAndImaging = (
+  properties: React.SVGProps<SVGSVGElement>
+) => {
   return (
     <svg
       height="1em"
@@ -12,7 +14,7 @@ function SvgPhotographyAndImaging(props: React.SVGProps<SVGSVGElement>) {
       shapeRendering="geometricPrecision"
       textRendering="geometricPrecision"
       imageRendering="optimizeQuality"
-      {...props}
+      {...properties}
     >
       <defs>
         <style>
@@ -43,6 +45,6 @@ function SvgPhotographyAndImaging(props: React.SVGProps<SVGSVGElement>) {
       />
     </svg>
   );
-}
+};
 
 export default SvgPhotographyAndImaging;

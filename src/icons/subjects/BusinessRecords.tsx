@@ -1,13 +1,13 @@
 import * as React from 'react';
 
-function SvgBusinessRecords(props: React.SVGProps<SVGSVGElement>) {
+const SvgBusinessRecords = (properties: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 128 128"
-      {...props}
+      {...properties}
     >
       <circle cx={2} cy={126} r={2} />
       <path d="M21.95 4h50.1C73.127 4 74 4.908 74 6.024V66h1.274L78 61.247V6.024C78 2.703 75.331 0 72.05 0h-50.1C18.676 0 16.014 2.69 16 6h4.001c.014-1.104.88-2 1.947-2z" />
@@ -18,6 +18,6 @@ function SvgBusinessRecords(props: React.SVGProps<SVGSVGElement>) {
       <path d="M84 26.024v26.28a14.455 14.455 0 014-2.391V26.024C88 22.703 85.331 20 82.05 20H82v4h.05c1.076 0 1.95.908 1.95 2.024z" />
     </svg>
   );
-}
+};
 
 export default SvgBusinessRecords;

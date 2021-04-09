@@ -1,6 +1,8 @@
 import * as React from 'react';
 
-function SvgHumanitiesProgramsFunding(props: React.SVGProps<SVGSVGElement>) {
+const SvgHumanitiesProgramsFunding = (
+  properties: React.SVGProps<SVGSVGElement>
+) => {
   return (
     <svg
       height="1em"
@@ -8,7 +10,7 @@ function SvgHumanitiesProgramsFunding(props: React.SVGProps<SVGSVGElement>) {
       xmlns="http://www.w3.org/2000/svg"
       data-name="Layer 1"
       viewBox="0 0 128 128"
-      {...props}
+      {...properties}
     >
       <path d="M12 20a6 6 0 10-6-6 6 6 0 006 6zm0-8a2 2 0 11-2 2 2 2 0 012-2z" />
       <circle cx={2} cy={2} r={2} />
@@ -25,6 +27,6 @@ function SvgHumanitiesProgramsFunding(props: React.SVGProps<SVGSVGElement>) {
       <path d="M52 67a12 12 0 1012-12 12 12 0 00-12 12zm20 0a8 8 0 11-8-8 8 8 0 018 8z" />
     </svg>
   );
-}
+};
 
 export default SvgHumanitiesProgramsFunding;

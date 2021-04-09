@@ -1,8 +1,12 @@
 import * as React from 'react';
 
-function SvgDebate(props: React.SVGProps<SVGSVGElement>) {
+const SvgDebate = (properties: React.SVGProps<SVGSVGElement>) => {
   return (
-    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <svg
+      viewBox="0 0 100 100"
+      xmlns="http://www.w3.org/2000/svg"
+      {...properties}
+    >
       <g data-name="Layer 2">
         <path d="M72.12 45h-5.85a2 2 0 00-2 2 3.41 3.41 0 00-2.55 3.3V55h-9.94a1 1 0 00-1 1v3.09a1 1 0 001 1h1.58l5.25 33.94a1 1 0 001 .87h11a1 1 0 001-1V60.19h1.27a1 1 0 001-1v-3.13a1 1 0 00-1-1h-9.15v-4.79a1.35 1.35 0 01.76-1.21 2 2 0 00.34.46 2 2 0 001.44.61h5.85a2.05 2.05 0 002-2.06V47a2.05 2.05 0 00-2-2z" />
         <path d="M83 65.59a2.86 2.86 0 00.52-.16 2.68 2.68 0 001.21-1l3.91-5.73a2.65 2.65 0 00-.66-3.64 2.55 2.55 0 00-3.58.67L81 60.62l-1.81.38-3.92.72a2.62 2.62 0 00.46 5.19 3.89 3.89 0 00.47 0l3-.56z" />
@@ -12,6 +16,6 @@ function SvgDebate(props: React.SVGProps<SVGSVGElement>) {
       </g>
     </svg>
   );
-}
+};
 
 export default SvgDebate;

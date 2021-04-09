@@ -1,8 +1,12 @@
 import * as React from 'react';
 
-function SvgViolentCrime(props: React.SVGProps<SVGSVGElement>) {
+const SvgViolentCrime = (properties: React.SVGProps<SVGSVGElement>) => {
   return (
-    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <svg
+      viewBox="0 0 100 100"
+      xmlns="http://www.w3.org/2000/svg"
+      {...properties}
+    >
       <circle
         transform="rotate(-2.567 79.334 32.4)"
         cx={79.3}
@@ -19,6 +23,6 @@ function SvgViolentCrime(props: React.SVGProps<SVGSVGElement>) {
       <path d="M52.8 41.9c.9-.2 1.4-1.1 1.2-1.9l-.6-2.4c1.3-1.2 1.6-3.2.5-4.7-.5-.7-1.2-1.2-2-1.4l-4.9-20c-.2-.9-1.1-1.4-1.9-1.2-.9.2-1.4 1.1-1.2 1.9L48.7 32l-5.1 3.5c-1.8 1.2-3.9 1.9-6 1.8-2.3-.1-4.2-.4-5.5-.9-.4-.1-1-.4-1.7-.7-1.9-.8-3.3-1.4-4.3-1.6-1-.2-1.9-.5-11.5 2-2.1.5-4 1.7-5.5 3.3l-5.6 6.1c-1.3 1.5-1.2 3.7.2 5.1.7.6 1.6.9 2.4.9 1 0 1.9-.4 2.6-1.2l5.6-6.1c.5-.6 1.2-1 2-1.2.6-.2 1.2-.3 1.7-.4L13.2 54c-1 2.3-.6 5 1 6.9l1.4 1.7-1.4 6c-.4 1.6-1.2 3.1-2.2 4.4l-7.1 9c-1.4 1.8-1.1 4.4.7 5.8.8.6 1.7.9 2.6.9 1.2 0 2.4-.5 3.2-1.6l7.1-9c1.8-2.2 3-4.8 3.7-7.6 1.1 1.5 1.8 3.2 2.1 5.1l1.3 9.5c.3 2.1 2 3.6 4.1 3.6h.6c2.3-.3 3.8-2.4 3.5-4.6l-1.3-9.5c-.5-3.7-2-7.1-4.4-9.9L25 61l8.9-16.7c1.1.2 2.2.3 3.4.3 3.6.2 7.3-.9 10.4-3l2.9-2 .3 1.1c.2.7.8 1.2 1.6 1.2 0 .1.2.1.3 0z" />
     </svg>
   );
-}
+};
 
 export default SvgViolentCrime;

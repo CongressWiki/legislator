@@ -1,15 +1,15 @@
 import * as React from 'react';
 
-function SvgHistoricSitesAndHeritageAreas(
-  props: React.SVGProps<SVGSVGElement>
-) {
+const SvgHistoricSitesAndHeritageAreas = (
+  properties: React.SVGProps<SVGSVGElement>
+) => {
   return (
     <svg
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 512 512"
-      {...props}
+      {...properties}
     >
       <path d="M342.113 313.549H171.174c-40.384 0-72.019-31.622-72.019-71.994V70.72C99.155 31.725 131.462 0 171.174 0h170.939c39.001 0 70.731 31.725 70.731 70.72v170.835c.001 39.697-31.73 71.994-70.731 71.994zM171.174 14.544c-32.229 0-57.475 24.675-57.475 56.176v170.835c0 32.215 25.245 57.451 57.475 57.451h170.939c31.507 0 56.187-25.236 56.187-57.451V70.72c0-30.976-25.205-56.176-56.187-56.176H171.174z" />
       <path d="M256.618 481.866a7.27 7.27 0 01-7.271-7.272V306.277a7.27 7.27 0 017.271-7.271 7.27 7.27 0 017.272 7.271v168.316a7.27 7.27 0 01-7.272 7.273z" />
@@ -22,6 +22,6 @@ function SvgHistoricSitesAndHeritageAreas(
       </g>
     </svg>
   );
-}
+};
 
 export default SvgHistoricSitesAndHeritageAreas;

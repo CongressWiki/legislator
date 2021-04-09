@@ -1,13 +1,13 @@
 import * as React from 'react';
 
-function SvgDepartmentOfLabor(props: React.SVGProps<SVGSVGElement>) {
+const SvgDepartmentOfLabor = (properties: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
       width={1200}
       height={1200}
-      {...props}
+      {...properties}
     >
       <image
         data-name="Department of Labor"
@@ -18,6 +18,6 @@ function SvgDepartmentOfLabor(props: React.SVGProps<SVGSVGElement>) {
       />
     </svg>
   );
-}
+};
 
 export default SvgDepartmentOfLabor;

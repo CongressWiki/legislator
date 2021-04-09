@@ -1,8 +1,14 @@
 import * as React from 'react';
 
-function SvgDisabilityAndParalysis(props: React.SVGProps<SVGSVGElement>) {
+const SvgDisabilityAndParalysis = (
+  properties: React.SVGProps<SVGSVGElement>
+) => {
   return (
-    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <svg
+      viewBox="0 0 100 100"
+      xmlns="http://www.w3.org/2000/svg"
+      {...properties}
+    >
       <path
         style={{
           textIndent: 0,
@@ -15,6 +21,6 @@ function SvgDisabilityAndParalysis(props: React.SVGProps<SVGSVGElement>) {
       />
     </svg>
   );
-}
+};
 
 export default SvgDisabilityAndParalysis;

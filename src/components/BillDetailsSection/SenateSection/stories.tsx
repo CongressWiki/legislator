@@ -1,15 +1,15 @@
-import React from 'react';
-import { Story, Meta } from '@storybook/react';
+// Import React from 'react';
+// import { Story, Meta } from '@storybook/react';
 
-import SenateSection, { SenateSectionProps } from './index';
+// import SenateSection, { SenateSectionProps } from './index';
 
-export default {
-  title: 'Components/BillsDetailsSection/SenateSection',
-  component: SenateSection,
-} as Meta;
+// export default {
+//   title: 'Components/BillsDetailsSection/SenateSection',
+//   component: SenateSection,
+// } as Meta;
 
-const Template: Story<SenateSectionProps> = ({ ...args }) => (
-  <SenateSection {...args} />
-);
+// const Template: Story<SenateSectionProps> = ({ ...args }) => (
+//   <SenateSection {...args} />
+// );
 
-export const Default = Template.bind({});
+// export const Default = Template.bind({});

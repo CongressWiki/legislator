@@ -1,13 +1,13 @@
 import * as React from 'react';
 
-function SvgGeorgia(props: React.SVGProps<SVGSVGElement>) {
+const SvgGeorgia = (properties: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 83 96"
-      {...props}
+      {...properties}
     >
       <path
         fillRule="evenodd"
@@ -15,6 +15,6 @@ function SvgGeorgia(props: React.SVGProps<SVGSVGElement>) {
       />
     </svg>
   );
-}
+};
 
 export default SvgGeorgia;

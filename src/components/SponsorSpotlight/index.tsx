@@ -54,10 +54,10 @@ const SponsorFrame = styled.div<{ color: string }>`
   display: flex;
   align-items: center;
 
-  border: solid 1px ${(props) => props.color};
-  box-shadow: 0 0 5px 2px ${(props) => props.color};
+  border: solid 1px ${(properties) => properties.color};
+  box-shadow: 0 0 5px 2px ${(properties) => properties.color};
 
-  background-color: ${(props) => props.color};
+  background-color: ${(properties) => properties.color};
 
   :hover {
     .state {

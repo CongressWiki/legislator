@@ -1,13 +1,13 @@
 import * as React from 'react';
 
-function SvgAmericanSamoa(props: React.SVGProps<SVGSVGElement>) {
+const SvgAmericanSamoa = (properties: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 49 33"
-      {...props}
+      {...properties}
     >
       <g fill="#000" fillRule="nonzero">
         <path d="M49 0v33H0V0h49zM1 1v31h47V1H1z" />
@@ -18,6 +18,6 @@ function SvgAmericanSamoa(props: React.SVGProps<SVGSVGElement>) {
       </g>
     </svg>
   );
-}
+};
 
 export default SvgAmericanSamoa;

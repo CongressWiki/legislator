@@ -35,6 +35,7 @@ const Image = ({
   if (!image) {
     return <StyledCandidate className={className} />;
   }
+
   return (
     <GatsbyImage
       className={className}

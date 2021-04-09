@@ -1,15 +1,15 @@
 import * as React from 'react';
 
-function SvgEnvironmentalProtectionAgencyEpa(
-  props: React.SVGProps<SVGSVGElement>
-) {
+const SvgEnvironmentalProtectionAgencyEpa = (
+  properties: React.SVGProps<SVGSVGElement>
+) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
       width={1200}
       height={1200}
-      {...props}
+      {...properties}
     >
       <image
         data-name="Color Fill 1"
@@ -21,6 +21,6 @@ function SvgEnvironmentalProtectionAgencyEpa(
       />
     </svg>
   );
-}
+};
 
 export default SvgEnvironmentalProtectionAgencyEpa;

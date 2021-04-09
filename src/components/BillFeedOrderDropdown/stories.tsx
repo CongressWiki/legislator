@@ -1,15 +1,17 @@
 import React from 'react';
-import {Story, Meta} from '@storybook/react';
+import { Story, Meta } from '@storybook/react';
 
-import BillFeedOrderDropdown, {BillFeedOrderDropdownProps} from './index';
+import BillFeedOrderDropdown, {
+  BillFeedOrderDropdownProps as BillFeedOrderDropdownProperties,
+} from './index';
 
 export default {
   title: 'Components/BillFeedOrderDropdown',
-  component: BillFeedOrderDropdown
+  component: BillFeedOrderDropdown,
 } as Meta;
 
-const Template: Story<BillFeedOrderDropdownProps> = (args) => (
-  <BillFeedOrderDropdown {...args} />
+const Template: Story<BillFeedOrderDropdownProperties> = (arguments_) => (
+  <BillFeedOrderDropdown {...arguments_} />
 );
 
 export const Default = Template.bind({});

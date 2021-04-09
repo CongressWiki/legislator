@@ -1,8 +1,12 @@
 import * as React from 'react';
 
-function SvgUserChargesAndFees(props: React.SVGProps<SVGSVGElement>) {
+const SvgUserChargesAndFees = (properties: React.SVGProps<SVGSVGElement>) => {
   return (
-    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <svg
+      viewBox="0 0 100 100"
+      xmlns="http://www.w3.org/2000/svg"
+      {...properties}
+    >
       <g fill="#000" fillRule="evenodd">
         <path
           d="M57.663 34.059c1.701 0 4.204 1.538 7.23 4.422 1.523 1.453 3.14 3.2 4.9 5.268 1.788 2.097 6.646 8.21 7.117 8.763 1.243 1.462.944 3.195-.52 4.318-1.538 1.18-3.535 1.039-5.056-.72-2.854-3.304-6.316-7.065-10.386-11.285-1.334-1.384-3.46.51-2.238 1.994.509.618.79 1.388.79 2.206 0 1.902-1.53 3.45-3.408 3.475H38.563c-2.483 0-5.386-1.382-7.344-3.413-2.217-2.3-3.99-4.278-5.317-5.926l5.531-9.102h26.23zM69.065 58.07c2.587 2.994 6.385 3.262 9.152 1.139 2.759-2.117 3.395-5.8.978-8.641-.427-.502-5.287-6.616-7.118-8.766-1.823-2.14-3.506-3.96-5.114-5.493-3.55-3.384-6.588-5.251-9.3-5.251H32.547c-1.862 0-8.68 14.361-8.237 14.889 1.279 1.523 2.861 3.262 4.75 5.221 2.494 2.589 6.155 4.331 9.503 4.331h17.549a6.478 6.478 0 006.195-4.898c2.547 2.713 4.8 5.203 6.758 7.469z"
@@ -16,6 +20,6 @@ function SvgUserChargesAndFees(props: React.SVGProps<SVGSVGElement>) {
       </g>
     </svg>
   );
-}
+};
 
 export default SvgUserChargesAndFees;

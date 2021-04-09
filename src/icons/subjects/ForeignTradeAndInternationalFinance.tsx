@@ -1,15 +1,15 @@
 import * as React from 'react';
 
-function SvgForeignTradeAndInternationalFinance(
-  props: React.SVGProps<SVGSVGElement>
-) {
+const SvgForeignTradeAndInternationalFinance = (
+  properties: React.SVGProps<SVGSVGElement>
+) => {
   return (
     <svg
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 64 64"
-      {...props}
+      {...properties}
     >
       <path d="M33 49c.552 0 1 .449 1 1h2c0-1.654-1.346-3-3-3v-2h-2v2h-3v3c0 1.654 1.346 3 3 3h2c.552 0 1 .449 1 1v1h-3c-.552 0-1-.449-1-1h-2c0 1.654 1.346 3 3 3v2h2v-2h3v-3c0-1.654-1.346-3-3-3h-2c-.552 0-1-.449-1-1v-1h3z" />
       <path d="M49 41a10.912 10.912 0 00-8.497 4.031 10.98 10.98 0 00-17.006 0A10.912 10.912 0 0015 41C8.935 41 4 45.935 4 52s4.935 11 11 11c3.338 0 6.419-1.485 8.497-4.031a10.98 10.98 0 0017.006 0A10.912 10.912 0 0049 63c6.065 0 11-4.935 11-11s-4.935-11-11-11zM15 61c-4.963 0-9-4.038-9-9s4.037-9 9-9c2.936 0 5.62 1.418 7.311 3.8C21.476 48.35 21 50.12 21 52s.476 3.65 1.311 5.2C20.62 59.582 17.936 61 15 61zm17 0c-4.963 0-9-4.038-9-9s4.037-9 9-9 9 4.038 9 9-4.037 9-9 9zm17 0c-2.936 0-5.62-1.418-7.311-3.8C42.524 55.65 43 53.88 43 52s-.476-3.65-1.311-5.2C43.38 44.418 46.064 43 49 43c4.963 0 9 4.038 9 9s-4.037 9-9 9z" />
@@ -17,6 +17,6 @@ function SvgForeignTradeAndInternationalFinance(
       <path d="M27 15h2v2h-2zM31 15h2v2h-2zM35 15h2v2h-2zM27 23h2v2h-2zM31 23h2v2h-2zM35 23h2v2h-2zM55 6.662L58.796 11H57v19h2V13h4.204L53 1.338V30h2zM57 32h2v2h-2zM57 36h2v2h-2zM11 9H9v23.338L5.204 28H7V9H5v17H.796L11 37.662zM5 5h2v2H5zM5 1h2v2H5z" />
     </svg>
   );
-}
+};
 
 export default SvgForeignTradeAndInternationalFinance;

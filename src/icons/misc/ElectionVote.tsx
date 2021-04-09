@@ -1,13 +1,13 @@
 import * as React from 'react';
 
-function SvgElectionVote(props: React.SVGProps<SVGSVGElement>) {
+const SvgElectionVote = (properties: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 64 64"
-      {...props}
+      {...properties}
     >
       <g data-name="One Voice">
         <path d="M48.93 47.63l-4-10A1 1 0 0044 37H14a1 1 0 00-.93.63l-4 10A1 1 0 009 48v8a1 1 0 001 1h38a1 1 0 001-1v-8a1 1 0 00-.07-.37zM14.68 39h28.64l3.2 8h-35zM47 55H11v-6h36z" />
@@ -15,6 +15,6 @@ function SvgElectionVote(props: React.SVGProps<SVGSVGElement>) {
       </g>
     </svg>
   );
-}
+};
 
 export default SvgElectionVote;

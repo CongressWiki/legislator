@@ -1,13 +1,15 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import BillCard, { BillCardProps } from './index';
+import BillCard, { BillCardProps as BillCardProperties } from './index';
 
 export default {
   title: 'Components/BillCard',
   component: BillCard,
 } as Meta;
 
-const Template: Story<BillCardProps> = (args) => <BillCard {...args} />;
+const Template: Story<BillCardProperties> = (arguments_) => (
+  <BillCard {...arguments_} />
+);
 
 export const Default = Template.bind({});
 Default.args = {

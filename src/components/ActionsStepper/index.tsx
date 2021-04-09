@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Action } from '@type/hasura';
 
 export type ActionsStepperProps = {
-  actions: Pick<Action, 'id' | 'acted_at' | 'text'>[];
+  actions: Array<Pick<Action, 'id' | 'acted_at' | 'text'>>;
   className?: string;
 };
 
@@ -17,7 +17,9 @@ const ActionsStepper = ({ actions, className }: ActionsStepperProps) => {
           key={index}
           isActive={action.id === activeStepId}
           minimized={action.id !== activeStepId}
-          onClick={() => setActiveStepId(action.id)}
+          onClick={() => {
+            setActiveStepId(action.id);
+          }}
         >
           <StepLabel>
             <div className="header">{action.text}</div>
@@ -59,11 +61,11 @@ const Step = styled.div<{ isActive?: boolean; minimized?: boolean }>`
     content: '';
     height: 13px;
     width: 13px;
-    background-color: ${(props) =>
-      props.isActive ? 'var(--color-secondary)' : 'var(--color-gray700)'};
+    background-color: ${(properties) =>
+    properties.isActive ? 'var(--color-secondary)' : 'var(--color-gray700)'};
     border-radius: 15px;
-    box-shadow: ${(props) =>
-      props.isActive ? '0 0 40px 1px var(--color-secondary)' : 'none'};
+    box-shadow: ${(properties) =>
+    properties.isActive ? '0 0 40px 1px var(--color-secondary)' : 'none'};
 
     left: calc(50px / 2);
     transform: translateX(-45%);
@@ -81,8 +83,8 @@ const Step = styled.div<{ isActive?: boolean; minimized?: boolean }>`
     z-index: 1;
   }
 
-  ${(props) => {
-    if (props.minimized) {
+  ${(properties) => {
+    if (properties.minimized) {
       return `
         transition: background-color 0.3s ease-in-out;
         cursor: pointer;
@@ -132,8 +134,8 @@ const StepContent = styled.div<{ minimized?: boolean }>`
   font-weight: 500;
   color: var(--color-text);
 
-  ${(props) => {
-    if (props.minimized) {
+  ${(properties) => {
+    if (properties.minimized) {
       return `
         height: 0;
         min-height: 0;
@@ -143,7 +145,7 @@ const StepContent = styled.div<{ minimized?: boolean }>`
   }};
 `;
 
-// const NextButton = styled.button`
+// Const NextButton = styled.button`
 //   position: absolute;
 //   top: 50%;
 //   left: 50%;

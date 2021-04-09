@@ -1,13 +1,13 @@
 import * as React from 'react';
 
-function SvgItaly(props: React.SVGProps<SVGSVGElement>) {
+const SvgItaly = (properties: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 83.23 99.52"
-      {...props}
+      {...properties}
     >
       <g data-name="Capa 2">
         <g data-name="Capa 1">
@@ -17,6 +17,6 @@ function SvgItaly(props: React.SVGProps<SVGSVGElement>) {
       </g>
     </svg>
   );
-}
+};
 
 export default SvgItaly;

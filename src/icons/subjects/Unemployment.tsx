@@ -1,13 +1,13 @@
 import * as React from 'react';
 
-function SvgUnemployment(props: React.SVGProps<SVGSVGElement>) {
+const SvgUnemployment = (properties: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 32 32"
-      {...props}
+      {...properties}
     >
       <g data-name={12}>
         <path d="M11 10h16v8a1 1 0 002 0V9a1 1 0 00-1-1h-7V5a1 1 0 00-1-1h-9a1 1 0 00-1 1v3H2a1 1 0 00-1 1v17a1 1 0 001 1h17a1 1 0 000-2H3V10zm1-4h7v2h-7z" />
@@ -15,6 +15,6 @@ function SvgUnemployment(props: React.SVGProps<SVGSVGElement>) {
       </g>
     </svg>
   );
-}
+};
 
 export default SvgUnemployment;

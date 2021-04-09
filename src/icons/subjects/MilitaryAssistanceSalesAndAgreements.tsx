@@ -1,10 +1,14 @@
 import * as React from 'react';
 
-function SvgMilitaryAssistanceSalesAndAgreements(
-  props: React.SVGProps<SVGSVGElement>
-) {
+const SvgMilitaryAssistanceSalesAndAgreements = (
+  properties: React.SVGProps<SVGSVGElement>
+) => {
   return (
-    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <svg
+      viewBox="0 0 100 100"
+      xmlns="http://www.w3.org/2000/svg"
+      {...properties}
+    >
       <path
         style={{
           textIndent: 0,
@@ -23,6 +27,6 @@ function SvgMilitaryAssistanceSalesAndAgreements(
       />
     </svg>
   );
-}
+};
 
 export default SvgMilitaryAssistanceSalesAndAgreements;

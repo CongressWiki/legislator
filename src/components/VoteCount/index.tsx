@@ -24,9 +24,9 @@ const VoteCount = ({
   return (
     <Wrapper
       className={className}
-      onClick={onClick}
       color={color}
       isDisabled={isDisabled}
+      onClick={onClick}
     >
       <Decision>{decision}</Decision>
       <Count>{count}</Count>
@@ -44,11 +44,11 @@ const Wrapper = styled.div<{ color: string; isDisabled: boolean }>`
   display: flex;
   justify-content: space-between;
   padding: 8px;
-  border: solid 2px ${(props) => props.color};
+  border: solid 2px ${(properties) => properties.color};
   border-radius: 25px;
   transition: all 0.3s ease-in-out;
 
-  opacity: ${(props) => (props.isDisabled ? '0.5' : 1)};
+  opacity: ${(properties) => (properties.isDisabled ? '0.5' : 1)};
 
   @media (max-width: 450px) {
     width: 45%;

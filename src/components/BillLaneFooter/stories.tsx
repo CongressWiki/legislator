@@ -1,20 +1,22 @@
 import React from 'react';
-import {Story, Meta} from '@storybook/react';
+import { Story, Meta } from '@storybook/react';
 
-import BillLaneFooter, {BillLaneFooterProps} from './index';
+import BillLaneFooter, {
+  BillLaneFooterProps as BillLaneFooterProperties,
+} from './index';
 
 export default {
   title: 'Components/BillLaneFooter',
-  component: BillLaneFooter
+  component: BillLaneFooter,
 } as Meta;
 
-const Template: Story<BillLaneFooterProps> = (args) => (
-  <BillLaneFooter {...args} />
+const Template: Story<BillLaneFooterProperties> = (arguments_) => (
+  <BillLaneFooter {...arguments_} />
 );
 
 export const Default = Template.bind({});
 Default.args = {
   onClick: () => {
     console.log('clicked');
-  }
+  },
 };

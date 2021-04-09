@@ -1,13 +1,15 @@
 import * as React from 'react';
 
-function SvgDepartmentOfEducation(props: React.SVGProps<SVGSVGElement>) {
+const SvgDepartmentOfEducation = (
+  properties: React.SVGProps<SVGSVGElement>
+) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
       width={900}
       height={900}
-      {...props}
+      {...properties}
     >
       <image
         width={900}
@@ -16,6 +18,6 @@ function SvgDepartmentOfEducation(props: React.SVGProps<SVGSVGElement>) {
       />
     </svg>
   );
-}
+};
 
 export default SvgDepartmentOfEducation;

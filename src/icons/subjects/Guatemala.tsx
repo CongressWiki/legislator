@@ -1,13 +1,13 @@
 import * as React from 'react';
 
-function SvgGuatemala(props: React.SVGProps<SVGSVGElement>) {
+const SvgGuatemala = (properties: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 400 500"
-      {...props}
+      {...properties}
     >
       <path
         fill="none"
@@ -18,6 +18,6 @@ function SvgGuatemala(props: React.SVGProps<SVGSVGElement>) {
       />
     </svg>
   );
-}
+};
 
 export default SvgGuatemala;

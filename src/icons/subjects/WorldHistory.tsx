@@ -1,13 +1,13 @@
 import * as React from 'react';
 
-function SvgWorldHistory(props: React.SVGProps<SVGSVGElement>) {
+const SvgWorldHistory = (properties: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 64 64"
-      {...props}
+      {...properties}
     >
       <g data-name="World History">
         <path d="M58 2H12a7.009 7.009 0 00-7 7v46a7.009 7.009 0 007 7h46a1 1 0 001-1V3a1 1 0 00-1-1zm-1 46H17V4h40zM13 4h2v44h-2zM7 9a5.009 5.009 0 014-4.9v12.98a6.978 6.978 0 00-4 2.031zm0 15a5.009 5.009 0 014-4.9v14.98a6.978 6.978 0 00-4 2.031zm4 12.1v11.98a6.988 6.988 0 00-4 2.025V41a5.009 5.009 0 014-4.9zM12 60a5 5 0 010-10h45v2H13a3 3 0 000 6h44v2zm45-6v2H13a1 1 0 010-2z" />
@@ -15,6 +15,6 @@ function SvgWorldHistory(props: React.SVGProps<SVGSVGElement>) {
       </g>
     </svg>
   );
-}
+};
 
 export default SvgWorldHistory;

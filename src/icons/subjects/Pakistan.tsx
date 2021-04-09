@@ -1,8 +1,12 @@
 import * as React from 'react';
 
-function SvgPakistan(props: React.SVGProps<SVGSVGElement>) {
+const SvgPakistan = (properties: React.SVGProps<SVGSVGElement>) => {
   return (
-    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <svg
+      viewBox="0 0 100 100"
+      xmlns="http://www.w3.org/2000/svg"
+      {...properties}
+    >
       <path
         fill="none"
         stroke="#000"
@@ -14,6 +18,6 @@ function SvgPakistan(props: React.SVGProps<SVGSVGElement>) {
       />
     </svg>
   );
-}
+};
 
 export default SvgPakistan;

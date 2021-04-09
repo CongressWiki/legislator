@@ -1,10 +1,14 @@
 import * as React from 'react';
 
-function SvgMinorityAndDisadvantagedBusinesses(
-  props: React.SVGProps<SVGSVGElement>
-) {
+const SvgMinorityAndDisadvantagedBusinesses = (
+  properties: React.SVGProps<SVGSVGElement>
+) => {
   return (
-    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <svg
+      viewBox="0 0 100 100"
+      xmlns="http://www.w3.org/2000/svg"
+      {...properties}
+    >
       <path d="M45.605 22.635l.939-4.042 52.758 10.891-.938 4.044zM.715 26.061l29.946-7.887.94 3.659L1.653 29.72zM54.243 31.885l-11.807-7.498-1.277 1.855 11.806 7.501zM26.405 27.464l-12.128 4.041 6.93 1.733-1.732 5.776h6.352zM17.524 7.773l9.388-3.093 1.965 9.911zM41.055 15.337l4.648-11.402 5.313 8.899zM61.269 13.24l3.844 3.828 2.004-3.769-1.988-4.139zM28.877 51.218l4.367 4.349 2.277-4.279-2.262-4.701zM35.034 8.68l-2.274 4.547 5.115 2.273z" />
       <g>
         <path d="M71.133 32.892c5.252 0 9.521 4.263 9.521 9.518 0 5.257-4.266 9.507-9.521 9.507a9.504 9.504 0 01-9.503-9.507c0-5.255 4.259-9.518 9.503-9.518z" />
@@ -12,6 +16,6 @@ function SvgMinorityAndDisadvantagedBusinesses(
       </g>
     </svg>
   );
-}
+};
 
 export default SvgMinorityAndDisadvantagedBusinesses;

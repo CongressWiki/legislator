@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-function SvgRegionalAndMetropolitanPlanning(
-  props: React.SVGProps<SVGSVGElement>
-) {
+const SvgRegionalAndMetropolitanPlanning = (
+  properties: React.SVGProps<SVGSVGElement>
+) => {
   return (
     <svg
       height="1em"
@@ -14,7 +14,7 @@ function SvgRegionalAndMetropolitanPlanning(
       shapeRendering="geometricPrecision"
       textRendering="geometricPrecision"
       imageRendering="optimizeQuality"
-      {...props}
+      {...properties}
     >
       <defs>
         <style>
@@ -42,6 +42,6 @@ function SvgRegionalAndMetropolitanPlanning(
       <path fill="none" d="M0 0h6.827v6.827H0z" />
     </svg>
   );
-}
+};
 
 export default SvgRegionalAndMetropolitanPlanning;

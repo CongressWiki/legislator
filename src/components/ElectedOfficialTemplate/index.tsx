@@ -283,7 +283,7 @@ const ElectedOfficialTemplate = ({
           `Bill: ${amendment.bill.title}`,
         slug: `/${amendment.bill.congress}/${amendment.bill.type}${amendment.bill.number}`,
 
-        // slug: `/${amendment.congress}/${amendment.type}${amendment.number}`,
+        // Slug: `/${amendment.congress}/${amendment.type}${amendment.number}`,
       })),
     },
     {
@@ -365,13 +365,17 @@ const ElectedOfficialTemplate = ({
                 title={option.title}
                 count={option.count}
                 isActive={option.title === activeOption?.title}
-                onMouseOver={() => setHoveredOption(option)}
-                onMouseOut={() => setHoveredOption(null)}
-                onClick={() =>
+                onMouseOver={() => {
+                  setHoveredOption(option);
+                }}
+                onMouseOut={() => {
+                  setHoveredOption(null);
+                }}
+                onClick={() => {
                   clickedOption?.title === option.title
                     ? setClickedOption(null)
-                    : setClickedOption(option)
-                }
+                    : setClickedOption(option);
+                }}
               />
             );
           })}
@@ -392,7 +396,7 @@ const ElectedOfficialTemplate = ({
   );
 };
 
-const localDateStringOptions = {
+const localDateStringOptions: Intl.DateTimeFormatOptions = {
   year: 'numeric',
   month: 'short',
   day: 'numeric',
@@ -402,7 +406,7 @@ const normalizePosition = (position: string) => {
   if (position === 'house_representative') return 'House Representative';
   if (position === 'senator') return 'Senator';
   if (position === 'president') return 'President';
-  if (position === 'vp') return 'Vice President';
+  if (position === 'vice_president') return 'Vice President';
   return position;
 };
 

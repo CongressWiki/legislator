@@ -1,13 +1,15 @@
 import * as React from 'react';
 
-function SvgVoteSignsMajorityFail(props: React.SVGProps<SVGSVGElement>) {
+const SvgVoteSignsMajorityFail = (
+  properties: React.SVGProps<SVGSVGElement>
+) => {
   return (
     <svg
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 64 64"
-      {...props}
+      {...properties}
     >
       <path d="M35 38l1.6-1.2-1.6-2zm4.3 2l-1.4-1.7-2.4 1.8 1.6 1.6zM26 56h13v6H26zm14.6-14.4l-2 1.5 1.5 1.5 1-1c.4-.4.4-.9.1-1.3l-.6-.7z" />
       <path d="M33 31c0-.7-.4-1.4-1-1.7V20c4.4-.6 7.5-4.6 6.9-8.9-.6-4.4-4.6-7.5-8.9-6.9s-7.5 4.6-6.9 8.9c.5 3.6 3.3 6.5 6.9 6.9v9.3c-.6.4-1 1-1 1.7v8.2c0 .8-.3 1.6-.9 2.1l-1.4 1.4-1.4-1.4 1.4-1.4c.2-.2.3-.4.3-.7v-3.8l-2.7 2.7c-.2.2-.3.4-.3.7v6.6c0 .2.1.4.2.6l3.8 5.7V54h9v-2.4l1.7-1.7c.2-.2.3-.4.3-.7v-2.8l-6-6V31zm-5-14.6l-2.7-2.7 1.4-1.4 1.3 1.3 6.3-6.3 1.4 1.4-7.7 7.7zm28 24.1l.9.5.9-1.8-1.8-1.8zM49 54h10v8H49z" />
@@ -17,6 +19,6 @@ function SvgVoteSignsMajorityFail(props: React.SVGProps<SVGSVGElement>) {
       <path d="M16.3 40.7l-.7 1.5 1.9 1.3.2-.6c.1-.4 0-.8-.2-1l-1.2-1.2zM6 54h10v8H6z" />
     </svg>
   );
-}
+};
 
 export default SvgVoteSignsMajorityFail;

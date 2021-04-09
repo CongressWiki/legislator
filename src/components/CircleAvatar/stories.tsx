@@ -1,15 +1,17 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 
-import CircleAvatar, { CircleAvatarProps } from './index';
+import CircleAvatar, {
+  CircleAvatarProps as CircleAvatarProperties,
+} from './index';
 
 export default {
   title: 'Components/CircleAvatar',
   component: CircleAvatar,
 } as Meta;
 
-const Template: Story<CircleAvatarProps> = ({ ...args }) => (
-  <CircleAvatar {...args} />
+const Template: Story<CircleAvatarProperties> = ({ ...arguments_ }) => (
+  <CircleAvatar {...arguments_} />
 );
 
 export const Default = Template.bind({});

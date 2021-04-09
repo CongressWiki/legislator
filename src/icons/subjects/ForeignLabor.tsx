@@ -1,13 +1,13 @@
 import * as React from 'react';
 
-function SvgForeignLabor(props: React.SVGProps<SVGSVGElement>) {
+const SvgForeignLabor = (properties: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 185.716 242.179"
-      {...props}
+      {...properties}
     >
       <circle cx={91.333} cy={25.104} r={22.5} />
       <path d="M31.963 186.074a2 2 0 111.074 3.853l-24.069 6.706 2.781 42.117h39l3.302-50h2.698v-6.5h-51v6.5h2.698l.251 3.806 23.265-6.482z" />
@@ -15,6 +15,6 @@ function SvgForeignLabor(props: React.SVGProps<SVGSVGElement>) {
       <path d="M18.154 5.983h22.375V8.15H18.154zM18.154 10.733h22.375V12.9H18.154z" />
     </svg>
   );
-}
+};
 
 export default SvgForeignLabor;

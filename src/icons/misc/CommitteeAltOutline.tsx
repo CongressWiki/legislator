@@ -1,13 +1,13 @@
 import * as React from 'react';
 
-function SvgCommitteeAltOutline(props: React.SVGProps<SVGSVGElement>) {
+const SvgCommitteeAltOutline = (properties: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 64 64"
-      {...props}
+      {...properties}
     >
       <path d="M55 39H9a1 1 0 01-1-1v-6a1 1 0 011-1h46a1 1 0 011 1v6a1 1 0 01-1 1zm-45-2h44v-4H10z" />
       <path d="M52 56H12a1 1 0 01-1-1V38a1 1 0 011-1h40a1 1 0 011 1v17a1 1 0 01-1 1zm-39-2h38V39H13zm29-21H22a1 1 0 01-1-1v-6a5 5 0 015-5h2v-2a1 1 0 012 0v3a1 1 0 01-1 1h-3a3 3 0 00-3 3v5h18v-5a3 3 0 00-3-3h-3a1 1 0 01-1-1v-3a1 1 0 012 0v2h2a5 5 0 015 5v6a1 1 0 01-1 1z" />
@@ -20,6 +20,6 @@ function SvgCommitteeAltOutline(props: React.SVGProps<SVGSVGElement>) {
       <path d="M33 33a1 1 0 01-1-1v-2.76l-.89-1.79a1 1 0 011.78-.9l1 2A1 1 0 0134 29v3a1 1 0 01-1 1z" />
     </svg>
   );
-}
+};
 
 export default SvgCommitteeAltOutline;

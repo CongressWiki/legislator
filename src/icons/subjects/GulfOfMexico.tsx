@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-function SvgGulfOfMexico(props: React.SVGProps<SVGSVGElement>) {
+const SvgGulfOfMexico = (properties: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg
       height="1em"
@@ -8,7 +8,7 @@ function SvgGulfOfMexico(props: React.SVGProps<SVGSVGElement>) {
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
       preserveAspectRatio="none"
-      {...props}
+      {...properties}
     >
       <defs>
         <path
@@ -24,6 +24,6 @@ function SvgGulfOfMexico(props: React.SVGProps<SVGSVGElement>) {
       <use xlinkHref="#gulf-of-mexico_svg__a" />
     </svg>
   );
-}
+};
 
 export default SvgGulfOfMexico;

@@ -1,13 +1,15 @@
 import * as React from 'react';
 
-function SvgPerformanceMeasurement(props: React.SVGProps<SVGSVGElement>) {
+const SvgPerformanceMeasurement = (
+  properties: React.SVGProps<SVGSVGElement>
+) => {
   return (
     <svg
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 70 70"
-      {...props}
+      {...properties}
     >
       <style>{'.performance-measurement_svg__st0{fill:#000}'}</style>
       <path
@@ -36,6 +38,6 @@ function SvgPerformanceMeasurement(props: React.SVGProps<SVGSVGElement>) {
       </g>
     </svg>
   );
-}
+};
 
 export default SvgPerformanceMeasurement;

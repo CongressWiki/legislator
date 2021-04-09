@@ -1,8 +1,12 @@
 import * as React from 'react';
 
-function SvgCrimePrevention(props: React.SVGProps<SVGSVGElement>) {
+const SvgCrimePrevention = (properties: React.SVGProps<SVGSVGElement>) => {
   return (
-    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <svg
+      viewBox="0 0 100 100"
+      xmlns="http://www.w3.org/2000/svg"
+      {...properties}
+    >
       <g data-name="cctv">
         <ellipse
           cx={27.04}
@@ -40,6 +44,6 @@ function SvgCrimePrevention(props: React.SVGProps<SVGSVGElement>) {
       </g>
     </svg>
   );
-}
+};
 
 export default SvgCrimePrevention;

@@ -1,13 +1,15 @@
 import * as React from 'react';
 
-function SvgFirearmsAndExplosives(props: React.SVGProps<SVGSVGElement>) {
+const SvgFirearmsAndExplosives = (
+  properties: React.SVGProps<SVGSVGElement>
+) => {
   return (
     <svg
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 64 64"
-      {...props}
+      {...properties}
     >
       <path d="M39 17H26a1 1 0 00-1 1v10a1 1 0 001 1h13a1 1 0 001-1V18a1 1 0 00-1-1zM27 27v-8h11v1h-6a3 3 0 000 6h6v1zm11-3h-6a1 1 0 010-2h6z" />
       <path d="M39 17H26a1 1 0 00-1 1v10a1 1 0 001 1h13a1 1 0 001-1V18a1 1 0 00-1-1zM27 27v-8h11v1h-6a3 3 0 000 6h6v1zm11-3h-6a1 1 0 010-2h6zM30 31h-6a1 1 0 00-1 1v6a1 1 0 001 1h6a1 1 0 001-1v-6a1 1 0 00-1-1zm-1 6h-4v-4h4z" />
@@ -18,6 +20,6 @@ function SvgFirearmsAndExplosives(props: React.SVGProps<SVGSVGElement>) {
       <path d="M42 21h2v2h-2z" />
     </svg>
   );
-}
+};
 
 export default SvgFirearmsAndExplosives;

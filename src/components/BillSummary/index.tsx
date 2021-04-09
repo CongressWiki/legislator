@@ -15,9 +15,9 @@ export default function BillSummary({ summary }: BillSummaryProps) {
   }
 
   // Remove citations i.e. (2)
-  summary = summary.replace(/\(\d*\)([^\S\r\n])?/g, '');
+  summary = summary.replace(/\(\d*\)([^\S\n\r])?/g, '');
   // Remove horizontal spaces (\h) (horizontal space chars come from Perl and is not supported by Node regex)
-  summary = summary.replace(/[^\S\r\n]/g, ' ');
+  summary = summary.replace(/[^\S\n\r]/g, ' ');
   // Add ellipsis to paragraphs that end with "to" | "include" | "for"
   summary = summary.replace(/(to|include|for)\n/g, '$1…');
   // Add ellipsis if paragraph contains "For more detailed information"
@@ -41,9 +41,9 @@ export default function BillSummary({ summary }: BillSummaryProps) {
 
         // If previous paragraph ended with "{includes|to|for}..." render paragraph as list
         if (index > 0 && BillParagraphs[index - 1].endsWith('…')) {
-          // console.log(BillParagraphs[index]);
+          // Console.log(BillParagraphs[index]);
 
-          return <BillList paragraph={paragraph} index={index} key={index} />;
+          return <BillList key={index} paragraph={paragraph} index={index} />;
         }
 
         // If paragraph contains ":" then render the colon's right side as list

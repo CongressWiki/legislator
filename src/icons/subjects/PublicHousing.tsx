@@ -1,13 +1,13 @@
 import * as React from 'react';
 
-function SvgPublicHousing(props: React.SVGProps<SVGSVGElement>) {
+const SvgPublicHousing = (properties: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 60 60"
-      {...props}
+      {...properties}
     >
       <g
         transform="translate(1 1)"
@@ -36,6 +36,6 @@ function SvgPublicHousing(props: React.SVGProps<SVGSVGElement>) {
       </g>
     </svg>
   );
-}
+};
 
 export default SvgPublicHousing;

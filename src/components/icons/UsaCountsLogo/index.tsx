@@ -1,4 +1,4 @@
-import USAFlagMapLogoSvg from '@icons/misc/USAMapSpotted';
+import USAFlagMapLogoSvg from '@icons/misc/UsaMapSpotted';
 import styled from 'styled-components';
 
 const UsaCountsLogo = styled(USAFlagMapLogoSvg)`

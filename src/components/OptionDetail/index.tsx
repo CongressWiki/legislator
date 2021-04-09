@@ -71,6 +71,6 @@ const Wrapper = styled(motion.div)<{ center: boolean }>`
   .subtext {
     font-size: 1em;
     color: var(--color-dimText);
-    text-align: ${(props) => (props.center ? 'center' : null)};
+    text-align: ${(properties) => (properties.center ? 'center' : null)};
   }
 `;

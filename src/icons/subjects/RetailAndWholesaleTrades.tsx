@@ -1,13 +1,15 @@
 import * as React from 'react';
 
-function SvgRetailAndWholesaleTrades(props: React.SVGProps<SVGSVGElement>) {
+const SvgRetailAndWholesaleTrades = (
+  properties: React.SVGProps<SVGSVGElement>
+) => {
   return (
     <svg
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 512 512"
-      {...props}
+      {...properties}
     >
       <circle cx={80} cy={456} r={8} />
       <path d="M256 368h16v16h-16zM288 368h16v16h-16zM240 304h-32a8 8 0 00-8 8v32a8 8 0 008 8h32a8 8 0 008-8v-32a8 8 0 00-8-8zm-8 32h-16v-16h16zM408 368h16v16h-16zM440 368h16v16h-16zM360 352h32a8 8 0 008-8v-32a8 8 0 00-8-8h-32a8 8 0 00-8 8v32a8 8 0 008 8zm8-32h16v16h-16zM256 240h16v16h-16zM288 240h16v16h-16zM208 224h32a8 8 0 008-8v-32a8 8 0 00-8-8h-32a8 8 0 00-8 8v32a8 8 0 008 8zm8-32h16v16h-16zM408 240h16v16h-16zM440 240h16v16h-16zM360 224h32a8 8 0 008-8v-32a8 8 0 00-8-8h-32a8 8 0 00-8 8v32a8 8 0 008 8zm8-32h16v16h-16z" />
@@ -15,6 +17,6 @@ function SvgRetailAndWholesaleTrades(props: React.SVGProps<SVGSVGElement>) {
       <path d="M256 112h16v16h-16zM288 112h16v16h-16zM240 48h-32a8 8 0 00-8 8v32a8 8 0 008 8h32a8 8 0 008-8V56a8 8 0 00-8-8zm-8 32h-16V64h16zM408 112h16v16h-16zM440 112h16v16h-16zM360 96h32a8 8 0 008-8V56a8 8 0 00-8-8h-32a8 8 0 00-8 8v32a8 8 0 008 8zm8-32h16v16h-16z" />
     </svg>
   );
-}
+};
 
 export default SvgRetailAndWholesaleTrades;

@@ -1,13 +1,13 @@
 import * as React from 'react';
 
-function SvgCurrency(props: React.SVGProps<SVGSVGElement>) {
+const SvgCurrency = (properties: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 93.5 93.5"
-      {...props}
+      {...properties}
     >
       <g data-name="Layer 5">
         <path d="M54.67 64.09H4.86a1.25 1.25 0 01-1.25-1.25V18.92a1.25 1.25 0 011.25-1.25H84.8a1.25 1.25 0 011.25 1.25v31.16a1.25 1.25 0 01-2.5 0V20.17H6.11v41.42h48.56a1.25 1.25 0 010 2.5z" />
@@ -19,6 +19,6 @@ function SvgCurrency(props: React.SVGProps<SVGSVGElement>) {
       </g>
     </svg>
   );
-}
+};
 
 export default SvgCurrency;

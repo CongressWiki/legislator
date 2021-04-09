@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-function SvgEmploymentAndTrainingPrograms(
-  props: React.SVGProps<SVGSVGElement>
-) {
+const SvgEmploymentAndTrainingPrograms = (
+  properties: React.SVGProps<SVGSVGElement>
+) => {
   return (
     <svg
       height="1em"
@@ -10,12 +10,12 @@ function SvgEmploymentAndTrainingPrograms(
       xmlns="http://www.w3.org/2000/svg"
       data-name="Layer 1"
       viewBox="0 0 64 64"
-      {...props}
+      {...properties}
     >
       <path d="M61 2H13a1 1 0 00-1 1v13.09a5.993 5.993 0 00-4.295 10.919A5.882 5.882 0 002 32.879v8.149a1 1 0 00.563.9l1.437.7V51a1 1 0 001 1h12a1 1 0 001-1v-8.374l1.437-.7a1 1 0 00.563-.9V36h41a1 1 0 001-1V3a1 1 0 00-1-1zM7 22a4 4 0 114 4 4 4 0 01-4-4zm11.5 10.821a1 1 0 00-.5.865V40.4l-1.437.7A1 1 0 0016 42v8H6v-8a1 1 0 00-.563-.9L4 40.4v-7.521A3.883 3.883 0 017.879 29H18a.986.986 0 00.414-.09l7.772-3.533A1.283 1.283 0 0128 26.545a1.284 1.284 0 01-.638 1.108zM60 34H20.446l7.924-4.618a3.283 3.283 0 00-3.012-5.825L17.783 27H14.31A5.989 5.989 0 0014 16.812V4h46z" />
       <path d="M40 9h18v2H40zM32 15h26v2H32zM32 22h26v2H32zM32 29h26v2H32zM20 59.8V61a1 1 0 001 1h18a1 1 0 001-1v-1.2a7.815 7.815 0 00-6.17-7.629A4.955 4.955 0 0035 49a5 5 0 00-10 0 4.955 4.955 0 001.17 3.175A7.815 7.815 0 0020 59.8zM30 46a3 3 0 11-3 3 3 3 0 013-3zm-2.2 8h4.4a5.811 5.811 0 015.8 5.8v.2H22v-.2a5.811 5.811 0 015.8-5.8zM55.83 52.175A4.955 4.955 0 0057 49a5 5 0 00-10 0 4.955 4.955 0 001.17 3.175A7.815 7.815 0 0042 59.8V61a1 1 0 001 1h18a1 1 0 001-1v-1.2a7.815 7.815 0 00-6.17-7.625zM52 46a3 3 0 11-3 3 3 3 0 013-3zm8 14H44v-.2a5.811 5.811 0 015.8-5.8h4.4a5.811 5.811 0 015.8 5.8z" />
     </svg>
   );
-}
+};
 
 export default SvgEmploymentAndTrainingPrograms;

@@ -2,7 +2,7 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import styled from 'styled-components';
 
-import Image, { ImageProps } from './index';
+import Image, { ImageProps as ImageProperties } from './index';
 
 export default {
   title: 'Components/Image',
@@ -15,9 +15,9 @@ const ExampleContainer = styled.div`
   align-items: center;
 `;
 
-const Template: Story<ImageProps> = (args) => (
+const Template: Story<ImageProperties> = (arguments_) => (
   <ExampleContainer>
-    <Image {...args} />
+    <Image {...arguments_} />
   </ExampleContainer>
 );
 

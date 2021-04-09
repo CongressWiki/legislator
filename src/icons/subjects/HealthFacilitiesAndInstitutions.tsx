@@ -1,15 +1,15 @@
 import * as React from 'react';
 
-function SvgHealthFacilitiesAndInstitutions(
-  props: React.SVGProps<SVGSVGElement>
-) {
+const SvgHealthFacilitiesAndInstitutions = (
+  properties: React.SVGProps<SVGSVGElement>
+) => {
   return (
     <svg
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 64 64"
-      {...props}
+      {...properties}
     >
       <g data-name="Hospital-Health Clinic-Building-Medical-Health">
         <path d="M61 28H48v-4h1a1 1 0 001-1v-4a1 1 0 00-1-1h-7v-6a1 1 0 00-1-1H23a1 1 0 00-1 1v6h-7a1 1 0 00-1 1v4a1 1 0 001 1h1v4H3a1 1 0 00-1 1v32a1 1 0 001 1h58a1 1 0 001-1V29a1 1 0 00-1-1zM16 60H4V30h12zm8-47h16v16H24zm-8 9v-2h6v2zm15 38h-4v-8h4zm6 0h-4v-8h4zm9 0h-7v-9a1 1 0 00-1-1H26a1 1 0 00-1 1v9h-7V24h4v6a1 1 0 001 1h18a1 1 0 001-1v-6h4zm-4-38v-2h6v2zm18 38H48V30h12z" />
@@ -17,6 +17,6 @@ function SvgHealthFacilitiesAndInstitutions(
       </g>
     </svg>
   );
-}
+};
 
 export default SvgHealthFacilitiesAndInstitutions;

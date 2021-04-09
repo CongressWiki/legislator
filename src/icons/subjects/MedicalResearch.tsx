@@ -1,18 +1,18 @@
 import * as React from 'react';
 
-function SvgMedicalResearch(props: React.SVGProps<SVGSVGElement>) {
+const SvgMedicalResearch = (properties: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
       data-name="Layer 1"
-      {...props}
+      {...properties}
     >
       <path d="M6.33 89.22h15.48a3.75 3.75 0 003.35-2.06l4.21-8.35 4.36 17.35A3.75 3.75 0 0037 99h.38a3.75 3.75 0 003.38-2.12l6.81-14.1H63.3a3.75 3.75 0 000-7.5H45.2a3.75 3.75 0 00-3.38 2.12l-3.34 6.92-4.3-17.09a3.75 3.75 0 00-7-.77L19.5 81.72H6.33a3.75 3.75 0 000 7.5z" />
       <path d="M97.42 65a34 34 0 00-18.08-30 14.14 14.14 0 00-9.61-15.62l2-7.47a6.13 6.13 0 00-4.33-7.5l-11.69-3.2a6.13 6.13 0 00-7.5 4.33L37.77 44.48A6.12 6.12 0 0042 52l-1.34 5a3.74 3.74 0 002.65 4.58L48 62.76a3.74 3.74 0 004.58-2.65l1.34-5a6.12 6.12 0 007.43-4.35l1-3.91a14.26 14.26 0 0012.77-3.73 24.79 24.79 0 01-11.73 46.67H52L47.57 99h15.82a34.07 34.07 0 0034.03-34zm-32.2-27a5.09 5.09 0 115.09-5.09A5.09 5.09 0 0165.22 38z" />
     </svg>
   );
-}
+};
 
 export default SvgMedicalResearch;

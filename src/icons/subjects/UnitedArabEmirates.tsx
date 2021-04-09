@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-function SvgUnitedArabEmirates(props: React.SVGProps<SVGSVGElement>) {
+const SvgUnitedArabEmirates = (properties: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg
       height="1em"
@@ -11,7 +11,7 @@ function SvgUnitedArabEmirates(props: React.SVGProps<SVGSVGElement>) {
       clipRule="evenodd"
       strokeLinejoin="round"
       strokeMiterlimit={1.414}
-      {...props}
+      {...properties}
     >
       <path fill="none" d="M0 0h122.88v122.88H0z" />
       <path
@@ -152,6 +152,6 @@ function SvgUnitedArabEmirates(props: React.SVGProps<SVGSVGElement>) {
       />
     </svg>
   );
-}
+};
 
 export default SvgUnitedArabEmirates;

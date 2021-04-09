@@ -1,13 +1,15 @@
 import * as React from 'react';
 
-function SvgSpaceFlightAndExploration(props: React.SVGProps<SVGSVGElement>) {
+const SvgSpaceFlightAndExploration = (
+  properties: React.SVGProps<SVGSVGElement>
+) => {
   return (
     <svg
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 25 25"
-      {...props}
+      {...properties}
     >
       <g data-name="Layer 2">
         <path d="M21.066 15.943l-2.829-1.879a3.357 3.357 0 01-1.461-2.376l-.651-5.246a4.491 4.491 0 00-.837-2.064l-1.155-1.524a2.09 2.09 0 00-3.262-.006L9.709 4.382a4.5 4.5 0 00-.835 2.066l-.65 5.24a3.355 3.355 0 01-1.46 2.375l-2.83 1.88A4.327 4.327 0 002 19.56v.94a.5.5 0 00.45.5l7.045.7-.077.269A1.6 1.6 0 0010.952 24h3.1a1.6 1.6 0 001.534-2.033l-.077-.269L22.55 21a.5.5 0 00.45-.5v-.94a4.327 4.327 0 00-1.934-3.617zm-6.543 6.82a.59.59 0 01-.475.237h-3.1a.6.6 0 01-.573-.759l1.331-4.641a.826.826 0 011.588 0l1.327 4.642a.592.592 0 01-.098.521zM22 20.047l-6.774.674-.971-3.4a1.825 1.825 0 00-3.51 0l-.971 3.4L3 20.047v-.487a3.333 3.333 0 011.486-2.784L7.317 14.9a4.352 4.352 0 001.9-3.084l.649-5.235a3.484 3.484 0 01.644-1.595l1.163-1.536a1.056 1.056 0 011.66.006l1.156 1.526a3.48 3.48 0 01.646 1.593l.65 5.241a4.35 4.35 0 001.9 3.084l2.83 1.88A3.333 3.333 0 0122 19.56z" />
@@ -15,6 +17,6 @@ function SvgSpaceFlightAndExploration(props: React.SVGProps<SVGSVGElement>) {
       </g>
     </svg>
   );
-}
+};
 
 export default SvgSpaceFlightAndExploration;

@@ -1,6 +1,8 @@
 import * as React from 'react';
 
-function SvgEnergyStorageSuppliesDemand(props: React.SVGProps<SVGSVGElement>) {
+const SvgEnergyStorageSuppliesDemand = (
+  properties: React.SVGProps<SVGSVGElement>
+) => {
   return (
     <svg
       height="1em"
@@ -12,7 +14,7 @@ function SvgEnergyStorageSuppliesDemand(props: React.SVGProps<SVGSVGElement>) {
       strokeLinejoin="round"
       strokeMiterlimit={1.5}
       viewBox="0 0 64 64"
-      {...props}
+      {...properties}
     >
       <path fill="none" d="M0 0h64v64H0z" />
       <clipPath id="energy-storage-supplies-demand_svg__a">
@@ -69,6 +71,6 @@ function SvgEnergyStorageSuppliesDemand(props: React.SVGProps<SVGSVGElement>) {
       </g>
     </svg>
   );
-}
+};
 
 export default SvgEnergyStorageSuppliesDemand;

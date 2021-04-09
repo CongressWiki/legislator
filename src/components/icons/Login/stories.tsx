@@ -15,9 +15,9 @@ const ExampleContainer = styled.div`
   align-items: center;
 `;
 
-const Template: Story = (args) => (
+const Template: Story = (arguments_) => (
   <ExampleContainer>
-    <CheckMarkIcon {...args} />
+    <CheckMarkIcon {...arguments_} />
   </ExampleContainer>
 );
 

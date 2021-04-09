@@ -1,10 +1,14 @@
 import * as React from 'react';
 
-function SvgCorporateFinanceAndManagement(
-  props: React.SVGProps<SVGSVGElement>
-) {
+const SvgCorporateFinanceAndManagement = (
+  properties: React.SVGProps<SVGSVGElement>
+) => {
   return (
-    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <svg
+      viewBox="0 0 100 100"
+      xmlns="http://www.w3.org/2000/svg"
+      {...properties}
+    >
       <path d="M78.1 50.5c-3.1 0-5.6-2.5-5.6-5.6 0-.6.5-1 1-1 .6 0 1 .5 1 1 0 2 1.6 3.6 3.6 3.6s3.6-1.6 3.6-3.6c0-1.7-1.1-2.7-3.9-3.6-1.3-.4-5.3-1.7-5.3-5.6 0-3.1 2.5-5.6 5.6-5.6 3.1 0 5.6 2.5 5.6 5.6 0 .6-.5 1-1 1-.6 0-1-.5-1-1 0-2-1.6-3.6-3.6-3.6s-3.6 1.6-3.6 3.6c0 1.6 1.2 2.7 3.9 3.6 2.5.8 5.3 2.2 5.3 5.6 0 3.1-2.5 5.6-5.6 5.6z" />
       <path d="M78.1 32.1c-.6 0-1-.5-1-1v-2.6c0-.6.5-1 1-1 .6 0 1 .5 1 1v2.6c0 .5-.4 1-1 1zM78.1 53.1c-.6 0-1-.5-1-1v-2.6c0-.6.5-1 1-1 .6 0 1 .5 1 1v2.6c0 .5-.4 1-1 1z" />
       <g>
@@ -41,6 +45,6 @@ function SvgCorporateFinanceAndManagement(
       </g>
     </svg>
   );
-}
+};
 
 export default SvgCorporateFinanceAndManagement;

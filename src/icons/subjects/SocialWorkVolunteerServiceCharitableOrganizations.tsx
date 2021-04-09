@@ -1,15 +1,15 @@
 import * as React from 'react';
 
-function SvgSocialWorkVolunteerServiceCharitableOrganizations(
-  props: React.SVGProps<SVGSVGElement>
-) {
+const SvgSocialWorkVolunteerServiceCharitableOrganizations = (
+  properties: React.SVGProps<SVGSVGElement>
+) => {
   return (
     <svg
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
       data-name="Layer 1"
-      {...props}
+      {...properties}
     >
       <g data-name="Group">
         <path
@@ -19,6 +19,6 @@ function SvgSocialWorkVolunteerServiceCharitableOrganizations(
       </g>
     </svg>
   );
-}
+};
 
 export default SvgSocialWorkVolunteerServiceCharitableOrganizations;

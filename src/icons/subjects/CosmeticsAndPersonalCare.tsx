@@ -1,17 +1,19 @@
 import * as React from 'react';
 
-function SvgCosmeticsAndPersonalCare(props: React.SVGProps<SVGSVGElement>) {
+const SvgCosmeticsAndPersonalCare = (
+  properties: React.SVGProps<SVGSVGElement>
+) => {
   return (
     <svg
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 120 120"
-      {...props}
+      {...properties}
     >
       <path d="M109.54 78.72L95.35 53.94a3.46 3.46 0 00-3.6-1.7 18.37 18.37 0 00-4.84 1.56L84.5 55l2.84 5H55v5h-2.5v8.75a18.66 18.66 0 005.23 13l.74.77H84l.74-.77a18.66 18.66 0 005.23-13v-8.81H87.5v-4.73l15.73 27.48 2.21-1.52a18.56 18.56 0 003.76-3.45 3.54 3.54 0 00.34-4zm-22-5A16.19 16.19 0 0183 84.94H59.53A16.19 16.19 0 0155 73.69v-6.25h32.5zm-30-8.75v-2.5H85v2.5zm49.85 16.18a16.14 16.14 0 01-3.29 3l-16.23-28.1a16.14 16.14 0 014.23-1.35 1 1 0 011 .49L107.45 80a1 1 0 01-.1 1.12zM21.5 34.94h-8a3.5 3.5 0 00-3.5 3.5v45.5a3.5 3.5 0 003.5 3.5h8a3.5 3.5 0 003.5-3.5v-45.5a3.5 3.5 0 00-3.5-3.5zm1 49a1 1 0 01-1 1h-8a1 1 0 01-1-1v-19h10zm0-21.5h-10v-2.5h10zm-10-5v-19a1 1 0 011-1h8a1 1 0 011 1v19zM43.75 47.44H42.5V35.81a3.5 3.5 0 00-6-2.48l-3 3a3.51 3.51 0 00-1 2.48v8.65h-1.25v10H30v26.5a3.5 3.5 0 003.5 3.5h8a3.5 3.5 0 003.5-3.5V57.44h-1.25zM35 38.79a1 1 0 01.29-.7l3-3a1 1 0 011.71.7v11.65h-5zm7.5 45.15a1 1 0 01-1 1h-8a1 1 0 01-1-1v-19h10zm-10-21.5v-2.5h10v2.5zm1.25-5v-7.5h7.5v7.5z" />
     </svg>
   );
-}
+};
 
 export default SvgCosmeticsAndPersonalCare;

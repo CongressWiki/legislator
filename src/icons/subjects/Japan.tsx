@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-function SvgJapan(props: React.SVGProps<SVGSVGElement>) {
+const SvgJapan = (properties: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg
       height="1em"
@@ -11,7 +11,7 @@ function SvgJapan(props: React.SVGProps<SVGSVGElement>) {
       clipRule="evenodd"
       strokeLinejoin="round"
       strokeMiterlimit={1.414}
-      {...props}
+      {...properties}
     >
       <path fill="none" d="M0 0h122.88v122.88H0z" />
       <path
@@ -96,6 +96,6 @@ function SvgJapan(props: React.SVGProps<SVGSVGElement>) {
       />
     </svg>
   );
-}
+};
 
 export default SvgJapan;

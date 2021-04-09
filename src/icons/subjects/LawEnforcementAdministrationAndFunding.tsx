@@ -1,15 +1,15 @@
 import * as React from 'react';
 
-function SvgLawEnforcementAdministrationAndFunding(
-  props: React.SVGProps<SVGSVGElement>
-) {
+const SvgLawEnforcementAdministrationAndFunding = (
+  properties: React.SVGProps<SVGSVGElement>
+) => {
   return (
     <svg
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 64 64"
-      {...props}
+      {...properties}
     >
       <path d="M.998 55a1 1 0 01-1-1c0-4.963 4.037-9 9-9a1 1 0 110 2c-3.859 0-7 3.141-7 7a1 1 0 01-1 1zM45 55.001a1 1 0 01-1-1c0-3.942-4.301-7-8.001-7a1 1 0 110-2c4.721 0 10.001 3.849 10.001 9a1 1 0 01-1 1z" />
       <path d="M15.999 47.001L8.998 47a1 1 0 110-2l7.001.001a1 1 0 110 2zM35.999 47.001l-6-.002a1 1 0 110-2l6 .002a1 1 0 110 2zM.999 61.999a1 1 0 01-1-1L-.002 54a1 1 0 112 0l.001 6.999a1 1 0 01-1 1z" />
@@ -95,6 +95,6 @@ function SvgLawEnforcementAdministrationAndFunding(
       </g>
     </svg>
   );
-}
+};
 
 export default SvgLawEnforcementAdministrationAndFunding;

@@ -23,9 +23,10 @@ const SubjectIcon = ({ subject, className, ...rest }: IconProps) => {
   if (subject === 'No Subject') {
     return null;
   }
+
   subject = normalize(subject);
 
-  const ImportedIconRef = React.useRef<
+  const ImportedIconReference = React.useRef<
     false | React.FC<React.SVGProps<SVGSVGElement>>
   >(false);
   const [loading, setLoading] = React.useState(false);
@@ -37,21 +38,22 @@ const SubjectIcon = ({ subject, className, ...rest }: IconProps) => {
         const { default: ReactComponent } = await import(
           `@icons/subjects/${subject}`
         );
-        ImportedIconRef.current = ReactComponent;
-      } catch (err) {
-        console.error(err);
+        ImportedIconReference.current = ReactComponent;
+      } catch (error) {
+        console.error(error);
       } finally {
         setLoading(false);
       }
     };
+
     importIcon();
     return () => {
-      ImportedIconRef.current = false;
+      ImportedIconReference.current = false;
     };
   }, []);
 
-  if (!loading && ImportedIconRef.current) {
-    const { current: ImportedIcon } = ImportedIconRef;
+  if (!loading && ImportedIconReference.current) {
+    const { current: ImportedIcon } = ImportedIconReference;
     if (!ImportedIcon) throw new Error('ImportedIcon is not a component.');
     return <ImportedIcon className={className} {...rest} />;
   }

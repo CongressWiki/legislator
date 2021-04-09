@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import UsaMapSVG from '@icons/misc/USAMap';
+import UsaMapSVG from '@icons/misc/UsaMap';
 import styled, { css } from 'styled-components';
 import * as d3 from 'd3';
 import type {
@@ -24,15 +24,15 @@ const UsaMapOfSponsors = ({
     const states = usaMap.selectAll('path');
 
     states
-      .on('mouseover', function (event) {
+      .on('mouseover', (event) => {
         setHoveredState(event.target.dataset.id);
       })
-      .on('mousemove', function (event) {
+      .on('mousemove', (event) => {
         htmlMouseTip
           .style('left', Math.max(0, event.pageX - 50) + 'px')
           .style('top', event.pageY + 20 + 'px');
       })
-      .on('mouseout', function () {
+      .on('mouseout', () => {
         setHoveredState('');
       });
     return () => {
@@ -87,7 +87,7 @@ const Wrapper = styled.div<{ sponsorState: string; cosponsorStates: string[] }>`
       opacity: 0.3;
     }
 
-    path[data-id=${(props) => props.sponsorState}] {
+    path[data-id=${(properties) => properties.sponsorState}] {
       fill: #e8d803;
       opacity: 0.9;
     }
@@ -115,7 +115,7 @@ function styleCosponsorStates({
 }: {
   cosponsorStates: string[];
 }) {
-  let styles = ``;
+  let styles = '';
 
   for (const cosponsorState of cosponsorStates) {
     styles += `
@@ -125,6 +125,7 @@ function styleCosponsorStates({
       }
     `;
   }
+
   return css`
     ${styles}
   `;

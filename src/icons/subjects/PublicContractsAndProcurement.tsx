@@ -1,15 +1,15 @@
 import * as React from 'react';
 
-function SvgPublicContractsAndProcurement(
-  props: React.SVGProps<SVGSVGElement>
-) {
+const SvgPublicContractsAndProcurement = (
+  properties: React.SVGProps<SVGSVGElement>
+) => {
   return (
     <svg
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 16.933 16.933"
-      {...props}
+      {...properties}
     >
       <path
         d="M8.538 8.732c-.22 0-.41.092-.616.215a6.124 6.124 0 00-.655.471c-.465.37-.984.831-1.493 1.22a.551.551 0 00-.214.431.665.665 0 00.182.436c.22.247.599.402 1.114.402.692 0 1.101-.277 1.32-.45l3.544 3.547a.265.265 0 00.374 0l.452-.452h.419a.265.265 0 100-.529h-.53a.265.265 0 00-.186.078l-.342.342-3.515-3.517a.265.265 0 00-.374 0s-.456.451-1.162.451c-.406 0-.635-.13-.72-.224-.042-.047-.047-.08-.047-.088 0-.008-.008.004.006-.006.532-.406 1.054-.87 1.501-1.228a5.77 5.77 0 01.598-.43c.169-.1.303-.14.344-.14H9.58c.04 0 .153.036.314.132.16.095.363.237.613.39.5.308 1.187.659 2.143.798a.265.265 0 00.038.003h.277a.265.265 0 100-.53h-.249a4.915 4.915 0 01-1.932-.72c-.234-.145-.433-.284-.62-.395-.186-.112-.364-.207-.584-.207z"
@@ -342,6 +342,6 @@ function SvgPublicContractsAndProcurement(
       />
     </svg>
   );
-}
+};
 
 export default SvgPublicContractsAndProcurement;

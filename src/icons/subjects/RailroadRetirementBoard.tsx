@@ -1,6 +1,8 @@
 import * as React from 'react';
 
-function SvgRailroadRetirementBoard(props: React.SVGProps<SVGSVGElement>) {
+const SvgRailroadRetirementBoard = (
+  properties: React.SVGProps<SVGSVGElement>
+) => {
   return (
     <svg
       height="1em"
@@ -8,7 +10,7 @@ function SvgRailroadRetirementBoard(props: React.SVGProps<SVGSVGElement>) {
       xmlns="http://www.w3.org/2000/svg"
       data-name="Layer 1"
       viewBox="0 0 96 96"
-      {...props}
+      {...properties}
     >
       <path d="M48 44a17.056 17.056 0 01-17.074-17 17.32 17.32 0 01.511-4.15 2 2 0 113.883.96 13.315 13.315 0 00-.394 3.19 13.074 13.074 0 0026.148 0 13.315 13.315 0 00-.394-3.19 2 2 0 113.883-.96 17.32 17.32 0 01.51 4.15A17.056 17.056 0 0148 44z" />
       <path d="M76.888 94H19.112C15.19 94 12 91.241 12 87.85V51.31C12 45.074 18.045 40 25.475 40h4.59a2 2 0 011.47.644l16.944 18.36 15.96-18.318A2 2 0 0165.947 40h4.578C77.955 40 84 45.074 84 51.31v36.54c0 3.391-3.19 6.15-7.112 6.15zM25.475 44C20.25 44 16 47.28 16 51.31v36.54c0 1.166 1.425 2.15 3.112 2.15h57.776C78.575 90 80 89.016 80 87.85V51.31c0-4.03-4.25-7.31-9.475-7.31h-3.668L50.03 63.314a2 2 0 01-2.978.042L29.19 44z" />
@@ -16,6 +18,6 @@ function SvgRailroadRetirementBoard(props: React.SVGProps<SVGSVGElement>) {
       <path d="M48 19a6 6 0 116-6 6.007 6.007 0 01-6 6zm0-8a2 2 0 102 2 2.002 2.002 0 00-2-2zM48 32c-5.514 0-10-4.038-10-9a2 2 0 014 0c0 2.757 2.691 5 6 5s6-2.243 6-5a2 2 0 014 0c0 4.962-4.486 9-10 9zM48 63a1.993 1.993 0 01-1.414-.586l-7-7a2 2 0 010-2.828l7-7a2 2 0 012.828 0l7 7a2 2 0 010 2.828l-7 7A1.993 1.993 0 0148 63zm-4.171-9L48 58.171 52.171 54 48 49.829z" />
     </svg>
   );
-}
+};
 
 export default SvgRailroadRetirementBoard;

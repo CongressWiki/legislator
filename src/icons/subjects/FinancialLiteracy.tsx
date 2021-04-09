@@ -1,13 +1,13 @@
 import * as React from 'react';
 
-function SvgFinancialLiteracy(props: React.SVGProps<SVGSVGElement>) {
+const SvgFinancialLiteracy = (properties: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 64 64"
-      {...props}
+      {...properties}
     >
       <path d="M37.001 10H39V8h-1.999A7.01 7.01 0 0030 15.001h2A5.007 5.007 0 0137.001 10z" />
       <circle cx={50} cy={11} r={1} />
@@ -16,6 +16,6 @@ function SvgFinancialLiteracy(props: React.SVGProps<SVGSVGElement>) {
       <path d="M13 31h18v2H13zM29 35h2v2h-2zM13 35h14v2H13zM25 39h6v2h-6zM25 43h6v2h-6zM45 51h10V41H45v10zm2-8h6v6h-6v-6zM37 49h6v2h-6zM37 45h6v2h-6zM37 41h6v2h-6zM37 39h18v-8H37v8zm2-6h14v4H39v-4z" />
     </svg>
   );
-}
+};
 
 export default SvgFinancialLiteracy;

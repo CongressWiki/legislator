@@ -1,13 +1,15 @@
 import * as React from 'react';
 
-function SvgNeurologicalDisorders(props: React.SVGProps<SVGSVGElement>) {
+const SvgNeurologicalDisorders = (
+  properties: React.SVGProps<SVGSVGElement>
+) => {
   return (
     <svg
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 64 64"
-      {...props}
+      {...properties}
     >
       <g data-name="outline create copy">
         <path d="M9.5 31v2a2.5 2.5 0 012.5 2.5 2.43 2.43 0 01-.24 1.07l1.81.86A4.61 4.61 0 0014 35.5 4.51 4.51 0 009.5 31zM19.13 27.09A4.92 4.92 0 0022 28v-2a3 3 0 01-2.11-.89A5.8 5.8 0 0020 24a6 6 0 00-.57-2.54A3 3 0 0122 20v-2a5 5 0 00-3.78 1.74A6 6 0 0014 18v2a4 4 0 11-2.4 7.2l-1.2 1.6a6 6 0 008.73-1.71zM33 32a6 6 0 00-6 6h2a4 4 0 018 0h2a6 6 0 00-6-6zM39 18a3 3 0 01-3-3h-2a5 5 0 005 5 4.93 4.93 0 00.87-.09A5 5 0 0135 26v2a7 7 0 006.75-8.83A5 5 0 0044 15h-2a3 3 0 01-3 3zM45 18v2a3 3 0 010 6v2a5 5 0 000-10zM30.76 29.43l1.81-.86A4.5 4.5 0 0024 30.5h2a2.5 2.5 0 014.76-1.07zM32 25v-2a4 4 0 01-4-4h-2a6 6 0 006 6zM21 31a5 5 0 00-5 5h2a3 3 0 016 0h2a5 5 0 00-5-5z" />
@@ -16,6 +18,6 @@ function SvgNeurologicalDisorders(props: React.SVGProps<SVGSVGElement>) {
       </g>
     </svg>
   );
-}
+};
 
 export default SvgNeurologicalDisorders;

@@ -1,8 +1,12 @@
 import * as React from 'react';
 
-function SvgVirginia(props: React.SVGProps<SVGSVGElement>) {
+const SvgVirginia = (properties: React.SVGProps<SVGSVGElement>) => {
   return (
-    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <svg
+      viewBox="0 0 100 100"
+      xmlns="http://www.w3.org/2000/svg"
+      {...properties}
+    >
       <g
         fill="none"
         stroke="#000"
@@ -15,6 +19,6 @@ function SvgVirginia(props: React.SVGProps<SVGSVGElement>) {
       </g>
     </svg>
   );
-}
+};
 
 export default SvgVirginia;

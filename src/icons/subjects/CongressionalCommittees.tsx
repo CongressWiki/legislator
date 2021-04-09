@@ -1,13 +1,15 @@
 import * as React from 'react';
 
-function SvgCongressionalCommittees(props: React.SVGProps<SVGSVGElement>) {
+const SvgCongressionalCommittees = (
+  properties: React.SVGProps<SVGSVGElement>
+) => {
   return (
     <svg
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 400 400"
-      {...props}
+      {...properties}
     >
       <path d="M46.1 231c15.8-27.6 98.5-38.3 151.3-38.3 55.9 0 135.5 10.6 151.3 38.3l35.8-14.2v-5c-19.5-27.6-95.8-48.3-187-48.3S30 184.1 10.5 211.8v5.8c4 1.6 35.6 13.4 35.6 13.4z" />
       <path d="M348.3 242.7c-15.8-28.3-95.7-40-150.9-40-51.4 0-134.6 11.7-150.4 40l-31.9-12.2v54.6l31.1 12.1c15.8-27.6 77.5-48.3 151.3-48.3 73.8 0 135.5 20.6 151.3 48.3l31.1-12.1v-54.7l-31.6 12.3z" />
@@ -30,6 +32,6 @@ function SvgCongressionalCommittees(props: React.SVGProps<SVGSVGElement>) {
       </g>
     </svg>
   );
-}
+};
 
 export default SvgCongressionalCommittees;

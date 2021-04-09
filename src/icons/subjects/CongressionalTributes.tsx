@@ -1,13 +1,15 @@
 import * as React from 'react';
 
-function SvgCongressionalTributes(props: React.SVGProps<SVGSVGElement>) {
+const SvgCongressionalTributes = (
+  properties: React.SVGProps<SVGSVGElement>
+) => {
   return (
     <svg
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 6.615 6.615"
-      {...props}
+      {...properties}
     >
       <path
         style={{
@@ -41,6 +43,6 @@ function SvgCongressionalTributes(props: React.SVGProps<SVGSVGElement>) {
       />
     </svg>
   );
-}
+};
 
 export default SvgCongressionalTributes;

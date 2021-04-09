@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-function SvgUsaMap(props: React.SVGProps<SVGSVGElement>) {
+const SvgUsaMap = (properties: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg
       height="1em"
@@ -10,7 +10,7 @@ function SvgUsaMap(props: React.SVGProps<SVGSVGElement>) {
       stroke="#000"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      {...props}
+      {...properties}
     >
       <path
         data-name="Massachusetts"
@@ -371,6 +371,6 @@ function SvgUsaMap(props: React.SVGProps<SVGSVGElement>) {
       />
     </svg>
   );
-}
+};
 
 export default SvgUsaMap;

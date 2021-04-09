@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-function SvgCommitteeSpeech(props: React.SVGProps<SVGSVGElement>) {
+const SvgCommitteeSpeech = (properties: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg
       height="1em"
@@ -12,7 +12,7 @@ function SvgCommitteeSpeech(props: React.SVGProps<SVGSVGElement>) {
       shapeRendering="geometricPrecision"
       textRendering="geometricPrecision"
       imageRendering="optimizeQuality"
-      {...props}
+      {...properties}
     >
       <defs>
         <style>{'.Committee_Speech_svg__fil0{fill:#000}'}</style>
@@ -35,6 +35,6 @@ function SvgCommitteeSpeech(props: React.SVGProps<SVGSVGElement>) {
       />
     </svg>
   );
-}
+};
 
 export default SvgCommitteeSpeech;

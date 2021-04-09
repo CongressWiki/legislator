@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import UsaMapSVG from '@icons/misc/USAMap';
+import UsaMapSVG from '@icons/misc/UsaMap';
 import styled, { css } from 'styled-components';
 import * as d3 from 'd3';
 import type { RollCallVote } from '@type/hasura';
@@ -32,15 +32,15 @@ const UsaMapOfVotes = ({
     const states = usaMap.selectAll('path');
 
     states
-      .on('mouseover', function (event) {
+      .on('mouseover', (event) => {
         setHoveredState(event.target.dataset.id);
       })
-      .on('mousemove', function (event) {
+      .on('mousemove', (event) => {
         htmlMouseTip
           .style('top', event.offsetY + 10 + 'px')
           .style('left', event.offsetX + 10 + 'px');
       })
-      .on('mouseout', function () {
+      .on('mouseout', () => {
         setHoveredState('');
       });
     return () => {
@@ -124,7 +124,7 @@ function styleStatesWithVotes({
   const votesByState = groupBy(votes, 'state');
   const states = Object.keys(votesByState);
 
-  let styles = ``;
+  let styles = '';
   for (const state of states) {
     const stateVotes = votesByState[state];
 
@@ -132,7 +132,7 @@ function styleStatesWithVotes({
 
     styles += `
       path[data-id=${state}] {
-        fill: ${findHighestOccurrenceAndNum(stateVoteColors)};
+        fill: ${findHighestOccurrenceAndNumber(stateVoteColors)};
         opacity: 0.9;
       }
     `;
@@ -143,17 +143,17 @@ function styleStatesWithVotes({
   `;
 }
 
-function findHighestOccurrenceAndNum(strings: string[]) {
-  let obj: Record<string, any> = {};
-  let maxNum: string = '';
-  let maxVal: string = '';
-  for (let str of strings) {
-    obj[str] = ++obj[str] || 1;
-    if (maxVal === undefined || obj[str] > maxVal) {
-      maxNum = str;
-      maxVal = obj[str];
+function findHighestOccurrenceAndNumber(strings: string[]) {
+  const object: Record<string, any> = {};
+  let maxNumber = '';
+  let maxValue = '';
+  for (const string of strings) {
+    object[string] = ++object[string] || 1;
+    if (maxValue === undefined || object[string] > maxValue) {
+      maxNumber = string;
+      maxValue = object[string];
     }
   }
 
-  return maxNum;
+  return maxNumber;
 }

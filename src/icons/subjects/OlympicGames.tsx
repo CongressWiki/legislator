@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-function SvgOlympicGames(props: React.SVGProps<SVGSVGElement>) {
+const SvgOlympicGames = (properties: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg
       height="1em"
@@ -12,7 +12,7 @@ function SvgOlympicGames(props: React.SVGProps<SVGSVGElement>) {
       shapeRendering="geometricPrecision"
       textRendering="geometricPrecision"
       imageRendering="optimizeQuality"
-      {...props}
+      {...properties}
     >
       <defs>
         <style>{'.olympic-games_svg__fil0{fill:#000;fill-rule:nonzero}'}</style>
@@ -32,6 +32,6 @@ function SvgOlympicGames(props: React.SVGProps<SVGSVGElement>) {
       <path fill="none" d="M0 0h6.827v6.827H0z" />
     </svg>
   );
-}
+};
 
 export default SvgOlympicGames;

@@ -1,13 +1,13 @@
 import * as React from 'react';
 
-function SvgUsaMapStriped(props: React.SVGProps<SVGSVGElement>) {
+const SvgUsaMapStriped = (properties: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg
       height="1em"
       width="1em"
       viewBox="2 20 98 68"
       xmlns="http://www.w3.org/2000/svg"
-      {...props}
+      {...properties}
     >
       <path
         fill="none"
@@ -19,6 +19,6 @@ function SvgUsaMapStriped(props: React.SVGProps<SVGSVGElement>) {
       />
     </svg>
   );
-}
+};
 
 export default SvgUsaMapStriped;

@@ -1,13 +1,13 @@
 import React from 'react';
-import {useStaticQuery, graphql} from 'gatsby';
-import Header, {HeaderSpacer} from '@components/Header';
+import { useStaticQuery, graphql } from 'gatsby';
+import Header, { HeaderSpacer } from '@components/Header';
 import styled from 'styled-components';
 
 export type HomeLayoutProps = {
   children: React.ReactNode;
 };
 
-const HomeLayout = ({children}: HomeLayoutProps) => {
+const HomeLayout = ({ children }: HomeLayoutProps) => {
   const data = useStaticQuery(graphql`
     query {
       site {
@@ -20,7 +20,7 @@ const HomeLayout = ({children}: HomeLayoutProps) => {
 
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
+      <Header siteTitle={data.site.siteMetadata?.title || 'Title'} />
       <HeaderSpacer />
       <Wrapper>
         {children}

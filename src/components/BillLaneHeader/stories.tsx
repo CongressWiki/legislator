@@ -1,27 +1,29 @@
 import React from 'react';
-import {Story, Meta} from '@storybook/react';
+import { Story, Meta } from '@storybook/react';
 
-import BillLaneHeader, {BillLaneHeaderProps} from './index';
+import BillLaneHeader, {
+  BillLaneHeaderProps as BillLaneHeaderProperties,
+} from './index';
 
 export default {
   title: 'Components/BillLaneHeader',
-  component: BillLaneHeader
+  component: BillLaneHeader,
 } as Meta;
 
-const Template: Story<BillLaneHeaderProps> = (args) => (
-  <BillLaneHeader {...args} />
+const Template: Story<BillLaneHeaderProperties> = (arguments_) => (
+  <BillLaneHeader {...arguments_} />
 );
 
 export const Default = Template.bind({});
 Default.args = {
   handleChamberSelection: (selection: string) => {
-    console.log({selection});
+    console.log({ selection });
   },
   handleSearchInput: (value: string) => {
-    console.log({value});
+    console.log({ value });
   },
   handleOrderAscToggle: (isAscending: boolean) => {
-    console.log({isAscending});
+    console.log({ isAscending });
   },
-  className: ''
+  className: '',
 };

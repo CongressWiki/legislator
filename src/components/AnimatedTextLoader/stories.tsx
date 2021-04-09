@@ -8,6 +8,6 @@ export default {
   component: AnimatedTextLoader,
 } as Meta;
 
-const Template: Story = (args) => <AnimatedTextLoader {...args} />;
+const Template: Story = (arguments_) => <AnimatedTextLoader {...arguments_} />;
 
 export const Default = Template.bind({});

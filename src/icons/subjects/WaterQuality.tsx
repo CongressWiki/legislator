@@ -1,13 +1,13 @@
 import * as React from 'react';
 
-function SvgWaterQuality(props: React.SVGProps<SVGSVGElement>) {
+const SvgWaterQuality = (properties: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 26.458 26.458"
-      {...props}
+      {...properties}
     >
       <path
         style={{
@@ -129,6 +129,6 @@ function SvgWaterQuality(props: React.SVGProps<SVGSVGElement>) {
       />
     </svg>
   );
-}
+};
 
 export default SvgWaterQuality;

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import HorizontalDropdown from '@components/HorizontalDropdown';
 
@@ -8,7 +8,7 @@ export type BillFeedOrderDropdownProps = {
   className?: string;
 };
 
-const BillFeedOrderDropdown = ({className}: BillFeedOrderDropdownProps) => {
+const BillFeedOrderDropdown = ({ className }: BillFeedOrderDropdownProps) => {
   const handleOptionSelect = (option: string) => {
     console.log(option);
   };

@@ -1,13 +1,13 @@
 import * as React from 'react';
 
-function SvgCustomsEnforcement(props: React.SVGProps<SVGSVGElement>) {
+const SvgCustomsEnforcement = (properties: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 64 64"
-      {...props}
+      {...properties}
     >
       <circle cx={22} cy={18} r={1} />
       <circle cx={16} cy={18} r={1} />
@@ -16,6 +16,6 @@ function SvgCustomsEnforcement(props: React.SVGProps<SVGSVGElement>) {
       <path d="M57 57h2v2h-2zM49 57h2v2h-2zM53 57h2v2h-2zM49 53h10v2H49z" />
     </svg>
   );
-}
+};
 
 export default SvgCustomsEnforcement;

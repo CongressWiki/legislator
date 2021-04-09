@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-function SvgUsaMapSpotted(props: React.SVGProps<SVGSVGElement>) {
+const SvgUsaMapSpotted = (properties: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg
       height="1em"
@@ -9,7 +9,7 @@ function SvgUsaMapSpotted(props: React.SVGProps<SVGSVGElement>) {
       fillRule="evenodd"
       clipRule="evenodd"
       xmlns="http://www.w3.org/2000/svg"
-      {...props}
+      {...properties}
     >
       <circle cx={15.828} cy={20.891} r={0.703} />
       <circle cx={20.891} cy={20.891} r={0.703} />
@@ -481,6 +481,6 @@ function SvgUsaMapSpotted(props: React.SVGProps<SVGSVGElement>) {
       <circle cx={31.235} cy={66.454} r={0.703} />
     </svg>
   );
-}
+};
 
 export default SvgUsaMapSpotted;

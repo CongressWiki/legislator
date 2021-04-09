@@ -10,7 +10,7 @@ import BillLaneFooter from '@components/BillLaneFooter';
 import type { IGatsbyImageData } from 'gatsby-plugin-image';
 import { search } from '@utils/Search';
 import type { PageProps } from 'gatsby';
-// import withApollo from '@utils/withApollo';
+// Import withApollo from '@utils/withApollo';
 
 export type BillsAndCongressImagesQuery = {
   hasura: {
@@ -34,7 +34,7 @@ export type BillsAndCongressImagesQuery = {
   };
 };
 
-function Home(_props: PageProps) {
+const Home = (_properties: PageProps) => {
   const data: BillsAndCongressImagesQuery = useStaticQuery(graphql`
     query BillsAndCongressImages {
       congressImages: allFile(
@@ -144,7 +144,7 @@ function Home(_props: PageProps) {
       bill.sponsor.preferred_name.toLocaleLowerCase().includes(searchBy) ||
       bill.title.toLowerCase().includes(searchBy);
 
-    if (isBillType && matchesSearchBy) return bill;
+    return isBillType && matchesSearchBy ? bill : undefined;
   });
 
   if (searchBy) {
@@ -164,7 +164,9 @@ function Home(_props: PageProps) {
 
   if (orderByAsc) filteredBills.reverse();
 
-  const loadMore = () => setLimit(limit + limitIncrement);
+  const loadMore = () => {
+    setLimit(limit + limitIncrement);
+  };
 
   return (
     <>
@@ -188,7 +190,7 @@ function Home(_props: PageProps) {
       </Layout>
     </>
   );
-}
+};
 
-// export default withApollo(Home);
+// Export default withApollo(Home);
 export default Home;

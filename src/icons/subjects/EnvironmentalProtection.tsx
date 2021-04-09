@@ -1,13 +1,15 @@
 import * as React from 'react';
 
-function SvgEnvironmentalProtection(props: React.SVGProps<SVGSVGElement>) {
+const SvgEnvironmentalProtection = (
+  properties: React.SVGProps<SVGSVGElement>
+) => {
   return (
     <svg
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 118.749 100.674"
-      {...props}
+      {...properties}
     >
       <path
         style={{
@@ -33,6 +35,6 @@ function SvgEnvironmentalProtection(props: React.SVGProps<SVGSVGElement>) {
       />
     </svg>
   );
-}
+};
 
 export default SvgEnvironmentalProtection;

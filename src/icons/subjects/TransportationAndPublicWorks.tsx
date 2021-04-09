@@ -1,6 +1,8 @@
 import * as React from 'react';
 
-function SvgTransportationAndPublicWorks(props: React.SVGProps<SVGSVGElement>) {
+const SvgTransportationAndPublicWorks = (
+  properties: React.SVGProps<SVGSVGElement>
+) => {
   return (
     <svg
       height="1em"
@@ -8,7 +10,7 @@ function SvgTransportationAndPublicWorks(props: React.SVGProps<SVGSVGElement>) {
       xmlns="http://www.w3.org/2000/svg"
       data-name="Layer 1"
       viewBox="0 0 64 64"
-      {...props}
+      {...properties}
     >
       <defs>
         <style>
@@ -31,6 +33,6 @@ function SvgTransportationAndPublicWorks(props: React.SVGProps<SVGSVGElement>) {
       />
     </svg>
   );
-}
+};
 
 export default SvgTransportationAndPublicWorks;

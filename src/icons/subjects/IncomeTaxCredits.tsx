@@ -1,13 +1,13 @@
 import * as React from 'react';
 
-function SvgIncomeTaxCredits(props: React.SVGProps<SVGSVGElement>) {
+const SvgIncomeTaxCredits = (properties: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 64 64"
-      {...props}
+      {...properties}
     >
       <style>
         {
@@ -31,6 +31,6 @@ function SvgIncomeTaxCredits(props: React.SVGProps<SVGSVGElement>) {
       <path d="M34.9 42H7c-.6 0-1-.4-1-1V17c0-.6.4-1 1-1h48c.6 0 1 .4 1 1v16.7c.7.4 1.4.8 2 1.3V17c0-1-.5-1.8-1.2-2.3l-.3-2.8c-.1-.9-.6-1.7-1.4-2.2L54.6 7c-.3-1.6-1.9-2.7-3.5-2.4L4 13.9c-1.6.3-2.7 1.9-2.4 3.5L4 29.1V41c0 1.7 1.3 3 3 3h27.3c.1-.7.3-1.4.6-2zm18.7-30.8c.5 0 .9.4 1 .9l.2 1.9h-30l28.8-2.8c-.1 0 0 0 0 0zm-2.1-4.7h.2c.5 0 .9.3 1 .8l.4 1.9-29.9 2.9 28.3-5.6z" />
     </svg>
   );
-}
+};
 
 export default SvgIncomeTaxCredits;

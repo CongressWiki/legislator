@@ -1,13 +1,15 @@
 import * as React from 'react';
 
-function SvgInternalRevenueServiceIrs(props: React.SVGProps<SVGSVGElement>) {
+const SvgInternalRevenueServiceIrs = (
+  properties: React.SVGProps<SVGSVGElement>
+) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
       width={1200}
       height={1200}
-      {...props}
+      {...properties}
     >
       <image
         data-name="Color Fill 1"
@@ -18,6 +20,6 @@ function SvgInternalRevenueServiceIrs(props: React.SVGProps<SVGSVGElement>) {
       />
     </svg>
   );
-}
+};
 
 export default SvgInternalRevenueServiceIrs;

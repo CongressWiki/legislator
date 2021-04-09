@@ -1,10 +1,14 @@
 import * as React from 'react';
 
-function SvgCongressionalDistrictsAndRepresentation(
-  props: React.SVGProps<SVGSVGElement>
-) {
+const SvgCongressionalDistrictsAndRepresentation = (
+  properties: React.SVGProps<SVGSVGElement>
+) => {
   return (
-    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <svg
+      viewBox="0 0 100 100"
+      xmlns="http://www.w3.org/2000/svg"
+      {...properties}
+    >
       <path d="M5 17.925v64.742h80.5V17.925H5zm70.872 3.536h5.883v8.53h-5.883v-8.53zm-7.169 0h5.882v8.53h-5.882v-8.53zm-7.169 0h5.882v8.53h-5.882v-8.53zm-7.169 0h5.882v8.53h-5.882v-8.53zm-7.179 0h5.882v8.53h-5.882v-8.53zM13.87 79.256H7.988v-8.53h5.882v8.53zm0-9.853H7.988v-8.53h5.882v8.53zm0-9.853H7.988v-8.53h5.882v8.53zm0-9.853H7.988v-8.53h5.882v8.53zm.037-9.854H8.024v-8.53h5.882v8.53zm0-9.853H8.024v-8.53h5.882v8.53zm7.132 49.266h-5.882v-8.53h5.882v8.53zm0-9.853h-5.882v-8.53h5.882v8.53zm0-9.853h-5.882v-8.53h5.882v8.53zm0-9.853h-5.882v-8.53h5.882v8.53zm.037-9.854h-5.882v-8.53h5.882v8.53zm0-9.853h-5.882v-8.53h5.882v8.53zm7.133 49.266h-5.882v-8.53h5.882v8.53zm0-9.853h-5.882v-8.53h5.882v8.53zm0-9.853h-5.882v-8.53h5.882v8.53zm0-9.853h-5.882v-8.53h5.882v8.53zm.036-9.854h-5.882v-8.53h5.882v8.53zm0-9.853h-5.882v-8.53h5.882v8.53zm7.133 49.266h-5.882v-8.53h5.882v8.53zm0-9.853h-5.882v-8.53h5.882v8.53zm.037-29.56h-5.882v-8.53h5.882v8.53zm0-9.853h-5.882v-8.53h5.882v8.53zm7.141 49.266h-5.882v-8.53h5.882v8.53zm0-9.853h-5.882v-8.53h5.882v8.53zm.037-29.56h-5.882v-8.53h5.882v8.53zm0-9.853h-5.882v-8.53h5.882v8.53zm4.593 1.324h5.882v8.53h-5.882v-8.53zm5.919 47.942h-5.882v-8.53h5.882v8.53zm0-9.853h-5.882v-8.53h5.882v8.53zm1.26-38.089h5.882v8.53h-5.882v-8.53zm5.919 47.942h-5.882v-8.53h5.882v8.53zm0-9.853h-5.882v-8.53h5.882v8.53zm1.25-38.089h5.882v8.53h-5.882v-8.53zm5.919 47.942h-5.882v-8.53h5.882v8.53zm0-9.853h-5.882v-8.53h5.882v8.53zm0-9.853h-5.882v-8.53h5.882v8.53zm0-9.853h-5.882v-8.53h5.882v8.53zm1.25-18.383h5.882v8.53h-5.882v-8.53zm5.919 47.942H68.74v-8.53h5.882v8.53zm0-9.853H68.74v-8.53h5.882v8.53zm0-9.853H68.74v-8.53h5.882v8.53zm0-9.853H68.74v-8.53h5.882v8.53zm1.25-18.383h5.883v8.53h-5.883v-8.53zm5.92 47.942H75.91v-8.53h5.882v8.53zm0-9.853H75.91v-8.53h5.882v8.53zm0-9.853H75.91v-8.53h5.882v8.53zm0-9.853H75.91v-8.53h5.882v8.53z" />
       <g fill="none" stroke="#000" strokeMiterlimit={10}>
         <path d="M5 88.75h7.5" />
@@ -17,6 +21,6 @@ function SvgCongressionalDistrictsAndRepresentation(
       </g>
     </svg>
   );
-}
+};
 
 export default SvgCongressionalDistrictsAndRepresentation;

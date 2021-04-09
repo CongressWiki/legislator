@@ -1,13 +1,13 @@
 import * as React from 'react';
 
-function SvgPalestinians(props: React.SVGProps<SVGSVGElement>) {
+const SvgPalestinians = (properties: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 72 48"
-      {...props}
+      {...properties}
     >
       <g color="#000" fontWeight={400} fontFamily="sans-serif">
         <path
@@ -72,6 +72,6 @@ function SvgPalestinians(props: React.SVGProps<SVGSVGElement>) {
       </g>
     </svg>
   );
-}
+};
 
 export default SvgPalestinians;

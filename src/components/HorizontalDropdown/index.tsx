@@ -91,8 +91,10 @@ export type DropDownListContainerProps = {
 };
 
 const DropDownListContainer = styled.div<DropDownListContainerProps>`
-  width: ${(props) =>
-    props.isOpen ? `calc(${props.unselectedOptionsLength} * 1ch );` : '0px'};
+  width: ${(properties) =>
+    properties.isOpen
+      ? `calc(${properties.unselectedOptionsLength} * 1ch );`
+      : '0px'};
 
   margin: 0;
   padding: 0;

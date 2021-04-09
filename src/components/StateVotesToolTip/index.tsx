@@ -38,7 +38,7 @@ const Wrapper = styled.div<{ hide?: boolean }>`
   text-align: left;
   padding: 0.5rem;
   z-index: 2000;
-  opacity: ${(props) => (props.hide ? 0 : 1)};
+  opacity: ${(properties) => (properties.hide ? 0 : 1)};
   /* let mouse events pass through */
   pointer-events: none;
 
@@ -109,7 +109,7 @@ const ToolTipUnorderedList = styled.ul<{ columns?: number }>`
   padding: 0;
   height: 100%;
 
-  column-count: ${(props) => props.columns || 1};
+  column-count: ${(properties) => properties.columns || 1};
   column-gap: 1em;
   row-gap: 3.5em;
 

@@ -1,13 +1,13 @@
 import * as React from 'react';
 
-function SvgTennessee(props: React.SVGProps<SVGSVGElement>) {
+const SvgTennessee = (properties: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 96 25"
-      {...props}
+      {...properties}
     >
       <path
         fillRule="evenodd"
@@ -15,6 +15,6 @@ function SvgTennessee(props: React.SVGProps<SVGSVGElement>) {
       />
     </svg>
   );
-}
+};
 
 export default SvgTennessee;

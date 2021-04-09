@@ -1,6 +1,8 @@
 import * as React from 'react';
 
-function SvgLeaseAndRentalServices(props: React.SVGProps<SVGSVGElement>) {
+const SvgLeaseAndRentalServices = (
+  properties: React.SVGProps<SVGSVGElement>
+) => {
   return (
     <svg
       height="1em"
@@ -8,7 +10,7 @@ function SvgLeaseAndRentalServices(props: React.SVGProps<SVGSVGElement>) {
       xmlns="http://www.w3.org/2000/svg"
       data-name="Line EX"
       viewBox="0 0 64 64"
-      {...props}
+      {...properties}
     >
       <path d="M24 34v-2.184A2.993 2.993 0 0023 26a1 1 0 111-1h2a3 3 0 00-2-2.816V20h-2v2.184A2.993 2.993 0 0023 28a1 1 0 11-1 1h-2a3 3 0 002 2.816V34zM16 26h2v2h-2zM28 26h2v2h-2zM51 20h-2v-4h1a1 1 0 00.641-1.769l-6-5a1 1 0 00-1.282 0l-6 5A1 1 0 0038 16h1v4h-2v2h14zm-8 0h-2v-4h2zm4 0h-2v-4h2zm-6.238-6L44 11.3l3.238 2.7zM37 26h14v2H37zM37 38h14v2H37zM39 30h10v2H39zM39 34h10v2H39zM44 43a4.986 4.986 0 00-2.208 9.463l-.74 2.221 1.9.632.782-2.343c.091.005.177.027.27.027s.179-.022.27-.027l.782 2.343 1.9-.632-.74-2.221A4.986 4.986 0 0044 43zm0 8a3 3 0 113-3 3 3 0 01-3 3z" />
       <path d="M43 47h2v2h-2z" />
@@ -16,6 +18,6 @@ function SvgLeaseAndRentalServices(props: React.SVGProps<SVGSVGElement>) {
       <path d="M8 50h2v2H8zM8 32h2v2H8zM6 11h2v2H6zM8 9h2v2H8zM8 13h2v2H8zM10 11h2v2h-2zM14 7h2v2h-2zM8 19h2v2H8z" />
     </svg>
   );
-}
+};
 
 export default SvgLeaseAndRentalServices;

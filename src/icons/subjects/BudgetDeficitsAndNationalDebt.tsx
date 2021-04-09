@@ -1,15 +1,15 @@
 import * as React from 'react';
 
-function SvgBudgetDeficitsAndNationalDebt(
-  props: React.SVGProps<SVGSVGElement>
-) {
+const SvgBudgetDeficitsAndNationalDebt = (
+  properties: React.SVGProps<SVGSVGElement>
+) => {
   return (
     <svg
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 512 512"
-      {...props}
+      {...properties}
     >
       <path d="M416 208h-16v-96h-40V96h-64V76.7l-8-8V64c0-14.6-9.9-27.3-24-31V16h-16v17c-14.1 3.7-24 16.4-24 31v4.7l-8 8V96h-64v16h-40v96H96v16h320v-16zm-264 0h-24v-32h24v32zm0-48h-24v-32h24v32zM256 48c8.8 0 16 7.2 16 16h-32c0-8.8 7.2-16 16-16zm-24 35.3l3.3-3.3h41.4l3.3 3.3V96h-48V83.3zM344 208H168v-96h176v96zm40 0h-24v-32h24v32zm0-48h-24v-32h24v32zM248 340.7l-13.7 13.6 11.4 11.4 18.3-18.4V320h-16z" />
       <path d="M322.3 266.3L308 280.7l-12-12-22.2 22.2c-29.3-9.8-61.1 6-71 35.3-9.8 29.3 6 61.1 35.3 71 29.3 9.8 61.1-6 71-35.3 3.9-11.6 3.9-24.1 0-35.6l22.2-22.2-12-12 14.3-14.3-11.3-11.5zM256 384c-22.1 0-40-17.9-40-40s17.9-40 40-40 40 17.9 40 40-17.9 40-40 40zm45.4-72.7c-3.5-4.9-7.8-9.2-12.7-12.7l7.3-7.3 12.7 12.7-7.3 7.3zM330.346 258.316l15.98-15.98 11.314 11.313-15.98 15.98zM338.349 293.667l11.313-11.314 15.98 15.98-11.313 11.314zM290.35 245.667l11.313-11.314 15.98 15.98-11.313 11.314z" />
@@ -19,6 +19,6 @@ function SvgBudgetDeficitsAndNationalDebt(
       <path d="M336 336h56v16h-56zM184 128h16v24h-16zM184 168h16v24h-16zM216 128h16v24h-16zM216 168h16v24h-16zM248 128h16v24h-16zM248 168h16v24h-16zM280 128h16v24h-16zM280 168h16v24h-16zM312 128h16v24h-16zM312 168h16v24h-16z" />
     </svg>
   );
-}
+};
 
 export default SvgBudgetDeficitsAndNationalDebt;

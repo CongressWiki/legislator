@@ -18,7 +18,7 @@ const LoginButton = ({ className }: LoginButtonProps) => {
     </StyledButtonCanvas>
   );
 
-  // return (
+  // Return (
   //   <StyledButtonCanvas className={className} onClick={() => {}}>
   //     <LoginIcon />
   //   </StyledButtonCanvas>

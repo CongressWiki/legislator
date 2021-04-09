@@ -1,13 +1,13 @@
 import * as React from 'react';
 
-function SvgEmploymentTaxes(props: React.SVGProps<SVGSVGElement>) {
+const SvgEmploymentTaxes = (properties: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 68 68"
-      {...props}
+      {...properties}
     >
       <style>{'.employment-taxes_svg__st0{fill:#000}'}</style>
       <path
@@ -24,6 +24,6 @@ function SvgEmploymentTaxes(props: React.SVGProps<SVGSVGElement>) {
       />
     </svg>
   );
-}
+};
 
 export default SvgEmploymentTaxes;

@@ -18,22 +18,21 @@ interface RankingInfo {
   keyThreshold: Ranking | undefined;
 }
 
-interface ValueGetterKey<ItemType> {
-  (item: ItemType): string | Array<string>;
-}
+type ValueGetterKey<ItemType> = (item: ItemType) => string | string[];
 interface IndexedItem<ItemType> {
   item: ItemType;
   index: number;
 }
 interface RankedItem<ItemType> extends RankingInfo, IndexedItem<ItemType> {}
 
-interface BaseSorter<ItemType> {
-  (a: RankedItem<ItemType>, b: RankedItem<ItemType>): number;
-}
+type BaseSorter<ItemType> = (
+  a: RankedItem<ItemType>,
+  b: RankedItem<ItemType>
+) => number;
 
-interface Sorter<ItemType> {
-  (matchItems: Array<RankedItem<ItemType>>): Array<RankedItem<ItemType>>;
-}
+type Sorter<ItemType> = (
+  matchItems: Array<RankedItem<ItemType>>
+) => Array<RankedItem<ItemType>>;
 
 interface KeyAttributesOptions<ItemType> {
   key?: string | ValueGetterKey<ItemType>;
@@ -71,7 +70,7 @@ type Ranking = typeof rankings[keyof typeof rankings];
 
 search.rankings = rankings;
 
-const defaultBaseSortFn: BaseSorter<unknown> = (a, b) =>
+const defaultBaseSortFunction: BaseSorter<unknown> = (a, b) =>
   String(a.rankedValue).localeCompare(String(b.rankedValue));
 
 /**
@@ -82,14 +81,14 @@ const defaultBaseSortFn: BaseSorter<unknown> = (a, b) =>
  * @return {Array} - the new sorted array
  */
 function search<ItemType = string>(
-  items: Array<ItemType>,
+  items: ItemType[],
   value: string,
   options: searchOptions<ItemType> = {}
-): Array<ItemType> {
+): ItemType[] {
   const {
     keys,
     threshold = rankings.MATCHES,
-    baseSort = defaultBaseSortFn,
+    baseSort = defaultBaseSortFunction,
     sorter = (matchedItems) =>
       matchedItems.sort((a, b) => sortRankedValues(a, b, baseSort)),
   } = options;
@@ -106,6 +105,7 @@ function search<ItemType = string>(
     if (rank >= keyThreshold) {
       matches.push({ ...rankingInfo, item, index });
     }
+
     return matches;
   }
 }
@@ -125,22 +125,23 @@ function getHighestRanking<ItemType>(
   options: searchOptions<ItemType>
 ): RankingInfo {
   if (!keys) {
-    // if keys is not specified, then we assume the item given is ready to be matched
+    // If keys is not specified, then we assume the item given is ready to be matched
     const stringItem = (item as unknown) as string;
     return {
-      // ends up being duplicate of 'item' in matches but consistent
+      // Ends up being duplicate of 'item' in matches but consistent
       rankedValue: stringItem,
       rank: getMatchRanking(stringItem, value, options),
       keyIndex: -1,
       keyThreshold: options.threshold,
     };
   }
+
   const valuesToRank = getAllValuesToRank(item, keys);
   return valuesToRank.reduce(
     (
       { rank, rankedValue, keyIndex, keyThreshold },
       { itemValue, attributes },
-      i
+      index
     ) => {
       let newRank = getMatchRanking(itemValue, value, options);
       let newRankedValue = rankedValue;
@@ -150,12 +151,14 @@ function getHighestRanking<ItemType>(
       } else if (newRank > maxRanking) {
         newRank = maxRanking;
       }
+
       if (newRank > rank) {
         rank = newRank;
-        keyIndex = i;
+        keyIndex = index;
         keyThreshold = threshold;
         newRankedValue = itemValue;
       }
+
       return { rankedValue: newRankedValue, rank, keyIndex, keyThreshold };
     },
     {
@@ -182,12 +185,12 @@ function getMatchRanking<ItemType>(
   testString = prepareValueForComparison(testString, options);
   stringToRank = prepareValueForComparison(stringToRank, options);
 
-  // too long
+  // Too long
   if (stringToRank.length > testString.length) {
     return rankings.NO_MATCH;
   }
 
-  // case sensitive equals
+  // Case sensitive equals
   if (testString === stringToRank) {
     return rankings.CASE_SENSITIVE_EQUAL;
   }
@@ -196,37 +199,39 @@ function getMatchRanking<ItemType>(
   testString = testString.toLowerCase();
   stringToRank = stringToRank.toLowerCase();
 
-  // case insensitive equals
+  // Case insensitive equals
   if (testString === stringToRank) {
     return rankings.EQUAL;
   }
 
-  // starts with
+  // Starts with
   if (testString.startsWith(stringToRank)) {
     return rankings.STARTS_WITH;
   }
 
-  // word starts with
+  // Word starts with
   if (testString.includes(` ${stringToRank}`)) {
     return rankings.WORD_STARTS_WITH;
   }
 
-  // contains
+  // Contains
   if (testString.includes(stringToRank)) {
     return rankings.CONTAINS;
-  } else if (stringToRank.length === 1) {
+  }
+
+  if (stringToRank.length === 1) {
     // If the only character in the given stringToRank
     //   isn't even contained in the testString, then
     //   it's definitely not a match.
     return rankings.NO_MATCH;
   }
 
-  // acronym
+  // Acronym
   if (getAcronym(testString).includes(stringToRank)) {
     return rankings.ACRONYM;
   }
 
-  // will return a number between rankings.MATCHES and
+  // Will return a number between rankings.MATCHES and
   // rankings.MATCHES + 1 depending  on how close of a match it is.
   return getClosenessRanking(testString, stringToRank);
 }
@@ -240,12 +245,13 @@ function getMatchRanking<ItemType>(
 function getAcronym(string: string): string {
   let acronym = '';
   const wordsInString = string.split(' ');
-  wordsInString.forEach((wordInString) => {
+  for (const wordInString of wordsInString) {
     const splitByHyphenWords = wordInString.split('-');
-    splitByHyphenWords.forEach((splitByHyphenWord) => {
-      acronym += splitByHyphenWord.substr(0, 1);
-    });
-  });
+    for (const splitByHyphenWord of splitByHyphenWords) {
+      acronym += splitByHyphenWord.slice(0, 1);
+    }
+  }
+
   return acronym;
 }
 
@@ -270,28 +276,32 @@ function getClosenessRanking(
     string: string,
     index: number
   ) {
-    for (let j = index, J = string.length; j < J; j++) {
-      const stringChar = string[j];
+    for (let index_ = index, J = string.length; index_ < J; index_++) {
+      const stringChar = string[index_];
       if (stringChar === matchChar) {
         matchingInOrderCharCount += 1;
-        return j + 1;
+        return index_ + 1;
       }
     }
+
     return -1;
   }
+
   function getRanking(spread: number) {
     const spreadPercentage = 1 / spread;
     const inOrderPercentage = matchingInOrderCharCount / stringToRank.length;
     const ranking = rankings.MATCHES + inOrderPercentage * spreadPercentage;
     return ranking as Ranking;
   }
+
   const firstIndex = findMatchingCharacter(stringToRank[0], testString, 0);
   if (firstIndex < 0) {
     return rankings.NO_MATCH;
   }
+
   charNumber = firstIndex;
-  for (let i = 1, I = stringToRank.length; i < I; i++) {
-    const matchChar = stringToRank[i];
+  for (let index = 1, I = stringToRank.length; index < I; index++) {
+    const matchChar = stringToRank[index];
     charNumber = findMatchingCharacter(matchChar, testString, charNumber);
     const found = charNumber > -1;
     if (!found) {
@@ -321,14 +331,14 @@ function sortRankedValues<ItemType>(
   const same = aRank === bRank;
   if (same) {
     if (aKeyIndex === bKeyIndex) {
-      // use the base sort function as a tie-breaker
+      // Use the base sort function as a tie-breaker
       return baseSort(a, b);
-    } else {
-      return aKeyIndex < bKeyIndex ? aFirst : bFirst;
     }
-  } else {
-    return aRank > bRank ? aFirst : bFirst;
+
+    return aKeyIndex < bKeyIndex ? aFirst : bFirst;
   }
+
+  return aRank > bRank ? aFirst : bFirst;
 }
 
 /**
@@ -341,12 +351,13 @@ function prepareValueForComparison<ItemType>(
   value: string,
   { keepDiacritics }: searchOptions<ItemType>
 ): string {
-  // value might not actually be a string at this point (we don't get to choose)
+  // Value might not actually be a string at this point (we don't get to choose)
   // so part of preparing the value for comparison is ensure that it is a string
-  value = `${value}`; // toString
+  value = `${value}`; // ToString
   if (!keepDiacritics) {
     value = removeAccents(value);
   }
+
   return value;
 }
 
@@ -359,31 +370,33 @@ function prepareValueForComparison<ItemType>(
 function getItemValues<ItemType>(
   item: ItemType,
   key: KeyOption<ItemType>
-): Array<string> {
+): string[] {
   if (typeof key === 'object') {
     key = key.key as string;
   }
-  let value: string | Array<string> | null | unknown;
+
+  let value: string | string[] | null | unknown;
   if (typeof key === 'function') {
     value = key(item);
-  } else if (item == null) {
+  } else if (item === undefined) {
     value = null;
   } else if (Object.hasOwnProperty.call(item, key)) {
     value = (item as IndexableByString)[key];
   } else if (key.includes('.')) {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
     return getNestedValues<ItemType>(key, item);
   } else {
     value = null;
   }
 
-  // because `value` can also be undefined
-  if (value == null) {
+  // Because `value` can also be undefined
+  if (value === undefined) {
     return [];
   }
+
   if (Array.isArray(value)) {
     return value;
   }
+
   return [String(value)];
 }
 
@@ -394,31 +407,28 @@ function getItemValues<ItemType>(
  * @param path a dot-separated set of keys
  * @param item the item to get the value from
  */
-function getNestedValues<ItemType>(
-  path: string,
-  item: ItemType
-): Array<string> {
+function getNestedValues<ItemType>(path: string, item: ItemType): string[] {
   const keys = path.split('.');
 
   type ValueA = Array<ItemType | IndexableByString | string>;
   let values: ValueA = [item];
 
-  for (let i = 0, I = keys.length; i < I; i++) {
-    const nestedKey = keys[i];
+  for (let index = 0, I = keys.length; index < I; index++) {
+    const nestedKey = keys[index];
     let nestedValues: ValueA = [];
 
-    for (let j = 0, J = values.length; j < J; j++) {
-      const nestedItem = values[j];
+    for (let index = 0, J = values.length; index < J; index++) {
+      const nestedItem = values[index];
 
-      if (nestedItem == null) continue;
+      if (nestedItem === undefined) continue;
 
       if (Object.hasOwnProperty.call(nestedItem, nestedKey)) {
         const nestedValue = (nestedItem as IndexableByString)[nestedKey];
-        if (nestedValue != null) {
+        if (nestedValue !== undefined) {
           nestedValues.push(nestedValue as IndexableByString | string);
         }
       } else if (nestedKey === '*') {
-        // ensure that values is an array
+        // Ensure that values is an array
         nestedValues = nestedValues.concat(nestedItem);
       }
     }
@@ -427,14 +437,15 @@ function getNestedValues<ItemType>(
   }
 
   if (Array.isArray(values[0])) {
-    // keep allowing the implicit wildcard for an array of strings at the end of
+    // Keep allowing the implicit wildcard for an array of strings at the end of
     // the path; don't use `.flat()` because that's not available in node.js v10
-    const result: Array<string> = [];
-    return result.concat(...(values as Array<string>));
+    const result: string[] = [];
+    return result.concat(...(values as string[]));
   }
+
   // Based on our logic it should be an array of strings by now...
   // assuming the user's path terminated in strings
-  return values as Array<string>;
+  return values as string[];
 }
 
 /**
@@ -448,23 +459,24 @@ function getAllValuesToRank<ItemType>(
   keys: Array<KeyOption<ItemType>>
 ) {
   const allValues: Array<{ itemValue: string; attributes: KeyAttributes }> = [];
-  for (let j = 0, J = keys.length; j < J; j++) {
-    const key = keys[j];
+  for (let index = 0, J = keys.length; index < J; index++) {
+    const key = keys[index];
     const attributes = getKeyAttributes(key);
     const itemValues = getItemValues(item, key);
-    for (let i = 0, I = itemValues.length; i < I; i++) {
+    for (let index = 0, I = itemValues.length; index < I; index++) {
       allValues.push({
-        itemValue: itemValues[i],
+        itemValue: itemValues[index],
         attributes,
       });
     }
   }
+
   return allValues;
 }
 
 const defaultKeyAttributes = {
-  maxRanking: Infinity as Ranking,
-  minRanking: -Infinity as Ranking,
+  maxRanking: Number.POSITIVE_INFINITY as Ranking,
+  minRanking: Number.NEGATIVE_INFINITY as Ranking,
 };
 /**
  * Gets all the attributes for the given key
@@ -475,10 +487,11 @@ function getKeyAttributes<ItemType>(key: KeyOption<ItemType>): KeyAttributes {
   if (typeof key === 'string') {
     return defaultKeyAttributes;
   }
+
   return { ...defaultKeyAttributes, ...key };
 }
 
-export { search, rankings, defaultBaseSortFn };
+export { search, rankings, defaultBaseSortFunction as defaultBaseSortFn };
 
 export type {
   searchOptions,

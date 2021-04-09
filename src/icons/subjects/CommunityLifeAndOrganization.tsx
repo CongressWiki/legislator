@@ -1,13 +1,15 @@
 import * as React from 'react';
 
-function SvgCommunityLifeAndOrganization(props: React.SVGProps<SVGSVGElement>) {
+const SvgCommunityLifeAndOrganization = (
+  properties: React.SVGProps<SVGSVGElement>
+) => {
   return (
     <svg
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 113 108"
-      {...props}
+      {...properties}
     >
       <g transform="translate(-7 -12)" fill="none" fillRule="evenodd">
         <path d="M0 0h128v128H0z" />
@@ -42,6 +44,6 @@ function SvgCommunityLifeAndOrganization(props: React.SVGProps<SVGSVGElement>) {
       </g>
     </svg>
   );
-}
+};
 
 export default SvgCommunityLifeAndOrganization;

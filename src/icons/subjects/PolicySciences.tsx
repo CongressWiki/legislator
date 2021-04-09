@@ -1,30 +1,30 @@
 import * as React from 'react';
 
-function SvgPolicySciences(props: React.SVGProps<SVGSVGElement>) {
+const SvgPolicySciences = (properties: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 64 64"
-      {...props}
+      {...properties}
     >
       <text
         transform="translate(-76.29 -21)"
         fontFamily="'Montserrat-Regular'"
         fontSize={10}
       >
-        {'idea'}
+        idea
       </text>
       <text transform="translate(-2.32 -21)">
         <tspan x={0} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'brains'}
+          brains
         </tspan>
         <tspan x={38.669} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'t'}
+          t
         </tspan>
         <tspan x={43.899} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'orm'}
+          orm
         </tspan>
       </text>
       <text
@@ -32,32 +32,32 @@ function SvgPolicySciences(props: React.SVGProps<SVGSVGElement>) {
         fontFamily="'Montserrat-Regular'"
         fontSize={10}
       >
-        {'policy'}
+        policy
       </text>
       <text
         transform="translate(107.69 -21)"
         fontFamily="'Montserrat-Regular'"
         fontSize={10}
       >
-        {'leader'}
+        leader
       </text>
       <text transform="translate(202.74 -21)">
         <tspan x={0} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'or'}
+          or
         </tspan>
         <tspan x={15.35} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'a'}
+          a
         </tspan>
         <tspan x={21.94} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'t'}
+          t
         </tspan>
         <tspan x={27.17} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'or'}
+          or
         </tspan>
       </text>
       <text transform="translate(294.675 -21)">
         <tspan x={0} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'business'}
+          business
         </tspan>
         <tspan
           x={-9.195}
@@ -65,7 +65,7 @@ function SvgPolicySciences(props: React.SVGProps<SVGSVGElement>) {
           fontFamily="'Montserrat-Regular'"
           fontSize={10}
         >
-          {'c'}
+          c
         </tspan>
         <tspan
           x={-2.365}
@@ -73,7 +73,7 @@ function SvgPolicySciences(props: React.SVGProps<SVGSVGElement>) {
           fontFamily="'Montserrat-Regular'"
           fontSize={10}
         >
-          {'onnection'}
+          onnection
         </tspan>
       </text>
       <text
@@ -81,24 +81,24 @@ function SvgPolicySciences(props: React.SVGProps<SVGSVGElement>) {
         fontFamily="'Montserrat-Regular'"
         fontSize={10}
       >
-        {'SEO'}
+        SEO
       </text>
       <text
         transform="translate(-94.74 75)"
         fontFamily="'Montserrat-Regular'"
         fontSize={10}
       >
-        {'developer'}
+        developer
       </text>
       <text transform="translate(114.745 75)">
         <tspan x={0} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'D'}
+          D
         </tspan>
         <tspan x={7.66} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'at'}
+          at
         </tspan>
         <tspan x={19.25} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'a'}
+          a
         </tspan>
         <tspan
           x={-11.475}
@@ -106,7 +106,7 @@ function SvgPolicySciences(props: React.SVGProps<SVGSVGElement>) {
           fontFamily="'Montserrat-Regular'"
           fontSize={10}
         >
-          {'Security'}
+          Security
         </tspan>
       </text>
       <text
@@ -114,42 +114,42 @@ function SvgPolicySciences(props: React.SVGProps<SVGSVGElement>) {
         fontFamily="'Montserrat-Regular'"
         fontSize={10}
       >
-        {'HR'}
+        HR
       </text>
       <text transform="translate(294.225 75)">
         <tspan x={0} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'L'}
+          L
         </tspan>
         <tspan x={5.24} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'o'}
+          o
         </tspan>
         <tspan x={13.14} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'gistics'}
+          gistics
         </tspan>
       </text>
       <text transform="translate(392.01 75)">
         <tspan x={0} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'ch'}
+          ch
         </tspan>
         <tspan x={14.92} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'a'}
+          a
         </tspan>
         <tspan x={21.51} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'tb'}
+          tb
         </tspan>
         <tspan x={34.3} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'o'}
+          o
         </tspan>
         <tspan x={42.31} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'t'}
+          t
         </tspan>
       </text>
       <text transform="translate(-88.14 171)">
         <tspan x={0} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'venture'}
+          venture
         </tspan>
         <tspan x={3.45} y={12} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'c'}
+          c
         </tspan>
         <tspan
           x={10.399}
@@ -157,104 +157,104 @@ function SvgPolicySciences(props: React.SVGProps<SVGSVGElement>) {
           fontFamily="'Montserrat-Regular'"
           fontSize={10}
         >
-          {'api'}
+          api
         </tspan>
         <tspan x={27.33} y={12} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'t'}
+          t
         </tspan>
         <tspan x={32.33} y={12} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'al'}
+          al
         </tspan>
       </text>
       <text transform="translate(5.29 171)">
         <tspan x={0} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'lever'}
+          lever
         </tspan>
         <tspan x={32.29} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'a'}
+          a
         </tspan>
         <tspan x={39.38} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'ge'}
+          ge
         </tspan>
       </text>
       <text transform="translate(103.37 171)">
         <tspan x={0} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'cre'}
+          cre
         </tspan>
         <tspan x={20.75} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'a'}
+          a
         </tspan>
         <tspan x={27.34} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'tive'}
+          tive
         </tspan>
       </text>
       <text transform="translate(187.45 171)">
         <tspan x={0} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'s'}
+          s
         </tspan>
         <tspan x={6.16} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'o'}
+          o
         </tspan>
         <tspan x={14.06} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'cial media'}
+          cial media
         </tspan>
         <tspan x={2.19} y={12} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'a'}
+          a
         </tspan>
         <tspan x={9.45} y={12} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'d'}
+          d
         </tspan>
         <tspan x={17.19} y={12} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'vertising'}
+          vertising
         </tspan>
       </text>
       <text transform="translate(298.46 171)">
         <tspan x={0} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'se'}
+          se
         </tspan>
         <tspan x={12.69} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'r'}
+          r
         </tspan>
         <tspan x={19.84} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'vice'}
+          vice
         </tspan>
         <tspan x={7.48} y={12} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'mind'}
+          mind
         </tspan>
       </text>
       <text transform="translate(396.4 171)">
         <tspan x={0} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'t'}
+          t
         </tspan>
         <tspan x={5} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'arget'}
+          arget
         </tspan>
       </text>
       <text transform="translate(-102.69 267)">
         <tspan x={0} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'presen'}
+          presen
         </tspan>
         <tspan x={41.1} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'ta'}
+          ta
         </tspan>
         <tspan x={52.69} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'tion'}
+          tion
         </tspan>
       </text>
       <text transform="translate(6.17 267)">
         <tspan x={0} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'str'}
+          str
         </tspan>
         <tspan x={19.06} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'a'}
+          a
         </tspan>
         <tspan x={25.65} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'tegy'}
+          tegy
         </tspan>
       </text>
       <text transform="translate(115.945 267)">
         <tspan x={0} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'Web'}
+          Web
         </tspan>
         <tspan
           x={-18.685}
@@ -262,93 +262,93 @@ function SvgPolicySciences(props: React.SVGProps<SVGSVGElement>) {
           fontFamily="'Montserrat-Regular'"
           fontSize={10}
         >
-          {'developer'}
+          developer
         </tspan>
       </text>
       <text transform="translate(203.755 267)">
         <tspan x={0} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'global'}
+          global
         </tspan>
         <tspan x={-5.08} y={12} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'business'}
+          business
         </tspan>
       </text>
       <text transform="translate(293.93 267)">
         <tspan x={0} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'c'}
+          c
         </tspan>
         <tspan x={6.83} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'om'}
+          om
         </tspan>
         <tspan x={24.34} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'p'}
+          p
         </tspan>
         <tspan x={30.64} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'any'}
+          any
         </tspan>
         <tspan x={4.835} y={12} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'profile'}
+          profile
         </tspan>
       </text>
       <text transform="translate(388.345 267)">
         <tspan x={0} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'empl'}
+          empl
         </tspan>
         <tspan x={27.87} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'o'}
+          o
         </tspan>
         <tspan x={35.95} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'yee'}
+          yee
         </tspan>
         <tspan x={13.02} y={12} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'c'}
+          c
         </tspan>
         <tspan x={19.97} y={12} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'ard'}
+          ard
         </tspan>
       </text>
       <text transform="translate(-89.325 363)">
         <tspan x={0} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'business'}
+          business
         </tspan>
         <tspan x={1.245} y={12} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'p'}
+          p
         </tspan>
         <tspan x={7.545} y={12} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'artner'}
+          artner
         </tspan>
       </text>
       <text transform="translate(9.175 363)">
         <tspan x={0} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'s'}
+          s
         </tspan>
         <tspan x={6.16} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'t'}
+          t
         </tspan>
         <tspan x={11.16} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'artup'}
+          artup
         </tspan>
       </text>
       <text transform="translate(104.01 363)">
         <tspan x={0} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'re'}
+          re
         </tspan>
         <tspan x={13.76} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'t'}
+          t
         </tspan>
         <tspan x={18.76} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'ailer'}
+          ailer
         </tspan>
       </text>
       <text transform="translate(210.39 363)">
         <tspan x={0} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'p'}
+          p
         </tspan>
         <tspan x={6.71} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'l'}
+          l
         </tspan>
         <tspan x={12.02} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'an'}
+          an
         </tspan>
       </text>
       <text
@@ -356,31 +356,31 @@ function SvgPolicySciences(props: React.SVGProps<SVGSVGElement>) {
         fontFamily="'Montserrat-Regular'"
         fontSize={10}
       >
-        {'funding'}
+        funding
       </text>
       <text
         transform="translate(398.55 363)"
         fontFamily="'Montserrat-Regular'"
         fontSize={10}
       >
-        {'vision'}
+        vision
       </text>
       <text
         transform="translate(-88.59 459)"
         fontFamily="'Montserrat-Regular'"
         fontSize={10}
       >
-        {'building'}
+        building
       </text>
       <text transform="translate(11.135 459)">
         <tspan x={0} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'c'}
+          c
         </tspan>
         <tspan x={6.95} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'areer'}
+          areer
         </tspan>
         <tspan x={7.62} y={12} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'p'}
+          p
         </tspan>
         <tspan
           x={13.919}
@@ -388,10 +388,10 @@ function SvgPolicySciences(props: React.SVGProps<SVGSVGElement>) {
           fontFamily="'Montserrat-Regular'"
           fontSize={10}
         >
-          {'a'}
+          a
         </tspan>
         <tspan x={20.51} y={12} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'th'}
+          th
         </tspan>
       </text>
       <text
@@ -399,34 +399,34 @@ function SvgPolicySciences(props: React.SVGProps<SVGSVGElement>) {
         fontFamily="'Montserrat-Regular'"
         fontSize={10}
       >
-        {'report'}
+        report
       </text>
       <text transform="translate(195.365 459)">
         <tspan x={0} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'cus'}
+          cus
         </tspan>
         <tspan x={20.77} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'t'}
+          t
         </tspan>
         <tspan x={26} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'omer'}
+          omer
         </tspan>
         <tspan x={4.525} y={12} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'support'}
+          support
         </tspan>
       </text>
       <text transform="translate(293.93 459)">
         <tspan x={0} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'c'}
+          c
         </tspan>
         <tspan x={6.83} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'om'}
+          om
         </tspan>
         <tspan x={24.34} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'p'}
+          p
         </tspan>
         <tspan x={30.64} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'any'}
+          any
         </tspan>
         <tspan
           x={13.815}
@@ -434,18 +434,18 @@ function SvgPolicySciences(props: React.SVGProps<SVGSVGElement>) {
           fontFamily="'Montserrat-Regular'"
           fontSize={10}
         >
-          {'visit'}
+          visit
         </tspan>
       </text>
       <text transform="translate(404.755 459)">
         <tspan x={0} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'v'}
+          v
         </tspan>
         <tspan x={6.76} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'d'}
+          d
         </tspan>
         <tspan x={14.37} y={0} fontFamily="'Montserrat-Regular'" fontSize={10}>
-          {'o'}
+          o
         </tspan>
         <tspan
           x={-23.915}
@@ -453,7 +453,7 @@ function SvgPolicySciences(props: React.SVGProps<SVGSVGElement>) {
           fontFamily="'Montserrat-Regular'"
           fontSize={10}
         >
-          {'c'}
+          c
         </tspan>
         <tspan
           x={-17.084}
@@ -461,7 +461,7 @@ function SvgPolicySciences(props: React.SVGProps<SVGSVGElement>) {
           fontFamily="'Montserrat-Regular'"
           fontSize={10}
         >
-          {'onference'}
+          onference
         </tspan>
       </text>
       <path d="M33 43c-2.757 0-5 2.243-5 5s2.243 5 5 5 5-2.243 5-5-2.243-5-5-5zm0 8c-1.654 0-3-1.346-3-3s1.346-3 3-3 3 1.346 3 3-1.346 3-3 3z" />
@@ -470,6 +470,6 @@ function SvgPolicySciences(props: React.SVGProps<SVGSVGElement>) {
       <path d="M32 9h10v2H32zM10 9h20v2H10zM19 13h23v2H19zM10 13h7v2h-7zM30 17h12v2H30zM10 17h18v2H10zM10 21h32v2H10zM32 25h10v2H32zM10 25h20v2H10zM17 29h25v2H17zM10 29h5v2h-5zM10 33h15v2H10z" />
     </svg>
   );
-}
+};
 
 export default SvgPolicySciences;

@@ -37,7 +37,7 @@ const Wrapper = styled.div`
 
 const LoadMoreButton = styled.button<BillLaneFooterProps>`
   padding: 0.4rem;
-  display: ${(props) => (props.disabled ? 'none' : 'inline-block')};
+  display: ${(properties) => (properties.disabled ? 'none' : 'inline-block')};
   border: solid thin var(--color-gray500);
   border-radius: 5px;
   outline: none;

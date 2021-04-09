@@ -1,13 +1,13 @@
 import * as React from 'react';
 
-function SvgCrimeVictims(props: React.SVGProps<SVGSVGElement>) {
+const SvgCrimeVictims = (properties: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
-      {...props}
+      {...properties}
     >
       <circle cx={47} cy={8} r={4} />
       <path d="M51 14h-8a4 4 0 00-4 4v4h16v-4a4 4 0 00-4-4z" />
@@ -22,6 +22,6 @@ function SvgCrimeVictims(props: React.SVGProps<SVGSVGElement>) {
       </g>
     </svg>
   );
-}
+};
 
 export default SvgCrimeVictims;

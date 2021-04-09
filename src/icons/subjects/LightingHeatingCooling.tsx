@@ -1,13 +1,15 @@
 import * as React from 'react';
 
-function SvgLightingHeatingCooling(props: React.SVGProps<SVGSVGElement>) {
+const SvgLightingHeatingCooling = (
+  properties: React.SVGProps<SVGSVGElement>
+) => {
   return (
     <svg
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 52 52"
-      {...props}
+      {...properties}
     >
       <style />
       <path d="M11.702 47.5a1 1 0 01-.73-1.684l4.332-4.62a1 1 0 01.73-.315h30.24V8.176H4V40.88h5.804a1 1 0 010 2H3a1 1 0 01-1-1V7.176a1 1 0 011-1h44.275a1 1 0 011 1V41.88a1 1 0 01-1 1H16.466l-4.035 4.303a.997.997 0 01-.73.316z" />
@@ -21,6 +23,6 @@ function SvgLightingHeatingCooling(props: React.SVGProps<SVGSVGElement>) {
       </g>
     </svg>
   );
-}
+};
 
 export default SvgLightingHeatingCooling;

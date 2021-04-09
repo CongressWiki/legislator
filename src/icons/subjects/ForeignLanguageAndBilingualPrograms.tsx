@@ -1,15 +1,15 @@
 import * as React from 'react';
 
-function SvgForeignLanguageAndBilingualPrograms(
-  props: React.SVGProps<SVGSVGElement>
-) {
+const SvgForeignLanguageAndBilingualPrograms = (
+  properties: React.SVGProps<SVGSVGElement>
+) => {
   return (
     <svg
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 64 64"
-      {...props}
+      {...properties}
     >
       <g data-name="12 Speaking Many Languanges">
         <path d="M21 9h-4V8a1 1 0 00-2 0v1h-4a1 1 0 000 2h6.69a10.418 10.418 0 01-1.59 2.932 12.337 12.337 0 01-1.273-1.488 1 1 0 00-1.663 1.111 13.793 13.793 0 001.541 1.817 9.236 9.236 0 01-3.025 1.68 1 1 0 10.632 1.9 11.2 11.2 0 003.892-2.215 18.3 18.3 0 003.349 2.163 1 1 0 00.894-1.79 16.156 16.156 0 01-2.847-1.834A12.536 12.536 0 0019.786 11H21a1 1 0 000-2z" />
@@ -18,6 +18,6 @@ function SvgForeignLanguageAndBilingualPrograms(
       </g>
     </svg>
   );
-}
+};
 
 export default SvgForeignLanguageAndBilingualPrograms;

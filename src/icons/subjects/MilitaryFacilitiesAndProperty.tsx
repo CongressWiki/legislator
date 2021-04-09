@@ -1,15 +1,15 @@
 import * as React from 'react';
 
-function SvgMilitaryFacilitiesAndProperty(
-  props: React.SVGProps<SVGSVGElement>
-) {
+const SvgMilitaryFacilitiesAndProperty = (
+  properties: React.SVGProps<SVGSVGElement>
+) => {
   return (
     <svg
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 512 512"
-      {...props}
+      {...properties}
     >
       <path d="M193.329 227.222l-2.659-15.778A247.721 247.721 0 0037.6 302.172l12.537 9.941a231.746 231.746 0 01143.192-84.891zM43.487 320.916L30.5 311.578a252.418 252.418 0 00-8.2 12.141l13.519 8.558a233.28 233.28 0 017.668-11.361z" />
       <path d="M240 240.161V200h40a8 8 0 008-8v-40a8 8 0 00-8-8h-40v-8h-16v104.161A215.977 215.977 0 0016 456v32a8 8 0 008 8h416a8 8 0 008-8v-32a215.977 215.977 0 00-208-215.839zM272 160v24h-32v-24zm128 320H272v-40a40 40 0 00-80 0v40H64v-24c0-92.636 75.364-168 168-168s168 75.364 168 168zm-144 0h-48v-40a24 24 0 0148 0zm176 0h-16v-24c0-101.458-82.542-184-184-184S48 354.542 48 456v24H32v-24c0-110.28 89.72-200 200-200s200 89.72 200 200z" />
@@ -17,6 +17,6 @@ function SvgMilitaryFacilitiesAndProperty(
       <path d="M224 312h16v16h-16z" />
     </svg>
   );
-}
+};
 
 export default SvgMilitaryFacilitiesAndProperty;

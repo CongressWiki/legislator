@@ -1,13 +1,15 @@
 import * as React from 'react';
 
-function SvgTransferAndInheritanceTaxes(props: React.SVGProps<SVGSVGElement>) {
+const SvgTransferAndInheritanceTaxes = (
+  properties: React.SVGProps<SVGSVGElement>
+) => {
   return (
     <svg
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 64 64"
-      {...props}
+      {...properties}
     >
       <g data-name="Inheritance Law">
         <path d="M60.615 43.9a4.027 4.027 0 00-5.465-1.464l-8.516 4.914A4 4 0 0043 45H31.162l-3.69-1.23a14.977 14.977 0 00-4.743-.77h-.851a15 15 0 00-7.718 2.138L12.723 46H12a1 1 0 00-1-1H3a1 1 0 00-1 1v14a1 1 0 001 1h8a1 1 0 001-1h7.531a6.986 6.986 0 01.818.048l11.921 1.4a14.717 14.717 0 001.729.1 15.1 15.1 0 007.523-2.008L59.15 49.366a3.962 3.962 0 002-3.466 4.03 4.03 0 00-.535-2zM10 59H4V47h6zm48.15-11.366L40.522 57.812a13.1 13.1 0 01-8.022 1.652l-11.921-1.4A9.026 9.026 0 0019.531 58H12V48h1a1 1 0 00.515-.143l1.674-1A13 13 0 0121.878 45h.851a12.993 12.993 0 014.11.667l3.845 1.282A1 1 0 0031 47h12a2 2 0 010 4H28v2h15a3.992 3.992 0 003.952-3.525l9.194-5.306a2 2 0 013 1.731 1.983 1.983 0 01-.996 1.734zM17 41h30a3 3 0 000-6V24a11.006 11.006 0 00-10.2-10.959 2.942 2.942 0 00-1.315-3.63L38.868 3.5A1 1 0 0038 2H26a1 1 0 00-.868 1.5l3.38 5.915a2.942 2.942 0 00-1.315 3.63A11.006 11.006 0 0017 24v11a3 3 0 000 6zm12-29a1 1 0 011-1h4a1 1 0 010 2h-4a1 1 0 01-1-1zm7.276-8L33.42 9h-2.84l-2.856-5zM17 37a2 2 0 002-2V24a9.01 9.01 0 019-9h8a9.01 9.01 0 019 9v11a2 2 0 002 2 1 1 0 010 2H17a1 1 0 010-2z" />
@@ -15,6 +17,6 @@ function SvgTransferAndInheritanceTaxes(props: React.SVGProps<SVGSVGElement>) {
       </g>
     </svg>
   );
-}
+};
 
 export default SvgTransferAndInheritanceTaxes;

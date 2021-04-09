@@ -1,6 +1,6 @@
-const createBillSocialCards = require('./src/libs/create-bill-social-cards');
-const createOfficialSocialCards = require('./src/libs/create-official-social-cards');
-const path = require(`path`);
+const createBillSocialCards = require('./libs/create-bill-social-cards');
+const createOfficialSocialCards = require('./libs/create-official-social-cards');
+const path = require('path');
 exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
     resolve: {
@@ -87,7 +87,7 @@ exports.createPages = async ({ graphql, actions: gatsbyActions, reporter }) => {
     );
 
     if (billsQuery.errors) {
-      reporter.panicOnBuild(`Error while running GraphQL query.`);
+      reporter.panicOnBuild('Error while running GraphQL query.');
       console.error(billsQuery.errors);
       return;
     }
@@ -271,9 +271,9 @@ exports.createPages = async ({ graphql, actions: gatsbyActions, reporter }) => {
     image: findImage(electedOfficial.id),
   }));
 
-  const BillTemplate = path.resolve(`./src/components/BillTemplate/index.tsx`);
+  const BillTemplate = path.resolve('./src/components/BillTemplate/index.tsx');
   const ElectedOfficialTemplate = path.resolve(
-    `./src/components/ElectedOfficialTemplate/index.tsx`
+    './src/components/ElectedOfficialTemplate/index.tsx'
   );
 
   // Create Elected Official pages //
@@ -290,17 +290,17 @@ exports.createPages = async ({ graphql, actions: gatsbyActions, reporter }) => {
       },
     });
 
-    if (process.env.NODE_ENV === 'production') {
-      createOfficialSocialCards({
-        electedOfficial: electedOfficial,
-        author: 'USACounts',
-        separator: '|',
-        fontFile: require.resolve(
-          './static/fonts/Century_Supra/T3/century_supra_t3_regular.ttf'
-        ),
-        slug,
-      });
-    }
+    // if (process.env.NODE_ENV === 'production') {
+    //   createOfficialSocialCards({
+    //     electedOfficial: electedOfficial,
+    //     author: 'USACounts',
+    //     separator: '|',
+    //     fontFile: require.resolve(
+    //       './static/fonts/Century_Supra/T3/century_supra_t3_regular.ttf'
+    //     ),
+    //     slug,
+    //   });
+    // }
   }
 
   // Create Bill pages //

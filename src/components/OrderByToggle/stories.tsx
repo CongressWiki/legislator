@@ -1,12 +1,14 @@
 import React from 'react';
-import {Story, Meta} from '@storybook/react';
+import { Story, Meta } from '@storybook/react';
 import styled from 'styled-components';
 
-import OrderByToggle, {OrderByToggleProps} from './index';
+import OrderByToggle, {
+  OrderByToggleProps as OrderByToggleProperties,
+} from './index';
 
 export default {
   title: 'Components/OrderByToggle',
-  component: OrderByToggle
+  component: OrderByToggle,
 } as Meta;
 
 const ExampleContainer = styled.div`
@@ -15,15 +17,15 @@ const ExampleContainer = styled.div`
   align-items: center;
 `;
 
-const Template: Story<OrderByToggleProps> = (args) => (
+const Template: Story<OrderByToggleProperties> = (arguments_) => (
   <ExampleContainer>
-    <OrderByToggle {...args} />
+    <OrderByToggle {...arguments_} />
   </ExampleContainer>
 );
 
 export const Default = Template.bind({});
 Default.args = {
   handleToggle: (isAscending) => {
-    console.log({isAscending});
-  }
+    console.log({ isAscending });
+  },
 };

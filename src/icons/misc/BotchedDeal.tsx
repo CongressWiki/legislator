@@ -1,8 +1,12 @@
 import * as React from 'react';
 
-function SvgBotchedDeal(props: React.SVGProps<SVGSVGElement>) {
+const SvgBotchedDeal = (properties: React.SVGProps<SVGSVGElement>) => {
   return (
-    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <svg
+      viewBox="0 0 100 100"
+      xmlns="http://www.w3.org/2000/svg"
+      {...properties}
+    >
       <style>{'.Botched_Deal_svg__st0{fill:#000}'}</style>
       <path
         className="Botched_Deal_svg__st0"
@@ -14,6 +18,6 @@ function SvgBotchedDeal(props: React.SVGProps<SVGSVGElement>) {
       />
     </svg>
   );
-}
+};
 
 export default SvgBotchedDeal;
