@@ -46,12 +46,12 @@ const SponsorSection = ({
         isScreenWidthLessThan370px
           ? '50px'
           : isScreenWidthLessThan420px
-            ? '60px'
-            : isScreenWidthLessThan960px
-              ? '60px'
-              : isScreenWidthLessThan1400px
-                ? '70px'
-                : '80px'
+          ? '60px'
+          : isScreenWidthLessThan960px
+          ? '60px'
+          : isScreenWidthLessThan1400px
+          ? '70px'
+          : '80px'
       );
     }
   }, []);

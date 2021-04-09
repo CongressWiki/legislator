@@ -8,12 +8,13 @@ extends:
   - plugin:@typescript-eslint/recommended
   # - plugin:react-hooks/recommended
   - xo
-  - xo-react
-  - xo-typescript
+  - xo-react/space
+  - xo-typescript/space
   # - plugin:import/errors
   # - plugin:import/warnings
   # - plugin:unicorn/recommended
   - prettier
+  - plugin:prettier/recommended
 plugins:
   - '@typescript-eslint'
   - 'react'
@@ -25,18 +26,6 @@ parserOptions:
   ecmaVersion: 12
   sourceType: module
 rules:
-  indent:
-    - error
-    - 2
-  linebreak-style:
-    - error
-    - unix
-  quotes:
-    - error
-    - single
-  semi:
-    - error
-    - always
   '@typescript-eslint/explicit-module-boundary-types': 0
   '@typescript-eslint/no-confusing-void-expression': 0
   '@typescript-eslint/consistent-type-assertions': 1

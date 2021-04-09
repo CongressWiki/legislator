@@ -21,7 +21,7 @@ const Wrapper = styled.h1<BillTitleProps>`
 
   @media (max-width: 450px) {
     font-size: ${(properties) =>
-    properties.title.length < 100 ? '1.3rem' : '1rem'};
+      properties.title.length < 100 ? '1.3rem' : '1rem'};
   }
 `;
 

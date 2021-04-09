@@ -219,25 +219,25 @@ const UNIQUE_DECISION_COLORS = [
 
 const getDecisionColor = (decision: string) => {
   switch (decision) {
-  case 'Yea':
-  case 'Yes':
-  case 'Guilty':
-  case 'Passed':
-  case 'Bill Passed':
-  case 'Amendment Passed':
-  case 'Concurrent Resolution Agreed to':
-    return 'var(--color-yeaGreen)';
-  case 'Nay':
-  case 'No':
-  case 'Not Guilty':
-  case 'Concurrent Resolution Disagreed to':
-    return 'var(--color-nayRed)';
-  case 'Not Voting':
-    return 'var(--color-gray700)';
-  case 'Present':
-    return 'orange';
-  default:
-    return UNIQUE_DECISION_COLORS.pop() || 'black';
+    case 'Yea':
+    case 'Yes':
+    case 'Guilty':
+    case 'Passed':
+    case 'Bill Passed':
+    case 'Amendment Passed':
+    case 'Concurrent Resolution Agreed to':
+      return 'var(--color-yeaGreen)';
+    case 'Nay':
+    case 'No':
+    case 'Not Guilty':
+    case 'Concurrent Resolution Disagreed to':
+      return 'var(--color-nayRed)';
+    case 'Not Voting':
+      return 'var(--color-gray700)';
+    case 'Present':
+      return 'orange';
+    default:
+      return UNIQUE_DECISION_COLORS.pop() || 'black';
   }
 };
 

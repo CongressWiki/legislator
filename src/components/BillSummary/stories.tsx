@@ -64,13 +64,13 @@ ShortWithList.args = {
 export const ShortWithNotAmendedParenthesis = Template.bind({});
 ShortWithNotAmendedParenthesis.args = {
   summary:
-    '(This measure has not been amended since it was introduced. The summary of that version is repeated here.)\n\nExpresses support for the goals and ideals of National Women\'s History Month.\n\nRecognizes and honors the women and organizations in the United States that have fought for and continue to promote the teaching of women\'s history.',
+    "(This measure has not been amended since it was introduced. The summary of that version is repeated here.)\n\nExpresses support for the goals and ideals of National Women's History Month.\n\nRecognizes and honors the women and organizations in the United States that have fought for and continue to promote the teaching of women's history.",
 };
 
 export const WithActStatementIntro = Template.bind({});
 WithActStatementIntro.args = {
   summary:
-    'Veterans Retraining Act of 2009 - Authorizes the Secretary of Labor to pay to each covered veteran an assistance allowance for each month such veteran is enrolled in an employment and training program that teaches a skill in demand, as determined the Secretary. Limits such assistance to six months for each 10-year period.\n\nIncludes as a covered veteran one who is: (1) unemployed for at least four consecutive months before applying for such assistance; (2) able to successfully complete the program; and (3) ineligible for other veterans\' education or training assistance.\n\nAuthorizes payment of a stipend to a covered veteran for moving expenses related to the receipt of such training.\n\nAuthorizes appropriations.',
+    "Veterans Retraining Act of 2009 - Authorizes the Secretary of Labor to pay to each covered veteran an assistance allowance for each month such veteran is enrolled in an employment and training program that teaches a skill in demand, as determined the Secretary. Limits such assistance to six months for each 10-year period.\n\nIncludes as a covered veteran one who is: (1) unemployed for at least four consecutive months before applying for such assistance; (2) able to successfully complete the program; and (3) ineligible for other veterans' education or training assistance.\n\nAuthorizes payment of a stipend to a covered veteran for moving expenses related to the receipt of such training.\n\nAuthorizes appropriations.",
 };
 
 export const LongSummary = Template.bind({});

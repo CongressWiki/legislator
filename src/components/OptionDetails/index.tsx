@@ -33,14 +33,14 @@ const OptionDetails = ({
     <Wrapper className={className} gap="27px">
       {details
         ? details.map(({ text, subtext, slug }, index) => (
-          <OptionDetail
-            key={text + index}
-            text={text}
-            subtext={subtext}
-            slug={slug}
-            type={type}
-          />
-        ))
+            <OptionDetail
+              key={text + index}
+              text={text}
+              subtext={subtext}
+              slug={slug}
+              type={type}
+            />
+          ))
         : null}
     </Wrapper>
   );

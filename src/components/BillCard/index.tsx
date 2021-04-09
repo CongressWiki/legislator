@@ -204,7 +204,7 @@ const Wrapper = styled(motion.div)<{ number: number }>`
 
     // Alternate stamp angle to give it a realistic behavior
     transform: ${(properties) =>
-    properties.number % 2 === 1 ? 'rotate(4deg)' : 'rotate(-3deg)'};
+      properties.number % 2 === 1 ? 'rotate(4deg)' : 'rotate(-3deg)'};
   }
 
   .bill-open {

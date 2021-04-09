@@ -72,11 +72,11 @@ const Seo = ({
       link={
         canonical
           ? [
-            {
-              rel: 'canonical',
-              href: canonical,
-            },
-          ]
+              {
+                rel: 'canonical',
+                href: canonical,
+              },
+            ]
           : []
       }
       meta={[

@@ -51,9 +51,9 @@ const Wrapper = styled.div<{ isActive: boolean }>`
     text-underline-offset: 3px;
 
     text-decoration: ${(properties) =>
-    properties.isActive ? 'underline' : 'unset'};
+      properties.isActive ? 'underline' : 'unset'};
     color: ${(properties) =>
-    properties.isActive ? 'var(--color-secondary)' : 'var(--color-text)'};
+      properties.isActive ? 'var(--color-secondary)' : 'var(--color-text)'};
     cursor: ${(properties) => (properties.isActive ? 'pointer' : 'unset')};
 
     :hover {

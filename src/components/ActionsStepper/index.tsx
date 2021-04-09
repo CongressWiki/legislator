@@ -62,10 +62,10 @@ const Step = styled.div<{ isActive?: boolean; minimized?: boolean }>`
     height: 13px;
     width: 13px;
     background-color: ${(properties) =>
-    properties.isActive ? 'var(--color-secondary)' : 'var(--color-gray700)'};
+      properties.isActive ? 'var(--color-secondary)' : 'var(--color-gray700)'};
     border-radius: 15px;
     box-shadow: ${(properties) =>
-    properties.isActive ? '0 0 40px 1px var(--color-secondary)' : 'none'};
+      properties.isActive ? '0 0 40px 1px var(--color-secondary)' : 'none'};
 
     left: calc(50px / 2);
     transform: translateX(-45%);
