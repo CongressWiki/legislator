@@ -57,7 +57,7 @@ const BillCard = ({
         />
       </Link>
       <p className="bill-sponsorName">
-        {sponsor.preferred_name} · {sponsor.state}
+        {`${sponsor.preferred_name} · ${sponsor.state}`}
       </p>
       <p className="bill-timestamp">{new Date(status_at).toDateString()}</p>
       <p className="bill-subject">{subject}</p>
@@ -128,6 +128,7 @@ const Wrapper = styled(motion.div)<{ number: number }>`
     grid-area: sponsorName;
     font-size: 0.9em;
     font-weight: 400;
+    white-space: nowrap;
   }
 
   .bill-subject {

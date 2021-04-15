@@ -3,6 +3,9 @@ package.json
 package-lock.json
 public
 
+# Sensitive file
+gatsby-ssr.js
+
 # Ignore artifacts:
 build
 coverage

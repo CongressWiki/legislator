@@ -41,7 +41,7 @@ const Wrapper = styled(motion.div)<{ gap?: string }>`
 
   display: grid;
   grid-template-columns: 1fr;
-  gap: ${({ gap }) => gap || '32px'};
+  gap: ${({ gap }) => gap ?? '32px'};
 
   border: none;
   background: var(--color-background);

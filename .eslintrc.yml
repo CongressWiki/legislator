@@ -2,6 +2,8 @@ env:
   browser: true
   es2021: true
   node: true
+ignorePatterns:
+  - 'gatsby-ssr.js'
 extends:
   # - eslint:recommended
   - plugin:react/recommended
