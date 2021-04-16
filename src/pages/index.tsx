@@ -169,26 +169,24 @@ const Home = (_properties: PageProps) => {
   };
 
   return (
-    <>
+    <Layout>
       <SEO title="Latest Bills" pathname="/" />
-      <Layout>
-        <BillLane>
-          <BillLaneHeader
-            handleChamberSelection={handleChamberSelection}
-            handleSearchInput={handleSearchInput}
-            handleOrderAscToggle={handleOrderAscToggle}
-            billCount={filteredBills.length || 0}
-          />
-          {filteredBills.slice(offset, limit).map((bill) => (
-            <BillCard key={bill.id} {...bill} />
-          ))}
-        </BillLane>
-        <BillLaneFooter
-          disabled={limit > filteredBills.length}
-          onClick={loadMore}
+      <BillLane>
+        <BillLaneHeader
+          handleChamberSelection={handleChamberSelection}
+          handleSearchInput={handleSearchInput}
+          handleOrderAscToggle={handleOrderAscToggle}
+          billCount={filteredBills.length || 0}
         />
-      </Layout>
-    </>
+        {filteredBills.slice(offset, limit).map((bill) => (
+          <BillCard key={bill.id} {...bill} />
+        ))}
+      </BillLane>
+      <BillLaneFooter
+        disabled={limit > filteredBills.length}
+        onClick={loadMore}
+      />
+    </Layout>
   );
 };
 
