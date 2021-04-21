@@ -5,7 +5,6 @@ import styled from 'styled-components';
 import BillSummary from '@components/BillSummary';
 import BillTitle from '@components/BillTitle';
 import StampText from '@components/StampText';
-import { motion } from 'framer-motion';
 import { getOriginalChamber, normalizeBillStatus } from '@constants';
 
 export type BillProps = Pick<
@@ -27,12 +26,7 @@ const Bill = ({
   const billStatus = normalizeBillStatus(status, originalChamber);
 
   return (
-    <Wrapper
-      className={className}
-      variants={motionVariants}
-      initial="hidden"
-      animate="visible"
-    >
+    <Wrapper className={className} initial="hidden" animate="visible">
       <BillStatusStamp>{billStatus}</BillStatusStamp>
       <BillHeader>
         <BillId>
@@ -47,19 +41,7 @@ const Bill = ({
 
 export default Bill;
 
-const motionVariants = {
-  hidden: { opacity: 0, scale: 2 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: {
-      duration: 0.7,
-      delay: 0.7,
-    },
-  },
-};
-
-const Wrapper = styled(motion.div)`
+const Wrapper = styled.div`
   position: relative;
   width: min(70ch, calc(100% - 32px));
   padding: 2rem;
@@ -67,31 +49,6 @@ const Wrapper = styled(motion.div)`
   margin: 0;
   margin-bottom: 30vh;
   overflow: hidden;
-
-  /* https://www.css-gradient.com/?c1=2f2c28&c2=6c6051&gt=r&gd=dbb */
-  background: var(--color-bill);
-  background: -webkit-radial-gradient(
-    bottom,
-    'var(--color-billGradient1)',
-    'var(--color-billGradient2)'
-  );
-  background: -moz-radial-gradient(
-    bottom,
-    'var(--color-billGradient1)',
-    'var(--color-billGradient2)'
-  );
-  background: radial-gradient(
-    to top,
-    'var(--color-billGradient1)',
-    'var(--color-billGradient2)'
-  );
-
-  border: 1px groove var(--color-bill);
-  border-radius: 1px;
-
-  -webkit-box-shadow: 0px 10px 15px 0px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 0px 10px 15px 0px rgba(0, 0, 0, 0.75);
-  box-shadow: 0px 10px 15px 0px rgba(0, 0, 0, 0.75);
 
   @media (max-width: 900px) {
     width: 100%;

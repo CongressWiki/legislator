@@ -41,15 +41,22 @@ const TooltipAvatar = ({
 };
 
 const Wrapper = styled.div<{ size: string }>`
+  height: ${(properties) => properties.size};
   position: relative;
+
   background: transparent;
+
   padding: 0;
   margin: 0;
-  height: ${(properties) => properties.size};
+
   transition: all 0.3s ease-in-out;
 
   .avatar {
     transition: all 0.3s ease-in-out;
+
+    -webkit-box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.75);
   }
 `;
 
@@ -67,20 +74,34 @@ const Tooltip = styled.div`
   flex: 1;
 
   .tooltiptext {
+    z-index: 3000;
+
     visibility: hidden;
+
     width: 120px;
+
     background-color: var(--color-bill);
 
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px 0;
     position: absolute;
     top: 100%;
     left: 50%;
+
     margin-left: -60px;
+
+    border-radius: 6px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--color-bill) transparent transparent transparent;
+
+    padding: 5px 0;
+
+    text-align: center;
+
     opacity: 0;
+
     transition: opacity 0.3s;
     transition: top 0.3s;
+
     font-style: italic;
 
     @media (max-width: 450px) {
@@ -90,30 +111,38 @@ const Tooltip = styled.div`
 
   .tooltiptext::after {
     content: '';
+
     position: absolute;
-    bottom: 100%;
+    bottom: 110%;
     left: 50%;
-    transform: rotate(180deg);
+
     margin-left: -5px;
+
     border-width: 5px;
     border-style: solid;
     border-color: var(--color-bill) transparent transparent transparent;
+
+    transform: rotate(180deg);
   }
 
   :hover {
     .avatar {
-      z-index: 600;
+      z-index: 3000;
       transform: scale(1.5);
+
+      -webkit-box-shadow: -1px 0px 7px 5px rgba(0, 0, 0, 0.75);
+      -moz-box-shadow: -1px 0px 7px 5px rgba(0, 0, 0, 0.75);
+      box-shadow: -1px 0px 7px 5px rgba(0, 0, 0, 0.75);
     }
 
     .state {
-      z-index: 1700;
+      z-index: 3100;
       visibility: visible;
       opacity: 1;
     }
 
     .tooltiptext {
-      z-index: 600;
+      z-index: 3000;
       visibility: visible;
       opacity: 1;
       top: 150%;

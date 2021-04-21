@@ -93,10 +93,10 @@ const Wrapper = styled.div<{ color: string }>`
   display: flex;
   flex-direction: column;
 
-  background-color: var(--color-ribbonCard);
+  /* background-color: var(--color-ribbonCard);
   border: solid 1px ${(properties) => properties.color};
   border-radius: 10px;
-  box-shadow: 0 0 10px 1px ${(properties) => properties.color};
+  box-shadow: 0 0 10px 1px ${(properties) => properties.color}; */
 
   transition: all 0.3s ease-in-out;
 `;
@@ -114,7 +114,7 @@ const QuestionContainer = styled.h3<{ expanded: boolean }>`
   margin: 0;
 
   transition: all 0.3s ease-in-out;
-  background-color: var(--color-ribbonCard);
+
   border-bottom: solid thin var(--color-gray300);
 
   text-align: center;

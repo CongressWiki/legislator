@@ -440,9 +440,11 @@ const ContentLayout = styled.div`
   justify-self: center;
 
   display: grid;
+  height: calc(100vh - 115px);
   grid-template-columns: 1fr auto 1fr;
-  grid-template-rows: 50px 600px 1fr;
+  grid-template-rows: 50px 150px 1fr;
   grid-template-areas:
+    '....... ..... details'
     '....... title details'
     'options img   details';
 
@@ -456,8 +458,8 @@ const ContentLayout = styled.div`
 
   .img {
     grid-area: img;
-    align-self: center;
-    justify-self: center;
+    align-self: start;
+    justify-self: start;
   }
 
   .options {
@@ -491,8 +493,8 @@ const ContentLayout = styled.div`
 const OptionsContainer = styled.div`
   width: 100%;
   height: 100%;
-  max-height: 400px;
-  align-self: center;
+  max-height: 300px;
+  align-self: start;
 
   display: grid;
   grid-template-columns: repeat(10, 1fr);
@@ -503,8 +505,8 @@ const OptionsContainer = styled.div`
     'd d d d d d d d d .'
     'e e e e e e e e e .'
     'f f f f f f f f f f';
-  align-items: center;
-  align-content: space-evenly;
+  align-items: start;
+  align-content: space-between;
   text-align: right;
 
   .a {

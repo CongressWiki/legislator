@@ -30,8 +30,8 @@ const Wrapper = styled.div<{ partyColor?: string; size?: string }>`
    * Remember border size will cut into the picture's size
    * To handle this: multiply border-size by 2 then add to width & height.
    */
-  width: ${(properties) => properties.size || '50px'};
-  height: ${(properties) => properties.size || '50px'};
+  width: ${(properties) => properties.size ?? '50px'};
+  height: ${(properties) => properties.size ?? '50px'};
 
   /* Not supported by non-chrome browsers */
   /* aspect-ratio: 1 / 1; */

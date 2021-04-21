@@ -29,12 +29,23 @@ const BillViewLayout = ({ children }: BillViewLayoutProps) => {
 
 const Container = styled.div`
   position: relative;
-  display: flex;
   flex-direction: column;
   width: 100%;
 
   // Prevent horizontal scroll bar from appearing when ribbons are sliding in
   overflow: hidden;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-areas: 'details bill';
+
+  .details {
+    grid-area: details;
+  }
+
+  .bill {
+    grid-area: bill;
+  }
 `;
 
 export default BillViewLayout;

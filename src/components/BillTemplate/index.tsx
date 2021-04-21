@@ -34,55 +34,24 @@ const BillTemplate = ({ pageContext: { slug, bill } }: BillTemplateProps) => {
       />
       <Layout>
         <BillDetails
+          className="details"
           sponsor={bill.sponsor}
           cosponsors={bill.cosponsorships}
           rollCalls={bill.roll_calls}
         />
-        <BillWrapper>
-          <Bill
-            className="bill"
-            type={bill.type}
-            number={bill.number}
-            status={bill.status}
-            subject={bill.subject}
-            title={bill.title}
-            bill_text={bill.bill_text}
-            summary={bill.summary}
-          />
-        </BillWrapper>
+        <Bill
+          className="bill"
+          type={bill.type}
+          number={bill.number}
+          status={bill.status}
+          subject={bill.subject}
+          title={bill.title}
+          bill_text={bill.bill_text}
+          summary={bill.summary}
+        />
       </Layout>
     </>
   );
 };
 
 export default BillTemplate;
-
-const BillWrapper = styled.div`
-  position: absolute;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-areas: 'content bill';
-  width: 100%;
-
-  pointer-events: none;
-
-  .bill {
-    z-index: 1000;
-    grid-area: bill;
-    margin-top: 2rem;
-    margin-bottom: 50vh;
-    pointer-events: auto;
-
-    @media (max-width: 450px) {
-      margin-top: 0;
-    }
-  }
-
-  @media (max-width: 900px) {
-    position: relative;
-    margin-top: 0;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
-`;

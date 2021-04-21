@@ -56,17 +56,12 @@ const Wrapper = styled(BillLane)`
 
   padding: 1rem;
 
-  display: grid;
-  grid-template-rows: auto 1fr;
-  grid-template-areas: 'details';
+  display: flex;
+  flex-direction: column;
 
   align-items: center;
   text-align: left;
   justify-content: start;
 
   background-color: transparent;
-
-  .details {
-    grid-area: details;
-  }
 `;
