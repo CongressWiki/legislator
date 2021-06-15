@@ -1,0 +1,59 @@
+env:
+  browser: true
+  es2021: true
+  node: true
+ignorePatterns:
+  - 'gatsby-ssr.js'
+extends:
+  - plugin:react/recommended
+  - plugin:@typescript-eslint/recommended
+  - xo
+  - xo-react/space
+  - xo-typescript/space
+  - prettier
+  - plugin:prettier/recommended
+  # - eslint:recommended
+  # - plugin:react-hooks/recommended
+  # - plugin:import/errors
+  # - plugin:import/warnings
+  # - plugin:unicorn/recommended
+plugins:
+  - '@typescript-eslint'
+  - react
+  - react-hooks
+parser: '@typescript-eslint/parser'
+parserOptions:
+  project: './tsconfig.json'
+  tsconfigRootDir: '.'
+  ecmaVersion: 2021
+rules:
+  '@typescript-eslint/explicit-module-boundary-types': 0
+  '@typescript-eslint/no-confusing-void-expression': 0
+  '@typescript-eslint/consistent-type-assertions': 1
+  '@typescript-eslint/restrict-plus-operands': 1
+  '@typescript-eslint/no-empty-function': 1
+  'react-hooks/rules-of-hooks': 1
+  '@typescript-eslint/no-explicit-any': 1
+  '@typescript-eslint/ban-ts-comment': 1
+  'react/jsx-pascal-case': 1
+  '@typescript-eslint/no-implicit-any-catch': 1
+  '@typescript-eslint/no-floating-promises': 1
+  'react/no-array-index-key': 1
+  '@typescript-eslint/prefer-nullish-coalescing': 1
+  '@typescript-eslint/restrict-template-expressions': 1
+  'react/boolean-prop-naming': 1
+  '@typescript-eslint/no-unused-expressions': 1
+  'no-empty-pattern': 1
+  'react/prop-types': 1
+  'react/function-component-definition': 1
+  'react/display-name': 1
+  'react/no-this-in-sfc': 1
+  'no-var': 1
+  '@typescript-eslint/ban-types': 1
+  '@typescript-eslint/no-unsafe-assignment': 0
+  '@typescript-eslint/no-unsafe-call': 0
+  '@typescript-eslint/no-unsafe-member-access': 0
+  'no-await-in-loop': 0
+  '@typescript-eslint/no-unsafe-return': 0
+  '@typescript-eslint/no-unused-vars': 1
+  'capitalized-comments': 1

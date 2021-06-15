@@ -1,0 +1,68 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      // Root
+      "@data/*": [
+        "data/*"
+      ],
+      "@samples/*": [
+        "samples/*"
+      ],
+      // `src/**`
+      "@components/*": [
+        "src/components/*"
+      ],
+      "@icons/*": [
+        "src/icons/*"
+      ],
+      "@pages/*": [
+        "src/pages/*"
+      ],
+      "@type/*": [
+        "src/types/*"
+      ],
+      "@utils/*": [
+        "src/utils/*"
+      ],
+      "@constants": [
+        "src/constants"
+      ],
+      // `static/**`
+      "@static/*": [
+        "static/*"
+      ],
+      "@images/*": [
+        "static/images/*"
+      ],
+      "@states/*": [
+        "static/images/states/*"
+      ],
+    },
+    "target": "ES2019",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "lib": [
+      "dom",
+      "es2017"
+    ],
+    "allowJs": true,
+    "jsx": "react",
+    "strict": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "noEmit": true,
+    "sourceMap": true,
+    "resolveJsonModule": true
+    // "checkJs": true,
+    // "forceConsistentCasingInFileNames": true,
+    // "skipLibCheck": true
+  },
+  "include": [
+    "src",
+    "data",
+    "lib",
+    "gatsby-*.js"
+  ]
+}

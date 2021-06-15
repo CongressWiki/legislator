@@ -1,0 +1,18 @@
+name: Lint
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  lint:
+    name: Linter checks
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install Yarn Dependencies
+      run: yarn install --pure-lockfile
+
+    - name: Run Linter
+      run: yarn lint

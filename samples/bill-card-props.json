@@ -1,0 +1,51 @@
+{
+  "type": "hjres",
+  "number": 27,
+  "title": "Providing for the appointment of Barbara Barrett as a citizen regent of the Board of Regents of the Smithsonian Institution.",
+  "congress": "117",
+  "subject": "Government operations and politics",
+  "status": "PASS_OVER:HOUSE",
+  "status_at": "2021-05-20T12:20:09+00:00",
+  "sponsor": {
+    "id": "M001163",
+    "is_active": true,
+    "political_party": "Democrat",
+    "position": "house_representative",
+    "preferred_name": "Doris O. Matsui",
+    "state": "CA",
+    "image": {
+      "extension": "jpg",
+      "name": "M001163",
+      "modifiedTime": "2021-02-11T21:45:09.520Z",
+      "childImageSharp": {
+        "gatsbyImageData": {
+          "layout": "constrained",
+          "placeholder": {
+            "fallback": "data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wgARCAAYABQDASIAAhEBAxEB/8QAGAABAQEBAQAAAAAAAAAAAAAAAAUEAQP/xAAXAQADAQAAAAAAAAAAAAAAAAABAgQD/9oADAMBAAIQAxAAAAGPHvdVtTxUTZsI1dYbD//EABwQAAICAgMAAAAAAAAAAAAAAAIDAQQFExESFP/aAAgBAQABBQK3Y1T63rNcwxdVPbIZhA68dEhUa4lBDzuFBFx//8QAGxEAAgIDAQAAAAAAAAAAAAAAAAECEQMSISL/2gAIAQMBAT8Bji82MTrhpE//xAAbEQACAQUAAAAAAAAAAAAAAAAAAQIDERITIv/aAAgBAgEBPwGVTqwhwjsRgj//xAAiEAACAgEDBAMAAAAAAAAAAAABAgARAyEiMRASE0FRYZH/2gAIAQEABj8C8eMW83/lRXXgzOzkWtFbj5h239RA415hyLRr0fc3KFxLrXyen//EABwQAAMAAwADAAAAAAAAAAAAAAABESExUUFxgf/aAAgBAQABPyGOi/vg0lOPLR8NeDRWoVlwx5glqdeyOJrHEzVoMAyFG1d4Vky5P//aAAwDAQACAAMAAAAQDCA+/8QAGREBAQADAQAAAAAAAAAAAAAAAQARITFB/9oACAEDAQE/ECb0UJMDyW8v/8QAGREBAQEAAwAAAAAAAAAAAAAAAQAhEUFR/9oACAECAQE/EFKXJs7HqfO//8QAHhABAQACAgMBAQAAAAAAAAAAAREAMSFBUXGBYbH/2gAIAQEAAT8QnQY9i9E7XxgPLifoxo04STKB2eR9OG8uuL0eQJgfnIEZYxpvTiQFAtoUH5/c494HiBQinPfxxkUQb943NzWCuqbz/9k="
+          },
+          "images": {
+            "fallback": {
+              "src": "/static/5f619cfe49ee8bccfdf05394530fa182/9e157/M001163.jpg",
+              "srcSet": "/static/5f619cfe49ee8bccfdf05394530fa182/bb441/M001163.jpg 13w,\n/static/5f619cfe49ee8bccfdf05394530fa182/03be4/M001163.jpg 25w,\n/static/5f619cfe49ee8bccfdf05394530fa182/9e157/M001163.jpg 50w,\n/static/5f619cfe49ee8bccfdf05394530fa182/23b53/M001163.jpg 100w",
+              "sizes": "(min-width: 50px) 50px, 100vw"
+            },
+            "sources": [
+              {
+                "srcSet": "/static/5f619cfe49ee8bccfdf05394530fa182/e1aed/M001163.avif 13w,\n/static/5f619cfe49ee8bccfdf05394530fa182/340cb/M001163.avif 25w,\n/static/5f619cfe49ee8bccfdf05394530fa182/b7a21/M001163.avif 50w,\n/static/5f619cfe49ee8bccfdf05394530fa182/80ea3/M001163.avif 100w",
+                "type": "image/avif",
+                "sizes": "(min-width: 50px) 50px, 100vw"
+              },
+              {
+                "srcSet": "/static/5f619cfe49ee8bccfdf05394530fa182/963e4/M001163.webp 13w,\n/static/5f619cfe49ee8bccfdf05394530fa182/edb43/M001163.webp 25w,\n/static/5f619cfe49ee8bccfdf05394530fa182/a6378/M001163.webp 50w,\n/static/5f619cfe49ee8bccfdf05394530fa182/028b2/M001163.webp 100w",
+                "type": "image/webp",
+                "sizes": "(min-width: 50px) 50px, 100vw"
+              }
+            ]
+          },
+          "width": 50,
+          "height": 61
+        }
+      }
+    }
+  }
+}
