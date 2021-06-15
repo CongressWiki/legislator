@@ -4,7 +4,6 @@
   "private": true,
   "version": "0.1.0",
   "author": "Ryan Parker",
-  "license": "0BSD",
   "repository": {
     "type": "git",
     "url": "https://github.com/gatsbyjs/gatsby-starter-default"
