@@ -8,7 +8,7 @@ const ContentWrapper = styled.div`
   max-width: 710px;
   height: 100%;
 
-  padding-left: 3rem;
+  padding-left: 1rem;
   padding-bottom: 0;
 
   display: flex;

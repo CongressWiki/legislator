@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import SectionTitle from '@components/molecules/BillDetailsSection/SectionTitle';
 import { Action as ActionType, RollCall } from '@type/hasura';
 import { motion } from 'framer-motion';
-import ActionSlide from './ActionSlide';
+// import ActionSlide from './ActionSlide';
 import RollCallSlide from '@components/molecules/RollCallSlide';
 import Calendar from '@icons/misc/Calendar';
 
@@ -18,9 +18,9 @@ export type ActionWithRollCall = ActionType & {
 };
 
 const Section = ({ actions, title, className }: SectionProps) => {
-  const hasActions = actions.length > 0;
-  const [actionIdx, setActionIdx] = useState(actions.length - 1);
-  const activeAction = actions[actionIdx];
+  // const hasActions = actions.length > 0;
+  // const [actionIdx, setActionIdx] = useState(actions.length - 1);
+  // const activeAction = actions[actionIdx];
   const latestRollCall = actions.find((a) => a.roll_call);
 
   const ActionComponent = () => {
@@ -37,6 +37,7 @@ const Section = ({ actions, title, className }: SectionProps) => {
   };
 
   return (
+    // @ts-expect-error styled-components type requires className for an unknown reason
     <Wrapper className={className} variants={motionVariants}>
       <SectionTitle>{title}</SectionTitle>
       <Content>
@@ -65,6 +66,8 @@ const Section = ({ actions, title, className }: SectionProps) => {
   );
 };
 
+export default Section;
+
 const motionVariants = {
   hidden: { x: 100, opacity: 0 },
   visible: {
@@ -77,7 +80,7 @@ const Wrapper = styled(motion.div)`
   position: relative;
   height: 100%;
   width: 100%;
-  display: block;
+  display: flex;
 
   @media (max-width: 900px) {
     width: 100%;
@@ -118,8 +121,6 @@ const SlideButton = styled.button<{ active: boolean }>`
     color: var(--color-secondary);
   }
 `;
-
-export default Section;
 
 const StyledCalendar = styled(Calendar)`
   width: 100%;

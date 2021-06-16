@@ -13,6 +13,7 @@ const ActionSlide = ({ action, className }: ActionProps) => {
     (action.vote_type ? ` - ${action.vote_type}` : '');
   const actionActedAt = new Date(action.acted_at).toDateString();
   return (
+    // @ts-expect-error styled-components type requires className for an unknown reason
     <Wrapper className={className}>
       <h4>{actionType}</h4>
       <p>{action.text}</p>

@@ -1,9 +1,30 @@
 import styled from 'styled-components';
+import React from 'react';
+import { motion } from 'framer-motion';
 
-const ButtonCanvas = styled.div`
-  width: 1.4em;
-  min-width: 1.4em;
-  height: 1.4em;
+export type ButtonCanvasProps = {
+  children: React.ReactNode;
+  className?: string | undefined;
+  onClick?: () => void;
+};
+
+const ButtonCanvas: React.FunctionComponent<ButtonCanvasProps> = ({
+  children,
+  onClick,
+}: ButtonCanvasProps) => (
+  <StyledButtonCanvas
+    whileHover={{ scale: 1.1 }}
+    whileTap={{ scale: 0.9 }}
+    onClick={onClick}
+  >
+    {children}
+  </StyledButtonCanvas>
+);
+
+const StyledButtonCanvas = styled(motion.div)<ButtonCanvasProps>`
+  width: 50px;
+  min-width: 50px;
+  height: 50px;
 
   display: flex;
   justify-content: center;

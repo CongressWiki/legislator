@@ -34,7 +34,7 @@ const BillLaneHeader = ({
   return (
     <Wrapper className={className}>
       <ChamberDropdown handleSelection={handleChamberSelection} />
-      <SearchInput onChange={handleSearchInput} value={searchBy} />
+      <SearchInput value={searchBy} onChange={handleSearchInput} />
       <BillCount>{billCount} Bills</BillCount>
       <OrderByToggle handleToggle={handleOrderAscToggle} />
     </Wrapper>

@@ -16,6 +16,7 @@ export type SenateSectionProps = {
 const SenateSection = ({ rollCalls, className }: SenateSectionProps) => {
   const hasRollCalls = rollCalls.length > 0;
   return (
+    // @ts-expect-error styled-components type requires className for an unknown reason
     <SenateSectionWrapper className={className}>
       <Container>
         <SectionTitle>Senate</SectionTitle>

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import MinimumLayout from '@components/templates/layouts/Minimum';
 import type { OfficialWithImage } from '@type/hasura';
-import SEO from '@components/App/Seo';
+import Seo from '@components/App/Seo';
 import CircleAvatar from '@components/molecules/CircleAvatar';
 import CountBox from '@components/atoms/CountBox';
 import { graphql } from 'gatsby';
@@ -321,7 +321,7 @@ const ElectedOfficialTemplate = ({
 
   return (
     <MinimumLayout>
-      <SEO
+      <Seo
         pathname={slug}
         title={electedOfficial.preferred_name}
         description={electedOfficial.preferred_name}
@@ -356,6 +356,14 @@ const ElectedOfficialTemplate = ({
             )}
           </TermDate>
         </div>
+        <CircleAvatar
+          className="image"
+          preferred_name={electedOfficial.preferred_name}
+          political_party={electedOfficial.political_party}
+          image={electedOfficial.image}
+          loading="eager"
+          size="240px"
+        />
         <OptionsContainer className="options">
           {options.map((option, index) => {
             const char = String.fromCharCode(97 + index);
@@ -381,14 +389,7 @@ const ElectedOfficialTemplate = ({
             );
           })}
         </OptionsContainer>
-        <CircleAvatar
-          className="img"
-          preferred_name={electedOfficial.preferred_name}
-          political_party={electedOfficial.political_party}
-          image={electedOfficial.image}
-          loading="eager"
-          size="min(32vw, 300px)"
-        />
+
         {activeOption ? (
           <OptionDetails className="details" {...activeOption} />
         ) : null}
@@ -431,10 +432,7 @@ const TermDate = styled.p`
 `;
 
 const ContentLayout = styled.div`
-  min-width: 860px;
   overflow: hidden;
-
-  justify-self: center;
 
   display: grid;
   height: calc(100vh - 115px);
@@ -445,6 +443,14 @@ const ContentLayout = styled.div`
     '....... title details'
     'options img   details';
 
+  @media (max-width: 600px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+  }
+
   .title {
     grid-area: title;
     width: 100%;
@@ -453,10 +459,16 @@ const ContentLayout = styled.div`
     text-align: center;
   }
 
-  .img {
+  .image {
     grid-area: img;
-    align-self: start;
     justify-self: center;
+
+    img {
+      transition: all 0.3s;
+      :hover {
+        transform: scale(1.1);
+      }
+    }
   }
 
   .options {
@@ -468,6 +480,9 @@ const ContentLayout = styled.div`
 
     div:first-child {
       margin-top: 170px;
+      @media (max-width: 600px) {
+        margin-top: unset;
+      }
     }
   }
 
@@ -505,6 +520,14 @@ const OptionsContainer = styled.div`
   align-items: start;
   align-content: space-between;
   text-align: right;
+
+  @media (max-width: 600px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+  }
 
   .a {
     grid-area: a;

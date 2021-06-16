@@ -22,6 +22,7 @@ const TooltipAvatar = ({
   className,
 }: TooltipAvatarProps) => {
   return (
+    // @ts-expect-error styled-components type requires className for an unknown reason
     <Wrapper className={className} size={size}>
       <Tooltip>
         {state ? <StateText className="state">{state}</StateText> : null}
@@ -145,7 +146,7 @@ const Tooltip = styled.div`
       z-index: 3000;
       visibility: visible;
       opacity: 1;
-      top: 150%;
+      top: 140%;
     }
   }
 `;

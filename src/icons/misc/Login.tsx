@@ -6,7 +6,7 @@ const SvgLogin = (properties: React.SVGProps<SVGSVGElement>) => {
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
-      viewBox="14 14 72 79"
+      viewBox="14 14 100 79"
       {...properties}
     >
       <path

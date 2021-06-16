@@ -19,12 +19,14 @@ const OptionDetail = ({
   className,
 }: OptionDetailProps) => {
   const center = ['rollCalls', 'committees', 'subcommittees'].includes(type);
+
   return (
     <Wrapper
-      className={className}
       layout
       center={center}
       variants={motionVariants}
+      // @ts-expect-error styled-components type requires className for an unknown reason
+      className={className}
     >
       {['bills', 'cosponsorships', 'amendments'].includes(type) ? (
         <Link to={slug}>
@@ -65,16 +67,16 @@ const Wrapper = styled(motion.div)<{ center: boolean }>`
 
   .text {
     padding-bottom: 5px;
-    margin-bottom: 0.5em;
+    margin-bottom: 0.5rem;
 
     font-family: century_supra_c3;
     font-weight: 600;
-    font-size: 1em;
+    font-size: 1rem;
     text-align: center;
   }
 
   .subtext {
-    font-size: 1em;
+    font-size: 1rem;
     color: var(--color-dimText);
     text-align: ${(properties) => (properties.center ? 'center' : null)};
   }

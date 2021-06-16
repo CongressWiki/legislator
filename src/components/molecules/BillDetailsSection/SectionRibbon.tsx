@@ -8,7 +8,8 @@ export type SectionRibbonProps = {
 };
 
 const SectionRibbon = ({ children, className }: SectionRibbonProps) => (
-  <Wrapper className={className} variants={motionVariants}>
+  // @ts-expect-error styled-components type requires className for an unknown reason
+  <Wrapper variants={motionVariants} className={className}>
     {children}
   </Wrapper>
 );
@@ -17,7 +18,7 @@ const Wrapper = styled(motion.div)`
   position: relative;
   height: 100%;
   width: 100%;
-  display: block;
+  display: flex;
 `;
 
 const motionVariants = {

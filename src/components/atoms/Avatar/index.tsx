@@ -1,24 +1,26 @@
 import React from 'react';
 import styled from 'styled-components';
 import { getPartyColors } from '@constants';
+import { motion } from 'framer-motion';
 
 export type AvatarProps = {
   children: React.ReactNode;
   party: string;
   size?: string;
   className?: string;
-};
+} & React.HTMLAttributes<HTMLDivElement>;
 
 const Avatar = ({ children, party, size, className }: AvatarProps) => {
   const partyColor = getPartyColors(party);
   return (
+    // @ts-expect-error styled-components is bugged and requires the className
     <Wrapper className={className} partyColor={partyColor} size={size}>
       {children}
     </Wrapper>
   );
 };
 
-const Wrapper = styled.div<{ partyColor?: string; size?: string }>`
+const Wrapper = styled(motion.div)<{ partyColor?: string; size?: string }>`
   z-index: 500;
   position: relative;
   display: flex;
@@ -44,6 +46,8 @@ const Wrapper = styled.div<{ partyColor?: string; size?: string }>`
 
   img {
     z-index: 400;
+    display: block;
+    object-fit: cover;
   }
 `;
 

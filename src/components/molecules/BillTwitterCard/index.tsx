@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import CircleAvatar from '@components/molecules/CircleAvatar';
 import Arrow from '@icons/misc/Arrow';
 import SubjectIcon from '@components/atoms/SubjectIcon';
+import ButtonCanvas from '@components/atoms/ButtonCanvas';
 
 export type BillTwitterCardProps = Pick<
   Bill,
@@ -34,11 +35,12 @@ const BillTwitterCard = (props: BillTwitterCardProps) => {
     status,
     sponsor,
     status_at,
-    className = '',
-    onClick = () => {},
+    className,
+    onClick,
   } = props;
 
   return (
+    // @ts-expect-error styled-components type requires className and onClick for an unknown reason
     <Wrapper
       layout
       className={className}
@@ -68,7 +70,9 @@ const BillTwitterCard = (props: BillTwitterCardProps) => {
 
       <StampText className="bill-status">{status}</StampText>
       <Link className="bill-open" to={`${congress}/${type}${number}/`}>
-        <Arrow />
+        <ButtonCanvas>
+          <Arrow />
+        </ButtonCanvas>
       </Link>
     </Wrapper>
   );
@@ -84,13 +88,15 @@ const motionVariants = {
 
 export default BillTwitterCard;
 
-const Wrapper = styled(motion.div)<{ number: number }>`
+const Wrapper = styled(motion.div)<{
+  number: number;
+}>`
   max-width: none;
   width: 100%;
   margin: 0;
   padding-top: 0.75rem;
-  padding-left: 1em;
-  padding-right: 1em;
+  padding-left: 1rem;
+  padding-right: 1rem;
 
   display: grid;
   grid-template-columns: 62px repeat(9, 1fr);
@@ -120,12 +126,12 @@ const Wrapper = styled(motion.div)<{ number: number }>`
   .bill-sponsorImage {
     grid-area: sponsorImage;
     align-self: start;
-    margin-right: 0.75em;
+    margin-right: 0.75rem;
   }
 
   .bill-sponsorName {
     grid-area: sponsorName;
-    font-size: 0.9em;
+    font-size: 0.9rem;
     font-weight: 400;
     white-space: nowrap;
   }
@@ -148,7 +154,7 @@ const Wrapper = styled(motion.div)<{ number: number }>`
     position: relative;
 
     width: 100%;
-    max-width: 2.5em;
+    max-width: 2.5rem;
 
     /* SVGR components typically default to 1em */
     height: auto;
@@ -175,7 +181,7 @@ const Wrapper = styled(motion.div)<{ number: number }>`
 
     align-self: start;
 
-    font-size: 1.1em;
+    font-size: 1.1rem;
     letter-spacing: -0.063px;
   }
 
@@ -183,7 +189,7 @@ const Wrapper = styled(motion.div)<{ number: number }>`
     grid-area: timestamp;
     text-align: left;
 
-    font-size: 0.8em;
+    font-size: 0.8rem;
     color: var(--color-dimText);
     font-weight: 400;
   }
@@ -193,8 +199,8 @@ const Wrapper = styled(motion.div)<{ number: number }>`
 
     justify-self: center;
 
-    font-size: 0.8em;
-    border-width: 0.2em;
+    font-size: 0.8rem;
+    border-width: 0.2rem;
 
     // Alternate stamp angle to give it a realistic behavior
     transform: ${(properties) =>
@@ -205,7 +211,7 @@ const Wrapper = styled(motion.div)<{ number: number }>`
     grid-area: openBill;
 
     width: 100%;
-    max-width: 2.5em;
+    max-width: 2.5rem;
     height: auto;
 
     justify-self: end;

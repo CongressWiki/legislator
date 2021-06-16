@@ -86,4 +86,9 @@ const Layout = styled.div`
   .bill {
     grid-area: bill;
   }
+
+  @media (max-width: 600px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;

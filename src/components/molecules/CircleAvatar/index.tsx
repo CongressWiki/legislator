@@ -1,15 +1,18 @@
 import React from 'react';
-import styled from 'styled-components';
+
 import Image, { ImageProps } from '@components/atoms/Image';
 import Avatar from '@components/atoms/Avatar';
 import type { OfficialWithImage } from '@type/hasura';
-import { getPartyColors } from '@constants';
+import type { PartialPick } from '@type/utility';
 
 export type CircleAvatarProps = {
   size?: string;
   className?: string;
-} & Pick<OfficialWithImage, 'preferred_name' | 'political_party' | 'image'> &
-  Pick<ImageProps, 'loading' | 'backgroundColor'>;
+} & PartialPick<
+  OfficialWithImage,
+  'preferred_name' | 'political_party' | 'image'
+> &
+  PartialPick<ImageProps, 'loading' | 'backgroundColor'>;
 
 const CircleAvatar = ({
   preferred_name,
@@ -20,17 +23,15 @@ const CircleAvatar = ({
   className,
 }: CircleAvatarProps) => {
   return (
-    <StyledAvatar party={political_party} size={size} className={className}>
-      <Image imageData={image} alt={preferred_name} loading={loading} />
-    </StyledAvatar>
+    // @ts-expect-error styled-components type requires className for an unknown reason
+    <Avatar party={political_party} size={size} className={className}>
+      <Image
+        imageData={image}
+        alt={preferred_name ?? 'Avatar image'}
+        loading={loading}
+      />
+    </Avatar>
   );
 };
 
 export default CircleAvatar;
-
-const StyledAvatar = styled(Avatar)`
-  .image {
-    width: 100%;
-    height: auto;
-  }
-`;

@@ -34,6 +34,7 @@ const HouseSection = ({ actions, rollCalls, className }: HouseSectionProps) => {
   };
 
   return (
+    // @ts-expect-error styled-components type requires className for an unknown reason
     <Wrapper className={className} variants={motionVariants}>
       <SectionTitle>House</SectionTitle>
       <Content>

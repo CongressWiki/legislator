@@ -26,6 +26,7 @@ const BillDetails = ({
 }: BillDetailsProps) => {
   return (
     <Wrapper
+      // @ts-expect-error styled-components type requires className for an unknown reason
       className={className}
       variants={motionVariants}
       initial="hidden"

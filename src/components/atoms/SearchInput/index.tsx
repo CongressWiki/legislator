@@ -2,9 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 
 export type SearchInputProps = {
-  onChange: React.ChangeEventHandler<HTMLInputElement>;
+  value: string | undefined;
+  // eslint-disable-next-line react/boolean-prop-naming
   autoFocus?: boolean;
-  value?: string;
+  onChange: React.ChangeEventHandler<HTMLInputElement>;
 };
 
 const SearchInput = ({
@@ -18,6 +19,7 @@ const SearchInput = ({
       type="text"
       aria-label="Search"
       placeholder="Search"
+      // @ts-expect-error styled-components type requires value for an unknown reason
       value={value}
       onChange={onChange}
     />

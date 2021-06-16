@@ -13,6 +13,8 @@ const Header = styled.p`
   margin: 0;
   padding: 0;
 
+  line-height: 1;
+
   font-family: advocate_c43_mid;
   font-size: 4rem;
 

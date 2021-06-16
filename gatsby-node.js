@@ -254,7 +254,8 @@ exports.createPages = async ({ graphql, actions: gatsbyActions, reporter }) => {
           modifiedTime
           childImageSharp {
             gatsbyImageData(
-              width: 500
+              height: 300
+              width: 300
               placeholder: BLURRED
               formats: [AUTO, WEBP, AVIF]
             )

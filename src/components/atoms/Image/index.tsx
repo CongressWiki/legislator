@@ -27,24 +27,25 @@ const Image = ({
   alt,
   loading,
   backgroundColor,
-  aspectRatio = 4 / 5,
   placeholder = 'blurred',
   className,
 }: ImageProps) => {
   const image = imageData ? getImage(imageData) : false;
   if (!image) {
+    // @ts-expect-error styled-components type requires className for an unknown reason
     return <StyledCandidate className={className} />;
   }
 
   return (
     <GatsbyImage
+      // @ts-expect-error styled-components type requires className for an unknown reason
       className={className}
       image={image}
       alt={alt}
+      // @ts-expect-error styled-components type requires className for an unknown reason
       loading={loading}
+      // @ts-expect-error styled-components type requires className for an unknown reason
       backgroundColor={backgroundColor}
-      // @ts-expect-error
-      // aspectRatio={aspectRatio}
       placeholder={placeholder}
     />
   );

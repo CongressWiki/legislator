@@ -131,26 +131,24 @@ export const isBrowser = typeof window !== 'undefined';
 // AUTH0_DOMAIN
 if (!process.env.GATSBY_AUTH0_DOMAIN)
   throw new Error('Missing environment var: `GATSBY_AUTH0_DOMAIN`');
-export const AUTH0_DOMAIN = process.env.GATSBY_AUTH0_DOMAIN as string;
+export const AUTH0_DOMAIN = process.env.GATSBY_AUTH0_DOMAIN;
 
 // AUTH0_CLIENT_ID
 if (!process.env.GATSBY_AUTH0_CLIENT_ID)
   throw new Error('Missing environment var: `GATSBY_AUTH0_CLIENT_ID`');
-export const AUTH0_CLIENT_ID = process.env.GATSBY_AUTH0_CLIENT_ID as string;
+export const AUTH0_CLIENT_ID = process.env.GATSBY_AUTH0_CLIENT_ID;
 
 // AUTH0_CALLBACK_URL
 if (!process.env.GATSBY_AUTH0_CALLBACK_URL)
   throw new Error('Missing environment var: `GATSBY_AUTH0_CALLBACK_URL`');
-export const AUTH0_CALLBACK_URL = process.env
-  .GATSBY_AUTH0_CALLBACK_URL as string;
+export const AUTH0_CALLBACK_URL = process.env.GATSBY_AUTH0_CALLBACK_URL;
 
 // AUTH0_AUDIENCE
 if (!process.env.GATSBY_AUTH0_AUDIENCE)
   throw new Error('Missing environment var: `GATSBY_AUTH0_AUDIENCE`');
-export const AUTH0_AUDIENCE = process.env.GATSBY_AUTH0_AUDIENCE as string;
+export const AUTH0_AUDIENCE = process.env.GATSBY_AUTH0_AUDIENCE;
 
 // HASURA_GRAPHQL_URL
 if (!process.env.GATSBY_HASURA_GRAPHQL_URL)
   throw new Error('Missing environment var: `GATSBY_HASURA_GRAPHQL_URL`');
-export const HASURA_GRAPHQL_URL = process.env
-  .GATSBY_HASURA_GRAPHQL_URL as string;
+export const HASURA_GRAPHQL_URL = process.env.GATSBY_HASURA_GRAPHQL_URL;

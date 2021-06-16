@@ -26,10 +26,9 @@ const Header = () => {
         {/* <Link to="/bills">
           <p>Bills</p>
         </Link> */}
-        {/* Re-enable when light theme and auth are ready   */}
         <ButtonsBar>
           <ThemeToggle />
-          {/* <LoginButton /> */}
+          <LoginButton />
         </ButtonsBar>
       </ToolBar>
     </Wrapper>
@@ -91,9 +90,10 @@ const ButtonsBar = styled.div`
   position: relative;
   margin: 0;
   padding: 0;
+  width: 120px;
 
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-around;
   align-items: center;
 `;
 

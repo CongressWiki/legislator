@@ -14,12 +14,13 @@ const SponsorSpotlight = ({ sponsor }: SponsorSpotlightProps) => {
   return (
     <Wrapper>
       <Link to={`/officials/${sponsor.id}`}>
+        <SponsorState className="state">{sponsor.state}</SponsorState>
         <SponsorFrame color={getPartyColors(sponsor.political_party)}>
-          <SponsorState className="state">{sponsor.state}</SponsorState>
           <Image
             imageData={sponsor.image}
             alt={sponsor.preferred_name}
             loading="eager"
+            className="image"
           />
         </SponsorFrame>
         <SponsorLabel>{sponsor.preferred_name}</SponsorLabel>
@@ -33,31 +34,12 @@ export default SponsorSpotlight;
 const Wrapper = styled.div`
   position: relative;
   max-height: calc(100% - 2rem);
-  min-width: fit-content;
 
+  margin-left: 1rem;
   margin-right: 1rem;
   margin-bottom: auto;
 
   display: inline-block;
-`;
-
-const SponsorFrame = styled.div<{ color: string }>`
-  position: relative;
-  max-width: fit-content;
-  min-width: 200px;
-  min-height: 100px;
-  max-height: 250px;
-
-  margin: 0;
-  overflow: hidden;
-
-  display: flex;
-  align-items: center;
-
-  border: solid 1px ${(properties) => properties.color};
-  box-shadow: 0 0 5px 2px ${(properties) => properties.color};
-
-  background-color: ${(properties) => properties.color};
 
   :hover {
     .state {
@@ -65,16 +47,59 @@ const SponsorFrame = styled.div<{ color: string }>`
       opacity: 1;
     }
   }
+`;
+
+const SponsorFrame = styled.div<{ color: string }>`
+  z-index: 2;
+  position: relative;
+  width: 184px;
+  height: 230px;
+
+  margin: 0;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: solid 1px ${(properties) => properties.color};
+  box-shadow: 0 0 1px 1px ${(properties) => properties.color};
+  border-radius: 50%;
+
+  background-color: ${(properties) => properties.color};
+
+  .image {
+    overflow: hidden;
+    z-index: 1;
+    transition: all 0.3s;
+  }
+
+  :hover {
+    .state {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .image {
+      transform: scale(1.1);
+    }
+  }
+
+  img {
+    z-index: 1;
+    display: block;
+    object-fit: cover;
+  }
 
   @media (max-width: 450px) {
-    min-width: 100px;
-    max-width: 100px;
+    width: 80px;
+    height: 100px;
   }
 `;
 
 const SponsorState = styled.span`
   position: absolute;
-  z-index: 100;
+  z-index: 3;
   top: 0px;
   right: 5px;
 

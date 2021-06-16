@@ -1,8 +1,7 @@
 import React from 'react';
 import LoginIcon from '@components/atoms/Login';
-import styled from 'styled-components';
 import ButtonCanvas from '@components/atoms/ButtonCanvas';
-
+import { useAuth0 } from '@auth0/auth0-react';
 import Avatar from '@components/atoms/Avatar';
 
 export type LoginButtonProps = {
@@ -10,24 +9,33 @@ export type LoginButtonProps = {
 };
 
 const LoginButton = ({ className }: LoginButtonProps) => {
+  const { user, loginWithPopup, isAuthenticated, logout } = useAuth0();
+
+  if (isAuthenticated && user?.picture) {
+    return (
+      <ButtonCanvas
+        className={className}
+        onClick={() => {
+          logout();
+        }}
+      >
+        <Avatar party="">
+          <img src={user.picture} alt="User profile image" />
+        </Avatar>
+      </ButtonCanvas>
+    );
+  }
+
   return (
-    <StyledButtonCanvas className={className} onClick={() => {}}>
-      <Avatar party="">
-        {/* <img src={user.picture} alt="User profile image" /> */}
-      </Avatar>
-    </StyledButtonCanvas>
+    <ButtonCanvas
+      className={className}
+      onClick={async () => {
+        await loginWithPopup();
+      }}
+    >
+      <LoginIcon />
+    </ButtonCanvas>
   );
-
-  // Return (
-  //   <StyledButtonCanvas className={className} onClick={() => {}}>
-  //     <LoginIcon />
-  //   </StyledButtonCanvas>
-  // );
 };
-
-const StyledButtonCanvas = styled(ButtonCanvas)`
-  height: 4rem;
-  width: 4rem;
-`;
 
 export default LoginButton;

@@ -26,17 +26,14 @@ const SponsorSection = ({
 
   useEffect(() => {
     if (isBrowser) {
-      const mediaQuery370pxScreenWidth = window?.matchMedia(
-        '(max-width: 370px)'
-      );
+      const mediaQuery370pxScreenWidth =
+        window?.matchMedia('(max-width: 370px)');
       const isScreenWidthLessThan370px = mediaQuery370pxScreenWidth.matches;
-      const mediaQuery420pxScreenWidth = window?.matchMedia(
-        '(max-width: 420px)'
-      );
+      const mediaQuery420pxScreenWidth =
+        window?.matchMedia('(max-width: 420px)');
       const isScreenWidthLessThan420px = mediaQuery420pxScreenWidth.matches;
-      const mediaQuery960pxScreenWidth = window?.matchMedia(
-        '(max-width: 960px)'
-      );
+      const mediaQuery960pxScreenWidth =
+        window?.matchMedia('(max-width: 960px)');
       const isScreenWidthLessThan960px = mediaQuery960pxScreenWidth.matches;
       const mediaQuery1400pxScreenWidth = window?.matchMedia(
         '(max-width: 1400px)'
@@ -57,9 +54,10 @@ const SponsorSection = ({
   }, []);
 
   return (
+    // @ts-expect-error styled-components type requires className for an unknown reason
     <Wrapper className={className}>
+      <SectionTitle>Sponsors</SectionTitle>
       <Container>
-        <SectionTitle>Sponsors</SectionTitle>
         <SponsorContentWrapper>
           <SponsorSpotlight sponsor={sponsor} />
           {/* <Link key={sponsor.preferred_name} to={`/officials/${sponsor.id}`}>
@@ -110,6 +108,7 @@ const SponsorSection = ({
 export default SponsorSection;
 
 const SponsorContentWrapper = styled(ContentWrapper)`
+  align-self: flex-start;
   min-width: 320px;
 
   padding-top: 2rem;
@@ -117,7 +116,6 @@ const SponsorContentWrapper = styled(ContentWrapper)`
 
   display: flex;
   flex-direction: row;
-  align-self: flex-start;
   justify-content: flex-start;
   align-content: stretch;
   align-items: flex-start;

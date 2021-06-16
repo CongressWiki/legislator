@@ -3,7 +3,6 @@ import type { Bill } from '@type/hasura';
 import BillCard from '@components/molecules/BillTwitterCard';
 import useInfiniteScroll from '@utils/useInfiniteScroll';
 import Spinner from '@components/atoms/Spinner';
-import { useViewportScroll } from 'framer-motion';
 import { search } from '@utils/Search';
 import BillLane from '@components/atoms/BillLane';
 import BillLaneHeader from '@components/molecules/BillLaneHeader';

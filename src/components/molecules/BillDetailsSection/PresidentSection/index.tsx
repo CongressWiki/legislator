@@ -12,6 +12,7 @@ export type PresidentSectionProps = {
 
 const PresidentSection = ({ className }: PresidentSectionProps) => {
   return (
+    // @ts-expect-error styled-components type requires className for an unknown reason
     <Wrapper className={className}>
       <Container>
         <SectionTitle>President</SectionTitle>

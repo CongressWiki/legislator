@@ -12,14 +12,16 @@ import { getMainDefinition } from '@apollo/client/utilities';
 import fetch from 'isomorphic-fetch';
 import React from 'react';
 import ws from 'ws';
-import auth from '@utils/auth';
+import { useAuth0 } from '@auth0/auth0-react';
 import { HASURA_GRAPHQL_URL } from '@constants';
 
 let apolloClient: ApolloClient<NormalizedCacheObject>;
 
-const getHeaders = () => {
+const getHeaders = async () => {
+  const { getAccessTokenSilently } = useAuth0();
+  const accessToken = await getAccessTokenSilently();
   return {
-    Authorization: `Bearer ${auth.getAccessToken()}`,
+    Authorization: `Bearer ${accessToken}`,
   };
 };
 

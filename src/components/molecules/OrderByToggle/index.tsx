@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import SortDescIcon from '@icons/misc/SortDesc';
-import SortAscIcon from '@icons/misc/SortAsc';
+import SortIcon from '@icons/buttons/Sort';
+import styled from 'styled-components';
 import ButtonCanvas from '@components/atoms/ButtonCanvas';
 
 export type OrderByToggleProps = {
@@ -11,10 +11,7 @@ export type OrderByToggleProps = {
   className?: string;
 };
 
-const OrderByToggle = ({
-  handleToggle,
-  className = '',
-}: OrderByToggleProps) => {
+const OrderByToggle = ({ handleToggle, className }: OrderByToggleProps) => {
   const [isAscending, setIsAscending] = useState(false);
 
   const handleClick = () => {
@@ -22,12 +19,15 @@ const OrderByToggle = ({
     setIsAscending(!isAscending);
   };
 
-  const Icon = isAscending ? SortAscIcon : SortDescIcon;
   return (
     <ButtonCanvas className={className}>
-      <Icon onClick={handleClick} />
+      <StyledSortIcon isAscending={isAscending} onClick={handleClick} />
     </ButtonCanvas>
   );
 };
 
 export default OrderByToggle;
+
+const StyledSortIcon = styled(SortIcon)<{ isAscending: boolean }>`
+  ${(props) => props.isAscending && 'transform: scaleY(-1);'}
+`;

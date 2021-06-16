@@ -13,6 +13,7 @@ const ThemeToggle = ({ className }: ThemeToggleProps) => {
   return (
     <StyledButtonCanvas
       className={className}
+      // @ts-expect-error styled-components type requires for an unknown reason
       onClick={() => {
         setColorMode(colorMode === 'light' ? 'dark' : 'light');
       }}
