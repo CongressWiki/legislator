@@ -75,7 +75,7 @@
     "@storybook/react": "^6.2.9",
     "@svgr/cli": "^5.5.0",
     "@types/auth0-js": "^9.14.4",
-    "@types/d3": "^6.7.0",
+    "@types/d3": "^6.7.1",
     "@types/isomorphic-fetch": "^0.0.35",
     "@types/lodash": "^4.14.170",
     "@types/react-helmet": "^6.1.1",
