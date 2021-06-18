@@ -21,13 +21,14 @@ const OrderByToggle = ({ handleToggle, className }: OrderByToggleProps) => {
 
   return (
     <ButtonCanvas className={className}>
-      <StyledSortIcon isAscending={isAscending} onClick={handleClick} />
+      {/* using transient prop to workaround react/styled-components console warning */}
+      <StyledSortIcon $isAscending={isAscending} onClick={handleClick} />
     </ButtonCanvas>
   );
 };
 
 export default OrderByToggle;
 
-const StyledSortIcon = styled(SortIcon)<{ isAscending: boolean }>`
-  ${(props) => props.isAscending && 'transform: scaleY(-1);'}
+const StyledSortIcon = styled(SortIcon)<{ $isAscending: boolean }>`
+  ${(props) => !props.$isAscending && 'transform: scaleY(-1);'}
 `;

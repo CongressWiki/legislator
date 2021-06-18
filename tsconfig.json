@@ -54,7 +54,8 @@
     "emitDecoratorMetadata": true,
     "noEmit": true,
     "sourceMap": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "strictNullChecks": false,
     // "checkJs": true,
     // "forceConsistentCasingInFileNames": true,
     // "skipLibCheck": true

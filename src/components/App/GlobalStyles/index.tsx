@@ -46,6 +46,10 @@ const GlobalStyles = createGlobalStyle`
   ::-webkit-scrollbar-thumb:hover {
     background: var(--color-gray500);
   }
+
+  .noScroll {
+    overflow: hidden;
+  }
 `;
 
 export default GlobalStyles;

@@ -3,16 +3,16 @@ import styled from 'styled-components';
 
 export type ViewportMaskProps = {
   children: React.ReactNode;
-  onClickOutside: EventListener;
-  onEnterKeyPress: EventListener;
-  onEscapeKeyPress: EventListener;
+  onClickOutside?: EventListener | undefined;
+  onEnterKeyPress?: EventListener | undefined;
+  onEscapeKeyPress?: EventListener | undefined;
 };
 
 const ViewportMask = ({
   children,
-  onClickOutside,
-  onEnterKeyPress,
-  onEscapeKeyPress,
+  onClickOutside = () => {},
+  onEnterKeyPress = () => {},
+  onEscapeKeyPress = () => {},
 }: ViewportMaskProps) => {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -54,10 +54,14 @@ const ViewportMask = ({
 export default ViewportMask;
 
 const Mask = styled.div`
-  width: 100vw;
-  height: 100vh;
-
+  /* width: 100vw;
+  height: 100vh; */
   position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
   top: 0;
   left: 0;
   z-index: 2;

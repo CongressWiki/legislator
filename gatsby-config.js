@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
+/* eslint-disable @typescript-eslint/no-var-requires */
 const config = require('./data/config');
 const siteAddress = new URL(config.url);
 const { HttpLink, from } = require('@apollo/client');

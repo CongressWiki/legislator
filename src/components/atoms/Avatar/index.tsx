@@ -21,7 +21,7 @@ const Avatar = ({ children, party, size, className }: AvatarProps) => {
 };
 
 const Wrapper = styled(motion.div)<{ partyColor?: string; size?: string }>`
-  z-index: 500;
+  z-index: 2;
   position: relative;
   display: flex;
   align-items: center;
@@ -45,7 +45,7 @@ const Wrapper = styled(motion.div)<{ partyColor?: string; size?: string }>`
   background-color: ${(properties) => properties.partyColor};
 
   img {
-    z-index: 400;
+    z-index: 1;
     display: block;
     object-fit: cover;
   }

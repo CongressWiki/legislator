@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { isBrowser } from '@constants';
 
-export default function useLocalStorage(key: string, initialValue?: string) {
+const useLocalStorage = (key: string, initialValue?: string) => {
   // State to store our value
   // Pass initial state function to useState so logic is only executed once
   const [storedValue, setStoredValue] = useState(() => {
     try {
       // Don't use local storage if server side.
-      if (!isBrowser) {
+      if (isBrowser) {
         // Get from local storage by key
         const item = window.localStorage.getItem(key);
 
@@ -32,7 +32,7 @@ export default function useLocalStorage(key: string, initialValue?: string) {
       setStoredValue(valueToStore);
 
       // Don't use local storage if server side.
-      if (!isBrowser) {
+      if (isBrowser) {
         // Save to local storage
         window.localStorage.setItem(key, JSON.stringify(valueToStore));
       }
@@ -43,4 +43,6 @@ export default function useLocalStorage(key: string, initialValue?: string) {
   };
 
   return [storedValue, setValue];
-}
+};
+
+export default useLocalStorage;

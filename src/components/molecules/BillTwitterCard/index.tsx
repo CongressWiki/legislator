@@ -98,6 +98,8 @@ const Wrapper = styled(motion.div)<{
   padding-left: 1rem;
   padding-right: 1rem;
 
+  overflow: hidden;
+
   display: grid;
   grid-template-columns: 62px repeat(9, 1fr);
   grid-template-rows: 20px 2.5em 30px 1fr 70px;

@@ -44,7 +44,9 @@ const BillLaneHeader = ({
 export default BillLaneHeader;
 
 const Wrapper = styled.div`
-  z-index: 1000;
+  /* Prevent avatar images (z-index:2) from overlapping */
+  z-index: 3;
+
   width: 100%;
   height: 40.5px;
   background-color: var(--color-background);

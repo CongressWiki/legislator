@@ -31,7 +31,7 @@ const BillCardFeed = ({ bills }: BillCardGridProps) => {
     setTimeout(() => {
       setLimit((prevState) => prevState + increment);
       setIsFetching(false);
-    }, 1500);
+    }, Math.random() * 1500);
   }
 
   const handleChamberSelection = (option: string) => {

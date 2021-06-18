@@ -5,7 +5,9 @@ import LoginButton from '@components/molecules/LoginButton';
 import SiteTitle from '@components/atoms/SiteTitle';
 import { useStaticQuery, graphql, Link } from 'gatsby';
 
-const Header = () => {
+export type HeaderProps = {};
+
+const Header = ({}: HeaderProps) => {
   const data = useStaticQuery(graphql`
     query {
       site {
