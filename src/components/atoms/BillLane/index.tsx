@@ -9,16 +9,14 @@ export type BillLaneProps = {
 };
 
 const BillLane = ({ children, className = '' }: BillLaneProps) => (
-  <AnimateSharedLayout>
-    <Wrapper
-      className={className}
-      variants={motionVariants}
-      initial="hidden"
-      animate="visible"
-    >
-      {children}
-    </Wrapper>
-  </AnimateSharedLayout>
+  <Wrapper
+    className={className}
+    variants={motionVariants}
+    initial="hidden"
+    animate="visible"
+  >
+    <AnimateSharedLayout>{children}</AnimateSharedLayout>
+  </Wrapper>
 );
 
 export default BillLane;

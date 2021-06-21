@@ -114,3 +114,13 @@ export type RollCallVote = {
   date: string;
   state: string | null;
 };
+
+export type User = {
+  first_name: string;
+  last_name: string;
+  id: string;
+  last_seen: string;
+  picture: string;
+  political_party?: string;
+  state?: string;
+};

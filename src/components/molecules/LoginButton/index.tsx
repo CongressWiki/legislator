@@ -7,6 +7,7 @@ import { gql } from '@apollo/client';
 import useLocalStorage from '@utils/useLocalStorage';
 import PrivateChatMask from '@components/organisms/PrivateChatMask';
 import styled from 'styled-components';
+import { AUTH0_LOGOUT_URL } from '@constants';
 
 export type LoginButtonProps = {
   className?: string;
@@ -55,8 +56,7 @@ const LoginButton = ({ className }: LoginButtonProps) => {
   }
 
   if (profile && (isLoading || isAuthenticated)) {
-    // NOT YET!!!
-    const isNewUser = false; // profile && (!profile.political_party || !profile.state);
+    const isNewUser = false; //profile && (!profile.political_party || !profile.state);
 
     if (isNewUser) {
       // Prevent background scrolling during overlay
@@ -68,16 +68,17 @@ const LoginButton = ({ className }: LoginButtonProps) => {
         <ButtonCanvas
           className={className}
           onClick={() => {
-            logout();
+            logout({
+              returnTo: AUTH0_LOGOUT_URL,
+            });
             setProfile('');
           }}
         >
           <Avatar party={profile.political_party}>
-            <img src={profile.picture} alt="Logout" />
+            <StyledImg src={profile.picture} alt="Logout" />
           </Avatar>
         </ButtonCanvas>
-        {/* Not yet!!!!! */}
-        {isNewUser && <PrivateChatMask />}
+        {isNewUser && <PrivateChatMask userProfile={profile} />}
       </>
     );
   }
@@ -97,7 +98,7 @@ const LoginButton = ({ className }: LoginButtonProps) => {
 export default LoginButton;
 
 const Button = styled.button`
-  width: 50px;
+  width: fit-content;
   height: 50px;
 
   border-radius: 50%;
@@ -112,4 +113,10 @@ const Button = styled.button`
   :hover {
     cursor: pointer;
   }
+`;
+
+const StyledImg = styled.img`
+  width: 100%;
+  height: auto;
+  max-height: 60px;
 `;

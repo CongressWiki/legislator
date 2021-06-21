@@ -19,7 +19,6 @@ const SearchInput = ({
       type="text"
       aria-label="Search"
       placeholder="Search"
-      // @ts-expect-error styled-components type requires value for an unknown reason
       value={value}
       onChange={onChange}
     />

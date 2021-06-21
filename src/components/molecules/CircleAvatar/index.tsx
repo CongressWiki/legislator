@@ -23,7 +23,6 @@ const CircleAvatar = ({
   className,
 }: CircleAvatarProps) => {
   return (
-    // @ts-expect-error styled-components type requires className for an unknown reason
     <Avatar party={political_party} size={size} className={className}>
       <Image
         imageData={image}

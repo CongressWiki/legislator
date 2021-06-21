@@ -148,6 +148,11 @@ if (!process.env.GATSBY_AUTH0_AUDIENCE)
   throw new Error('Missing environment var: `GATSBY_AUTH0_AUDIENCE`');
 export const AUTH0_AUDIENCE = process.env.GATSBY_AUTH0_AUDIENCE;
 
+// AUTH0_LOGOUT_URL
+if (!process.env.GATSBY_AUTH0_LOGOUT_URL)
+  throw new Error('Missing environment var: `GATSBY_AUTH0_LOGOUT_URL`');
+export const AUTH0_LOGOUT_URL = process.env.GATSBY_AUTH0_LOGOUT_URL;
+
 // HASURA_GRAPHQL_URL
 if (!process.env.GATSBY_HASURA_GRAPHQL_URL)
   throw new Error('Missing environment var: `GATSBY_HASURA_GRAPHQL_URL`');

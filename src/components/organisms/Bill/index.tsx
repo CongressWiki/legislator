@@ -21,15 +21,16 @@ export default Bill;
 
 const Wrapper = styled.div`
   position: relative;
+  width: 100%;
+  max-width: 70ch;
+
   padding-top: 2rem;
   padding-bottom: 6rem;
+
   margin: 0;
   margin-bottom: 30vh;
-  overflow: hidden;
 
-  @media (max-width: 900px) {
-    width: 100%;
-  }
+  overflow: hidden;
 `;
 
 const BillStatusStamp = styled(StampText)`

@@ -40,7 +40,6 @@ const BillTwitterCard = (props: BillTwitterCardProps) => {
   } = props;
 
   return (
-    // @ts-expect-error styled-components type requires className and onClick for an unknown reason
     <Wrapper
       layout
       className={className}

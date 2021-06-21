@@ -113,6 +113,8 @@ const QuestionContainer = styled.h3<{ expanded: boolean }>`
     properties.expanded ? 'calc(100% - 1rem)' : '1.7rem'};
   margin: 0;
 
+  ${(props) => props.expanded && 'background-color: var(--color-background);'}
+
   transition: all 0.3s ease-in-out;
 
   border-bottom: solid thin var(--color-gray300);

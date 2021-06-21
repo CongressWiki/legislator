@@ -53,7 +53,7 @@ const SponsorFrame = styled.div<{ color: string }>`
   z-index: 2;
   position: relative;
   width: 184px;
-  height: 230px;
+  height: auto;
 
   margin: 0;
   overflow: hidden;
@@ -93,7 +93,6 @@ const SponsorFrame = styled.div<{ color: string }>`
 
   @media (max-width: 450px) {
     width: 80px;
-    height: 100px;
   }
 `;
 

@@ -12,7 +12,7 @@ import { AUTH0_DOMAIN, AUTH0_CLIENT_ID, AUTH0_AUDIENCE } from '@constants';
 
 const onRedirectCallback = (appState) => {
   // Use Gatsby's navigate method to replace the url
-  navigate(appState?.returnTo || '/', { replace: true });
+  void navigate(appState?.returnTo || '/', { replace: true });
 };
 
 export const wrapRootElement = ({ element }) => {
@@ -22,6 +22,7 @@ export const wrapRootElement = ({ element }) => {
       clientId={AUTH0_CLIENT_ID}
       audience={AUTH0_AUDIENCE}
       redirectUri={window.location.origin}
+      returnTo={window.location.origin}
       onRedirectCallback={onRedirectCallback}
     >
       <App>{element}</App>

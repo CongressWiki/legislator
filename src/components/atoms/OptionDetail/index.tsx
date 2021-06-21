@@ -25,7 +25,6 @@ const OptionDetail = ({
       layout
       center={center}
       variants={motionVariants}
-      // @ts-expect-error styled-components type requires className for an unknown reason
       className={className}
     >
       {['bills', 'cosponsorships', 'amendments'].includes(type) ? (

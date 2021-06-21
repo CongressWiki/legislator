@@ -22,7 +22,6 @@ const TooltipAvatar = ({
   className,
 }: TooltipAvatarProps) => {
   return (
-    // @ts-expect-error styled-components type requires className for an unknown reason
     <Wrapper className={className} size={size}>
       <Tooltip>
         {state ? <StateText className="state">{state}</StateText> : null}

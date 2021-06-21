@@ -87,8 +87,10 @@ const Layout = styled.div`
     grid-area: bill;
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 1050px) {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 `;

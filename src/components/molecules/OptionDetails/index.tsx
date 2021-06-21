@@ -29,7 +29,6 @@ const OptionDetails = ({
   className,
 }: OptionDetailsProps) => {
   return (
-    // @ts-expect-error styled-components type requires className for an unknown reason
     <Wrapper className={className} gap="27px">
       {details
         ? details.map(({ text, subtext, slug }, index) => (

@@ -1,11 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import SponsorSection from '@components/molecules/BillDetailsSection/SponsorSection';
-import Section, {
-  ActionWithRollCall,
-} from '@components/molecules/BillDetailsSection/Section';
+import Section from '@components/molecules/BillDetailsSection';
 import type { OfficialWithImage, Cosponsorship } from '@type/hasura';
 import { motion } from 'framer-motion';
+import SponsorSlide from '@components/molecules/BillDetailsSection/SponsorSlide';
+import ActionsDeck, {
+  ActionWithRollCall,
+} from '@components/molecules/BillDetailsSection/ActionsDeck';
 
 export type BillDetailsProps = {
   sponsor: OfficialWithImage;
@@ -26,16 +27,26 @@ const BillDetails = ({
 }: BillDetailsProps) => {
   return (
     <Wrapper
-      // @ts-expect-error styled-components type requires className for an unknown reason
       className={className}
       variants={motionVariants}
       initial="hidden"
       animate="visible"
     >
-      <SponsorSection sponsor={sponsor} cosponsors={cosponsors} />
-      <Section title="House" actions={houseActions} />
-      <Section title="Senate" actions={senateActions} />
-      <Section title="President" actions={presidentActions} />
+      <Section title="Sponsors">
+        <SponsorSlide sponsor={sponsor} cosponsors={cosponsors} />
+      </Section>
+
+      <Section title="House">
+        <ActionsDeck actions={houseActions} />
+      </Section>
+
+      <Section title="Senate">
+        <ActionsDeck actions={senateActions} />
+      </Section>
+
+      <Section title="President">
+        <ActionsDeck actions={presidentActions} />
+      </Section>
     </Wrapper>
   );
 };

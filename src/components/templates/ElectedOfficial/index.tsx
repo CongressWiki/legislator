@@ -319,6 +319,18 @@ const ElectedOfficialTemplate = ({
     },
   ];
 
+  const handleOptionClick = (option: OptionDetailsProps) => {
+    const isActiveOption = clickedOption?.title === option.title;
+
+    if (isActiveOption) {
+      setClickedOption(null);
+    }
+
+    if (!isActiveOption) {
+      setClickedOption(option);
+    }
+  };
+
   return (
     <MinimumLayout>
       <Seo
@@ -380,11 +392,7 @@ const ElectedOfficialTemplate = ({
                 onMouseOut={() => {
                   setHoveredOption(null);
                 }}
-                onClick={() => {
-                  clickedOption?.title === option.title
-                    ? setClickedOption(null)
-                    : setClickedOption(option);
-                }}
+                onClick={() => handleOptionClick(option)}
               />
             );
           })}
@@ -437,11 +445,12 @@ const ContentLayout = styled.div`
   display: grid;
   height: calc(100vh - 115px);
   grid-template-columns: 1fr auto 1fr;
-  grid-template-rows: 50px 170px 1fr;
+  grid-template-rows: 50px 170px 300px auto;
   grid-template-areas:
     '....... ..... details'
     '....... title details'
-    'options img   details';
+    'options img   details'
+    '....... ..... details';
 
   @media (max-width: 600px) {
     display: flex;
@@ -462,6 +471,7 @@ const ContentLayout = styled.div`
   .image {
     grid-area: img;
     justify-self: center;
+    align-self: center;
 
     img {
       transition: all 0.3s;
@@ -507,6 +517,7 @@ const OptionsContainer = styled.div`
   height: 100%;
   max-height: 300px;
   align-self: start;
+  line-height: normal;
 
   display: grid;
   grid-template-columns: repeat(10, 1fr);

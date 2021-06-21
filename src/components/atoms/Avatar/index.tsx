@@ -13,7 +13,6 @@ export type AvatarProps = {
 const Avatar = ({ children, party, size, className }: AvatarProps) => {
   const partyColor = getPartyColors(party);
   return (
-    // @ts-expect-error styled-components is bugged and requires the className
     <Wrapper className={className} partyColor={partyColor} size={size}>
       {children}
     </Wrapper>
