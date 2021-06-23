@@ -2,26 +2,56 @@ import React from 'react';
 import styled from 'styled-components';
 import Avatar from '@components/atoms/Avatar';
 import { motion } from 'framer-motion';
+import LoadingBallsAnimation from '@components/atoms/LoadingBallsAnimation';
 
 export type MessageProps = {
   isSentFromUser: boolean;
-  message: string;
-  time: string;
   picture: string;
+  message?: string;
+  time?: string;
+  isTyping?: boolean;
+  className?: string;
 };
 
-const Message = ({ isSentFromUser, message, time, picture }: MessageProps) => {
+const Message = ({
+  isSentFromUser,
+  message,
+  time,
+  picture,
+  isTyping = false,
+  className,
+}: MessageProps) => {
   return (
-    <Wrapper layout isSentFromUser={isSentFromUser}>
+    <Wrapper
+      layout
+      variants={messageMotionVariants}
+      initial="hidden"
+      animate="visible"
+      exit="hidden"
+      transition={{ duration: 0.2 }}
+      isSentFromUser={isSentFromUser}
+      className={className}
+    >
       <Avatar className="image" party="Democrat" size="40px">
         <StyledImg src={picture} />
       </Avatar>
-      <Timestamp className="timestamp">{time}</Timestamp>
       <MessageText isSentFromUser={isSentFromUser} className="message">
-        {message}
+        {isTyping ? <LoadingBallsAnimation /> : message}
       </MessageText>
+      <Timestamp className="timestamp">{time}</Timestamp>
     </Wrapper>
   );
+};
+
+const messageMotionVariants = {
+  hidden: {
+    opacity: 0,
+    y: 10,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+  },
 };
 
 export default Message;
@@ -35,21 +65,17 @@ const Wrapper = styled(motion.div)<{ isSentFromUser: boolean }>`
 
   ${({ isSentFromUser }) =>
     isSentFromUser ? 'text-align: right;' : 'text-align: left;'}
-
   ${({ isSentFromUser }) =>
     isSentFromUser
       ? 'grid-template-columns: 1fr 45px;'
       : 'grid-template-columns: 45px 1fr;'}
-
-  ${({ isSentFromUser }) =>
+    ${({ isSentFromUser }) =>
     isSentFromUser ? 'justify-items: end;' : 'justify-items: start;'}
-
-  ${({ isSentFromUser }) =>
+    ${({ isSentFromUser }) =>
     isSentFromUser
       ? "grid-template-areas: 'message image''timestamp image';"
       : "grid-template-areas: 'image message''image timestamp';"}
-
-  .image {
+    .image {
     grid-area: image;
     align-self: end;
   }
@@ -76,10 +102,14 @@ const Timestamp = styled.span`
 const MessageText = styled.span<{ isSentFromUser: boolean }>`
   position: relative;
   clear: both;
-  font-size: 1rem;
-  background: linear-gradient(120deg, hsl(193.5, 48%, 16%), #02475a);
-  padding: 6px 10px 7px;
+
   max-width: 70%;
+
+  padding: 6px 10px 7px;
+
+  font-size: 1rem;
+
+  background: linear-gradient(120deg, hsl(193.5, 48%, 16%), #02475a);
 
   ${({ isSentFromUser }) =>
     isSentFromUser

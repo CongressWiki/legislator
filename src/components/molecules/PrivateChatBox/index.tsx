@@ -1,9 +1,10 @@
-import React, { useEffect, useCallback, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
 import Message from '@components/molecules/Message';
 import Avatar from '@components/atoms/Avatar';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence, AnimateSharedLayout } from 'framer-motion';
 import { User } from '@type/hasura';
+import AutoComplete from '@components/atoms/AutoComplete';
 
 const NANCI_PELOSI_IMG =
   'https://usacounts.com/static/41b2ff95c7960d73526fe2b2aded1820/80ea3/P000197.avif';
@@ -12,19 +13,30 @@ export type PrivateChatBoxProps = {
   userProfile: User;
 };
 
+export type Decision = Record<string, () => void>;
+
 const PrivateChatBox = ({ userProfile }: PrivateChatBoxProps) => {
   const [messages, setMessages] = useState([]);
+  const [decisions, setDecisions] = useState<Decision | null>(null);
   const [inputMessage, setInputMessage] = useState('');
   const [botMessageIndex, setBotMessageIndex] = useState(0);
+  const [isBotTyping, setIsBotTyping] = useState(false);
+  const [isUserTyping, setIsUserTyping] = useState(false);
+
   const messageFeed = useRef(null);
 
-  const botMessages = [
-    "So you're my new assistant? I was told that you're quite the patriot.",
-    "Well we could really use you right now. As speaker of the house i'm always busy. I need your help to identify which bills I should prioritize by voting on them.",
-    "But before I set you loose on the legislation i'll need a few things from you...",
-    `Really quick, my phone shows your name as ${
-      userProfile.first_name + ' ' + userProfile.last_name
-    }, is that right?`,
+  const botMessages: Array<string | Decision> = [
+    "So you're my new assistant? Glad to have you.",
+    'I need your help to identify which bills I should prioritize. Your task is to vote on bills that you believe are important.',
+    `My phone shows your name as ${userProfile.first_name} ${userProfile.last_name}, is that correct?`,
+    {
+      "Yes that's my name.": () => {
+        sendMessageAsBot('Excellent.');
+      },
+      'No I go by another name.': () => {
+        sendMessageAsBot('Okay what should I call you?');
+      },
+    },
   ];
 
   const handleMessageInput: React.ChangeEventHandler<HTMLTextAreaElement> = (
@@ -40,8 +52,22 @@ const PrivateChatBox = ({ userProfile }: PrivateChatBoxProps) => {
 
     insertMessage(true, inputMessage, userProfile.picture);
     setInputMessage('');
+  };
 
+  const handleAutoCompleteClick = (suggestion: string) => {
+    insertMessage(true, suggestion, userProfile.picture);
+    decisions[suggestion]();
+    setDecisions(null);
     setBotMessageIndex(botMessageIndex + 1);
+  };
+
+  const createTimestamp = () => {
+    const date = new Date();
+    const hours = date.getHours() > 12 ? date.getHours() - 12 : date.getHours();
+    const am_pm = date.getHours() >= 12 ? 'PM' : 'AM';
+    const minutes =
+      date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes();
+    return hours + ':' + minutes + ' ' + am_pm;
   };
 
   const insertMessage = (
@@ -49,23 +75,13 @@ const PrivateChatBox = ({ userProfile }: PrivateChatBoxProps) => {
     message: string,
     picture: string
   ) => {
-    const now = new Date();
-
     const newMessage = {
       isSentFromUser,
       message,
       picture,
-      time: `${now.getHours()}:${now.getMinutes()}`,
+      time: createTimestamp(),
     };
     setMessages((prevState) => [...prevState, newMessage]);
-  };
-
-  const sendMessageAsBot = () => {
-    if (botMessageIndex >= botMessages.length) {
-      return false;
-    }
-
-    insertMessage(false, botMessages[botMessageIndex], NANCI_PELOSI_IMG);
   };
 
   const scrollToBottom = () => {
@@ -76,71 +92,157 @@ const PrivateChatBox = ({ userProfile }: PrivateChatBoxProps) => {
     });
   };
 
-  const onEnterPress: React.KeyboardEventHandler<HTMLTextAreaElement> = (e) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault();
+  const onEnterPress: React.KeyboardEventHandler<HTMLTextAreaElement> = (
+    event
+  ) => {
+    if (event.key === 'Enter' && !event.shiftKey) {
+      event.preventDefault();
       handleMessageSubmit();
     }
   };
 
+  const randomTypeDuration = () => 2000 + Math.random() * 20 * 100;
+
+  const sendMessageAsBot = (message: string) => {
+    setIsBotTyping(true);
+
+    setTimeout(() => {
+      setIsBotTyping(false);
+      insertMessage(false, message, NANCI_PELOSI_IMG);
+      setBotMessageIndex(botMessageIndex + 1);
+    }, randomTypeDuration());
+  };
+
   useEffect(() => {
     scrollToBottom();
-  }, [messages]);
+  }, [messages, isUserTyping, isBotTyping]);
 
-  useEffect(
-    function () {
-      console.log({ botMessageIndex });
+  useEffect(() => {
+    if (inputMessage === '') {
+      return;
+    }
 
-      setTimeout(function () {
-        sendMessageAsBot();
-      }, 1000 + Math.random() * 20 * 100);
-    },
-    [botMessageIndex]
-  );
+    setIsUserTyping(true);
+
+    setTimeout(() => {
+      setIsUserTyping(false);
+    }, 1000);
+  }, [inputMessage]);
+
+  useEffect(() => {
+    const nextDecision = botMessages[botMessageIndex];
+
+    if (typeof nextDecision !== 'object') {
+      return;
+    }
+
+    setDecisions(nextDecision);
+  }, [botMessageIndex]);
+
+  useEffect(() => {
+    console.log('botMessageIndex: ', botMessageIndex);
+
+    const nextBotMessage = botMessages[botMessageIndex];
+
+    if (typeof nextBotMessage !== 'string') {
+      return;
+    }
+
+    // Send intro messages
+    if (botMessageIndex <= 2) {
+      // Wait for Chat box opening animation to finish
+      setTimeout(() => {
+        sendMessageAsBot(nextBotMessage);
+      }, 400);
+    }
+  }, [botMessageIndex]);
 
   return (
-    <Chat>
-      <Title>
-        <h1 className="name">Nancy Pelosi</h1>
-        <h2 className="title">Speaker of the House</h2>
-        <Avatar className="image" party="Democrat" size="50px">
-          <StyledImg src={NANCI_PELOSI_IMG} />
-        </Avatar>
-      </Title>
-      <MessageFeed
-        ref={messageFeed}
+    <AnimateSharedLayout>
+      <Chat
         layout
-        variants={motionVariants}
+        variants={chatBoxMotionVariants}
+        transition={{ duration: 0.4 }}
         initial="hidden"
         animate="visible"
       >
-        {messages.map((message, index) => {
-          // Non-index key is not necessary because this list will not change
-          // eslint-disable-next-line react/no-array-index-key
-          return <Message key={index} {...message} />;
-        })}
-      </MessageFeed>
-      <MessageBox>
-        <textarea
-          className="message-input"
-          placeholder="Type message..."
-          value={inputMessage}
-          onKeyDown={onEnterPress}
-          onChange={handleMessageInput}
-        />
-        <button
-          type="submit"
-          className="message-submit"
-          onClick={handleMessageSubmit}
+        <Title>
+          <h1 className="name">Nancy Pelosi</h1>
+          <h2 className="title">Speaker of the House</h2>
+          <Avatar className="image" party="Democrat" size="50px">
+            <StyledImg src={NANCI_PELOSI_IMG} />
+          </Avatar>
+        </Title>
+        <MessageFeed
+          ref={messageFeed}
+          layout
+          variants={messageFeedMotionVariants}
         >
-          Send
-        </button>
-      </MessageBox>
-    </Chat>
+          {messages.map((message, index) => {
+            return (
+              <Message
+                // Non-index key is not necessary because this list will not change
+                // eslint-disable-next-line react/no-array-index-key
+                key={index}
+                className="posted"
+                {...message}
+              />
+            );
+          })}
+          <AnimatePresence>
+            {isUserTyping && (
+              <Message
+                isSentFromUser
+                isTyping={isUserTyping}
+                picture={userProfile.picture}
+              />
+            )}
+            {isBotTyping && (
+              <Message
+                isSentFromUser={false}
+                isTyping={isBotTyping}
+                picture={NANCI_PELOSI_IMG}
+              />
+            )}
+          </AnimatePresence>
+        </MessageFeed>
+        {decisions && (
+          <AutoComplete
+            suggestions={Object.keys(decisions)}
+            onSuggestionClick={handleAutoCompleteClick}
+          />
+        )}
+        <MessageBox>
+          <textarea
+            className="message-input"
+            placeholder="Type message..."
+            value={inputMessage}
+            onKeyDown={onEnterPress}
+            onChange={handleMessageInput}
+          />
+          <button
+            type="submit"
+            className="message-submit"
+            onClick={handleMessageSubmit}
+          >
+            Send
+          </button>
+        </MessageBox>
+      </Chat>
+    </AnimateSharedLayout>
   );
 };
 
-const motionVariants = {
+const chatBoxMotionVariants = {
+  hidden: {
+    scaleY: 0,
+  },
+  visible: {
+    scaleY: 1,
+  },
+};
+
+const messageFeedMotionVariants = {
   hidden: { scale: 0 },
   visible: {
     scale: 1,
@@ -153,15 +255,15 @@ const motionVariants = {
 
 export default PrivateChatBox;
 
-const Chat = styled.div`
-  width: 500px;
+const Chat = styled(motion.div)`
+  width: 700px;
   height: 80vh;
   max-height: 500px;
   z-index: 2;
   overflow: hidden;
   box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
   background: rgba(0, 0, 0, 0.5);
-  border-radius: 20px;
+  border-radius: 10px;
   border: solid thin var(--color-gray300);
   display: flex;
   justify-content: space-between;
@@ -223,8 +325,31 @@ const MessageFeed = styled(motion.div)`
   width: 100%;
   height: 101%;
 
-  > :last-child {
-    margin-bottom: 30px;
+  > .posted:last-child {
+    /* Leave room for typing animation */
+    margin-bottom: 66px;
+  }
+
+  /* Scrollbar */
+
+  /* width */
+  ::-webkit-scrollbar {
+    width: 3px;
+    padding: 0 10px;
+  }
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    width: 1px;
+  }
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-gray300);
+    border-radius: 3px;
+  }
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-gray500);
   }
 `;
 
@@ -245,7 +370,7 @@ const MessageBox = styled.div`
     height: 30px;
     margin: 0;
     padding-right: 20px;
-    width: 265px;
+    width: 90%;
   }
 
   textarea:focus:-webkit-placeholder {

@@ -56,7 +56,7 @@ const LoginButton = ({ className }: LoginButtonProps) => {
   }
 
   if (profile && (isLoading || isAuthenticated)) {
-    const isNewUser = false; //profile && (!profile.political_party || !profile.state);
+    const isNewUser = profile && (!profile.political_party || !profile.state);
 
     if (isNewUser) {
       // Prevent background scrolling during overlay

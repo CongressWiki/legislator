@@ -1,6 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
 import './advocate.css';
-import './concourse.css';
 import './century-supra.css';
 
 const GlobalStyles = createGlobalStyle`
@@ -31,11 +30,11 @@ const GlobalStyles = createGlobalStyle`
 
   /* width */
   ::-webkit-scrollbar {
-    width: 10px;
+    width: 5px;
   }
   /* Track */
   ::-webkit-scrollbar-track {
-    background: var(--color-background);
+    background: rgba(0, 0, 0, 0.5) !important;
   }
   /* Handle */
   ::-webkit-scrollbar-thumb {

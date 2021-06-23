@@ -66,7 +66,7 @@ const Mask = styled.div`
   left: 0;
   z-index: 2;
 
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: rgba(0, 0, 0, 0.8);
 
   display: flex;
   justify-content: center;

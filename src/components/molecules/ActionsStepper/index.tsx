@@ -47,10 +47,6 @@ const Wrapper = styled.div`
   min-width: 270px;
 
   padding: 0;
-
-  div {
-    font-family: concourse_t4;
-  }
 `;
 
 const Step = styled.div<{ isActive?: boolean; minimized?: boolean }>`
