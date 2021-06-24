@@ -37,8 +37,9 @@ const Wrapper = styled(motion.div)`
   margin: 0;
   padding: 0;
 
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: 32px;
 
   border: none;
@@ -46,8 +47,7 @@ const Wrapper = styled(motion.div)`
   border-radius: 0;
 
   @media (max-width: 600px) {
-    border: none;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+    padding-left: 8px;
+    padding-right: 8px;
   }
 `;

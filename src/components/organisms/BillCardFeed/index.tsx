@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import type { Bill } from '@type/hasura';
+import type { Bill, OfficialWithImage } from '@type/hasura';
 import BillCard from '@components/molecules/BillTwitterCard';
 import useInfiniteScroll from '@utils/useInfiniteScroll';
 import Spinner from '@components/atoms/Spinner';
@@ -15,7 +15,9 @@ const CHAMBER_BILL_TYPES = {
 };
 
 export type BillCardGridProps = {
-  bills: Bill[];
+  bills: Array<
+    Bill & { sponsor?: OfficialWithImage; userVote?: 'Yea' | 'Nay' }
+  >;
 };
 
 const BillCardFeed = ({ bills }: BillCardGridProps) => {

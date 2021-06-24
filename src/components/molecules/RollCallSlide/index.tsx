@@ -92,13 +92,6 @@ const Wrapper = styled.div<{ color: string }>`
 
   display: flex;
   flex-direction: column;
-
-  /* background-color: var(--color-ribbonCard);
-  border: solid 1px ${(properties) => properties.color};
-  border-radius: 10px;
-  box-shadow: 0 0 10px 1px ${(properties) => properties.color}; */
-
-  transition: all 0.3s ease-in-out;
 `;
 
 const QuestionContainer = styled.h3<{ expanded: boolean }>`

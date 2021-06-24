@@ -11,11 +11,12 @@ export type SponsorSpotlightProps = {
 };
 
 const SponsorSpotlight = ({ sponsor }: SponsorSpotlightProps) => {
+  const partyColor = getPartyColors(sponsor.political_party);
   return (
     <Wrapper>
       <Link to={`/officials/${sponsor.id}`}>
         <SponsorState className="state">{sponsor.state}</SponsorState>
-        <SponsorFrame color={getPartyColors(sponsor.political_party)}>
+        <SponsorFrame partyColor={partyColor}>
           <Image
             imageData={sponsor.image}
             alt={sponsor.preferred_name}
@@ -41,15 +42,21 @@ const Wrapper = styled.div`
 
   display: inline-block;
 
+  .image {
+    transition: all 0.3s;
+  }
+
   :hover {
     .state {
-      visibility: visible;
       opacity: 1;
+    }
+    .image {
+      transform: scale(1.1);
     }
   }
 `;
 
-const SponsorFrame = styled.div<{ color: string }>`
+const SponsorFrame = styled.div<{ partyColor: string }>`
   z-index: 2;
   position: relative;
   width: 184px;
@@ -62,33 +69,18 @@ const SponsorFrame = styled.div<{ color: string }>`
   align-items: center;
   justify-content: center;
 
-  border: solid 1px ${(properties) => properties.color};
-  box-shadow: 0 0 1px 1px ${(properties) => properties.color};
+  border: solid 1px ${(properties) => properties.partyColor};
+  box-shadow: 0 0 1px 1px ${(properties) => properties.partyColor};
   border-radius: 50%;
 
-  background-color: ${(properties) => properties.color};
+  background-color: ${(properties) => properties.partyColor};
 
   .image {
-    overflow: hidden;
-    z-index: 1;
-    transition: all 0.3s;
-  }
-
-  :hover {
-    .state {
-      visibility: visible;
-      opacity: 1;
-    }
-
-    .image {
-      transform: scale(1.1);
-    }
-  }
-
-  img {
     z-index: 1;
     display: block;
     object-fit: cover;
+    width: 100%;
+    height: auto;
   }
 
   @media (max-width: 450px) {
@@ -102,9 +94,8 @@ const SponsorState = styled.span`
   top: 0px;
   right: 5px;
 
-  visibility: hidden;
-  opacity: 0;
   transition: opacity 0.3s;
+  opacity: 0;
 
   color: var(--color-gray700);
   font-family: advocate_c43_mid;

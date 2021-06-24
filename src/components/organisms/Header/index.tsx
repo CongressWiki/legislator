@@ -41,6 +41,7 @@ const Wrapper = styled.header`
   position: absolute;
   top: 0;
   left: 0;
+  right: 0;
 
   margin: 0;
   padding: 0;
@@ -48,8 +49,6 @@ const Wrapper = styled.header`
   display: flex;
   justify-content: center;
 
-  width: 100%;
-  /* width: 100vw; */
   height: 115px;
 
   border-bottom: 1px solid var(--color-gray300);
@@ -61,7 +60,7 @@ const ToolBar = styled.div`
   position: relative;
 
   height: 100%;
-  /* width: 100vw; */
+
   width: min(140ch, calc(100% - 64px));
   margin: 0;
   margin-left: 9%;
@@ -71,7 +70,7 @@ const ToolBar = styled.div`
   justify-self: center;
 
   display: flex;
-  /* flex-wrap: wrap; */
+
   justify-content: space-between;
   align-items: center;
 

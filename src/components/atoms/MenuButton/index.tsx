@@ -97,7 +97,6 @@ const Tooltip = styled.div`
   height: 100%;
   width: 100%;
   opacity: 0;
-  transition: all 0.3s;
 
   display: flex;
   align-items: center;

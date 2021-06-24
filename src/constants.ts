@@ -111,12 +111,12 @@ export const PARTY_COLORS = {
 };
 
 export const getPartyColors = (party: string) => {
-  switch (party) {
-    case 'Democrat':
+  switch (party.toLowerCase()) {
+    case 'democrat':
       return 'var(--color-democratBlue)';
-    case 'Republican':
+    case 'republican':
       return 'var(--color-republicanRed)';
-    case 'Independent':
+    case 'independent':
       return 'var(--color-independentGreen)';
     default:
       return 'var(--color-gray300)';

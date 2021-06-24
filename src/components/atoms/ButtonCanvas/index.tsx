@@ -11,10 +11,12 @@ export type ButtonCanvasProps = {
 const ButtonCanvas: React.FunctionComponent<ButtonCanvasProps> = ({
   children,
   onClick,
+  className,
 }: ButtonCanvasProps) => (
   <StyledButtonCanvas
     whileHover={{ scale: 1.1 }}
     whileTap={{ scale: 0.9 }}
+    className={className}
     onClick={onClick}
   >
     {children}

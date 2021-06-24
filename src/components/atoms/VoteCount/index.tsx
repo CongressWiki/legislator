@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
 export type VoteCountProps = {
   decision: string;
@@ -26,6 +27,9 @@ const VoteCount = ({
       className={className}
       color={color}
       isDisabled={isDisabled}
+      animate={{
+        opacity: isDisabled ? 0.5 : 1,
+      }}
       onClick={onClick}
     >
       <Decision>{decision}</Decision>
@@ -36,7 +40,7 @@ const VoteCount = ({
 
 export default VoteCount;
 
-const Wrapper = styled.div<{ color: string; isDisabled: boolean }>`
+const Wrapper = styled(motion.div)<{ color: string; isDisabled: boolean }>`
   position: relative;
   height: auto;
   width: 100%;
@@ -46,9 +50,6 @@ const Wrapper = styled.div<{ color: string; isDisabled: boolean }>`
   padding: 8px;
   border: solid 2px ${(properties) => properties.color};
   border-radius: 25px;
-  transition: all 0.3s ease-in-out;
-
-  opacity: ${(properties) => (properties.isDisabled ? '0.5' : 1)};
 
   @media (max-width: 450px) {
     width: 45%;

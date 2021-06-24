@@ -7,13 +7,25 @@ export type AvatarProps = {
   children: React.ReactNode;
   party: string;
   size?: string;
+  whileHover?: Record<string, any>;
   className?: string;
 } & React.HTMLAttributes<HTMLDivElement>;
 
-const Avatar = ({ children, party, size, className }: AvatarProps) => {
+const Avatar = ({
+  children,
+  party,
+  size,
+  whileHover,
+  className,
+}: AvatarProps) => {
   const partyColor = getPartyColors(party);
   return (
-    <Wrapper className={className} partyColor={partyColor} size={size}>
+    <Wrapper
+      className={className}
+      partyColor={partyColor}
+      size={size}
+      whileHover={whileHover}
+    >
       {children}
     </Wrapper>
   );
@@ -43,10 +55,17 @@ const Wrapper = styled(motion.div)<{ partyColor?: string; size?: string }>`
   border: solid 1px ${(properties) => properties.partyColor};
   background-color: ${(properties) => properties.partyColor};
 
+  /* box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+    0 100px 80px rgba(0, 0, 0, 0.12); */
+
   img {
     z-index: 1;
     display: block;
     object-fit: cover;
+    width: 100%;
+    height: auto;
   }
 `;
 

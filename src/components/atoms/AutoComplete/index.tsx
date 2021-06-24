@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
+import { motion, AnimateSharedLayout } from 'framer-motion';
 
 export type AutoCompleteProps = {
   suggestions: string[];
@@ -14,30 +14,42 @@ const AutoComplete = ({
   className,
 }: AutoCompleteProps) => {
   return (
-    <Wrapper className={className}>
-      {suggestions.map((suggestion) => (
-        <Suggestion
-          key={suggestion}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          initial={{
-            opacity: 0,
-          }}
-          animate={{
-            opacity: [1, 1],
-            y: [null, -10],
-          }}
-          transition={{
-            repeat: Infinity,
-            repeatType: 'reverse',
-            duration: 1,
-          }}
-          onClick={() => onSuggestionClick(suggestion)}
-        >
-          {suggestion}
-        </Suggestion>
-      ))}
-    </Wrapper>
+    <AnimateSharedLayout>
+      <Wrapper
+        layout
+        className={className}
+        initial={{
+          opacity: 0,
+        }}
+        animate={{
+          opacity: 1,
+        }}
+        exit={{
+          opacity: 0,
+        }}
+      >
+        {suggestions.map((suggestion) => (
+          <Suggestion
+            key={suggestion}
+            layout
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            animate={{
+              opacity: [1, 1],
+              y: [null, -10],
+            }}
+            transition={{
+              repeat: Infinity,
+              repeatType: 'reverse',
+              duration: 1,
+            }}
+            onClick={() => onSuggestionClick(suggestion)}
+          >
+            {suggestion}
+          </Suggestion>
+        ))}
+      </Wrapper>
+    </AnimateSharedLayout>
   );
 };
 

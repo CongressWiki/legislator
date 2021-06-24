@@ -30,13 +30,15 @@ const PrivateChatBox = ({ userProfile }: PrivateChatBoxProps) => {
     'I need your help to identify which bills I should prioritize. Your task is to vote on bills that you believe are important.',
     `My phone shows your name as ${userProfile.first_name} ${userProfile.last_name}, is that correct?`,
     {
-      "Yes that's my name.": () => {
-        sendMessageAsBot('Excellent.');
+      "Yes that's my name.": async () => {
+        await sendMessageAsBot('Excellent.');
+        setBotMessageIndex(botMessageIndex + 1);
       },
-      'No I go by another name.': () => {
-        sendMessageAsBot('Okay what should I call you?');
+      'No I go by another name.': async () => {
+        await sendMessageAsBot('Okay what should I call you?');
       },
     },
+    `Nice to meet you ${userProfile.first_name}. What state are you from?`,
   ];
 
   const handleMessageInput: React.ChangeEventHandler<HTMLTextAreaElement> = (
@@ -58,7 +60,6 @@ const PrivateChatBox = ({ userProfile }: PrivateChatBoxProps) => {
     insertMessage(true, suggestion, userProfile.picture);
     decisions[suggestion]();
     setDecisions(null);
-    setBotMessageIndex(botMessageIndex + 1);
   };
 
   const createTimestamp = () => {
@@ -101,22 +102,27 @@ const PrivateChatBox = ({ userProfile }: PrivateChatBoxProps) => {
     }
   };
 
-  const randomTypeDuration = () => 2000 + Math.random() * 20 * 100;
-
-  const sendMessageAsBot = (message: string) => {
-    setIsBotTyping(true);
-
-    setTimeout(() => {
-      setIsBotTyping(false);
-      insertMessage(false, message, NANCI_PELOSI_IMG);
-      setBotMessageIndex(botMessageIndex + 1);
-    }, randomTypeDuration());
+  const wait = async (seconds?: number) => {
+    const randomTimeDuration = () => 2000 + Math.random() * 20 * 100;
+    if (!seconds) seconds = randomTimeDuration();
+    // Not sure what is expected from eslint here...
+    // eslint-disable-next-line no-promise-executor-return
+    return new Promise((r) => setTimeout(r, seconds));
   };
 
+  const sendMessageAsBot = async (message: string) => {
+    setIsBotTyping(true);
+    await wait();
+    setIsBotTyping(false);
+    insertMessage(false, message, NANCI_PELOSI_IMG);
+  };
+
+  // Auto-Scroll
   useEffect(() => {
     scrollToBottom();
   }, [messages, isUserTyping, isBotTyping]);
 
+  // User typing animation
   useEffect(() => {
     if (inputMessage === '') {
       return;
@@ -126,9 +132,10 @@ const PrivateChatBox = ({ userProfile }: PrivateChatBoxProps) => {
 
     setTimeout(() => {
       setIsUserTyping(false);
-    }, 1000);
+    }, 2000);
   }, [inputMessage]);
 
+  // Render decision
   useEffect(() => {
     const nextDecision = botMessages[botMessageIndex];
 
@@ -139,22 +146,31 @@ const PrivateChatBox = ({ userProfile }: PrivateChatBoxProps) => {
     setDecisions(nextDecision);
   }, [botMessageIndex]);
 
+  // Send next bot message
   useEffect(() => {
     console.log('botMessageIndex: ', botMessageIndex);
-
-    const nextBotMessage = botMessages[botMessageIndex];
-
-    if (typeof nextBotMessage !== 'string') {
+    if (botMessageIndex >= botMessages.length) {
       return;
     }
 
-    // Send intro messages
-    if (botMessageIndex <= 2) {
-      // Wait for Chat box opening animation to finish
-      setTimeout(() => {
-        sendMessageAsBot(nextBotMessage);
-      }, 400);
+    async function sendNextBotMessage() {
+      const nextBotMessage = botMessages[botMessageIndex];
+
+      if (typeof nextBotMessage !== 'string') {
+        return;
+      }
+
+      // Send intro messages
+      if (botMessageIndex <= 2) {
+        // Wait for Chat box opening animation to finish
+        await wait(400);
+      }
+
+      await sendMessageAsBot(nextBotMessage);
+      setBotMessageIndex(botMessageIndex + 1);
     }
+
+    sendNextBotMessage();
   }, [botMessageIndex]);
 
   return (
@@ -206,12 +222,14 @@ const PrivateChatBox = ({ userProfile }: PrivateChatBoxProps) => {
             )}
           </AnimatePresence>
         </MessageFeed>
-        {decisions && (
-          <AutoComplete
-            suggestions={Object.keys(decisions)}
-            onSuggestionClick={handleAutoCompleteClick}
-          />
-        )}
+        <AnimatePresence>
+          {decisions && (
+            <AutoComplete
+              suggestions={Object.keys(decisions)}
+              onSuggestionClick={handleAutoCompleteClick}
+            />
+          )}
+        </AnimatePresence>
         <MessageBox>
           <textarea
             className="message-input"
@@ -257,6 +275,7 @@ export default PrivateChatBox;
 
 const Chat = styled(motion.div)`
   width: 700px;
+  max-width: 100vw;
   height: 80vh;
   max-height: 500px;
   z-index: 2;
@@ -271,14 +290,18 @@ const Chat = styled(motion.div)`
 `;
 
 const Title = styled.div`
-  flex: 0 1 65px;
   position: relative;
   z-index: 2;
+
+  flex: 0 1 65px;
+  height: 70px;
+  padding: 10px;
+
   background: rgba(0, 0, 0, 0.2);
+
   color: #fff;
   text-transform: uppercase;
   text-align: left;
-  padding: 10px;
 
   display: grid;
   grid-template-columns: 60px 1fr;
@@ -339,7 +362,7 @@ const MessageFeed = styled(motion.div)`
   }
   /* Track */
   ::-webkit-scrollbar-track {
-    background-color: rgba(0, 0, 0, 0.5) !important;
+    background-color: rgba(0, 0, 0, 0.5);
     width: 1px;
   }
   /* Handle */

@@ -6,7 +6,6 @@ import Seo from '@components/App/Seo';
 import CircleAvatar from '@components/molecules/CircleAvatar';
 import CountBox from '@components/atoms/CountBox';
 import { graphql } from 'gatsby';
-// import StateIcon from '@components/StateIcon';
 import OptionDetails, {
   OptionDetailsProps,
 } from '@components/molecules/OptionDetails';
@@ -331,6 +330,19 @@ const ElectedOfficialTemplate = ({
     }
   };
 
+  const termStartDate = new Date(electedOfficial.term_start_at).toLocaleString(
+    'en-us',
+    localDateStringOptions
+  );
+  const termEndDate = new Date(electedOfficial.term_end_at).toLocaleString(
+    'en-us',
+    localDateStringOptions
+  );
+  const termText = `${termStartDate} - ${termEndDate}`;
+
+  const position = normalizePosition(electedOfficial.position);
+  const positionText = `${electedOfficial.state}  ${position}`;
+
   return (
     <MinimumLayout>
       <Seo
@@ -352,21 +364,8 @@ const ElectedOfficialTemplate = ({
           <Name>{electedOfficial.preferred_name}</Name>
           {/* <StateIcon className="state" state={electedOfficial.state} /> */}
           {/* <State>{electedOfficial.state}</State> */}
-          <Position>
-            {electedOfficial.state}{' '}
-            {normalizePosition(electedOfficial.position)}
-          </Position>
-          <TermDate>
-            {new Date(electedOfficial.term_start_at).toLocaleString(
-              'en-us',
-              localDateStringOptions
-            )}
-            {' - '}
-            {new Date(electedOfficial.term_end_at).toLocaleString(
-              'en-us',
-              localDateStringOptions
-            )}
-          </TermDate>
+          <Position>{positionText}</Position>
+          <TermDate>{termText}</TermDate>
         </div>
         <CircleAvatar
           className="image"
@@ -378,6 +377,7 @@ const ElectedOfficialTemplate = ({
         />
         <OptionsContainer className="options">
           {options.map((option, index) => {
+            // Dynamic classnames a-f to match grid assignments
             const char = String.fromCharCode(97 + index);
             return (
               <CountBox
@@ -440,6 +440,7 @@ const TermDate = styled.p`
 `;
 
 const ContentLayout = styled.div`
+  position: relative;
   overflow: hidden;
 
   display: grid;
@@ -475,6 +476,7 @@ const ContentLayout = styled.div`
 
     img {
       transition: all 0.3s;
+
       :hover {
         transform: scale(1.1);
       }

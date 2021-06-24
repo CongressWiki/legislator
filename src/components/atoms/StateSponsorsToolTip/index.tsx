@@ -4,6 +4,7 @@ import type {
   Cosponsorship as ICosponsorship,
   Official as IOfficial,
 } from '@type/hasura';
+import { motion } from 'framer-motion';
 
 export type LabelValuePair = {
   state: string;
@@ -27,7 +28,12 @@ const StateSponsorsToolTip = ({
   const isSponsorState = Boolean(sponsor);
   const hasSponsors = hasBillCosponsorships || isSponsorState;
   return (
-    <Wrapper className={className} hide={!hasSponsors}>
+    <Wrapper
+      className={className}
+      animate={{
+        opacity: hasSponsors ? 1 : 0,
+      }}
+    >
       {sponsor ? <BillSponsor sponsor={sponsor} /> : null}
       {hasBillCosponsorships ? <BillCosponsor cosponsors={cosponsors} /> : null}
     </Wrapper>
@@ -36,14 +42,11 @@ const StateSponsorsToolTip = ({
 
 export default StateSponsorsToolTip;
 
-const Wrapper = styled.div<{ hide?: boolean }>`
+const Wrapper = styled(motion.div)`
   position: absolute;
   text-align: left;
   padding: 0.5rem;
-  z-index: 900;
-
-  opacity: ${(properties) => (properties.hide ? 0 : 1)};
-  /* transition: opacity 0.3s; */
+  z-index: 2;
 
   border: solid thin var(--color-text);
   border-radius: 5px;
@@ -92,8 +95,8 @@ const BillSponsorWrapper = styled.div`
 const ToolTipHeader = styled.p`
   margin: 0;
   padding: 0;
-  padding-top: 0.5em;
-  padding-bottom: 0.5em;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
   font-weight: 600;
 `;
 
@@ -112,7 +115,7 @@ const ToolTipUnorderedList = styled.ul<{ columns?: number }>`
 const ToolTipListItem = styled.li<{ icon?: string }>`
   position: relative;
   padding: 0;
-  padding-left: 1.5em;
+  padding-left: 1.5rem;
   margin: 0;
   font-size: 0.8rem;
   white-space: nowrap;

@@ -42,10 +42,8 @@ const Wrapper = styled.div<{ isActive: boolean }>`
     margin: 0;
     padding: 0;
     font-size: 1.2rem;
-    /* font-family: century_supra_c3; */
     font-family: advocate_c43_mid;
 
-    transition: all 0.3s;
     white-space: nowrap;
 
     text-underline-offset: 3px;

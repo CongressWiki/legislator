@@ -20,15 +20,12 @@ const normalize = (string: string) => {
 };
 
 const SubjectIcon = ({ subject, className, ...rest }: IconProps) => {
-  if (subject === 'No Subject') {
-    return null;
-  }
+  const ImportedIconReference = React.useRef<
+    false | React.FC<React.SVGProps<SVGSVGElement>>
+  >(false);
+  const [loading, setLoading] = React.useState(false);
 
   subject = normalize(subject);
-
-  const ImportedIconReference =
-    React.useRef<false | React.FC<React.SVGProps<SVGSVGElement>>>(false);
-  const [loading, setLoading] = React.useState(false);
 
   React.useEffect(() => {
     setLoading(true);
@@ -49,7 +46,7 @@ const SubjectIcon = ({ subject, className, ...rest }: IconProps) => {
     return () => {
       ImportedIconReference.current = false;
     };
-  }, []);
+  }, [subject]);
 
   if (!loading && ImportedIconReference.current) {
     const { current: ImportedIcon } = ImportedIconReference;

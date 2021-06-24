@@ -29,6 +29,7 @@ const Image = ({
   className,
 }: ImageProps) => {
   const image = imageData ? getImage(imageData) : false;
+
   if (!image) {
     return <StyledCandidate className={className} />;
   }

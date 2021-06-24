@@ -5,7 +5,7 @@ import Avatar from '@components/atoms/Avatar';
 import createApolloClient from '@utils/ApolloClient';
 import { gql } from '@apollo/client';
 import useLocalStorage from '@utils/useLocalStorage';
-import PrivateChatMask from '@components/organisms/PrivateChatMask';
+import SignUpFormMask from '@components/organisms/SignUpFormMask';
 import styled from 'styled-components';
 import { AUTH0_LOGOUT_URL } from '@constants';
 
@@ -29,7 +29,7 @@ const LoginButton = ({ className }: LoginButtonProps) => {
       const accessToken = await getAccessTokenSilently();
       const apolloClient = createApolloClient(accessToken);
       const response = await apolloClient.query({
-        query: gql(`query MyQuery($id: String!) {
+        query: gql(`query getUserProfile($id: String!) {
           users(where: {id: {_eq: $id}}) {
             id
             first_name
@@ -63,6 +63,10 @@ const LoginButton = ({ className }: LoginButtonProps) => {
       document.body.classList.toggle('noScroll', true);
     }
 
+    if (!isNewUser) {
+      document.body.classList.toggle('noScroll', false);
+    }
+
     return (
       <>
         <ButtonCanvas
@@ -78,7 +82,9 @@ const LoginButton = ({ className }: LoginButtonProps) => {
             <StyledImg src={profile.picture} alt="Logout" />
           </Avatar>
         </ButtonCanvas>
-        {isNewUser && <PrivateChatMask userProfile={profile} />}
+        {isNewUser && (
+          <SignUpFormMask userProfile={profile} setUserProfile={setProfile} />
+        )}
       </>
     );
   }

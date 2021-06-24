@@ -112,7 +112,6 @@ const OverflowCosponsorAvatar = styled(Avatar)`
   padding: 0;
 
   justify-self: center;
-  transition: all 0.3s ease-in-out;
 
   background-color: var(--color-gray300);
   border-color: var(--color-gray300);

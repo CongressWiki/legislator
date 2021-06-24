@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import type { Bill, OfficialWithImage } from '@type/hasura';
 import { Link } from 'gatsby';
 import { motion } from 'framer-motion';
 import StampText from '@components/atoms/StampText';
 import styled from 'styled-components';
 import CircleAvatar from '@components/molecules/CircleAvatar';
-import Arrow from '@icons/misc/Arrow';
 import SubjectIcon from '@components/atoms/SubjectIcon';
 import ButtonCanvas from '@components/atoms/ButtonCanvas';
+import createApolloClient from '@utils/ApolloClient';
+import { gql } from '@apollo/client';
+import { useAuth0 } from '@auth0/auth0-react';
+import truncate from '@utils/truncate';
 
 export type BillTwitterCardProps = Pick<
   Bill,
@@ -21,12 +24,14 @@ export type BillTwitterCardProps = Pick<
   | 'status_at'
 > & {
   sponsor: OfficialWithImage;
+  userVote?: 'Yea' | 'Nay';
   onClick?: React.MouseEventHandler<HTMLDivElement>;
   className?: string;
 };
 
 const BillTwitterCard = (props: BillTwitterCardProps) => {
   const {
+    id: billId,
     type,
     number,
     title,
@@ -35,9 +40,63 @@ const BillTwitterCard = (props: BillTwitterCardProps) => {
     status,
     sponsor,
     status_at,
+    userVote,
     className,
     onClick,
   } = props;
+
+  const {
+    isAuthenticated,
+    isLoading,
+    user,
+    getAccessTokenSilently,
+    loginWithPopup,
+  } = useAuth0();
+  const [billUserVote, setBillUserVote] = useState(userVote);
+
+  useEffect(() => {
+    setBillUserVote(userVote);
+  }, [userVote]);
+
+  async function voteOnBill(decision: 'Yea' | 'Nay') {
+    const accessToken = await getAccessTokenSilently();
+    const apolloClient = createApolloClient(accessToken);
+    return apolloClient.mutate({
+      mutation: gql(`mutation getUserProfile(
+          $id: String!,
+          $user_id: String!,
+          $bill_id: String!,
+          $decision: String!
+          ) {
+          insert_bill_user_votes_one(object: {
+            id: $id,
+            user_id: $user_id,
+            bill_id: $bill_id,
+            decision: $decision
+          }, on_conflict: {constraint: bill_user_votes_pkey, update_columns: decision}) {
+            id
+            decision
+          }
+        }
+        `),
+      variables: {
+        id: `${billId}-${user?.sub}`,
+        user_id: user?.sub,
+        bill_id: billId,
+        decision,
+      },
+    });
+  }
+
+  const handleVoteClick = async (decision: 'Yea' | 'Nay') => {
+    if (!isAuthenticated || isLoading) {
+      await loginWithPopup();
+      return;
+    }
+
+    const response = await voteOnBill(decision);
+    setBillUserVote(response?.data.insert_bill_user_votes_one.decision);
+  };
 
   return (
     <Wrapper
@@ -60,19 +119,23 @@ const BillTwitterCard = (props: BillTwitterCardProps) => {
         {`${sponsor.preferred_name} · ${sponsor.state}`}
       </p>
       <p className="bill-timestamp">{new Date(status_at).toDateString()}</p>
-      <p className="bill-subject">{subject}</p>
+      {subject !== 'No Subject' && <p className="bill-subject">{subject}</p>}
       <SubjectIcon subject={subject} className="bill-subjectIcon" />
 
-      <p className="bill-number">{`${type.toUpperCase()} ${number}`}</p>
+      <Link className="bill-number" to={`${congress}/${type}${number}/`}>
+        <p>{`${type.toUpperCase()} ${number}`}</p>
+      </Link>
 
-      <p className="bill-title">{title}</p>
+      <p className="bill-title">{truncate(title, 300)}</p>
 
       <StampText className="bill-status">{status}</StampText>
-      <Link className="bill-open" to={`${congress}/${type}${number}/`}>
-        <ButtonCanvas>
-          <Arrow />
-        </ButtonCanvas>
-      </Link>
+
+      <ButtonCanvas className="yea" onClick={() => handleVoteClick('Yea')}>
+        <Vote isUserVote={billUserVote === 'Yea'}>Yea</Vote>
+      </ButtonCanvas>
+      <ButtonCanvas className="nay" onClick={() => handleVoteClick('Nay')}>
+        <Vote isUserVote={billUserVote === 'Nay'}>Nay</Vote>
+      </ButtonCanvas>
     </Wrapper>
   );
 };
@@ -87,10 +150,21 @@ const motionVariants = {
 
 export default BillTwitterCard;
 
+const Vote = styled.span<{ isUserVote?: boolean }>`
+  font-size: 1.2rem;
+  font-family: advocate_c43_mid;
+  color: ${(props) =>
+    props.isUserVote ? 'var(--color-secondary)' : 'var(--color-gray500)'};
+
+  :hover {
+    color: var(--color-secondary);
+  }
+`;
+
 const Wrapper = styled(motion.div)<{
   number: number;
 }>`
-  max-width: none;
+  max-width: 600px;
   width: 100%;
   margin: 0;
   padding-top: 0.75rem;
@@ -101,13 +175,15 @@ const Wrapper = styled(motion.div)<{
 
   display: grid;
   grid-template-columns: 62px repeat(9, 1fr);
-  grid-template-rows: 20px 2.5em 30px 1fr 70px;
+  grid-template-rows: 20px 20px 30px 30px auto 50px 40px;
   grid-template-areas:
     'sponsorImage sponsorName sponsorName sponsorName sponsorName sponsorName subject subject subject  subject'
     'sponsorImage timestamp   timestamp   timestamp   timestamp   ........... ....... ....... .......  subjectIcon'
-    'sponsorImage ........... ........... id          id          id          id      ......  ......   ......'
+    'sponsorImage ........... ........... ..........  id          id          ....... ....... .......  subjectIcon'
     'sponsorImage title       title       title       title       title       title   title   title    title'
-    'sponsorImage .....       ......      status      status      status      status  ......  openBill openBill';
+    'sponsorImage title       title       title       title       title       title   title   title    title'
+    'sponsorImage .....       ......      status      status      status      status  ......  ......  ......'
+    'sponsorImage .....       ......      yea         ........... ........... nay     ......  ......  ......';
 
   border: solid thin var(--color-gray300);
   border-radius: 10px;
@@ -121,7 +197,21 @@ const Wrapper = styled(motion.div)<{
   }
 
   :hover {
-    background-color: var(--color-background);
+    background-color: var(--color-paper);
+  }
+
+  .yea {
+    grid-area: yea;
+    height: auto;
+    width: auto;
+    min-width: unset;
+  }
+
+  .nay {
+    grid-area: nay;
+    height: auto;
+    width: auto;
+    min-width: unset;
   }
 
   .bill-sponsorImage {
@@ -174,6 +264,11 @@ const Wrapper = styled(motion.div)<{
     text-align: center;
     font-weight: bold;
     white-space: nowrap;
+
+    :hover {
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
   }
 
   .bill-title {

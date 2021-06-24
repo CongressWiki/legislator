@@ -32,6 +32,9 @@ const TooltipAvatar = ({
           image={image}
           loading={loading}
           backgroundColor={backgroundColor}
+          whileHover={{
+            scale: 1.5,
+          }}
           className="avatar"
         />
         <span className="tooltiptext">{preferred_name}</span>
@@ -41,19 +44,15 @@ const TooltipAvatar = ({
 };
 
 const Wrapper = styled.div<{ size: string }>`
-  height: ${(properties) => properties.size};
   position: relative;
+  height: ${(properties) => properties.size};
 
   background: transparent;
 
   padding: 0;
   margin: 0;
 
-  transition: all 0.3s ease-in-out;
-
   .avatar {
-    transition: all 0.3s ease-in-out;
-
     -webkit-box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.75);
     box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.75);
@@ -62,19 +61,17 @@ const Wrapper = styled.div<{ size: string }>`
 
 const Tooltip = styled.div`
   position: relative;
-  min-width: fit-content;
-  max-width: fit-content;
+  width: fit-content;
 
   margin: 0;
   padding: 0;
 
   display: inline-block;
-  transition: all 0.3s ease-in-out;
   justify-self: center;
   flex: 1;
 
   .tooltiptext {
-    z-index: 3000;
+    z-index: 3;
 
     visibility: hidden;
 
@@ -98,9 +95,6 @@ const Tooltip = styled.div`
     text-align: center;
 
     opacity: 0;
-
-    transition: opacity 0.3s;
-    transition: top 0.3s;
 
     font-style: italic;
 
@@ -127,8 +121,7 @@ const Tooltip = styled.div`
 
   :hover {
     .avatar {
-      z-index: 3000;
-      transform: scale(1.5);
+      z-index: 3;
 
       -webkit-box-shadow: -1px 0px 7px 5px rgba(0, 0, 0, 0.75);
       -moz-box-shadow: -1px 0px 7px 5px rgba(0, 0, 0, 0.75);
@@ -136,13 +129,13 @@ const Tooltip = styled.div`
     }
 
     .state {
-      z-index: 3100;
+      z-index: 4;
       visibility: visible;
       opacity: 1;
     }
 
     .tooltiptext {
-      z-index: 3000;
+      z-index: 3;
       visibility: visible;
       opacity: 1;
       top: 140%;
@@ -152,15 +145,14 @@ const Tooltip = styled.div`
 
 const StateText = styled.span`
   position: absolute;
-  top: -1.75rem;
-  right: -1.75rem;
+  top: -28px;
+  right: -28px;
 
   margin: 0;
   padding: 0;
 
   visibility: hidden;
   opacity: 0;
-  transition: all 0.3s ease-in-out;
 
   font-size: 2rem;
   font-family: advocate_c43_mid;
