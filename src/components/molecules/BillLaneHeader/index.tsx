@@ -47,25 +47,29 @@ const Wrapper = styled.div`
   /* Prevent avatar images (z-index:2) from overlapping */
   z-index: 3;
 
-  width: 100%;
-  height: 40.5px;
-  background-color: var(--color-background);
-  overflow: hidden;
-
   position: sticky;
   top: -0.5px;
+
+  width: 100%;
+  height: 40.5px;
+
+  background-color: var(--color-background);
+  /* background-color: var(--color-ribbon); */
+  /* background-color: var(--color-paper); */
+
+  overflow: hidden;
 
   padding-left: 1em;
   padding-right: 1em;
 
   border-bottom: solid thin var(--color-gray300);
 
+  font-family: advocate_c43_mid;
+  font-size: 1.4em;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  font-family: advocate_c43_mid;
-  font-size: 1.4em;
 `;
 
 const BillCount = styled.p`

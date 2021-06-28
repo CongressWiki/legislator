@@ -120,9 +120,11 @@ const BillTwitterCard = (props: BillTwitterCardProps) => {
       </p>
       <p className="bill-timestamp">{new Date(status_at).toDateString()}</p>
       {subject !== 'No Subject' && <p className="bill-subject">{subject}</p>}
-      <SubjectIcon subject={subject} className="bill-subjectIcon" />
+      {subject !== 'No Subject' && (
+        <SubjectIcon subject={subject} className="bill-subjectIcon" />
+      )}
 
-      <Link className="bill-number" to={`${congress}/${type}${number}/`}>
+      <Link className="bill-id" to={`${congress}/${type}${number}/`}>
         <p>{`${type.toUpperCase()} ${number}`}</p>
       </Link>
 
@@ -130,18 +132,27 @@ const BillTwitterCard = (props: BillTwitterCardProps) => {
 
       <StampText className="bill-status">{status}</StampText>
 
-      <ButtonCanvas className="yea" onClick={() => handleVoteClick('Yea')}>
-        <Vote isUserVote={billUserVote === 'Yea'}>Yea</Vote>
+      <ButtonCanvas
+        className="yea"
+        onClick={async () => handleVoteClick('Yea')}
+      >
+        <Vote isUserVote={billUserVote === 'Yea'}>yea</Vote>
       </ButtonCanvas>
-      <ButtonCanvas className="nay" onClick={() => handleVoteClick('Nay')}>
-        <Vote isUserVote={billUserVote === 'Nay'}>Nay</Vote>
+      <ButtonCanvas
+        className="nay"
+        onClick={async () => handleVoteClick('Nay')}
+      >
+        <Vote isUserVote={billUserVote === 'Nay'}>nay</Vote>
       </ButtonCanvas>
     </Wrapper>
   );
 };
 
 const motionVariants = {
-  hidden: { y: 20, opacity: 0 },
+  hidden: {
+    y: 110,
+    opacity: 0,
+  },
   visible: {
     y: 0,
     opacity: 1,
@@ -166,42 +177,46 @@ const Wrapper = styled(motion.div)<{
 }>`
   max-width: 600px;
   width: 100%;
+
   margin: 0;
-  padding-top: 0.75rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-top: 12px;
+  padding-left: 16px;
+  padding-right: 16px;
 
   overflow: hidden;
 
-  display: grid;
-  grid-template-columns: 62px repeat(9, 1fr);
-  grid-template-rows: 20px 20px 30px 30px auto 50px 40px;
-  grid-template-areas:
-    'sponsorImage sponsorName sponsorName sponsorName sponsorName sponsorName subject subject subject  subject'
-    'sponsorImage timestamp   timestamp   timestamp   timestamp   ........... ....... ....... .......  subjectIcon'
-    'sponsorImage ........... ........... ..........  id          id          ....... ....... .......  subjectIcon'
-    'sponsorImage title       title       title       title       title       title   title   title    title'
-    'sponsorImage title       title       title       title       title       title   title   title    title'
-    'sponsorImage .....       ......      status      status      status      status  ......  ......  ......'
-    'sponsorImage .....       ......      yea         ........... ........... nay     ......  ......  ......';
+  background-color: var(--color-card);
 
   border: solid thin var(--color-gray300);
   border-radius: 10px;
 
   text-align: left;
-  align-items: start;
 
-  p {
-    font-family: century_supra_t3;
-    margin: 0;
-  }
+  display: grid;
+  grid-template-columns: 60px repeat(8, 1fr) 40px;
+  grid-template-rows: 20px 20px 40px 30px auto 50px 36px;
+  grid-template-areas:
+    'sponsorImage sponsorName sponsorName sponsorName sponsorName sponsorName subject subject subject  subjectIcon'
+    'sponsorImage timestamp   timestamp   timestamp   ........... ........... subject subject subject  subjectIcon'
+    'sponsorImage ........... ........... ..........  id          id          ....... ....... .......  subjectIcon'
+    'sponsorImage title       title       title       title       title       title   title   title    title'
+    'sponsorImage title       title       title       title       title       title   title   title    title'
+    'sponsorImage .....       ......      status      status      status      status  ......  ......  ......'
+    'sponsorImage .....       ......      yea         ........... ........... nay     ......  ......  ......';
+  align-items: start;
 
   :hover {
     background-color: var(--color-paper);
   }
 
+  p {
+    margin: 0;
+    font-family: century_supra_t3;
+  }
+
   .yea {
     grid-area: yea;
+
     height: auto;
     width: auto;
     min-width: unset;
@@ -209,6 +224,7 @@ const Wrapper = styled(motion.div)<{
 
   .nay {
     grid-area: nay;
+
     height: auto;
     width: auto;
     min-width: unset;
@@ -217,38 +233,37 @@ const Wrapper = styled(motion.div)<{
   .bill-sponsorImage {
     grid-area: sponsorImage;
     align-self: start;
-    margin-right: 0.75rem;
   }
 
   .bill-sponsorName {
     grid-area: sponsorName;
+
+    white-space: nowrap;
     font-size: 0.9rem;
     font-weight: 400;
-    white-space: nowrap;
   }
 
   .bill-subject {
     grid-area: subject;
+
+    margin-right: 1ch;
+
     text-align: right;
-
-    color: var(--color-dimText);
-    font-size: 0.8rem;
+    white-space: wrap;
+    font-size: 0.7rem;
     font-weight: 400;
-
-    white-space: nowrap;
+    color: var(--color-dimText);
   }
 
   .bill-subjectIcon {
     grid-area: subjectIcon;
-    justify-self: end;
-
     position: relative;
-
-    width: 100%;
-    max-width: 2.5rem;
+    justify-self: end;
 
     /* SVGR components typically default to 1em */
     height: auto;
+    width: 100%;
+    max-width: 2.5rem;
 
     margin: 0;
     padding: 0;
@@ -259,8 +274,10 @@ const Wrapper = styled(motion.div)<{
     }
   }
 
-  .bill-number {
+  .bill-id {
     grid-area: id;
+    align-self: center;
+
     text-align: center;
     font-weight: bold;
     white-space: nowrap;
@@ -273,64 +290,37 @@ const Wrapper = styled(motion.div)<{
 
   .bill-title {
     grid-area: title;
-    max-width: min(70ch);
-
     align-self: start;
 
-    font-size: 1.1rem;
+    max-width: min(70ch);
+
+    font-size: 1rem;
     letter-spacing: -0.063px;
   }
 
   .bill-timestamp {
     grid-area: timestamp;
-    text-align: left;
 
+    text-align: left;
     font-size: 0.8rem;
-    color: var(--color-dimText);
     font-weight: 400;
+    color: var(--color-dimText);
   }
 
   .bill-status {
     grid-area: status;
-
     justify-self: center;
+    align-self: center;
 
-    font-size: 0.8rem;
-    border-width: 0.2rem;
+    max-width: 14ch;
+    padding: 1px;
+
+    border-width: 3px;
+
+    font-size: 0.7rem;
 
     // Alternate stamp angle to give it a realistic behavior
     transform: ${(properties) =>
       properties.number % 2 === 1 ? 'rotate(4deg)' : 'rotate(-3deg)'};
-  }
-
-  .bill-open {
-    grid-area: openBill;
-
-    width: 100%;
-    max-width: 2.5rem;
-    height: auto;
-
-    justify-self: end;
-    align-self: center;
-    align-items: center;
-    text-align: center;
-
-    svg {
-      width: 100%;
-      height: auto;
-      max-width: 100%;
-      max-height: 100%;
-      path {
-        fill: var(--color-text);
-      }
-    }
-
-    :hover {
-      svg {
-        path {
-          fill: var(--color-secondary);
-        }
-      }
-    }
   }
 `;

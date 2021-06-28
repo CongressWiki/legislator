@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import ThemeToggle from '@components/molecules/ThemeToggle';
 import LoginButton from '@components/molecules/LoginButton';
+import LoginMenuButton from '@components/molecules/LoginMenuButton';
 import SiteTitle from '@components/atoms/SiteTitle';
 import { useStaticQuery, graphql, Link } from 'gatsby';
 
@@ -31,6 +32,7 @@ const Header = ({}: HeaderProps) => {
         <ButtonsBar>
           <ThemeToggle />
           <LoginButton />
+          {/* <LoginMenuButton /> */}
         </ButtonsBar>
       </ToolBar>
     </Wrapper>
@@ -43,16 +45,20 @@ const Wrapper = styled.header`
   left: 0;
   right: 0;
 
+  height: 115px;
+  min-width: 330px;
+
   margin: 0;
   padding: 0;
 
+  border-bottom: 1px solid var(--color-gray300);
+
+  background-color: var(--color-background);
+  /* background-color: var(--color-ribbon); */
+  /* background-color: var(--color-paper); */
+
   display: flex;
   justify-content: center;
-
-  height: 115px;
-
-  border-bottom: 1px solid var(--color-gray300);
-  background-color: var(--color-background);
 `;
 
 const ToolBar = styled.div`

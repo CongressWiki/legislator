@@ -4,25 +4,22 @@ import StampTexture from '@static/images/StampTexture.png';
 const StampText = styled.span`
   max-width: 16ch;
 
-  overflow: hidden;
-  align-self: center;
-  padding: 0.25em;
+  padding: 2px;
 
+  overflow: hidden;
+
+  font-family: century_supra_c3;
   text-align: center;
   text-transform: uppercase;
-
   color: var(--color-stamp);
-  font-size: 1.4em;
+  font-size: 1.4rem;
   font-weight: bold;
 
-  mask-image: url(${StampTexture});
-  -webkit-mask-image: url(${StampTexture});
-  mask-size: 944px 604px;
-  -webkit-mask-size: 944px 604px;
-  mask-position: 13em 6em;
-  -webkit-mask-position: 13em 6em;
-  mix-blend-mode: normal;
+  border: 8px solid var(--color-stamp);
 
-  border: 0.5em solid var(--color-stamp);
+  mask-image: url(${StampTexture});
+  mask-size: fit-content;
+  mask-position: 60% 40%;
+  mix-blend-mode: normal;
 `;
 export default StampText;

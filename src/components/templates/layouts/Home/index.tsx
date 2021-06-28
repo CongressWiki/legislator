@@ -1,5 +1,4 @@
 import React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
 import Header, { HeaderSpacer } from '@components/organisms/Header';
 import styled from 'styled-components';
 
@@ -8,19 +7,9 @@ export type HomeLayoutProps = {
 };
 
 const HomeLayout = ({ children }: HomeLayoutProps) => {
-  const data = useStaticQuery(graphql`
-    query {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `);
-
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata?.title || 'Title'} />
+      <Header />
       <HeaderSpacer />
       <Wrapper>
         {children}

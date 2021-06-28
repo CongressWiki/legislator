@@ -1,21 +1,25 @@
 import styled from 'styled-components';
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, VariantLabels, TargetAndTransition } from 'framer-motion';
 
 export type ButtonCanvasProps = {
   children: React.ReactNode;
   className?: string | undefined;
   onClick?: () => void;
+  whileHover?: VariantLabels | TargetAndTransition;
+  whileTap?: VariantLabels | TargetAndTransition;
 };
 
 const ButtonCanvas: React.FunctionComponent<ButtonCanvasProps> = ({
   children,
   onClick,
+  whileHover,
+  whileTap,
   className,
 }: ButtonCanvasProps) => (
   <StyledButtonCanvas
-    whileHover={{ scale: 1.1 }}
-    whileTap={{ scale: 0.9 }}
+    whileHover={whileHover ?? { scale: 1.1 }}
+    whileTap={whileTap ?? { scale: 0.9 }}
     className={className}
     onClick={onClick}
   >

@@ -75,7 +75,7 @@ const getSubButtonMotionVariants = (
   const buttonOrder = totalButtons - buttonIndex;
   const buttonGap = buttonOrder * 12;
   const buttonHeight = buttonOrder * 50;
-  const animateTo = -(buttonHeight + buttonGap);
+  const animateTo = buttonHeight + buttonGap;
 
   return {
     hidden: { y: 0, opacity: 0 },

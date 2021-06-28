@@ -268,8 +268,8 @@ exports.createPages = async ({ graphql, actions: gatsbyActions, reporter }) => {
   const { actions } = actionsQuery.data.hasura;
   let { rollCalls } = rollCallsQuery.data.hasura;
   let { electedOfficials } = electedOfficialsQuery.data.hasura;
-  const { committees } = committeesQuery.data.hasura;
-  const { subcommittees } = subcommitteesQuery.data.hasura;
+  // const { committees } = committeesQuery.data.hasura;
+  // const { subcommittees } = subcommitteesQuery.data.hasura;
   const images = imagesQuery.data.congressImages.nodes;
 
   const findImage = (elected_official_id) =>
@@ -544,16 +544,16 @@ exports.createPages = async ({ graphql, actions: gatsbyActions, reporter }) => {
       },
     });
 
-    // if (process.env.NODE_ENV === 'production') {
-    //   await createBillSocialCards({
-    //     bill,
-    //     author: 'USACounts',
-    //     separator: '|',
-    //     fontFile: require.resolve(
-    //       './static/fonts/Century_Supra/T3/century_supra_t3_regular.ttf'
-    //     ),
-    //     slug,
-    //   });
-    // }
+    if (process.env.NODE_ENV === 'production') {
+      await createBillSocialCards({
+        bill,
+        author: 'USACounts',
+        separator: '|',
+        fontFile: require.resolve(
+          './static/fonts/Century_Supra/T3/century_supra_t3_regular.ttf'
+        ),
+        slug,
+      });
+    }
   }
 };

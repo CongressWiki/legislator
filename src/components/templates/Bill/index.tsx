@@ -4,7 +4,7 @@ import type { Bill as BillType } from '@type/hasura';
 import Seo from '@components/App/Seo';
 import Bill from '@components/organisms/BillV2';
 import BillDetails from '@components/organisms/BillDetails';
-import type { ActionWithRollCall } from '@components/molecules/BillDetailsSection/Section';
+import type { ActionWithRollCall } from '@components/molecules/BillDetailsSection/ActionsDeck';
 import Header, { HeaderSpacer } from '@components/organisms/Header';
 
 export type BillTemplateProps = {

@@ -16,10 +16,10 @@ export type SignUpFormProps = {
 const SignUpForm = ({ userProfile, setUserProfile }: SignUpFormProps) => {
   const { user, getAccessTokenSilently, logout } = useAuth0();
   const [inputs, setInputs] = useState({
-    firstName: userProfile.first_name,
-    lastName: userProfile.last_name,
-    politicalParty: userProfile.political_party,
-    state: userProfile.state,
+    firstName: userProfile.first_name || '',
+    lastName: userProfile.last_name || '',
+    politicalParty: userProfile.political_party || '',
+    state: userProfile.state || '',
   });
 
   async function updateUserProfile() {
@@ -74,7 +74,6 @@ const SignUpForm = ({ userProfile, setUserProfile }: SignUpFormProps) => {
   > = async (e) => {
     e.preventDefault();
     const response = await updateUserProfile();
-    console.log(response);
     setUserProfile(response?.data?.update_users.returning[0]);
   };
 
@@ -101,7 +100,7 @@ const SignUpForm = ({ userProfile, setUserProfile }: SignUpFormProps) => {
           <h2 className="title">New User</h2>
         </Title>
 
-        <Avatar className="image" party="Democrat" size="80px">
+        <Avatar className="image" party={inputs.politicalParty} size="80px">
           <StyledImg src={userProfile.picture} />
         </Avatar>
 

@@ -22,7 +22,7 @@ const Bill = ({
   className,
 }: BillProps) => {
   return (
-    <Wrapper className={className} initial="hidden" animate="visible">
+    <Wrapper className={className}>
       <BillStatusStamp>{status}</BillStatusStamp>
       <BillHeader>
         <BillId>
@@ -54,13 +54,12 @@ const Wrapper = styled.div`
 const BillStatusStamp = styled(StampText)`
   position: absolute;
   margin-top: 0.25rem;
-  max-width: 40%;
 
   // Alternate stamp angle to give it a realistic behavior
   transform: ${() => (Math.random() < 0.5 ? 'rotate(3deg)' : 'rotate(-8deg)')};
 
   @media (max-width: 450px) {
-    margin-top: 0;
+    margin-top: unset;
     max-width: 200px;
   }
 `;

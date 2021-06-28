@@ -20,6 +20,10 @@ export const COLORS = {
     light: 'hsl(105, 20%, 96%)',
     dark: 'hsl(215, 51%, 10%)',
   },
+  contentBackground: {
+    light: 'hsl(105, 20%, 94%)',
+    dark: 'hsl(215, 51%, 12%)',
+  },
   paper: {
     light: 'hsl(105, 20%, 95%)',
     dark: 'hsl(215, 51%, 11%)',
@@ -111,7 +115,7 @@ export const PARTY_COLORS = {
 };
 
 export const getPartyColors = (party: string) => {
-  switch (party.toLowerCase()) {
+  switch (party?.toLowerCase() || '') {
     case 'democrat':
       return 'var(--color-democratBlue)';
     case 'republican':
