@@ -33,16 +33,18 @@ const Home = ({ bills }: HomeProps) => {
       const accessToken = await getAccessTokenSilently();
       const apolloClient = createApolloClient(accessToken);
       const response = await apolloClient.query({
-        query: gql(`query queryBillUserVotes(
-          $user_id: String = ""
-        ) {
-          bill_user_votes(where: {user_id: {_eq: $user_id}}) {
-            id
-            user_id
-            bill_id
-            decision
-          }
-        }`),
+        query: gql(
+          `query queryBillUserVotes(
+            $user_id: String = ""
+           ) {
+            bill_user_votes(where: {user_id: {_eq: $user_id}}) {
+              id
+              user_id
+              bill_id
+              decision
+            }
+          }`
+        ),
         variables: { user_id: user?.sub },
       });
       setUserBillVotes(response?.data.bill_user_votes);

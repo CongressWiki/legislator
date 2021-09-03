@@ -45,13 +45,13 @@ const TooltipAvatar = ({
 
 const Wrapper = styled.div<{ size: string }>`
   position: relative;
-  height: ${(properties) => properties.size};
 
-  background: transparent;
+  height: ${(properties) => properties.size};
 
   padding: 0;
   margin: 0;
 
+  background: transparent;
   .avatar {
     -webkit-box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.75);
@@ -61,42 +61,38 @@ const Wrapper = styled.div<{ size: string }>`
 
 const Tooltip = styled.div`
   position: relative;
-  width: fit-content;
-
-  margin: 0;
-  padding: 0;
 
   display: inline-block;
   justify-self: center;
   flex: 1;
 
+  width: fit-content;
+  margin: 0;
+  padding: 0;
+
   .tooltiptext {
     z-index: 3;
-
-    visibility: hidden;
-
-    width: 120px;
-
-    background-color: var(--color-bill);
-
     position: absolute;
     top: 100%;
     left: 50%;
 
+    visibility: hidden;
+    opacity: 0;
+
+    width: 120px;
+    padding: 5px 0;
     margin-left: -60px;
 
     border-radius: 6px;
     border-width: 5px;
     border-style: solid;
-    border-color: var(--color-bill) transparent transparent transparent;
+    border-color: var(--color-text) transparent transparent transparent;
 
-    padding: 5px 0;
-
-    text-align: center;
-
-    opacity: 0;
+    background-color: var(--color-text);
 
     font-style: italic;
+    text-align: center;
+    color: var(--color-background);
 
     @media (max-width: 450px) {
       width: 100px;
@@ -114,7 +110,7 @@ const Tooltip = styled.div`
 
     border-width: 5px;
     border-style: solid;
-    border-color: var(--color-bill) transparent transparent transparent;
+    border-color: var(--color-text) transparent transparent transparent;
 
     transform: rotate(180deg);
   }
@@ -148,15 +144,15 @@ const StateText = styled.span`
   top: -28px;
   right: -28px;
 
-  margin: 0;
-  padding: 0;
-
   visibility: hidden;
   opacity: 0;
 
+  margin: 0;
+  padding: 0;
+
   font-size: 2rem;
   font-family: advocate_c43_mid;
-  color: var(--color-gray700);
+  color: var(--color-text);
 `;
 
 export default TooltipAvatar;

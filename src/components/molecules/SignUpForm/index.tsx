@@ -7,6 +7,7 @@ import states from './states.json';
 import createApolloClient from '@utils/ApolloClient';
 import { gql } from '@apollo/client';
 import { useAuth0 } from '@auth0/auth0-react';
+import { AUTH0_LOGOUT_URL } from '@constants';
 
 export type SignUpFormProps = {
   userProfile: User;
@@ -82,7 +83,11 @@ const SignUpForm = ({ userProfile, setUserProfile }: SignUpFormProps) => {
       <Logout
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
-        onClick={() => logout()}
+        onClick={() =>
+          logout({
+            returnTo: AUTH0_LOGOUT_URL,
+          })
+        }
       >
         logout
       </Logout>
@@ -203,7 +208,7 @@ const Wrapper = styled(motion.div)`
   background: rgba(0, 0, 0, 0.5);
 
   border-radius: 10px;
-  border: solid thin var(--color-gray300);
+  border: solid thin var(--color-text);
 
   display: flex;
   flex-direction: column;
@@ -278,7 +283,7 @@ const StyledForm = styled.form`
     background-color: transparent;
 
     border: unset;
-    border-bottom: solid thin var(--color-gray300);
+    border-bottom: solid thin var(--color-text);
     outline: none;
 
     transition: 0.3s all;

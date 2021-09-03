@@ -9,13 +9,19 @@ import { HASURA_GRAPHQL_URL } from '@constants';
 
 let apolloClient: ApolloClient<NormalizedCacheObject>;
 
-const getHeaders = (accessToken: string) => {
+const getHeaders = (accessToken?: string) => {
+  if (!accessToken) {
+    return {
+      'X-Hasura-Role': 'anonymous-website-user',
+    };
+  }
+
   return {
     Authorization: `Bearer ${accessToken}`,
   };
 };
 
-const createApolloClient = (accessToken: string) => {
+const createApolloClient = (accessToken?: string) => {
   if (apolloClient) {
     return apolloClient;
   }

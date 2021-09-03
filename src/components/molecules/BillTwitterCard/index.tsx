@@ -106,32 +106,36 @@ const BillTwitterCard = (props: BillTwitterCardProps) => {
       number={Number(number)}
       onClick={onClick}
     >
-      <Link to={`officials/${sponsor.id}`}>
+      {/* Row 1 */}
+      <Link className="bill-sponsorImage" to={`officials/${sponsor.id}`}>
         <CircleAvatar
-          className="bill-sponsorImage"
           preferred_name={sponsor.preferred_name}
           political_party={sponsor.political_party}
           image={sponsor.image}
           loading="lazy"
         />
       </Link>
-      <p className="bill-sponsorName">
-        {`${sponsor.preferred_name} · ${sponsor.state}`}
-      </p>
+      <Link className="bill-sponsorName" to={`officials/${sponsor.id}`}>
+        <p>{`${sponsor.preferred_name} · ${sponsor.state}`}</p>
+      </Link>
       <p className="bill-timestamp">{new Date(status_at).toDateString()}</p>
       {subject !== 'No Subject' && <p className="bill-subject">{subject}</p>}
       {subject !== 'No Subject' && (
         <SubjectIcon subject={subject} className="bill-subjectIcon" />
       )}
 
+      {/* Row 2 */}
       <Link className="bill-id" to={`${congress}/${type}${number}/`}>
         <p>{`${type.toUpperCase()} ${number}`}</p>
       </Link>
 
+      {/* Row 3 */}
       <p className="bill-title">{truncate(title, 300)}</p>
 
+      {/* Row 4 */}
       <StampText className="bill-status">{status}</StampText>
 
+      {/* Row  */}
       <ButtonCanvas
         className="yea"
         onClick={async () => handleVoteClick('Yea')}
@@ -165,34 +169,34 @@ const Vote = styled.span<{ isUserVote?: boolean }>`
   font-size: 1.2rem;
   font-family: advocate_c43_mid;
   color: ${(props) =>
-    props.isUserVote ? 'var(--color-secondary)' : 'var(--color-gray500)'};
+    props.isUserVote ? 'var(--color-text)' : 'var(--color-gray500)'};
 
   :hover {
-    color: var(--color-secondary);
+    color: var(--color-text);
   }
 `;
 
 const Wrapper = styled(motion.div)<{
   number: number;
 }>`
+  overflow: hidden;
+
   max-width: 600px;
   width: 100%;
-
   margin: 0;
   padding-top: 12px;
   padding-left: 16px;
   padding-right: 16px;
 
-  overflow: hidden;
+  border: solid thin var(--color-text);
+  border-radius: 10px;
 
   background-color: var(--color-card);
-
-  border: solid thin var(--color-gray300);
-  border-radius: 10px;
 
   text-align: left;
 
   display: grid;
+  align-items: start;
   grid-template-columns: 60px repeat(8, 1fr) 40px;
   grid-template-rows: 20px 20px 40px 30px auto 50px 36px;
   grid-template-areas:
@@ -203,7 +207,6 @@ const Wrapper = styled(motion.div)<{
     'sponsorImage title       title       title       title       title       title   title   title    title'
     'sponsorImage .....       ......      status      status      status      status  ......  ......  ......'
     'sponsorImage .....       ......      yea         ........... ........... nay     ......  ......  ......';
-  align-items: start;
 
   :hover {
     background-color: var(--color-paper);
@@ -212,22 +215,6 @@ const Wrapper = styled(motion.div)<{
   p {
     margin: 0;
     font-family: century_supra_t3;
-  }
-
-  .yea {
-    grid-area: yea;
-
-    height: auto;
-    width: auto;
-    min-width: unset;
-  }
-
-  .nay {
-    grid-area: nay;
-
-    height: auto;
-    width: auto;
-    min-width: unset;
   }
 
   .bill-sponsorImage {
@@ -241,6 +228,20 @@ const Wrapper = styled(motion.div)<{
     white-space: nowrap;
     font-size: 0.9rem;
     font-weight: 400;
+
+    :hover {
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+  }
+
+  .bill-timestamp {
+    grid-area: timestamp;
+
+    text-align: left;
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: var(--color-dimText);
   }
 
   .bill-subject {
@@ -298,15 +299,6 @@ const Wrapper = styled(motion.div)<{
     letter-spacing: -0.063px;
   }
 
-  .bill-timestamp {
-    grid-area: timestamp;
-
-    text-align: left;
-    font-size: 0.8rem;
-    font-weight: 400;
-    color: var(--color-dimText);
-  }
-
   .bill-status {
     grid-area: status;
     justify-self: center;
@@ -322,5 +314,21 @@ const Wrapper = styled(motion.div)<{
     // Alternate stamp angle to give it a realistic behavior
     transform: ${(properties) =>
       properties.number % 2 === 1 ? 'rotate(4deg)' : 'rotate(-3deg)'};
+  }
+
+  .yea {
+    grid-area: yea;
+
+    height: auto;
+    min-width: unset;
+    width: auto;
+  }
+
+  .nay {
+    grid-area: nay;
+
+    height: auto;
+    width: auto;
+    min-width: unset;
   }
 `;

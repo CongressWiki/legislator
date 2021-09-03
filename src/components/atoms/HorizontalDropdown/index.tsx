@@ -62,7 +62,7 @@ const Wrapper = styled.div`
 
   overflow: show;
 
-  color: var(--color-gray500);
+  color: var(--color-text);
 `;
 
 const DropDownHeader = styled.div`
@@ -75,12 +75,12 @@ const DropDownHeader = styled.div`
   display: inline-block;
 
   font-family: ${fontFamily};
-  color: var(--color-gray500);
+  color: var(--color-text);
   white-space: nowrap;
 
   :hover {
     cursor: pointer;
-    color: var(--color-secondary);
+    color: var(--color-text);
   }
 `;
 
@@ -123,10 +123,11 @@ const ListItem = styled.li`
   &:before {
     content: '|';
     position: relative;
+    color: var(--color-gray500);
   }
 
   &:hover {
     cursor: pointer;
-    color: var(--color-secondary);
+    color: var(--color-text);
   }
 `;

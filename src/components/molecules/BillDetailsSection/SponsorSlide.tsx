@@ -57,7 +57,7 @@ const SponsorSlide = ({
                 political_party={elected_official.political_party}
                 image={elected_official.image}
                 state={elected_official.state}
-                backgroundColor="var(--color-gray700)"
+                backgroundColor="var(--color-text)"
                 size={cosponsorAvatarSize}
                 loading="lazy"
               />
@@ -106,19 +106,20 @@ const CosponsorGroup = styled.div`
   align-items: space-evenly;
 `;
 
-const OverflowCosponsorAvatar = styled(Avatar)`
-  margin-bottom: 10px;
-  margin-top: 10px;
-  padding: 0;
+// Not production ready. Experimental.
+// const OverflowCosponsorAvatar = styled(Avatar)`
+//   margin-bottom: 10px;
+//   margin-top: 10px;
+//   padding: 0;
 
-  justify-self: center;
+//   justify-self: center;
 
-  background-color: var(--color-gray300);
-  border-color: var(--color-gray300);
+//   background-color: var(--color-text);
+//   border-color: var(--color-text);
 
-  p {
-    margin: 0;
-    padding: 0;
-    white-space: wrap;
-  }
-`;
+//   p {
+//     margin: 0;
+//     padding: 0;
+//     white-space: wrap;
+//   }
+// `;

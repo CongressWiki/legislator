@@ -1,4 +1,4 @@
-// if (process.env.NODE_ENV !== 'production') {
+// If (process.env.NODE_ENV !== 'production') {
 //   require('dotenv').config({
 //     path: `.env.${process.env.NODE_ENV}`,
 //   });
@@ -8,7 +8,7 @@
 export const COLORS = {
   // Text
   text: {
-    light: 'hsl(0, 0%, 10%)',
+    light: 'hsl(215, 51%, 10%)',
     dark: 'hsl(0, 0%, 100%)',
   },
   dimText: {
@@ -17,7 +17,7 @@ export const COLORS = {
   },
   // Backgrounds
   background: {
-    light: 'hsl(105, 20%, 96%)',
+    light: 'hsl(0, 0%, 100%)',
     dark: 'hsl(215, 51%, 10%)',
   },
   contentBackground: {
@@ -123,7 +123,7 @@ export const getPartyColors = (party: string) => {
     case 'independent':
       return 'var(--color-independentGreen)';
     default:
-      return 'var(--color-gray300)';
+      return 'var(--color-text)';
   }
 };
 

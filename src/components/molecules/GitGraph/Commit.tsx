@@ -1,18 +1,18 @@
-import * as React from "react";
+import * as React from 'react';
 import {
   GitgraphCore,
   Commit as CommitCore,
   Mode,
   Coordinate,
-} from "@gitgraph/core";
-import { ReactSvgElement } from "./types";
-import { Dot } from "./Dot";
-import { Tooltip } from "./Tooltip";
-import { Arrow } from "./Arrow";
-import { Message } from "./Message";
-import { Tag, TAG_PADDING_X } from "./Tag";
-import { BranchLabel } from "./BranchLabel";
-import { MutableRefObject } from "react";
+} from '@gitgraph/core';
+import { ReactSvgElement } from './types';
+import { Dot } from './Dot';
+import { Tooltip } from './Tooltip';
+import { Arrow } from './Arrow';
+import { Message } from './Message';
+import { Tag, TAG_PADDING_X } from './Tag';
+import { BranchLabel } from './BranchLabel';
+import { MutableRefObject } from 'react';
 
 interface CommitsProps {
   commits: Array<CommitCore<ReactSvgElement>>;
@@ -43,7 +43,8 @@ export const Commit = (props: CommitsProps) => {
   const branchLabelRef = React.useRef<SVGGElement>();
   const tagRefs: MutableRefObject<SVGGElement[]> = React.useRef([]);
   // "as unknown as any" needed to avoid `ref` mistypings later. :(
-  const messageRef: MutableRefObject<SVGGElement> = (React.useRef<SVGGElement>() as unknown) as any;
+  const messageRef: MutableRefObject<SVGGElement> =
+    React.useRef<SVGGElement>() as unknown as any;
 
   const [branchLabelX, setBranchLabelX] = React.useState(0);
   const [tagXs, setTagXs] = React.useState<number[]>([]);
@@ -75,10 +76,10 @@ export const Commit = (props: CommitsProps) => {
       return (
         <BranchLabel
           key={branch.name}
+          ref={branchLabelRef}
           gitgraph={gitgraph}
           branch={branch}
           commit={commit}
-          ref={branchLabelRef}
           branchLabelX={branchLabelX}
         />
       );
@@ -93,9 +94,9 @@ export const Commit = (props: CommitsProps) => {
     return commit.tags.map((tag, i) => (
       <Tag
         key={`${commit.hashAbbrev}-${tag.name}`}
+        ref={(r) => (tagRefs.current[i] = r!)}
         commit={commit}
         tag={tag}
-        ref={(r) => (tagRefs.current[i] = r!)}
         tagX={tagXs[i] || 0}
       />
     ));
@@ -103,7 +104,7 @@ export const Commit = (props: CommitsProps) => {
 
   const { x, y } = props.getWithCommitOffset(commit);
 
-  // positionCommitsElements
+  // PositionCommitsElements
   React.useLayoutEffect(() => {
     if (gitgraph.isHorizontal) {
       // Elements don't appear on horizontal mode, yet.
@@ -154,7 +155,7 @@ export const Commit = (props: CommitsProps) => {
         <Tooltip commit={commit}>
           {commit.hashAbbrev} - {commit.subject}
         </Tooltip>
-      </g>,
+      </g>
     );
   }
 
@@ -175,7 +176,7 @@ export const Commit = (props: CommitsProps) => {
       {arrows}
       <g transform={`translate(${-x}, 0)`}>
         {commit.style.message.display && (
-          <Message commit={commit} ref={messageRef} messageX={messageX} />
+          <Message ref={messageRef} commit={commit} messageX={messageX} />
         )}
         {branchLabels}
         {tags}

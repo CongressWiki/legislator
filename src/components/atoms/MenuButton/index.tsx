@@ -128,7 +128,7 @@ const Button = styled(motion.button)`
 
   border: 0;
   border-radius: 100px;
-  border: var(--color-gray300) solid thin;
+  border: var(--color-text) solid thin;
   box-shadow: inset 0 0 0 1px rgba(#000, 0.2),
     0 2px 0 rgba(var(--color-primary), 0.2);
 

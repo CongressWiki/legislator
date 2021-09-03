@@ -110,7 +110,7 @@ const QuestionContainer = styled.h3<{ expanded: boolean }>`
 
   transition: all 0.3s ease-in-out;
 
-  border-bottom: solid thin var(--color-gray300);
+  border-bottom: solid thin var(--color-text);
 
   text-align: center;
   overflow: hidden;

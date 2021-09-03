@@ -51,7 +51,7 @@ const Wrapper = styled(motion.div)`
   border: solid thin var(--color-text);
   border-radius: 5px;
   background-color: var(--color-background);
-  text-shadow: 1px 1px 0px var(--color-gray300);
+  text-shadow: 1px 1px 0px var(--color-text);
 `;
 
 export type BillSponsorProps = {

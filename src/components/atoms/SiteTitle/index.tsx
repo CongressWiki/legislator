@@ -18,7 +18,7 @@ const Header = styled.p`
   font-family: advocate_c43_mid;
   font-size: 4rem;
 
-  color: var(--color-primary);
+  color: var(--color-text);
 
   @media (max-width: 600px) {
     font-size: 3rem;

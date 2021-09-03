@@ -126,7 +126,7 @@ function getHighestRanking<ItemType>(
 ): RankingInfo {
   if (!keys) {
     // If keys is not specified, then we assume the item given is ready to be matched
-    const stringItem = (item as unknown) as string;
+    const stringItem = item as unknown as string;
     return {
       // Ends up being duplicate of 'item' in matches but consistent
       rankedValue: stringItem,
@@ -162,7 +162,7 @@ function getHighestRanking<ItemType>(
       return { rankedValue: newRankedValue, rank, keyIndex, keyThreshold };
     },
     {
-      rankedValue: (item as unknown) as string,
+      rankedValue: item as unknown as string,
       rank: rankings.NO_MATCH as Ranking,
       keyIndex: -1,
       keyThreshold: options.threshold,

@@ -34,9 +34,9 @@ const Wrapper = styled.div`
   grid-template-columns: repeat(4, 1fr);
   grid-template-areas: 'logo . . button';
 
-  border-left: 1px solid var(--color-gray300);
-  border-right: 1px solid var(--color-gray300);
-  border-bottom: 1px solid var(--color-gray300);
+  border-left: 1px solid var(--color-text);
+  border-right: 1px solid var(--color-text);
+  border-bottom: 1px solid var(--color-text);
 
   background-color: var(--color-background);
 

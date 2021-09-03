@@ -1,11 +1,11 @@
-import * as React from "react";
+import * as React from 'react';
 import {
   GitgraphCommitOptions,
   GitgraphBranchOptions,
   GitgraphTagOptions,
   GitgraphMergeOptions,
   BranchUserApi,
-} from "@gitgraph/core";
+} from '@gitgraph/core';
 
 export type ReactSvgElement = React.ReactElement<SVGElement>;
 

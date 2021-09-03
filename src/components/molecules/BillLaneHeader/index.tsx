@@ -62,7 +62,7 @@ const Wrapper = styled.div`
   padding-left: 1em;
   padding-right: 1em;
 
-  border-bottom: solid thin var(--color-gray300);
+  border-bottom: solid thin var(--color-text);
 
   font-family: advocate_c43_mid;
   font-size: 1.4em;

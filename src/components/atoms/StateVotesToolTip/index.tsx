@@ -42,26 +42,12 @@ const Wrapper = styled.div<{ hide?: boolean }>`
   /* let mouse events pass through */
   pointer-events: none;
 
-  text-shadow: 1px 1px 0px var(--color-gray300);
+  color: var(--color-background);
+  /* text-shadow: 1px 1px 0px var(--color-background); */
 
-  background: var(--color-bill);
-  background: -webkit-radial-gradient(
-    bottom,
-    'var(--color-billGradient1)',
-    'var(--color-billGradient2)'
-  );
-  background: -moz-radial-gradient(
-    bottom,
-    'var(--color-billGradient1)',
-    'var(--color-billGradient2)'
-  );
-  background: radial-gradient(
-    to top,
-    'var(--color-billGradient1)',
-    'var(--color-billGradient2)'
-  );
+  background: var(--color-text);
 
-  border: 1px groove var(--color-bill);
+  border: 1px groove var(--color-text);
   border-radius: 1px;
 
   -webkit-box-shadow: 0px 10px 15px 0px rgba(0, 0, 0, 0.75);

@@ -27,7 +27,7 @@ const Wrapper = styled.header`
 
   display: flex;
   justify-content: center;
-  border-top: 1px solid var(--color-gray300);
+  border-top: 1px solid var(--color-text);
   background-color: var(--color-background);
 `;
 

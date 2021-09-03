@@ -91,7 +91,7 @@ const Wrapper = styled(motion.div)<{ number: number }>`
     'subjectIcon action    action      action      action      action      action  action  action   action'
     'subjectIcon .....     ......      status      status      status      status  ......  openBill openBill';
 
-  border: solid thin var(--color-gray300);
+  border: solid thin var(--color-text);
   border-radius: 10px;
 
   text-align: left;

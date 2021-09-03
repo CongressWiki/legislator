@@ -120,13 +120,6 @@ module.exports = {
     */
     {
       resolve: 'gatsby-plugin-sharp',
-      options: {
-        defaults: {
-          formats: ['avif', 'webp'],
-          quality: 80,
-          placeholder: 'blurred',
-        },
-      },
     },
     {
       resolve: 'gatsby-transformer-sharp',

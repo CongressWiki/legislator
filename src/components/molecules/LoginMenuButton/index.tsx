@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import LoginButton from '@components/molecules/LoginButton';
-// import ButtonCanvas from '@components/atoms/ButtonCanvas';
+// Import ButtonCanvas from '@components/atoms/ButtonCanvas';
 import { useAuth0 } from '@auth0/auth0-react';
 import createApolloClient from '@utils/ApolloClient';
 import { gql } from '@apollo/client';
@@ -12,7 +12,7 @@ import SignUpFormMask from '@components/organisms/SignUpFormMask';
 import ButtonCanvas from '@components/atoms/ButtonCanvas';
 import Avatar from '@components/atoms/Avatar';
 
-export type LoginMenuButtonProps = {};
+export type LoginMenuButtonProps = Record<string, unknown>;
 
 const LoginMenuButton = ({}: LoginMenuButtonProps) => {
   const [active, setActive] = useState(false);
@@ -201,14 +201,14 @@ const Button = styled(motion.button)`
 
   border: 0;
   border-radius: 100px;
-  border: var(--color-gray300) solid thin;
+  border: var(--color-text) solid thin;
   box-shadow: inset 0 0 0 1px rgba(#000, 0.2),
-    0 2px 0 rgba(var(--color-primary), 0.2);
+    0 2px 0 rgba(var(--color-text), 0.2);
   outline: none;
 
   font-size: 0.8rem;
   font-family: advocate_c43_mid;
-  color: var(--color-secondary);
+  color: var(--color-text);
 
   cursor: pointer;
 
@@ -243,7 +243,7 @@ const StyledLoginButton = styled.button`
   background-color: transparent;
   outline: none;
 
-  color: var(--color-primary);
+  color: var(--color-text);
   font-family: advocate_c43_mid;
   font-size: 1.3rem;
 

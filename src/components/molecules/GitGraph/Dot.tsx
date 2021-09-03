@@ -1,5 +1,5 @@
-import * as React from "react";
-import { Commit } from "@gitgraph/core";
+import * as React from 'react';
+import { Commit } from '@gitgraph/core';
 
 export interface DotProps {
   commit: Commit<React.ReactElement<SVGElement>>;
@@ -44,7 +44,7 @@ export const Dot: React.FC<DotProps> = ({
           cx={commit.style.dot.size}
           cy={commit.style.dot.size}
           r={commit.style.dot.size}
-          fill={commit.style.dot.color as string}
+          fill={commit.style.dot.color}
         />
         <clipPath id={`clip-${commit.hash}`}>
           <use xlinkHref={`#${commit.hash}`} />

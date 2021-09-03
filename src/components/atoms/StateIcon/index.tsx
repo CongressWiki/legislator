@@ -7,8 +7,9 @@ export type StateIconProps = {
 };
 
 const StateIcon = ({ state, className, ...rest }: IconProps) => {
-  const ImportedIconReference =
-    React.useRef<false | React.FC<React.SVGProps<SVGSVGElement>>>(false);
+  const ImportedIconReference = React.useRef<
+    false | React.FC<React.SVGProps<SVGSVGElement>>
+  >(false);
   const [loading, setLoading] = React.useState(false);
 
   state = _.upperFirst(_.camelCase(state));

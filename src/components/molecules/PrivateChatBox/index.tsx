@@ -283,7 +283,7 @@ const Chat = styled(motion.div)`
   box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
   background: rgba(0, 0, 0, 0.5);
   border-radius: 10px;
-  border: solid thin var(--color-gray300);
+  border: solid thin var(--color-text);
   display: flex;
   justify-content: space-between;
   flex-direction: column;
@@ -367,7 +367,7 @@ const MessageFeed = styled(motion.div)`
   }
   /* Handle */
   ::-webkit-scrollbar-thumb {
-    background: var(--color-gray300);
+    background: var(--color-text);
     border-radius: 3px;
   }
   /* Handle on hover */

@@ -22,7 +22,7 @@
 
 //   border: 0;
 //   border-radius: 0;
-//   border-bottom: solid thin var(--color-gray300);
+//   border-bottom: solid thin var(--color-text);
 
 //   :hover {
 //     background-color: hsl(229deg, 88%, 16%);
@@ -56,7 +56,7 @@
 
 //   box-shadow: 0.2rem;
 //   border-radius: 10px;
-//   border: solid thin var(--color-gray300);
+//   border: solid thin var(--color-text);
 //   background-color: hsl(229deg, 78%, 16%);
 // `;
 
@@ -77,8 +77,8 @@
 //   border: 0;
 //   border-top: none;
 //   border-radius: 0;
-//   border-left: solid thin var(--color-gray300);
-//   border-right: solid thin var(--color-gray300);
+//   border-left: solid thin var(--color-text);
+//   border-right: solid thin var(--color-text);
 // `;
 
 // const LaneTitleWrapper = styled.div`

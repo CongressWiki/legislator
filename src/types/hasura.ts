@@ -23,6 +23,7 @@ export type Bill = {
   related_bills?: Record<string, any>;
   roll_calls: RollCall[];
   originalChamber: 'HOUSE' | 'SENATE' | 'PRESIDENT';
+  userVotes: number;
 };
 
 export type Official = {

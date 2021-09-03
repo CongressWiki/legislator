@@ -61,7 +61,7 @@ const StyledButtonCanvas = styled(motion.div)<ButtonCanvasProps>`
 
     svg {
       path {
-        fill: var(--color-secondary);
+        fill: var(--color-text);
       }
     }
   }

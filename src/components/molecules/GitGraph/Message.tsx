@@ -1,6 +1,6 @@
-import * as React from "react";
-import { ReactSvgElement } from "./types";
-import { Commit } from "@gitgraph/core";
+import * as React from 'react';
+import { ReactSvgElement } from './types';
+import { Commit } from '@gitgraph/core';
 
 interface MessageProps {
   commit: Commit<ReactSvgElement>;
@@ -44,5 +44,5 @@ export const Message = React.forwardRef<SVGGElement, MessageProps>(
         {body}
       </g>
     );
-  },
+  }
 );

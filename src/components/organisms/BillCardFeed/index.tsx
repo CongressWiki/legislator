@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import type { Bill, OfficialWithImage } from '@type/hasura';
 import BillCard from '@components/molecules/BillTwitterCard';
 import useInfiniteScroll from '@utils/useInfiniteScroll';
@@ -7,6 +7,8 @@ import { search } from '@utils/Search';
 import BillLane from '@components/atoms/BillLane';
 import BillLaneHeader from '@components/molecules/BillLaneHeader';
 import styled from 'styled-components';
+// Import createApolloClient from '@utils/ApolloClient';
+// import { gql } from '@apollo/client';
 
 const CHAMBER_BILL_TYPES = {
   House: ['hr', 'hres', 'hconres', 'hjres'],
@@ -16,7 +18,12 @@ const CHAMBER_BILL_TYPES = {
 
 export type BillCardGridProps = {
   bills: Array<
-    Bill & { sponsor?: OfficialWithImage; userVote?: 'Yea' | 'Nay' }
+    Bill & {
+      sponsor?: OfficialWithImage;
+      userVote?: 'Yea' | 'Nay';
+      yeaCount?: number;
+      nayCount?: number;
+    }
   >;
 };
 
@@ -28,6 +35,49 @@ const BillCardFeed = ({ bills }: BillCardGridProps) => {
   const [searchBy, setSearchBy] = useState('');
   const [orderByAsc, setOrderByAsc] = useState(false);
   const offset = 0;
+
+  // UseEffect(() => {
+  //   async function getVoteCounts() {
+  //     const apolloClient = createApolloClient();
+  //     const response = await apolloClient.query({
+  //       query: gql(
+  //         `query queryBillsVotesQuery($limit: Int!, $offset: Int!) {
+  //           bills(limit: $limit, offset: $offset, order_by: {status_at: desc}) {
+  //             id
+  //             yeaCount: user_votes_aggregate(
+  //               where: { decision: { _eq: "Yea" } }
+  //             ) {
+  //               aggregate {
+  //                 count
+  //               }
+  //             }
+  //             nayCount: user_votes_aggregate(
+  //               where: { decision: { _eq: "Nay" } }
+  //             ) {
+  //               aggregate {
+  //                 count
+  //               }
+  //             }
+  //           }
+  //         }`
+  //       ),
+  //       variables: { limit, offset: 0 },
+  //     });
+  //     const billsVoteCounts = response?.data.bills.map((bill: any) => ({
+  //       id: bill.id,
+  //       yeaCount: bill.yeaCount.aggregate.count,
+  //       nayCount: bill.nayCount.aggregate.count,
+  //     }));
+  //     billsVoteCounts.map((billsVoteCount: any) => {
+  //       const bill = bills.find((bill) => bill.id === billsVoteCount.id);
+  //       bill.yeaCount = billsVoteCount.yeaCount;
+  //       bill.nayCount = billsVoteCount.nayCount;
+  //       return bill;
+  //     });
+  //   }
+
+  //   void getVoteCounts();
+  // }, [limit]);
 
   function fetchMoreListItems() {
     setTimeout(() => {
@@ -42,7 +92,6 @@ const BillCardFeed = ({ bills }: BillCardGridProps) => {
     }
 
     // @ts-expect-error not going to list every key
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
     setBillTypes(CHAMBER_BILL_TYPES[option]);
   };
 
@@ -60,7 +109,7 @@ const BillCardFeed = ({ bills }: BillCardGridProps) => {
     const matchesSearchBy =
       !searchBy ||
       bill.id.toLowerCase().includes(searchBy) ||
-      bill.sponsor.preferred_name.toLocaleLowerCase().includes(searchBy) ||
+      bill.sponsor.preferred_name.toLowerCase().includes(searchBy) ||
       bill.title.toLowerCase().includes(searchBy);
 
     return isBillType && matchesSearchBy ? bill : undefined;

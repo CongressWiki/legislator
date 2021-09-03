@@ -1,6 +1,6 @@
-import * as React from "react";
-import { ReactSvgElement } from "./types";
-import { GitgraphCore, Commit, arrowSvgPath } from "@gitgraph/core";
+import * as React from 'react';
+import { ReactSvgElement } from './types';
+import { GitgraphCore, Commit, arrowSvgPath } from '@gitgraph/core';
 
 interface ArrowProps {
   commits: Array<Commit<ReactSvgElement>>;
@@ -13,7 +13,7 @@ interface ArrowProps {
 export class Arrow extends React.Component<ArrowProps> {
   public render() {
     const parent = this.props.commits.find(
-      ({ hash }) => hash === this.props.parentHash,
+      ({ hash }) => hash === this.props.parentHash
     );
     if (!parent) return null;
 
@@ -29,7 +29,7 @@ export class Arrow extends React.Component<ArrowProps> {
       <g transform={`translate(${origin.x}, ${origin.y})`}>
         <path
           d={arrowSvgPath(this.props.gitgraph, parent, this.props.commit)}
-          fill={this.props.gitgraph.template.arrow.color!}
+          fill={this.props.gitgraph.template.arrow.color}
         />
       </g>
     );

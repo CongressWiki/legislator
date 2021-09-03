@@ -38,7 +38,7 @@ const GlobalStyles = createGlobalStyle`
   }
   /* Handle */
   ::-webkit-scrollbar-thumb {
-    background: var(--color-gray300);
+    background: var(--color-text);
     border-radius: 10px;
   }
   /* Handle on hover */

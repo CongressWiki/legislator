@@ -28,8 +28,8 @@ const Wrapper = styled.div`
 
   padding: 8px 12px;
 
-  border-top: solid 1px var(--color-gray300);
-  border-bottom: solid 1px var(--color-gray300);
+  border-top: solid 1px var(--color-text);
+  border-bottom: solid 1px var(--color-text);
 `;
 
 const Title = styled.h3`

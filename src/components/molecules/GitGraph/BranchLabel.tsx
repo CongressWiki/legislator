@@ -1,14 +1,14 @@
-import * as React from "react";
-import { Branch, Commit, GitgraphCore } from "@gitgraph/core";
-import { ReactSvgElement } from "./types";
-import { MutableRefObject } from "react";
+import * as React from 'react';
+import { Branch, Commit, GitgraphCore } from '@gitgraph/core';
+import { ReactSvgElement } from './types';
+import { MutableRefObject } from 'react';
 
 interface BranchLabelBaseProps {
   branch: Branch<React.ReactElement<SVGElement>>;
   commit: Commit<React.ReactElement<SVGElement>>;
 }
 
-function DefaultBranchLabel({ branch, commit }: BranchLabelBaseProps) {
+const DefaultBranchLabel = ({ branch, commit }: BranchLabelBaseProps) => {
   const [textSizing, setTextSizing] = React.useState({
     textWidth: 0,
     textHeight: 0,
@@ -45,7 +45,7 @@ function DefaultBranchLabel({ branch, commit }: BranchLabelBaseProps) {
       </text>
     </g>
   );
-}
+};
 
 interface BranchLabelProps extends BranchLabelBaseProps {
   gitgraph: GitgraphCore<ReactSvgElement>;
@@ -85,18 +85,18 @@ export const BranchLabel = React.forwardRef<SVGGElement, BranchLabelProps>(
           {branchLabel}
         </g>
       );
-    } else {
-      const commitDotSize = commit.style.dot.size * 2;
-      const horizontalMarginTop = 10;
-      const y = commitDotSize + horizontalMarginTop;
-
-      return (
-        <g ref={ref} transform={`translate(${commit.x}, ${y})`}>
-          {branchLabel}
-        </g>
-      );
     }
-  },
+
+    const commitDotSize = commit.style.dot.size * 2;
+    const horizontalMarginTop = 10;
+    const y = commitDotSize + horizontalMarginTop;
+
+    return (
+      <g ref={ref} transform={`translate(${commit.x}, ${y})`}>
+        {branchLabel}
+      </g>
+    );
+  }
 ) as CompoundedComponent;
 
 BranchLabel.paddingX = 10;

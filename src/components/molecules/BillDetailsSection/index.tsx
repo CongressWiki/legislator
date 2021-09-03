@@ -54,7 +54,7 @@ const SectionTitle = styled.h2`
   writing-mode: vertical-rl;
   transform: rotate(180deg);
 
-  color: var(--color-primary);
+  color: var(--color-text);
   font-family: advocate_c43_mid;
   font-size: 2.5rem;
 `;

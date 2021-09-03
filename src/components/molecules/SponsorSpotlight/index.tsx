@@ -69,11 +69,15 @@ const SponsorFrame = styled.div<{ partyColor: string }>`
   align-items: center;
   justify-content: center;
 
-  border: solid 1px ${(properties) => properties.partyColor};
+  border: solid 1px var(--color-text);
   box-shadow: 0 0 1px 1px ${(properties) => properties.partyColor};
   border-radius: 50%;
 
-  background-color: ${(properties) => properties.partyColor};
+  background-color: var(--color-background);
+
+  :hover {
+    background-color: ${(properties) => properties.partyColor};
+  }
 
   .image {
     z-index: 1;
@@ -91,13 +95,13 @@ const SponsorFrame = styled.div<{ partyColor: string }>`
 const SponsorState = styled.span`
   position: absolute;
   z-index: 3;
-  top: 0px;
+  top: -20px;
   right: 5px;
 
   transition: opacity 0.3s;
   opacity: 0;
 
-  color: var(--color-gray700);
+  color: var(--color-text);
   font-family: advocate_c43_mid;
   font-size: 2.5rem;
 

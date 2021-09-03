@@ -112,7 +112,7 @@ const Button = styled.button`
   background-color: transparent;
   outline: none;
 
-  color: var(--color-primary);
+  color: var(--color-text);
   font-family: advocate_c43_mid;
   font-size: 1.3rem;
 

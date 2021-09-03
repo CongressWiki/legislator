@@ -57,7 +57,7 @@ const Wrapper = styled(motion.div)<{ center: boolean }>`
   padding-left: 1rem;
   padding-right: 1rem;
 
-  border: solid thin var(--color-gray300);
+  border: solid thin var(--color-text);
   border-radius: 10px;
 
   p {

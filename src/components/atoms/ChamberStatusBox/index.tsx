@@ -25,7 +25,7 @@ export default ChamberStatusBox;
 const Wrapper = styled.div`
   height: 100%;
 
-  /* border: thin solid var(--color-gray300);
+  /* border: thin solid var(--color-text);
   border-radius: 10px; */
 
   padding-left: 2em;

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import type { Bill } from '@type/hasura';
-// import { Link } from 'gatsby';
+// Import { Link } from 'gatsby';
 import { motion } from 'framer-motion';
 import truncate from '@utils/truncate';
 
@@ -62,7 +62,7 @@ const Paper = styled(motion.div)`
   overflow: hidden;
 
   padding: 0.7rem;
-  border: var(--color-gray300) solid thin;
+  border: var(--color-text) solid thin;
 
   background-color: var(--color-paper);
 

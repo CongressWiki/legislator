@@ -36,7 +36,7 @@ const SpinnerBox = styled.div`
 const ThreeQuarterSpinner = styled(motion.div)`
   width: 50px;
   height: 50px;
-  border: 3px solid var(--color-primary);
+  border: 3px solid var(--color-text);
   border-top: 3px solid transparent;
   border-radius: 50%;
 `;

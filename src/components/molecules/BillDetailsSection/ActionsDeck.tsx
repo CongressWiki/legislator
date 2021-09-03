@@ -24,7 +24,7 @@ const ActionsDeck = ({ actions, className }: ActionsDeckProps) => {
     <RollCallSlide rollCall={latestRollCall.roll_call} className={className} />
   );
 
-  // return (
+  // Return (
   //   <Wrapper className={className} >
   //     <Controls>
   //       {actions.map((action, idx) => {
@@ -59,7 +59,7 @@ const SlideButton = styled.button<{ active: boolean }>`
   background: transparent;
 
   border: none;
-  /* border-bottom: solid thin var(--color-gray300); */
+  /* border-bottom: solid thin var(--color-text); */
 
   outline: none;
 

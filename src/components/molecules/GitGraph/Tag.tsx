@@ -1,6 +1,6 @@
-import * as React from "react";
-import { Tag as CoreTag, Commit } from "@gitgraph/core";
-import { ReactSvgElement } from "./types";
+import * as React from 'react';
+import { Tag as CoreTag, Commit } from '@gitgraph/core';
+import { ReactSvgElement } from './types';
 
 interface BaseTagProps {
   tag: CoreTag<React.ReactElement<SVGElement>>;
@@ -9,12 +9,12 @@ interface BaseTagProps {
 export const TAG_PADDING_X = 10;
 export const TAG_PADDING_Y = 5;
 
-function DefaultTag(props: BaseTagProps) {
+const DefaultTag = (props: BaseTagProps) => {
   const [state, setState] = React.useState({ textWidth: 0, textHeight: 0 });
   const $text = React.useRef<SVGTextElement>(null);
 
   React.useEffect(() => {
-    const box = $text.current!.getBBox();
+    const box = $text.current.getBBox();
     setState({ textWidth: box.width, textHeight: box.height });
   }, []);
 
@@ -26,7 +26,7 @@ function DefaultTag(props: BaseTagProps) {
   const boxHeight = state.textHeight + 2 * TAG_PADDING_Y;
 
   const path = [
-    "M 0,0",
+    'M 0,0',
     `L ${offset},${boxHeight / 2}`,
     `V ${boxHeight / 2}`,
     `Q ${offset},${boxHeight / 2} ${offset + radius},${boxHeight / 2}`,
@@ -37,8 +37,8 @@ function DefaultTag(props: BaseTagProps) {
     `H ${offset + radius}`,
     `Q ${offset},-${boxHeight / 2} ${offset},-${boxHeight / 2}`,
     `V -${boxHeight / 2}`,
-    "z",
-  ].join(" ");
+    'z',
+  ].join(' ');
 
   return (
     <g>
@@ -56,7 +56,7 @@ function DefaultTag(props: BaseTagProps) {
       </text>
     </g>
   );
-}
+};
 
 interface TagProps extends BaseTagProps {
   commit: Commit<ReactSvgElement>;
