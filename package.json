@@ -82,7 +82,7 @@
     "@types/react-helmet": "^6.1.2",
     "@types/styled-components": "^5.1.12",
     "@types/ws": "^7.4.7",
-    "@typescript-eslint/eslint-plugin": "^4.29.2",
+    "@typescript-eslint/eslint-plugin": "^4.31.0",
     "@typescript-eslint/parser": "^4.29.2",
     "babel-loader": "^8.2.2",
     "babel-plugin-remove-graphql-queries": "3.12.0",
