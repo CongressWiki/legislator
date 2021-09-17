@@ -6,7 +6,7 @@ const path = require('path');
 
 const BillTemplate = path.resolve('./src/components/templates/Bill/index.tsx');
 const ElectedOfficialTemplate = path.resolve(
-  './src/components/templates/ElectedOfficial/index.tsx'
+  './src/components/templates/ElectedOfficial-v2/index.tsx'
 );
 
 exports.onCreateWebpackConfig = ({ actions }) => {

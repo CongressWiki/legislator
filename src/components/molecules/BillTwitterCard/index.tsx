@@ -165,17 +165,6 @@ const motionVariants = {
 
 export default BillTwitterCard;
 
-const Vote = styled.span<{ isUserVote?: boolean }>`
-  font-size: 1.2rem;
-  font-family: advocate_c43_mid;
-  color: ${(props) =>
-    props.isUserVote ? 'var(--color-text)' : 'var(--color-gray500)'};
-
-  :hover {
-    color: var(--color-text);
-  }
-`;
-
 const Wrapper = styled(motion.div)<{
   number: number;
 }>`
@@ -264,7 +253,7 @@ const Wrapper = styled(motion.div)<{
     /* SVGR components typically default to 1em */
     height: auto;
     width: 100%;
-    max-width: 2.5rem;
+    max-width: 40px;
 
     margin: 0;
     padding: 0;
@@ -302,7 +291,7 @@ const Wrapper = styled(motion.div)<{
   .bill-status {
     grid-area: status;
     justify-self: center;
-    align-self: center;
+    align-self: end;
 
     max-width: 14ch;
     padding: 1px;
@@ -330,5 +319,16 @@ const Wrapper = styled(motion.div)<{
     height: auto;
     width: auto;
     min-width: unset;
+  }
+`;
+
+const Vote = styled.span<{ isUserVote?: boolean }>`
+  font-size: 1.2rem;
+  font-family: advocate_c43_mid;
+  color: ${(props) =>
+    props.isUserVote ? 'var(--color-text)' : 'var(--color-gray500)'};
+
+  :hover {
+    color: var(--color-text);
   }
 `;

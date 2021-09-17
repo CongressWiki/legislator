@@ -3,12 +3,14 @@ import styled from 'styled-components';
 import MinimumLayout from '@components/templates/layouts/Minimum';
 import type { OfficialWithImage } from '@type/hasura';
 import Seo from '@components/App/Seo';
-import CircleAvatar from '@components/molecules/CircleAvatar';
-import CountBox from '@components/atoms/CountBox';
 import { graphql } from 'gatsby';
+import Image from '@components/atoms/Image';
+import Avatar from '@components/atoms/Avatar';
+import { getPartyColors } from '@constants';
 import OptionDetails, {
   OptionDetailsProps,
 } from '@components/molecules/OptionDetails';
+import CountBox from '@components/atoms/CountBox';
 
 export type PageQueryData = {
   hasura: {
@@ -45,6 +47,7 @@ export type PageQueryData = {
             congress: number;
             type: string;
             title: string;
+            short_title: string;
           };
         }>;
       };
@@ -113,7 +116,7 @@ export type PageQueryData = {
 };
 
 export const query = graphql`
-  query elected_officials_aggregate_counts($id: String!) {
+  query elected_officials2_aggregate_counts($id: String!) {
     hasura {
       elected_officials_by_pk(id: $id) {
         bills_aggregate {
@@ -148,6 +151,7 @@ export const query = graphql`
               congress
               type
               title
+              short_title
             }
           }
         }
@@ -239,12 +243,23 @@ const ElectedOfficialTemplate = ({
     },
   },
 }: ElectedOfficialTemplateProps) => {
-  const [clickedOption, setClickedOption] = useState<OptionDetailsProps | null>(
-    null
+  const [clickedOption, setClickedOption] = useState<string | null>(
+    'Bills Introduced'
   );
-  const [hoveredOption, setHoveredOption] = useState<OptionDetailsProps | null>(
-    null
+  const [hoveredOption, setHoveredOption] = useState<string | null>(null);
+
+  const termStartDate = new Date(electedOfficial.term_start_at).toLocaleString(
+    'en-us',
+    localDateStringOptions
   );
+  const termEndDate = new Date(electedOfficial.term_end_at).toLocaleString(
+    'en-us',
+    localDateStringOptions
+  );
+  const termText = `${termStartDate} - ${termEndDate}`;
+
+  const position = normalizePosition(electedOfficial.position);
+  const positionText = `${electedOfficial.state}  ${position}`;
 
   const activeOption = clickedOption ? clickedOption : hoveredOption;
 
@@ -254,7 +269,7 @@ const ElectedOfficialTemplate = ({
       count: bills_aggregate.aggregate.count,
       type: 'bills',
       details: bills_aggregate.nodes.map((bill) => ({
-        text: `Introduced ${bill.type.toUpperCase()} ${bill.number}`,
+        text: `${bill.type.toUpperCase()} ${bill.number}`,
         subtext: bill.short_title || bill.title,
         slug: `/${bill.congress}/${bill.type}${bill.number}`,
       })),
@@ -264,7 +279,7 @@ const ElectedOfficialTemplate = ({
       count: cosponsorships_aggregate.aggregate.count,
       type: 'cosponsorships',
       details: cosponsorships_aggregate.nodes.map(({ bill }) => ({
-        text: `Cosponsor of ${bill.type.toUpperCase()} ${bill.number}`,
+        text: `${bill.type.toUpperCase()} ${bill.number}`,
         subtext: bill.short_title || bill.title,
         slug: `/${bill.congress}/${bill.type}${bill.number}`,
       })),
@@ -274,13 +289,13 @@ const ElectedOfficialTemplate = ({
       count: amendments_aggregate.aggregate.count,
       type: 'amendments',
       details: amendments_aggregate.nodes.map((amendment) => ({
-        text: `Amended ${amendment.bill.type.toUpperCase()} ${
-          amendment.bill.number
-        } with ${amendment.type.toUpperCase()} ${amendment.number}`,
+        text: `${amendment.type.toUpperCase()} ${amendment.number}`,
         subtext:
           amendment.purpose ||
           amendment.description ||
-          `Bill: ${amendment.bill.title}`,
+          `Amends ${amendment.bill.type.toUpperCase()} ${
+            amendment.bill.number
+          } - ${amendment.bill.short_title || amendment.bill.title}`,
         slug: `/${amendment.bill.congress}/${amendment.bill.type}${amendment.bill.number}`,
       })),
     },
@@ -317,29 +332,16 @@ const ElectedOfficialTemplate = ({
   ];
 
   const handleOptionClick = (option: OptionDetailsProps) => {
-    const isActiveOption = clickedOption?.title === option.title;
+    const isActiveOption = clickedOption === option.title;
 
     if (isActiveOption) {
       setClickedOption(null);
     }
 
     if (!isActiveOption) {
-      setClickedOption(option);
+      setClickedOption(option.title);
     }
   };
-
-  const termStartDate = new Date(electedOfficial.term_start_at).toLocaleString(
-    'en-us',
-    localDateStringOptions
-  );
-  const termEndDate = new Date(electedOfficial.term_end_at).toLocaleString(
-    'en-us',
-    localDateStringOptions
-  );
-  const termText = `${termStartDate} - ${termEndDate}`;
-
-  const position = normalizePosition(electedOfficial.position);
-  const positionText = `${electedOfficial.state}  ${position}`;
 
   return (
     <MinimumLayout>
@@ -358,47 +360,52 @@ const ElectedOfficialTemplate = ({
         ]}
       />
       <ContentLayout>
-        <div className="title">
-          <Name>{electedOfficial.preferred_name}</Name>
-          {/* <StateIcon className="state" state={electedOfficial.state} /> */}
-          {/* <State>{electedOfficial.state}</State> */}
-          <Position>{positionText}</Position>
-          <TermDate>{termText}</TermDate>
-        </div>
-        <CircleAvatar
-          className="image"
-          preferred_name={electedOfficial.preferred_name}
-          political_party={electedOfficial.political_party}
-          image={electedOfficial.image}
-          loading="eager"
-          size="240px"
-        />
-        <OptionsContainer className="options">
-          {options.map((option, index) => {
-            // Dynamic classnames a-f to match grid assignments
-            const char = String.fromCharCode(97 + index);
-            return (
-              <CountBox
-                key={option.title}
-                className={char}
-                title={option.title}
-                count={option.count}
-                isActive={option.title === activeOption?.title}
-                onMouseOver={() => {
-                  setHoveredOption(option);
-                }}
-                onMouseOut={() => {
-                  setHoveredOption(null);
-                }}
-                onClick={() => handleOptionClick(option)}
-              />
-            );
-          })}
-        </OptionsContainer>
-
-        {activeOption ? (
-          <OptionDetails className="details" {...activeOption} />
-        ) : null}
+        <Portrait partyColor={getPartyColors(electedOfficial.political_party)}>
+          <Avatar
+            className="glow"
+            party={electedOfficial.political_party}
+            size="375px"
+          >
+            <Image
+              imageData={electedOfficial.image}
+              alt={electedOfficial.first_name}
+            />
+          </Avatar>
+        </Portrait>
+        <Header>
+          <Title>
+            <Position>{positionText}</Position>
+            <TermDate>{termText}</TermDate>
+            <Name length={electedOfficial.preferred_name.length}>
+              {electedOfficial.preferred_name}
+            </Name>
+          </Title>
+        </Header>
+        <StatsWrapper>
+          <StatMenu>
+            {options.map((option, index) => {
+              // Dynamic classnames a-f to match grid assignments
+              const char = String.fromCharCode(97 + index);
+              return (
+                <CountBox
+                  key={option.title}
+                  className={char}
+                  title={option.title}
+                  count={option.count}
+                  isActive={option.title === activeOption}
+                  onMouseOver={() => {
+                    setHoveredOption(option.title);
+                  }}
+                  onMouseOut={() => {
+                    setHoveredOption(null);
+                  }}
+                  onClick={() => handleOptionClick(option)}
+                />
+              );
+            })}
+          </StatMenu>
+          <OptionDetails {...options.find((o) => o.title === activeOption)} />
+        </StatsWrapper>
       </ContentLayout>
     </MinimumLayout>
   );
@@ -420,147 +427,122 @@ const normalizePosition = (position: string) => {
 
 export default ElectedOfficialTemplate;
 
-const Name = styled.h2`
+const ContentLayout = styled.div`
+  position: relative;
+
+  width: 100%;
+
+  margin: 0;
+
+  padding: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+const Portrait = styled.div<{ partyColor?: string }>`
+  z-index: 0;
+  position: absolute;
+
+  height: 100%;
+  width: 100%;
+  min-width: fit-content;
+
+  padding-top: 60px;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+
+  overflow: hidden;
+
+  .glow {
+    filter: drop-shadow(0 0 24px ${(properties) => properties.partyColor});
+  }
+`;
+
+const Header = styled.div`
+  position: relative;
+
+  height: 600px;
+  width: min(140ch, calc(100% - 64px));
+
+  display: flex;
+`;
+
+const Title = styled.div`
+  z-index: 1;
+  position: relative;
+
+  justify-self: center;
+  align-self: flex-end;
+
+  height: 100%;
+  min-width: fit-content;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+`;
+
+const Name = styled.h2<{ length: number }>`
+  margin-top: 0;
+  margin-bottom: 0;
+
+  padding-top: 0;
+  padding-bottom: 0;
+
+  font-size: ${({ length }) => (length < 16 ? '7rem' : '5.5rem')};
   font-weight: 600;
+
+  @media (max-width: 650px) {
+    font-size: ${({ length }) => (length < 16 ? '5rem' : '3rem')};
+  }
 `;
 
 const Position = styled.p`
   margin-bottom: 0;
+  margin-left: 10px;
+
+  padding-bottom: 0;
+
   font-family: century_supra_c3;
-  padding-bottom: 1rem;
-  border-bottom: solid thin var(--color-gray700);
 `;
 
 const TermDate = styled.p`
+  margin-top: 0;
+  margin-left: 10px;
+  margin-bottom: 0;
+
+  padding-top: 0;
+  padding-bottom: 0;
+
   font-weight: 400;
   font-family: century_supra_c3;
   color: var(--color-dimText);
 `;
 
-const ContentLayout = styled.div`
+const StatsWrapper = styled.div`
   position: relative;
-  overflow: hidden;
 
-  display: grid;
-  height: calc(100vh - 115px);
-  grid-template-columns: 1fr auto 1fr;
-  grid-template-rows: 50px 170px 300px auto;
-  grid-template-areas:
-    '....... ..... details'
-    '....... title details'
-    'options img   details'
-    '....... ..... details';
+  width: min(140ch, calc(100% - 64px));
+
+  margin-left: 10px;
+
+  display: flex;
 
   @media (max-width: 600px) {
-    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: fit-content;
-  }
-
-  .title {
-    grid-area: title;
-    width: 100%;
-    height: 100%;
-    justify-self: center;
-    text-align: center;
-  }
-
-  .image {
-    grid-area: img;
-    justify-self: center;
-    align-self: center;
-
-    img {
-      transition: all 0.3s;
-
-      :hover {
-        transform: scale(1.1);
-      }
-    }
-  }
-
-  .options {
-    grid-area: options;
-  }
-
-  .details {
-    grid-area: details;
-
-    div:first-child {
-      margin-top: 170px;
-      @media (max-width: 600px) {
-        margin-top: unset;
-      }
-    }
-  }
-
-  .state {
-    width: 100%;
-    height: auto;
-    max-width: 100%;
-    max-height: 100%;
-
-    justify-self: center;
-    align-self: center;
-
-    path {
-      fill: transparent;
-      stroke: var(--color-gray500);
-    }
   }
 `;
 
-const OptionsContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  max-height: 300px;
-  align-self: start;
-  line-height: normal;
+const StatMenu = styled.div`
+  position: relative;
 
-  display: grid;
-  grid-template-columns: repeat(10, 1fr);
-  grid-template-areas:
-    'a a a a a a a a a a'
-    'b b b b b b b b b .'
-    'c c c c c c c c c .'
-    'd d d d d d d d d .'
-    'e e e e e e e e e .'
-    'f f f f f f f f f f';
-  align-items: start;
-  align-content: space-between;
-  text-align: right;
-
-  @media (max-width: 600px) {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: fit-content;
-  }
-
-  .a {
-    grid-area: a;
-  }
-
-  .b {
-    grid-area: b;
-  }
-
-  .c {
-    grid-area: c;
-  }
-
-  .d {
-    grid-area: d;
-  }
-
-  .e {
-    grid-area: e;
-  }
-
-  .f {
-    grid-area: f;
-  }
+  display: flex;
+  flex-direction: column;
 `;

@@ -36,49 +36,6 @@ const BillCardFeed = ({ bills }: BillCardGridProps) => {
   const [orderByAsc, setOrderByAsc] = useState(false);
   const offset = 0;
 
-  // UseEffect(() => {
-  //   async function getVoteCounts() {
-  //     const apolloClient = createApolloClient();
-  //     const response = await apolloClient.query({
-  //       query: gql(
-  //         `query queryBillsVotesQuery($limit: Int!, $offset: Int!) {
-  //           bills(limit: $limit, offset: $offset, order_by: {status_at: desc}) {
-  //             id
-  //             yeaCount: user_votes_aggregate(
-  //               where: { decision: { _eq: "Yea" } }
-  //             ) {
-  //               aggregate {
-  //                 count
-  //               }
-  //             }
-  //             nayCount: user_votes_aggregate(
-  //               where: { decision: { _eq: "Nay" } }
-  //             ) {
-  //               aggregate {
-  //                 count
-  //               }
-  //             }
-  //           }
-  //         }`
-  //       ),
-  //       variables: { limit, offset: 0 },
-  //     });
-  //     const billsVoteCounts = response?.data.bills.map((bill: any) => ({
-  //       id: bill.id,
-  //       yeaCount: bill.yeaCount.aggregate.count,
-  //       nayCount: bill.nayCount.aggregate.count,
-  //     }));
-  //     billsVoteCounts.map((billsVoteCount: any) => {
-  //       const bill = bills.find((bill) => bill.id === billsVoteCount.id);
-  //       bill.yeaCount = billsVoteCount.yeaCount;
-  //       bill.nayCount = billsVoteCount.nayCount;
-  //       return bill;
-  //     });
-  //   }
-
-  //   void getVoteCounts();
-  // }, [limit]);
-
   function fetchMoreListItems() {
     setTimeout(() => {
       setLimit((prevState) => prevState + increment);

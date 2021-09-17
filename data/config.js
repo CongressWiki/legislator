@@ -10,7 +10,7 @@ module.exports = {
   themeColor: 'hsl(50deg, 100%, 50%)',
   backgroundColor: 'hsl(250deg, 70%, 7%)',
   socialLinks: {
-    twitter: 'https://www.twitter.com/CountsUSA',
+    twitter: 'https://twitter.com/CountsUSA',
     github: 'https://github.com/USACounts',
   },
   social: {
@@ -18,8 +18,8 @@ module.exports = {
   },
   address: {
     country: 'USA',
-    region: 'Midwest',
-    city: 'Ames',
+    region: 'West',
+    city: 'Seattle',
     zipCode: '50014',
   },
   foundingDate: '2020',

@@ -48,19 +48,20 @@ const OptionDetails = ({
 export default OptionDetails;
 
 const Wrapper = styled(BillLane)`
-  max-width: 40ch;
-  height: 100%;
-
-  overflow: auto;
-
   padding: 1rem;
 
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: stretch;
 
-  align-items: center;
   text-align: left;
-  justify-content: start;
 
   background-color: transparent;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 `;

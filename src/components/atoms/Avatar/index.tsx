@@ -32,39 +32,31 @@ const Avatar = ({
 };
 
 const Wrapper = styled(motion.div)<{ partyColor?: string; size?: string }>`
-  z-index: 2;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
   /**
-   * Make sure that the picture is at least 48px^2.
-   * Remember border size will cut into the picture's size
-   * To handle this: multiply border-size by 2 then add to width & height.
-   */
+  * Make sure that the picture is at least 48px^2.
+  * Remember border size will cut into the picture's size
+  * To handle this: multiply border-size by 2 then add to width & height.
+  */
   width: ${(properties) => properties.size ?? '50px'};
   height: ${(properties) => properties.size ?? '50px'};
 
   /* Not supported by non-chrome browsers */
   /* aspect-ratio: 1 / 1; */
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   overflow: hidden;
-  border-radius: 50%;
+  border-radius: 80%;
 
-  border: solid 1px var(--color-text);
-
-  :hover {
-    border-color: ${(properties) => properties.partyColor};
-    background-color: var(--color-background);
-  }
+  background-color: ${(properties) => properties.partyColor};
 
   img {
-    z-index: 1;
     display: block;
     object-fit: cover;
     width: 100%;
-    height: auto;
+    height: 100%;
   }
 `;
 

@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import ThemeToggle from '@components/molecules/ThemeToggle';
 import LoginButton from '@components/molecules/LoginButton';
-import LoginMenuButton from '@components/molecules/LoginMenuButton';
 import SiteTitle from '@components/atoms/SiteTitle';
 import { useStaticQuery, graphql, Link } from 'gatsby';
 
@@ -25,14 +24,9 @@ const Header = ({}: HeaderProps) => {
         <Link to="/">
           <SiteTitle title={data.site.siteMetadata?.title} />
         </Link>
-        {/* TODO: Center menu */}
-        {/* <Link to="/bills">
-          <p>Bills</p>
-        </Link> */}
         <ButtonsBar>
           <ThemeToggle />
           <LoginButton />
-          {/* <LoginMenuButton /> */}
         </ButtonsBar>
       </ToolBar>
     </Wrapper>
@@ -54,8 +48,6 @@ const Wrapper = styled.header`
   border-bottom: 1px solid var(--color-text);
 
   background-color: var(--color-background);
-  /* background-color: var(--color-ribbon); */
-  /* background-color: var(--color-paper); */
 
   display: flex;
   justify-content: center;

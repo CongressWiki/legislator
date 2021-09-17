@@ -50,7 +50,7 @@ const motionVariants = {
 };
 
 const Wrapper = styled(motion.div)<{ center: boolean }>`
-  width: 100%;
+  width: 300px;
 
   margin: 0;
   padding-top: 0.75rem;
@@ -59,6 +59,12 @@ const Wrapper = styled(motion.div)<{ center: boolean }>`
 
   border: solid thin var(--color-text);
   border-radius: 10px;
+
+  background-color: var(--color-card);
+
+  :hover {
+    background-color: var(--color-paper);
+  }
 
   p {
     margin-top: 0;

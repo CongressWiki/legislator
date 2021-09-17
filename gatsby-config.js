@@ -38,7 +38,7 @@ module.exports = {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'congressImages',
-        path: `${__dirname}/../scrapers/images/congress/original/`,
+        path: `${__dirname}/../scrapers/images/congress/cropped/`,
       },
     },
     {

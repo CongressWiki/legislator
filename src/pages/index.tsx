@@ -13,6 +13,20 @@ export type HomePageProps = {
       };
     };
     electedOfficials: Official[];
+    featuredBills: Array<{
+      id: string;
+      bill_id: string;
+      start_date: number;
+      end_date: number;
+      bill: {
+        type: string;
+        number: number;
+        short_title: string;
+        title: string;
+        status: string;
+        congress: string;
+      };
+    }>;
   };
   congressImages: {
     nodes: Array<{
@@ -38,7 +52,7 @@ const HomePage = () => {
           modifiedTime
           childImageSharp {
             gatsbyImageData(
-              width: 50
+              height: 375
               placeholder: BLURRED
               formats: [AUTO, WEBP, AVIF]
             )
@@ -72,13 +86,24 @@ const HomePage = () => {
           preferred_name
           state
         }
+        featuredBills: featured_bills(limit: 6) {
+          id
+          bill_id
+          bill {
+            type
+            number
+            short_title
+            title
+            congress
+          }
+        }
       }
     }
   `);
 
   const images = data.congressImages.nodes;
   let bills = data.hasura.bills.nodes;
-  const { electedOfficials } = data.hasura;
+  const { electedOfficials, featuredBills } = data.hasura;
 
   const findElectedOfficial = (elected_official_id: string) =>
     electedOfficials.find(
@@ -101,7 +126,7 @@ const HomePage = () => {
     };
   });
 
-  return <Home bills={bills} />;
+  return <Home bills={bills} featuredBills={featuredBills} />;
 };
 
 export default HomePage;

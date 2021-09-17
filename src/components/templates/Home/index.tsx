@@ -7,14 +7,29 @@ import Header, { HeaderSpacer } from '@components/organisms/Header';
 import createApolloClient from '@utils/ApolloClient';
 import { gql } from '@apollo/client';
 import { useAuth0 } from '@auth0/auth0-react';
+import FeaturedBillsColumn from '@components/molecules/FeaturedBillsColumn';
 
 export type HomeProps = {
   bills: Array<
     Bill & { sponsor?: OfficialWithImage; userVote?: 'Yea' | 'Nay' }
   >;
+  featuredBills: Array<{
+    id: string;
+    bill_id: string;
+    start_date: number;
+    end_date: number;
+    bill: {
+      type: string;
+      number: number;
+      short_title: string;
+      title: string;
+      status: string;
+      congress: string;
+    };
+  }>;
 };
 
-const Home = ({ bills }: HomeProps) => {
+const Home = ({ bills, featuredBills }: HomeProps) => {
   const { isAuthenticated, user, getAccessTokenSilently } = useAuth0();
   const [userBillVotes, setUserBillVotes] = useState([]);
   const [billsInState, setBillsInState] = useState(bills);
@@ -65,6 +80,10 @@ const Home = ({ bills }: HomeProps) => {
       <HeaderSpacer />
       <Layout>
         <Seo title="Bills" pathname="/" />
+        <StyledFeaturedBillsColumn
+          className="right-side"
+          bills={featuredBills.map((fb) => ({ ...fb, ...fb.bill }))}
+        />
         <BillCardFeed bills={billsInState} />
       </Layout>
     </>
@@ -108,4 +127,14 @@ const Layout = styled.div`
   }
 
   margin-bottom: 50vh;
+`;
+
+const StyledFeaturedBillsColumn = styled(FeaturedBillsColumn)`
+  position: absolute;
+  width: fit-content;
+  max-width: 270px;
+
+  @media (max-width: 1000px) {
+    display: none;
+  }
 `;

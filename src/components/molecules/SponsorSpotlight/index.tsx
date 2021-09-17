@@ -69,15 +69,9 @@ const SponsorFrame = styled.div<{ partyColor: string }>`
   align-items: center;
   justify-content: center;
 
-  border: solid 1px var(--color-text);
-  box-shadow: 0 0 1px 1px ${(properties) => properties.partyColor};
   border-radius: 50%;
 
-  background-color: var(--color-background);
-
-  :hover {
-    background-color: ${(properties) => properties.partyColor};
-  }
+  background-color: ${(properties) => properties.partyColor};
 
   .image {
     z-index: 1;

@@ -8,7 +8,7 @@ export type BillLaneProps = {
   className?: string;
 };
 
-const BillLane = ({ children, className = '' }: BillLaneProps) => (
+const BillLane = ({ children, className }: BillLaneProps) => (
   <Wrapper
     className={className}
     variants={motionVariants}
@@ -42,8 +42,6 @@ const Wrapper = styled(motion.div)`
   padding: 0;
 
   background-color: var(--color-background);
-  /* background-color: var(--color-ribbon); */
-  /* background-color: var(--color-paper); */
 
   border: none;
   border-radius: 0;
