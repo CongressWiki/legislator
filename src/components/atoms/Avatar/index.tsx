@@ -32,6 +32,9 @@ const Avatar = ({
 };
 
 const Wrapper = styled(motion.div)<{ partyColor?: string; size?: string }>`
+  z-index: 2;
+  position: relative;
+
   /**
   * Make sure that the picture is at least 48px^2.
   * Remember border size will cut into the picture's size
@@ -43,20 +46,24 @@ const Wrapper = styled(motion.div)<{ partyColor?: string; size?: string }>`
   /* Not supported by non-chrome browsers */
   /* aspect-ratio: 1 / 1; */
 
+  overflow: hidden;
+
   display: flex;
   align-items: center;
   justify-content: center;
 
-  overflow: hidden;
   border-radius: 80%;
 
   background-color: ${(properties) => properties.partyColor};
 
   img {
-    display: block;
-    object-fit: cover;
+    z-index: 1;
+
     width: 100%;
     height: 100%;
+
+    display: block;
+    object-fit: cover;
   }
 `;
 

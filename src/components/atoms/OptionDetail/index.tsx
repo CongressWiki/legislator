@@ -27,7 +27,13 @@ const OptionDetail = ({
       variants={motionVariants}
       className={className}
     >
-      {['bills', 'cosponsorships', 'amendments'].includes(type) ? (
+      {[
+        'bills',
+        'cosponsorships',
+        'amendments',
+        'committees',
+        'members',
+      ].includes(type) ? (
         <Link to={slug}>
           <p className="text">{text}</p>
         </Link>

@@ -6,13 +6,7 @@ import BillLane from '@components/atoms/BillLane';
 export type OptionDetailsProps = {
   title: string;
   count: number;
-  type:
-    | 'bills'
-    | 'amendments'
-    | 'rollCalls'
-    | 'committees'
-    | 'subcommittees'
-    | 'cosponsorships';
+  type: string;
   details: Array<{
     text: string;
     subtext: string;

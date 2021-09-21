@@ -186,7 +186,7 @@ const Wrapper = styled(motion.div)<{
 
   display: grid;
   align-items: start;
-  grid-template-columns: 60px repeat(8, 1fr) 40px;
+  grid-template-columns: 60px repeat(8, 1fr) 60px;
   grid-template-rows: 20px 20px 40px 30px auto 50px 36px;
   grid-template-areas:
     'sponsorImage sponsorName sponsorName sponsorName sponsorName sponsorName subject subject subject  subjectIcon'
