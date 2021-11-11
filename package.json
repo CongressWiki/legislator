@@ -95,7 +95,7 @@
     "eslint-config-xo-typescript": "^0.44.0",
     "eslint-plugin-import": "^2.24.2",
     "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-react": "^7.25.3",
+    "eslint-plugin-react": "^7.27.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "eslint-plugin-unicorn": "^36.0.0",
     "lodash": "^4.17.21",
