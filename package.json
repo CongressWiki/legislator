@@ -38,7 +38,7 @@
     "@svgr/webpack": "^5.5.0",
     "auth0-js": "^9.16.4",
     "babel-plugin-styled-components": "^1.13.2",
-    "d3": "^7.0.3",
+    "d3": "^7.2.1",
     "framer-motion": "^4.1.17",
     "gatsby": "^3.14.00",
     "gatsby-image": "^3.11.0",
